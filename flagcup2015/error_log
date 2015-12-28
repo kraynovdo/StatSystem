@@ -1,0 +1,8 @@
+[23-May-2015 17:51:05 Europe/Moscow] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/bh56558/public_html/controllers/competition.php on line 102
+[23-May-2015 17:51:06 Europe/Moscow] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/bh56558/public_html/controllers/competition.php on line 102
+[25-Oct-2015 07:08:27 Europe/Moscow] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1040] Too many connections' in /home/bh56558/public_html/index.php:13
+Stack trace:
+#0 /home/bh56558/public_html/index.php(13): PDO->__construct('mysql:host=loca...', 'bh56558_user', '0cc9afd')
+#1 /home/bh56558/public_html/flagcup2015/index.php(8): require_once('/home/bh56558/p...')
+#2 {main}
+  thrown in /home/bh56558/public_html/index.php on line 13

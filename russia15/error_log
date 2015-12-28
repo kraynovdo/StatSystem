@@ -1,0 +1,469 @@
+[19-Mar-2015 19:44:40 Europe/Moscow] PHP Warning:  require_once(/home/bh56558/public_html/russia15../views/main.php): failed to open stream: No such file or directory in /home/bh56558/public_html/russia15/index.php on line 7
+[19-Mar-2015 19:44:40 Europe/Moscow] PHP Fatal error:  require_once(): Failed opening required '/home/bh56558/public_html/russia15../views/main.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/bh56558/public_html/russia15/index.php on line 7
+[19-Mar-2015 19:45:27 Europe/Moscow] PHP Warning:  require(/home/bh56558/public_html/russia15/views/user/login.php): failed to open stream: No such file or directory in /home/bh56558/public_html/views/main.php on line 25
+[19-Mar-2015 19:45:27 Europe/Moscow] PHP Fatal error:  require(): Failed opening required '/home/bh56558/public_html/russia15/views/user/login.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/bh56558/public_html/views/main.php on line 25
+[19-Mar-2015 19:54:27 Europe/Moscow] PHP Warning:  Invalid argument supplied for foreach() in /home/bh56558/public_html/views/main.php on line 34
+[19-Mar-2015 19:58:12 Europe/Moscow] PHP Warning:  require(/home/bh56558/public_html/russia15/controllers/competition.php): failed to open stream: No such file or directory in /home/bh56558/public_html/controllers/news.php on line 9
+[19-Mar-2015 19:58:12 Europe/Moscow] PHP Fatal error:  require(): Failed opening required '/home/bh56558/public_html/russia15/controllers/competition.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/bh56558/public_html/controllers/news.php on line 9
+[07-Apr-2015 13:14:02 Europe/Moscow] PHP Fatal error:  Call to a member function prepare() on a non-object in /home/bh56558/public_html/index.php on line 8
+[08-Apr-2015 10:02:54 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 10:02:54 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 10:02:57 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 10:02:57 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 10:03:02 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 10:03:02 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 10:03:11 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 10:03:11 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 10:03:20 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 10:03:20 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:31:42 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:31:42 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:32:36 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:32:36 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:32:48 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:32:48 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:32:52 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:32:52 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:33:00 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:33:00 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:33:10 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:33:10 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:33:12 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:33:12 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:33:14 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:33:14 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:33:19 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:33:19 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:33:21 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:33:21 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:33:24 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:33:24 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:33:27 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:33:27 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:33:28 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:33:28 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:33:29 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:33:29 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:33:31 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:33:31 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:33:38 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:33:38 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:33:44 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:33:44 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:33:49 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:33:49 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:33:56 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:33:56 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:34:21 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:34:21 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:34:22 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:34:22 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:34:29 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:34:29 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:34:33 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:34:33 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:34:40 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:34:40 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:36:00 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:36:00 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:39:35 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:39:35 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:39:37 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:39:37 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:44:02 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:44:02 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:44:05 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:44:05 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:44:10 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:44:10 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:44:15 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:44:15 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:45:39 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:45:39 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:45:47 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:45:47 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:45:52 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:45:52 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 11:48:41 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 11:48:41 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 12:17:02 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 12:17:02 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 12:21:37 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 12:21:37 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 12:21:39 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 12:21:39 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 12:28:17 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 12:28:17 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 12:28:18 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 12:28:18 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 12:54:12 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 12:54:12 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 13:07:28 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 13:07:28 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 13:07:32 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 13:07:32 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 13:07:41 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 13:07:41 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 13:07:56 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 13:07:56 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 13:07:58 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 13:07:58 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 13:08:08 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 13:08:08 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 13:08:27 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 13:08:27 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 13:08:30 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 13:08:30 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 13:08:33 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 13:08:33 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 13:08:34 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 13:08:34 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 13:17:07 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 13:17:07 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 14:31:46 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 14:31:46 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 14:43:49 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 14:43:49 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 15:04:34 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 15:04:34 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 15:04:36 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 15:04:36 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 15:04:38 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 15:04:38 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 15:04:53 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 15:04:53 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 15:04:55 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 15:04:55 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 15:04:56 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 15:04:56 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 15:04:57 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 15:04:57 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 16:41:11 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 16:41:11 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 18:02:23 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 18:02:23 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 18:02:29 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 18:02:29 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 18:03:05 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 18:03:05 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 18:03:14 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 18:03:14 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 18:03:16 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 18:03:16 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 18:03:19 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 18:03:19 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 20:24:27 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 20:24:27 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 22:05:25 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 22:05:25 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 22:05:27 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 22:05:27 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 22:05:31 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 22:05:31 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 22:05:42 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 22:05:42 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 22:05:43 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 22:05:43 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 22:05:48 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 22:05:48 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 22:06:01 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 22:06:01 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 23:20:01 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 23:20:01 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[08-Apr-2015 23:34:56 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[08-Apr-2015 23:34:56 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 00:06:18 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 00:06:18 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 02:13:48 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 02:13:48 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 02:13:51 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 02:13:51 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 02:14:01 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 02:14:01 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 02:14:03 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 02:14:03 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 02:14:04 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 02:14:04 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 02:14:08 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 02:14:08 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 02:53:01 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 02:53:01 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 03:23:14 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 03:23:14 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 03:23:27 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 03:23:27 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 03:28:11 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 03:28:11 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 09:10:06 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 09:10:06 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 09:10:10 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 09:10:10 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 09:10:14 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 09:10:14 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 10:10:06 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 10:10:06 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 10:10:07 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 10:10:07 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 10:10:11 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 10:10:11 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 10:10:15 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 10:10:15 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 10:10:17 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 10:10:17 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 10:10:22 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 10:10:22 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 10:10:26 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 10:10:26 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 10:10:30 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 10:10:30 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 10:10:33 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 10:10:33 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 10:10:38 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 10:10:38 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 10:10:44 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 10:10:44 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 10:10:48 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 10:10:48 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:21:56 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:21:56 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:41:22 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:41:22 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:41:23 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:41:23 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:41:26 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:41:26 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:41:28 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:41:28 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:41:55 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:41:55 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:41:58 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:41:58 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:42:04 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:42:04 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:43:44 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:43:44 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:43:46 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:43:46 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:44:23 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:44:23 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:44:26 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:44:26 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:47:28 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:47:28 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:48:16 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:48:16 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:48:51 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:48:51 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:49:54 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:49:54 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:49:56 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:49:56 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:50:10 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:50:10 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:50:19 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:50:19 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:50:40 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:50:40 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:51:11 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:51:11 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:51:13 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:51:13 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:51:34 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:51:34 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:52:00 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:52:00 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:52:39 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:52:39 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:52:42 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:52:42 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:53:02 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:53:02 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:53:25 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:53:25 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:53:38 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:53:38 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:53:41 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:53:41 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:54:42 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:54:42 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:54:48 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:54:48 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:54:51 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:54:51 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:54:53 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:54:53 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:55:21 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:55:21 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:55:24 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:55:24 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:55:37 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:55:37 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:55:58 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:55:58 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:56:33 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:56:33 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:56:36 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:56:36 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:57:11 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:57:11 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:58:08 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:58:08 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:58:22 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:58:22 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:58:25 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:58:25 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 12:58:47 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 12:58:47 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:00:09 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:00:09 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:04:00 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:04:00 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:04:02 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:04:02 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:04:37 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:04:37 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:05:09 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:05:09 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:05:23 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:05:23 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:05:26 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:05:26 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:05:45 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:05:45 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:06:09 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:06:09 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:06:59 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:06:59 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:07:05 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:07:05 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:07:34 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:07:34 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:08:02 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:08:02 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:08:25 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:08:25 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:08:28 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:08:28 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:08:47 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:08:47 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:09:06 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:09:06 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:11:37 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:11:37 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:11:39 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:11:39 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:11:41 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:11:41 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:11:45 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:11:45 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 13:48:40 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 13:48:40 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 14:00:07 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 14:00:07 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 14:00:11 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 14:00:11 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 14:00:28 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 14:00:28 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 14:00:32 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 14:00:32 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 14:20:06 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 14:20:06 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 14:21:14 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 14:21:14 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 14:21:22 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 14:21:22 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 14:29:27 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 14:29:27 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 14:29:30 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 14:29:30 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 14:45:44 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 14:45:44 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 14:45:45 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 14:45:45 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 14:45:47 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 14:45:47 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 14:45:48 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 14:45:48 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 14:45:49 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 14:45:49 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 14:46:01 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 14:46:01 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 14:58:22 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 14:58:22 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 16:00:00 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 16:00:00 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 16:00:03 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 16:00:03 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 16:00:05 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 16:00:05 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 16:00:06 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 16:00:06 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[09-Apr-2015 16:00:09 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 11
+[09-Apr-2015 16:00:09 Europe/Moscow] PHP Strict Standards:  mktime(): You should be using the time() function instead in /home/bh56558/public_html/views/main.php on line 64
+[06-May-2015 21:53:02 Europe/Moscow] PHP Warning:  Illegal string offset 'answer' in /home/bh56558/public_html/controllers/match.php on line 61
+[06-May-2015 21:53:02 Europe/Moscow] PHP Fatal error:  Cannot use string offset as an array in /home/bh56558/public_html/controllers/match.php on line 61
+[06-May-2015 21:53:20 Europe/Moscow] PHP Warning:  Illegal string offset 'answer' in /home/bh56558/public_html/controllers/match.php on line 61
+[06-May-2015 21:53:20 Europe/Moscow] PHP Fatal error:  Cannot use string offset as an array in /home/bh56558/public_html/controllers/match.php on line 61
+[07-May-2015 21:40:28 Europe/Moscow] PHP Fatal error:  Call to undefined function initials() in /home/bh56558/public_html/views/match/view.php on line 182
+[07-May-2015 21:40:34 Europe/Moscow] PHP Fatal error:  Call to undefined function initials() in /home/bh56558/public_html/views/match/view.php on line 182
+[07-May-2015 21:40:35 Europe/Moscow] PHP Fatal error:  Call to undefined function initials() in /home/bh56558/public_html/views/match/view.php on line 182
+[07-May-2015 21:40:44 Europe/Moscow] PHP Fatal error:  Call to undefined function initials() in /home/bh56558/public_html/views/match/view.php on line 182
+[13-May-2015 13:04:23 Europe/Moscow] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in /home/bh56558/public_html/controllers/protocol.php on line 165
+[16-May-2015 12:53:12 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[16-May-2015 16:13:42 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[16-May-2015 16:20:25 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[16-May-2015 16:21:26 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[16-May-2015 16:44:41 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[16-May-2015 16:57:28 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[16-May-2015 16:57:45 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[16-May-2015 16:58:00 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[16-May-2015 16:58:27 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[16-May-2015 16:58:54 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[16-May-2015 16:59:24 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[16-May-2015 19:54:55 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[16-May-2015 20:05:03 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[16-May-2015 20:05:10 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[16-May-2015 20:06:59 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[16-May-2015 20:36:27 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[16-May-2015 20:38:26 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[16-May-2015 20:39:03 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[16-May-2015 20:41:53 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[17-May-2015 16:05:52 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[17-May-2015 16:15:08 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[17-May-2015 20:33:06 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[17-May-2015 20:33:59 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[17-May-2015 20:34:11 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[17-May-2015 20:35:12 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[17-May-2015 20:35:39 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[17-May-2015 20:36:15 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[17-May-2015 20:37:49 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[17-May-2015 20:38:58 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[17-May-2015 20:39:15 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[17-May-2015 20:46:25 Europe/Moscow] PHP Warning:  Missing argument 2 for competition_view(), called in /home/bh56558/public_html/controllers/roster.php on line 25 and defined in /home/bh56558/public_html/controllers/competition.php on line 53
+[04-Jun-2015 18:39:29 Europe/Moscow] PHP Warning:  Missing argument 3 for roster_faceIndex(), called in /home/bh56558/public_html/router.php on line 16 and defined in /home/bh56558/public_html/controllers/roster.php on line 537
+[04-Jun-2015 18:39:29 Europe/Moscow] PHP Warning:  Missing argument 4 for roster_faceIndex(), called in /home/bh56558/public_html/router.php on line 16 and defined in /home/bh56558/public_html/controllers/roster.php on line 537
+[04-Jun-2015 18:39:47 Europe/Moscow] PHP Warning:  Missing argument 3 for roster_faceIndex(), called in /home/bh56558/public_html/router.php on line 16 and defined in /home/bh56558/public_html/controllers/roster.php on line 537
+[04-Jun-2015 18:39:47 Europe/Moscow] PHP Warning:  Missing argument 4 for roster_faceIndex(), called in /home/bh56558/public_html/router.php on line 16 and defined in /home/bh56558/public_html/controllers/roster.php on line 537
+[05-Jun-2015 11:00:51 Europe/Moscow] PHP Parse error:  syntax error, unexpected '}' in /home/bh56558/public_html/controllers/team.php on line 26
+[11-Jun-2015 19:10:21 Europe/Moscow] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] Нет такого файла или каталога' in /home/bh56558/public_html/index.php:13
+Stack trace:
+#0 /home/bh56558/public_html/index.php(13): PDO->__construct('mysql:host=loca...', 'bh56558_user', '0cc9afd')
+#1 /home/bh56558/public_html/russia15/index.php(8): require_once('/home/bh56558/p...')
+#2 {main}
+  thrown in /home/bh56558/public_html/index.php on line 13
+[26-Jun-2015 17:46:52 Europe/Moscow] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bh56558/public_html/controllers/translation.php:37) in /home/bh56558/public_html/router.php on line 77
+[27-Aug-2015 19:55:31 Europe/Moscow] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/bh56558/public_html/index.php:13
+Stack trace:
+#0 /home/bh56558/public_html/index.php(13): PDO->__construct('mysql:host=loca...', 'bh56558_user', '0cc9afd')
+#1 /home/bh56558/public_html/russia15/index.php(8): require_once('/home/bh56558/p...')
+#2 {main}
+  thrown in /home/bh56558/public_html/index.php on line 13
+[29-Nov-2015 09:22:00 Europe/Moscow] PHP Warning:  Invalid argument supplied for foreach() in /home/bh56558/public_html/controllers/match.php on line 284
+[29-Nov-2015 09:22:00 Europe/Moscow] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bh56558/public_html/controllers/match.php:284) in /home/bh56558/public_html/router.php on line 71
+[01-Dec-2015 03:33:17 Europe/Moscow] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/bh56558/public_html/controllers/common.php on line 16
+[02-Dec-2015 01:04:53 Europe/Moscow] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/bh56558/public_html/controllers/common.php on line 16
+[04-Dec-2015 02:02:35 Europe/Moscow] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/bh56558/public_html/controllers/common.php on line 16
+[07-Dec-2015 16:53:15 Europe/Moscow] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/bh56558/public_html/controllers/common.php on line 16
+[22-Dec-2015 04:54:19 Europe/Moscow] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/bh56558/public_html/controllers/common.php on line 16
+[22-Dec-2015 14:14:15 Europe/Moscow] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/bh56558/public_html/controllers/common.php on line 16
+[22-Dec-2015 17:06:13 Europe/Moscow] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/bh56558/public_html/controllers/common.php on line 16

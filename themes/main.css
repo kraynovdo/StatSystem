@@ -1,0 +1,1046 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    height: 100%;
+}
+body {
+    font-size: 13px;
+    font-family : Trebuchet MS, Helvetica, sans-serif;
+    background: #20232C;
+    overflow-y: scroll;
+    color : #2B3445;
+    height: 100%;
+}
+table {
+    font-size: inherit;
+}
+a {
+    color: #4b5c82;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+h1, h2, h3, h4 {
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+h1 {
+    font-size: 40px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+p {
+    margin: 5px 0;
+}
+input[type=text],input[type=password], input[type=number], textarea, select{
+    padding: 3px 5px;
+    border : 1px solid #2B3445;
+    background-color: #EDEDED;
+    outline: none;
+    box-sizing: border-box;
+}
+select {
+    padding: 2px 0;
+}
+textarea {
+    width: 100%;
+    display: block;
+    font: inherit;
+    padding: 5px;
+}
+.clearfix:after {
+    content: '.';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.main-bigText {
+    font-size: 15px;
+}
+.datagrid .datagrid_datatr:hover{
+    background-color: #eeeeee;
+}
+.datagrid_zebra .datagrid_tbody td {
+    border-top: 1px solid #cccccc;
+    padding: 5px 0;
+}
+.main-hidden {
+    display: none !important;
+}
+.main-label_top {
+    display: block;
+}
+.main-fieldWrapper {
+    margin-bottom: 10px;
+}
+.main-addLink {
+    margin-bottom: 15px;
+    display: inline-block;
+}
+.main-date {
+    width: 80px;
+}
+.main-wrapper {
+    width: 1200px;
+    margin: 0 auto;
+    background: #ffffff;
+    min-height: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.main-navbar {
+    position: absolute;
+    width: 100px;
+    background-color: #f2f2f2;
+    top: 28px;
+    bottom: 0;
+    z-index: 2;
+}
+.main-navigation {
+    top: 28px;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+    background-color: #ebe9e9;
+    position: absolute;
+}
+.main-body_mobile .main-navigation {
+    left: 100px;
+    top: 128px;
+    width: 500px;
+}
+
+.main-navigation__point {
+    list-style: none;
+}
+.main-navigation__link {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    display: block;
+    color: #7c7c7b;
+    font-size: 15px;
+    font-weight: bold;
+}
+.main-body_mobile .main-navigation__link{
+   height: 100px;
+   font-size: 30px;
+   line-height: 100px;
+}
+
+
+.main-navigation__link:hover {
+    text-decoration: none;
+    background: #d9d7d7;
+    color: #000;
+}
+.main-overlay {
+    background: rgba(0,0,0,0.55);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.main-bottom {
+    height: 30px;
+}
+.main-card {
+    background-color: #eeeeee;
+    padding: 5px;
+}
+.main-header {
+    border: 1px solid transparent;
+    margin: 0 15px 0 210px;
+    height: 200px;
+    box-sizing: border-box;
+    position: relative;
+    background: #ffffff;
+    /*border-left: 10px solid #A4A4A4;
+    border-right: 10px solid #A4A4A4;*/
+}
+.main-body_mobile .main-header {
+    margin-left: 110px;
+}
+.main-header_title {
+    text-transform: uppercase;
+    color: #363636;
+    text-align: center;
+    margin: 140px 0 0 0;
+    font-family: "Impact", sans-serif;
+    font-size: 44px;
+    font-weight: normal;
+}
+.main-logo {
+    display: block;
+    width: 100%;
+    height: 100px;
+    background-color: #4da1f6;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.main-body_mobile .main-logo {
+    margin: 0;
+    text-align: center;
+}
+.main-logo_img {
+    width: 100px;
+}
+.main-navShowPanel {
+    width: 100px;
+    height: 100px;
+    display: block;
+    box-sizing: border-box;
+    border-left: solid 5px #a29f9f;
+    background: url('img/burger.png?1') center center #eae8e8;
+}
+.main-navShowPanel:hover {
+    background-color: #d9d7d7;
+}
+.main-content {
+    padding : 10px 15px 0 210px;
+}
+.main-body_mobile .main-content {
+    padding-left: 110px;
+}
+.main-valid_error {
+    border: 1px solid red !important;
+    background-color: #ffc9b8 !important;
+}
+.main-validWin {
+    position: absolute;
+    width: auto;
+    height: 20px;
+    border: 1px solid red;
+    background: #ffffff;
+    box-shadow: 0 0 12px 1px red;
+    color : red;
+    font-size :12px;
+    padding: 5px;
+    line-height: 20px;
+}
+.main-tolist {
+    float: right;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+.listview-item {
+    padding: 5px 0;
+    border-top: 1px solid #cccccc;
+    margin-bottom: 2px;
+}
+.main-topNavigation {
+    margin: 0 200px;
+    background-color: #313745;
+    height: 36px;
+}
+.main-topNavigation__list {
+    overflow: hidden;
+}
+.main-topNavigation__point {
+    list-style: none;
+    float: left;
+    margin-right: 5px;
+}
+.main-topNavigation__link {
+    height : 36px;
+    line-height: 36px;
+    text-transform: uppercase;
+    padding: 0 25px;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 12px;
+    color: #ffffff;
+}
+.main-leftColumn {
+    float: left;
+    width: 210px;
+    padding: 0 10px 0 0;
+}
+.main-rightColumn {
+    margin-left: 220px;
+}
+.main-noPhoto {
+    background: #cccccc;
+    font-size: 150px;
+    width: 200px;
+    height: 200px;
+    color: #aaaaaa;
+    text-align: center;
+    line-height: 200px;
+}
+
+.main-error {
+    border: 1px #880000;
+    padding: 10px;
+    background-color: #ffa18c;
+    color: #880000;
+}
+.main-message {
+    border: 1px #0d681e;
+    padding: 10px;
+    background-color: #97ff82;
+    color: #0d681e;
+}
+.news-title {
+    font-size: 16px;
+}
+.main-addLink {
+    margin-bottom: 15px;
+    display: inline-block;
+}
+.material-content {
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.material-date {
+    color: #aaaaaa;
+    font-style: italic;
+}
+.material-editTitle {
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: 500px;
+}
+.material-editPreview {
+    height: 60px;
+    margin-bottom: 10px;
+}
+.material-editContent {
+    margin-bottom: 10px;
+    height: 400px;
+}
+.main-delForm {
+    display: inline-block;
+}
+.main-btn {
+    background: transparent;
+    border: 2px solid #6A6E77;
+    color: #6A6E77;
+    outline: none;
+    padding: 5px 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+}
+.main-btn_important {
+    background: #ff3844;
+    border: 2px solid #ff3844;
+    color: #fff;
+}
+.main-field_med {
+    width: 300px;
+}
+
+.main-field_big {
+    width: 600px;
+}
+
+
+.main-auth_btn {
+    border-color: #ffffff;
+    color: #ffffff;
+    padding: 3px 5px;
+}
+
+.main-auth {
+    overflow: hidden;
+    background: #20232C;
+    height: 28px;
+}
+.main-auth a {
+    color: #ffffff;
+}
+.main-auth_form {
+    float: right;
+    color: #ffffff;
+    margin-right: 200px;
+}
+
+
+.main-file {
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    border: 1px solid #2B3445;
+    overflow: hidden;
+    position: relative;
+}
+.main-file_label {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+.main-file_input {
+    display: none;
+}
+.main-file_miniature {
+    width: 100%;
+}
+.main-file_simple_loaded {
+    background-color: #cccccc;
+}
+.main-fileMiniature {
+    position: absolute;
+    display: block !important;
+    visibility: visible !important;
+}
+.main-infoBlock {
+    height: 190px;
+    margin: -10px 0 0 0;
+    overflow: hidden;
+    text-transform: uppercase;
+    background: #6A6E77;
+    color: #ffffff;
+}
+.main-infoBlock_results {
+    height: auto;
+	text-align: center;
+}
+.main-avatar {
+    width: 190px;
+    overflow: hidden;
+    margin-left: 30px;
+    float: left;
+}
+.main-infoText {
+    margin-top: 45px;
+    overflow: hidden;
+    margin-left: 230px;
+}
+.main-infoText__left {
+    margin-right: 415px;
+}
+.main-infoText__right {
+    float: right;
+    width: 415px;
+}
+.main-infoText__title {
+    font-size: 30px;
+}
+.main-infoText__element {
+    margin-bottom: 12px;
+}
+.main-editLink {
+    float: right;
+    margin: 10px 30px 0 0;
+    text-transform: none;
+    color: #ffffff;
+}
+
+
+.team-infoLabel {
+    float: left;
+    width: 135px;
+    margin-bottom: 10px;
+}
+.team-infoBlock {
+    overflow: hidden;
+}
+
+.person-edit_birth {
+
+}
+.person-edit_block {
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+.person-edit_label {
+    float: left;
+    width: 150px;
+}
+.person-edit_field {
+    margin-left: 150px;
+}
+.person-edit_growth, .person-edit_weight {
+    width: 38px;
+}
+.person-edit__title {
+    margin: 10px 0 10px 0;
+}
+.person-edit_region, .person-edit_citizenship, .person-edit_city, .person-edit_skype, .person-edit_vklink {
+    width: 250px;
+}
+.person-edit_phone {
+    width: 100px;
+}
+
+
+.user-email {
+    width: 250px;
+}
+.user-password {
+    width: 250px;
+    margin-bottom: 10px;
+}
+
+.datagrid {
+    font-size: 13px;
+    width: 100%;
+    border-collapse: collapse;
+}
+.datagrid_thead th{
+    background-color: #2B3445;
+    text-transform: uppercase;
+    font-weight: normal;
+    color: #ffffff;
+    padding: 2px 5px;
+}
+.datagrid td{
+    padding: 1px 5px;
+}
+.roster-photo, .roster-photo_face {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 5px;
+}
+.roster-numberSeq {
+    width: 50px;
+}
+.roster-surname, .roster-surname_face {
+    width: 170px;
+}
+.roster-name, .roster-name_face {
+    width: 100px;
+}
+.roster-patronymic, .roster-patronymic_face {
+    width: 150px;
+}
+.roster-birthdate, .roster-birthdate_face {
+    width: 80px;
+}
+.roster-number {
+    width: 30px;
+}
+.roster-pos {
+    width: 52px;
+}
+.roster-facetype {
+    width: 194px;
+}
+.roster-growth {
+    width: 50px;
+}
+.roster-weight {
+    width: 50px;
+}
+.roster-phone, .roster-phone_face {
+    width: 130px;
+}
+.roster-submitContainer {
+    margin: 5px 0 20px 0;
+    text-align: right;
+}
+.roster-submit {
+    color: #ffffff;
+    background-color: #009157;
+    border-color: #009157;
+}
+.roster-citizenship, .roster-citizenship_face {
+    width: 123px;
+}
+.roster-playerWin {
+    width: 700px;
+    height: 500px;
+    margin-top: -250px;
+    margin-left: -350px;
+
+}
+.roster-grid {
+    margin-bottom: 10px;
+}
+.roster-grid tr {
+    height: 18px;
+}
+.roster-grid tr:hover .roster-confirm{
+    display: inline-block;
+}
+.roster-confirm {
+    display: none;
+    width: 16px;
+    height: 16px;
+    background: url('img/success.png');
+}
+.roster-confirm.roster-confirm_1 {
+    display: inline-block;
+}
+.roster-clear, .roster-clear_face {
+    display: none;
+}
+.roster-addLink {
+    color: #cccccc;
+}
+.roster-addLink_active {
+    color: inherit;
+}
+.roster-addFace {
+    display: none;
+}
+.roster-autoform {
+    display: inline-block;
+}
+.roster-autofill {
+    padding: 5px;
+    background-color: rgba(51, 200, 106, 0.24);
+}
+.main-window {
+    padding: 10px;
+    box-sizing: border-box;
+    position: fixed;
+    background: #dedede;
+    left: 50%;
+    top: 50%;
+    display: none;
+    box-shadow: 0 0 15px #000000;
+}
+
+/*Регистрация*/
+.reg-leftCol {
+    float: left;
+    width: 220px;
+}
+.reg-rightCol {
+    margin-left: 250px;
+}
+.reg-field {
+    width: 320px;
+    height: 36px;
+    line-height: 36px;
+    display: block;
+    margin-bottom: 5px;
+}
+.reg-block {
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.reg-firstList {
+    float: left;
+    width: 350px
+}
+.reg-secondList {
+    margin-left: 380px;
+}
+.reg-referree_link {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: inline-block;
+    cursor: pointer;
+}
+.reg-block_referree {
+    display: none;
+}
+
+.reg-autofio{
+    font-size: 15px;
+    font-style: italic;
+}
+.reg-teamlogo_v {
+    margin-top: 10px;
+    height: 36px;
+}
+.reg-teamOGRN {
+    width: 320px;
+    height: 36px;
+}
+
+.login-regLink {
+    margin-right: 40px;
+}
+.matchview-navigLink {
+    margin-right: 10px;
+}
+.match-grid {
+    /*width: 500px;*/
+
+}
+.match-rightAl {
+    text-align: right;
+}
+.match-centerAl {
+    text-align: center;
+}
+.match-team {
+    font-size: 15px;
+}
+.match-score {
+    font-size: 20px;
+}
+.match-point {
+    font-size: 18px;
+    color: #258844;
+    position: relative;
+    top: 2px;
+    padding-right: 2px;
+}
+.match_maintable {
+    width: 100%;
+    border-collapse: collapse;
+}
+.match_maintable td{
+    padding: 5px;
+}
+
+.match_teamhead {
+    text-align: center;
+}
+.match_maintable .match_maintable_header {
+    padding-top: 20px;
+}
+.match_cellborder {
+    vertical-align: top;
+}
+.match-matchroster-edit {
+    padding: 0 5px;
+    display: none;
+    position: absolute;
+    border: 1px solid #b3b3b3;
+    background: #dedede;
+}
+.match-matchroster_add {
+    padding: 2px 5px;
+    display: none;
+    border: 1px solid #b3b3b3;
+    background: #dedede;
+}
+
+.match-matchroster_numberinput, .match-matchroster_numberinputAdd {
+    margin: 1px 0 0 6px;
+    font: inherit;
+    width: 27px;
+}
+.match-matchroster_fioinput {
+    margin: 0 8px 0 4px;
+}
+
+.action-person, .action-pointsget, .action-team {
+    width: 300px;
+}
+.protocol-txtField {
+    width: 300px;
+}
+.protocol-incident {
+    width: 100%;
+    height: 200px;
+}
+.protocol-view {
+    width: 100%;
+    border-collapse: collapse;
+}
+.protocol-view td {
+    padding: 5px 0;
+    border-bottom: 1px solid #dddddd;
+}
+
+.protocol-view_label {
+    white-space: nowrap;
+    padding-right: 10px;
+}
+
+
+.comp-resultsTable {
+    display: inline-block;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.comp-resultsTable_match {
+    width: 195px;
+    box-sizing: border-box;
+    float: left;
+    height: 87px;
+    border: 1px solid #ffffff;
+    margin-left: -1px;
+    background-color: #434B60;
+    display: block;
+    color: #ffffff;
+}
+.comp-resultsTable_match:first-child {
+    margin-left: 0;
+}
+.comp-resultsTable_team1 {
+    float: left;
+    width: 40%;
+    overflow: hidden;
+    text-align: center;
+}
+.comp-resultsTable_date {
+    float: left;
+    width: 20%;
+    font-size: 10px;
+    padding-top: 25px;
+    text-transform: capitalize;
+    text-align: center;
+    overflow: hidden;
+}
+.comp-resultsTable_team2 {
+    float: left;
+    width: 35%;
+    overflow: hidden;
+    text-align: center;
+}
+.comp-resultsTable_score {
+    font-size: 32px;
+    padding-top: 20px;
+}
+.comp-resultsTable_team {
+    text-transform: capitalize;
+    font-size: 11px;
+}
+.top10-item {
+    overflow: hidden;
+    width: 500px;
+    margin: 0 auto 10px;
+    color: inherit;
+}
+.top10-item_avatar {
+    float: left;
+}
+.top10-item_logo {
+    float: right;
+}
+.top10-item_img {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+}
+.top10-item_img .main-noPhoto{
+    width: 100%;
+    height: 100%;
+    font-size: 50px;
+    line-height: 50px;
+}
+.top10-item_point {
+    float: left;
+    font-size: 30px;
+    text-align: center;
+    line-height: 50px;
+}
+.top10-item_fio {
+    line-height: 50px;
+    font-size: 18px;
+    float: left;
+    display: block;
+    color: inherit;
+}
+.trans_input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.playoff-table {
+    width: 900px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+.playoff-table tr{
+    height: 50px;
+}
+.playoff-table .playoff-mainRow {
+    height: 80px;
+}
+.playoff-table td {
+    padding: 0;
+}
+.playoff-content {
+    color: #ffffff;
+    text-align: center;
+    border: 1px solid #ffffff;
+    background-color: #434B60;
+}
+.playoff-content a{
+    text-decoration: none;
+}
+.playoff-logos {
+    padding: 0 5px;
+    overflow: hidden;
+}
+.playoff-logo1 {
+    float: left;
+}
+.playoff-logo2 {
+    float: right;
+}
+.playoff-text {
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+}
+.main-noPhoto.playoff-logo1, .main-noPhoto.playoff-logo2 {
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
+    line-height: 50px;
+}
+
+.userteam_team {
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+.main-popup {
+    position: absolute;
+    width: 400px;
+    max-height: 300px;
+    overflow-y: auto;
+    background: #ffffff;
+    border: 2px solid #999999;
+    border-radius: 4px;
+}
+.ac-item {
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0;
+}
+.ac-item:hover {
+    background-color: #cccccc;
+}
+.federation-field {
+    width: 600px;
+}
+.federation-field_addr {
+    width: 45px;
+    text-align: right;
+}
+
+.federation-field_small {
+    width: 150px;
+}
+.federation-logo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+.federation-partBlock2 {
+    display: none;
+}
+.main-fieldWrapper_1region, .main-fieldWrapper_1country {
+    padding: 5px 20px;
+}
+.federation-error {
+    color : red;
+}
+.federation-person_clear {
+    display: none;
+}
+.federation-columns {
+    overflow: hidden;
+}
+.federation-logo {
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+}
+.federation-columns .federation-logo {
+    float: left;
+}
+.federation-mainInfo {
+    margin-left: 170px;
+    padding-top: 10px;
+}
+.federation-logo .main-noPhoto {
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+}
+.federation-workField {
+    display: none;
+}
+.federation-itemUser {
+    color: #999999
+}
+.federation-itemUser .federation-itemWork{
+    display: none;
+}
+.federation_contactsTable {
+    border-collapse: collapse;
+    width: 620px;
+}
+.federation-contactField {
+    width: 190px;
+    margin-right: 10px;
+}
+.federation-partAddForm {
+    display: none;
+}
+
+.main-editBlock {
+    display: none;
+}
+.geocity-desc {
+    font-size: 9px;
+    color: #999999;
+}
+.action-comp {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.statconfig-sublist {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+.match-eventImgContainer {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    float: left;
+    margin-right: 10px;
+}
+.match-eventImg {
+    width: 100%;
+}
+.match-eventComment {
+    font-style: italic;
+}
+.match-eventPG {
+    color: #258844;
+    font-size: 15px;
+    font-weight: bold;
+}
+.match-eventAction {
+    font-size: 14px;
+}
+
+.main-crop {
+    width: 750px;
+    max-height: 750px;
+    height: 750px;
+    left: 50%;
+    margin-left: -375px;
+    top: 50%;
+    margin-top: -375px;
+    text-align: center;
+}
+.main-crop_img {
+    top: 50px;
+    left: 50px;
+}
+.main-crop_cancel {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+}
+.main-crop_ok {
+    position: absolute;
+    right: 100px;
+    bottom: 30px;
+}
+.main-crop_imgWrapper {
+    position: relative;
+    margin: 50px 0 0 50px;
+}
