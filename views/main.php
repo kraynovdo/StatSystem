@@ -10,12 +10,12 @@
     <?if ($IS_MOBILE) {?>
         <script type="text/javascript">window.mobile = true;</script>
     <?}?>
-    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main.css?72"/>
+    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main.css?74"/>
     <?if (false && $theme) {?>
         <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?7"/>
     <?}?>
     <?if ($IS_MOBILE) {?>
-        <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main_mobile.css?5"/>
+        <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main_mobile.css?6"/>
     <?}?>
     <link rel="shortcut icon" href="//<?=$HOST?>/themes/img/fafr_logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery-ui.css">

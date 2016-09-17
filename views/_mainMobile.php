@@ -12,9 +12,8 @@
         <h1 class="main-header_title"><?=$header?></h1>
 
     </div>
-    <div class="main-headerSpace"></div>
     <div class="main-navigation main-hidden">
-        <ul class="main-topNavigation__list">
+        <ul class="main-navigation__list">
             <?foreach($navigation as $point => $href) {?>
                 <li class="main-navigation__point"><a class="main-navigation__link" href="<?=$href?>"><?=$point?></a></li>
             <?}?>

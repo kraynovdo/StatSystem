@@ -99,12 +99,19 @@ textarea {
     color: #880000;
 }
 .main-wrapper {
-    width: 1200px;
-    margin: 0 auto;
     background: #ffffff;
     min-height: 100%;
     box-sizing: border-box;
     position: relative;
+}
+.main-top-fixed {
+    position: fixed;
+    width: 100%;
+}
+.main-min-width {
+    width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
 }
 
 .main-overlay {
@@ -140,28 +147,22 @@ textarea {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-top: 15px;
-}
-.main-headerSpace {
-    height: 20px;
-    background: #20232C;
+    margin-top: 36px;
 }
 .main-logo {
     display: block;
     float: left;
-    width: 200px;
     height: 100px;
-
+    padding: 0 30px;
     overflow: hidden;
     box-sizing: border-box;
-    text-align: center;
 }
 .main-logo_img {
     width: 100px;
 }
 
 .main-content {
-    padding : 15px 30px 0 30px;
+    padding : 183px 30px 0 30px;
 }
 .main-valid_error {
     border: 1px solid red !important;
@@ -190,18 +191,19 @@ textarea {
     margin-bottom: 2px;
 }
 .main-topNavigation {
-    margin-left: 200px;
+    background: #ebe9e9;
     height: 36px;
-    position: absolute;
     bottom: 0;
     white-space: nowrap;
 }
 .main-topNavigation__list {
     overflow: hidden;
+    padding: 0 30px;
+    text-align: center;
 }
 .main-topNavigation__point {
     list-style: none;
-    float: left;
+    display: inline-block;
     margin-right: 40px;
 }
 .main-topNavigation__link {
@@ -210,13 +212,13 @@ textarea {
     display: inline-block;
     text-decoration: none;
     font-size: 15px;
-    color: #fff;
+    color: #20232C;
     border-bottom: 2px solid transparent;
     box-sizing: border-box;
 }
 .main-topNavigation__link:hover {
     text-decoration: none;
-    border-bottom-color: #fff;
+    border-bottom-color: #20232C;
 }
 .main-leftColumn {
     float: left;
@@ -322,7 +324,7 @@ textarea {
 .main-auth_form {
     float: right;
     color: #ffffff;
-    margin-right: 200px;
+    margin-right: 100px;
 }
 
 
@@ -845,7 +847,7 @@ textarea {
     overflow: hidden;
 }
 .comp-resultsTable_match {
-    width: 193px;
+    width: 186px;
     box-sizing: border-box;
     float: left;
     height: 87px;
