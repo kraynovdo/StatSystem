@@ -64,7 +64,7 @@
         $('.roster-surname').val('').removeAttr('disabled');
         $('.roster-name').val('').removeAttr('disabled');
         $('.roster-patronymic').val('').removeAttr('disabled');
-        $('.roster-date').val('');
+        $('.roster-birthdate').val('').removeAttr('disabled');
         $('.roster-person').val('');
         $('.roster-phone').val('');
         $('.roster-weight').val('');
@@ -82,7 +82,7 @@
         $('.roster-surname_face').val('').removeAttr('disabled');
         $('.roster-name_face').val('').removeAttr('disabled');
         $('.roster-patronymic_face').val('').removeAttr('disabled');
-        $('.roster-date_face').val('');
+        $('.roster-birthdate_face').val('').removeAttr('disabled');
         $('.roster-person_face').val('');
         $('.roster-phone_face').val('');
         $('.roster-citizenship_face').val('');
@@ -119,26 +119,67 @@
 
     $('.roster-confirm').click(function(){
         var
-            id = $(this).data('id'),
-            $self = $(this);
+            $self = $(this),
+            tr = $self.closest('tr'),
+            id = tr.data('id');
 
         $.post("/?r=roster/confirm", {
             roster: id
         }, function (ans) {
             var
-                tr = $self.closest('tr'),
                 tdEdit = $('.roster-editTD', tr),
                 tdDel = $('.roster-delTD', tr);
             if (parseInt(ans, 10)) {
+                tr.addClass('roster-row_confirm1').removeClass('roster-row_confirm0');
                 $self.addClass('roster-confirm_1');
-                tdEdit.html('&nbsp;');
                 tdDel.empty('&nbsp;');
             }
             else {
+                tr.addClass('roster-row_confirm0').removeClass('roster-row_confirm1');
                 $self.removeClass('roster-confirm_1');
-                tdEdit.html('<a title="Редактировать" href="/?r=roster/edit&roster='+id+'">[Ред]</a>');
                 tdDel.html('<a title="Редактировать" href="/?r=roster/edit&roster='+id+'">[X]</a>');
             }
         })
+    });
+
+    $('.roster-choose_checkbox').change(function(){
+        var idArr = [];
+        $('.roster-choose_checkbox').each(function(i, item) {
+            if ($(item).prop('checked')) {
+                var
+                    tr = $(item).closest('tr'),
+                    id = tr.data('id');
+                idArr.push(id);
+            }
+        });
+        var link = $('.roster-printChooseLink');
+        link.toggleClass('main-hidden', !idArr.length);
+        var
+            href = link.attr('href'),
+            index = href.indexOf('&ids=');
+        if (index >= 0) {
+            href = href.substring(0, index);
+        }
+        if (idArr.length) {
+            href += '&ids=' + idArr.join(',');
+            link.attr('href', href);
+            $('.roster-choose_mainCheckbox').prop('checked', true);
+        }
+        else {
+            $('.roster-choose_mainCheckbox').prop('checked', false);
+        }
+    });
+
+    $('.roster-choose_mainCheckbox').change(function(){
+       if ($(this).prop('checked')) {
+           $('.roster-choose_checkbox').each(function(i, item) {
+               $(item).prop('checked', true)
+           });
+       }
+       else {
+           $('.roster-choose_checkbox').each(function(i, item) {
+               $(item).prop('checked', false)
+           });
+       }
     });
 })();

@@ -69,7 +69,8 @@
                 $email = $_POST['email'];
                 if (registration_checkEmail($dbConnect, $_POST['email'])) {
                     return array(
-                        'answer' => 'Данный E-mail уже ипользуется'
+                        'answer' => 'Данный E-mail уже ипользуется',
+                        'navigation' => registration_index()
                     );
                 }
                 else {
@@ -90,7 +91,8 @@
             $email = $_POST['email'];
             if (registration_checkEmail($dbConnect, $_POST['email'])) {
                 return array(
-                    'answer' => 'Данный E-mail уже ипользуется. Обратитесь к администратору krdcs@yandex.ru'
+                    'answer' => 'Данный E-mail уже ипользуется. Обратитесь к администратору krdcs@yandex.ru',
+                    'navigation' => registration_index()
                 );
             }
             else {
@@ -105,9 +107,6 @@
                     'vk_link' => $_POST['vk_link'],
                     'skype' => $_POST['skype'],
                     'geo_country' => $_POST['geo_country'],
-                    'geo_countryTitle' => $_POST['geo_countryTitle'],
-                    'city' => $_POST['city'],
-                    'region' => $_POST['geo_region'],
                     'avatar' => common_loadFile('avatar', $CONSTPath),
                     'weight' => $_POST['weight'],
                     'growth' => $_POST['growth']
@@ -155,7 +154,8 @@
             $dataset = $queryresult->fetchAll();
             if (count($dataset)) {
                 return array(
-                    'answer' => 'Вы уже зарегистрированы в системе. Обратитесь к администратору krdcs@yandex.ru'
+                    'answer' => 'Вы уже зарегистрированы в системе. Обратитесь к администратору krdcs@yandex.ru',
+                    'navigation' => registration_index()
                 );
             }
             else {
@@ -182,7 +182,8 @@
                 );*/
                 return array(
                     'answer' => 'Регистрация прошла успешно<br/>
-                    При возникновении проблем напишите на почту krdcs@yandex.ru<br/>'
+                    При возникновении проблем напишите на почту krdcs@yandex.ru<br/>',
+                    'navigation' => registration_index()
                 );
             }
         }
@@ -202,7 +203,8 @@
         $dataset = $queryresult->fetchAll();
         if (count($dataset)) {
             return array(
-                'answer' => 'Данная команда уже была создана ранее. Обратитесь к администратору krdcs@yandex.ru'
+                'answer' => 'Данная команда уже была создана ранее. Обратитесь к администратору krdcs@yandex.ru',
+                'navigation' => registration_index()
             );
         }
 
@@ -212,11 +214,13 @@
         $vect_logo = common_loadFile('vect_logo', $CONSTPath);
         $ogrn_doc = common_loadFile('ogrn_doc', $CONSTPath);
         $queryresult = $dbConnect->prepare('
-          INSERT INTO team (rus_name, name, geo_region, city, org_form, sport, sex, age, email, vk_link, inst_link, twitter_link, logo, vect_logo, ogrn_doc, geo_country)
-          VALUES (:rus_name, :name, :geo_region, :city, :org_form, :sport, :sex, :age, :email, :vk_link, :inst_link, :twitter_link, :logo, :vect_logo, :ogrn_doc, :geo_country)
+          INSERT INTO team (rus_name, abbr, rus_abbr, name, geo_region, city, org_form, sport, sex, age, email, vk_link, inst_link, twitter_link, logo, vect_logo, ogrn_doc, geo_country)
+          VALUES (:rus_name, :abbr, :rus_abbr, :name, :geo_region, :city, :org_form, :sport, :sex, :age, :email, :vk_link, :inst_link, :twitter_link, :logo, :vect_logo, :ogrn_doc, :geo_country)
         ');
         $queryresult->execute(array(
             'rus_name' => $_POST['rus_name'],
+            'abbr' => substr($_POST['name'], 0, 3),
+            'rus_abbr' => mb_substr($_POST['rus_name'], 0, 6),
             'name' => $_POST['name'],
             'geo_region' => $_POST['geo_region'],
             'city' => $_POST['city'],
@@ -234,7 +238,8 @@
             'geo_country' => $_POST['geo_country']
         ));
         return array(
-            'answer' => 'Ваша команда успешно создана'
+            'answer' => 'Ваша команда успешно создана',
+            'navigation' => registration_index()
         );
 
 

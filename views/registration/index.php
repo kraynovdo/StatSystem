@@ -44,13 +44,10 @@
                 <input class="reg-name reg-field" data-validate="req" name="name" type="text" placeholder="Имя *"/>
                 <input class="reg-patr reg-field" data-validate="req" name="patronymic" type="text" placeholder="Отчество *"/>
                 <input class="reg-date main-date reg-field" data-validate="date" name="birthdate"  type="text" placeholder="Дата рождения *"/>
-                <input name="geo_country" type="hidden" data-geo="country" class="reg-countryCode"/>
-                <input autocomplete="off" class="reg-citizenship reg-field geo-country" name="geo_countryTitle" data-validate="geo" data-geo="country" type="text" placeholder="Гражданство *"/>
             </div>
             <div class="reg-secondList reg-list_main">
-                <input name="geo_region" type="hidden" data-geo="region"/>
-                <input autocomplete="off" class="geo-region reg-field" name="geo_regionTitle" data-validate="geo2" data-geo="region" type="text" placeholder="Регион" data-geo-country="country"/>
-                <input class="reg-city reg-field" data-validate="req" name="city"  type="text" placeholder="Город *"/>
+                <input name="geo_country" type="hidden" data-geo="country" class="reg-countryCode"/>
+                <input autocomplete="off" class="reg-citizenship reg-field geo-country" name="geo_countryTitle" data-validate="geo" data-geo="country" type="text" placeholder="Гражданство *"/>
                 <input class="reg-phone reg-field" data-validate="phone" name="phone" type="text" placeholder="Мобильный телефон *"/>
                 <input class="reg-vk reg-field" name="vk_link" type="text" placeholder="Ссылка на страницу ВК"/>
                 <input class="reg-skype reg-field" name="skype" type="text" placeholder="Скайп"/>

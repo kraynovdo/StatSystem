@@ -9,7 +9,7 @@
             <span class="print-underline">(</span><span class="print-underline roster-print_sign">&nbsp;</span><span class="print-underline">)</div>
         <div class="roster-print_text">
             «<span class="print-underline roster-print_date">&nbsp;</span>»
-            <span class="print-underline roster-print_sign">&nbsp;</span> 2015 г.
+            <span class="print-underline roster-print_sign">&nbsp;</span> <?=date('Y')?> г.
         </div>
     </div>
     <div class="roster-print_right">

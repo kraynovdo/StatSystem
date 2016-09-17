@@ -1,8 +1,3 @@
-<?=$answer['match']['date']?>
-<div>
-    <a class="matchview-navigLink" href="/?r=protocol/view&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>" target="_blank">Протокол матча</a>
-    <a class="matchview-navigLink" href="/?r=match/view&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">Общая информация</a>
-</div>
 <? include '_head.php'?>
 <h2>Ход игры</h2>
 <script type="text/javascript">
@@ -53,6 +48,8 @@
         <?}?>
 
         <div class="listview-item">
+            <a class="main-delLink match-eventDelLink"
+                href="/?r=match/deleteEvent&event=<?=$event[$i]['id']?>&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">[X]</a>
             <div class="match-eventImgContainer">
                 <?if ($event[$i]['team']){?>
                     <img class="match-eventImg" src="//<?=$HOST?>/upload/<?=$event[$i]['team']?>"/>

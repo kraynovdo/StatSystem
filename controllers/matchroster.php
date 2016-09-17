@@ -38,8 +38,9 @@
 
     function matchroster_autofill($dbConnect, $CONSTPATH) {
         $team = $_GET['team'];
-        if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$team])) {
-            $comp = matchroster_comp($dbConnect, $_GET['match']);
+        $comp = matchroster_comp($dbConnect, $_GET['match']);
+        if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$team]) || ($_SESSION['userComp'][$comp['answer']] == 1)) {
+
 
 
             $query = 'DELETE FROM matchroster WHERE team = :team and `match` = :match';
@@ -72,7 +73,7 @@
     function matchroster_index($dbConnect, $CONSTPATH, $team = null) {
         $query = '
             SELECT
-              M.id, M.roster, M.number, P.surname, P.name, P.patronymic, P.id AS personID, POS.abbr
+              M.id, M.roster, M.number, P.surname, P.name, P.patronymic, P.id AS personID, POS.abbr, P.avatar
             FROM
               matchroster M LEFT JOIN roster R ON R.id = M.roster
                LEFT JOIN person P ON P.id = R.person
@@ -94,7 +95,8 @@
 
     function matchroster_delete($dbConnect, $CONSTPATH) {
         $team = matchroster_team($dbConnect, $_POST['matchroster']);
-        if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$team['answer']])) {
+        $comp = matchroster_comp($dbConnect, $_POST['match']);
+        if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$team['answer']]) || ($_SESSION['userComp'][$_GET['comp']] == 1) || ($_SESSION['userComp'][$comp['answer']])) {
             $query = '
                 DELETE FROM matchroster WHERE id = :match
             ';
@@ -113,7 +115,8 @@
 
     function matchroster_update($dbConnect, $CONSTPATH) {
         $team = matchroster_team($dbConnect, $_POST['matchroster']);
-        if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$team['answer']])) {
+        $comp = matchroster_comp($dbConnect, $_POST['match']);
+        if (($_SESSION['userType'] == 4) || ($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$team['answer']])  || ($_SESSION['userComp'][$comp['answer']]) ) {
             $query = '
                     UPDATE matchroster SET number = :number WHERE id = :mr
                 ';
@@ -133,9 +136,10 @@
 
     function matchroster_full($dbConnect, $CONSTPATH) {
         $team = $_GET['team'];
-        if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$team])) {
-            $comp = matchroster_comp($dbConnect, $_GET['match']);
-            $comp = $comp['answer'];
+        $comp = matchroster_comp($dbConnect, $_GET['match']);
+        $comp = $comp['answer'];
+        if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$team]) || ($_SESSION['userComp'][$comp])) {
+
             require($_SERVER['DOCUMENT_ROOT'] . $CONSTPATH  . '/controllers/roster.php');
             $answer = roster_list($dbConnect, $CONSTPATH, ' ORDER BY surname, name ', $team, $comp, TRUE);
             return $answer;
@@ -147,7 +151,9 @@
 
     function matchroster_insert($dbConnect, $CONSTPATH) {
         $team = $_POST['team'];
-        if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$team])) {
+        $comp = matchroster_comp($dbConnect, $_POST['match']);
+        $comp = $comp['answer'];
+        if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$team]) || ($_SESSION['userComp'][$comp])) {
             $query = '
             INSERT INTO matchroster
               (`match`, team, roster, number)
@@ -172,7 +178,7 @@
     function matchroster_print($dbConnect, $CONSTPath) {
         $team = $_GET['team'];
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/team.php');
-        $teamData = team_view($dbConnect, $CONSTPath);
+        $teamData = team_info($dbConnect, $CONSTPath);
         $match = $_GET['match'];
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/match.php');
         $matchData = match_edit($dbConnect, $CONSTPath);
@@ -188,5 +194,22 @@
                 'compinfo'=>$compInfo
             )
 
+        );
+    }
+
+    function matchroster_refcheck($dbConnect, $CONSTPath) {
+        $team = $_GET['team'];
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/team.php');
+        $teamData = team_info($dbConnect, $CONSTPath);
+        return array(
+            'answer' => array(
+
+                'roster' => matchroster_index($dbConnect, $CONSTPath, $team),
+                'team' => $teamData['answer']['team']
+            ),
+            'navigation' => array(
+                'header' => $teamData['answer']['team']['rus_name'],
+                'menu' => array()
+            )
         );
     }

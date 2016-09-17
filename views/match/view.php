@@ -1,8 +1,3 @@
-<?=$answer['match']['date']?>
-<div>
-    <a class="matchview-navigLink" href="/?r=protocol/view&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>" target="_blank">Протокол матча</a>
-    <a class="matchview-navigLink" href="/?r=match/playbyplay&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">Ход игры</a>
-</div>
 <? include '_head.php'?>
 <table class="match_maintable">
     <colgroup>
@@ -11,12 +6,12 @@
     </colgroup>
     <tr><td colspan="2" class="match_maintable_header"><h2>Набранные очки</h2></td></tr>
 
-        <?if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 2) || ($_SESSION['userType'] == 4)) {?>
+        <?if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 2) || ($_SESSION['userType'] == 4) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
             <tr><td colspan="2" class="match_maintable_formAdd">
-                <form action="/?r=action/insert" method="POST">
+                <form action="/?r=action/insert" method="POST" class="action-addForm">
                     <input type="hidden" name="comp" value="<?=$_GET['comp']?>">
                     <input type="hidden" name="match" class="action-match" value="<?=$_GET['match']?>"/>
-                    <div class="main-fieldWrapper">
+                    <div class="main-fieldWrapper action-addColumn">
                         <label class="main-label_top">Команда</label>
                         <select class="action-team" name="team" data-validate="req">
                             <option value="">Выберите команду</option>
@@ -24,7 +19,7 @@
                             <option value="<?=$answer['match']['team2']?>"><?=$answer['match']['t2name']?></option>
                         </select>
                     </div>
-                    <div class="main-fieldWrapper">
+                    <div class="main-fieldWrapper  action-addColumn">
                         <label class="main-label_top">Действие</label>
                         <select name="pointsget" data-validate="req" class="action-pointsget">
                             <?for ($i = 0; $i < count($answer['pointsget']); $i++) {?>
@@ -32,7 +27,7 @@
                             <?}?>
                         </select>
                     </div>
-                    <div class="main-fieldWrapper">
+                    <div class="main-fieldWrapper action-addColumn">
                         <label class="main-label_top">Игрок</label>
                         <select name="person" class="action-person">
 
@@ -51,7 +46,7 @@
         <div style="margin-bottom: 8px;">
             <span class="match-point"><?='+'.$action['point']?></span>
             <?=$action['surname']. ' '.$action['name'] . ' - '.$action['pgname']?>
-            <?if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 2) || ($_SESSION['userType'] == 4)) {?>
+            <?if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 2) || ($_SESSION['userType'] == 4)|| ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
                 <a href="/?r=action/delete&action=<?=$action['id']?>&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">[X]</a>
             <?}?>
         </div>
@@ -65,7 +60,7 @@
                     <div style="margin-bottom: 8px;">
                         <span class="match-point"><?='+'.$action['point']?></span>
                     	<?=$action['surname']. ' '.$action['name'] . ' - '.$action['pgname']?>
-                        <?if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 2) || ($_SESSION['userType'] == 4)) {?>
+                        <?if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 2) || ($_SESSION['userType'] == 4) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
                             <a href="/?r=action/delete&action=<?=$action['id']?>&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">[X]</a>
                         <?}?>
                     </div>
@@ -97,6 +92,9 @@ function initials($record) {
                     <a href="/?r=matchroster/autofill&match=<?=$_GET['match']?>&team=<?=$answer['match']['team1']?>">Заполнить автоматически</a>
                 <?}?>
             <?} else {?>
+                <?if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 4) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
+                    <h3 class="match-rostercheck"><a href="/?r=matchroster/refcheck&match=<?=$_GET['match']?>&team=<?=$answer['match']['team1']?>&comp=<?=$_GET['comp']?>">Проверка состава</a></h3>
+                <?}?>
                 <h3>
                     Игроки
                     <?if ($team1) {?>
@@ -157,6 +155,9 @@ function initials($record) {
                     <a href="/?r=matchroster/autofill&match=<?=$_GET['match']?>&team=<?=$answer['match']['team2']?>">Заполнить автоматически</a>
                 <?}?>
             <?} else {?>
+                <?if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 4) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
+                    <h3 class="match-rostercheck"><a href="/?r=matchroster/refcheck&match=<?=$_GET['match']?>&team=<?=$answer['match']['team2']?>&comp=<?=$_GET['comp']?>">Проверка состава</a></h3>
+                <?}?>
                 <h3>
                     Игроки
                     <?if ($team2) {?>

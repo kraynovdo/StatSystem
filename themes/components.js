@@ -3,7 +3,6 @@ if (typeof($amf) == 'undefined') {
 }
 $(function () {
     $amf.toggleNavig = function() {
-        $('.main-overlay').toggleClass('main-hidden');
         $('.main-navigation').toggleClass('main-hidden');
     };
     $('.main-navShowPanel').click(function(){
@@ -12,7 +11,7 @@ $(function () {
     $('.main-overlay').click(function(){
         $amf.toggleNavig();
     });
-    
+
     /*Даты*/
     $.datepicker.setDefaults({
         closeText: 'Закрыть',
@@ -245,6 +244,20 @@ $(function () {
         }
     });
 
+    $('.team-compSelector').change(function(){
+        var id, location, newComp, newLocation;
+        id = $(this).val();
+        newComp = 'comp=' + id;
+        location = document.location.toString();
+        if (location.indexOf('comp=') < 0) {
+            newLocation = location + '&' + newComp;
+        }
+        else {
+            newLocation = location.replace(/comp=[0-9]+/g,newComp);
+        }
+        document.location = newLocation;
+
+    });
 
     var myValidate = function(container) {
         var error, offset;
@@ -578,52 +591,58 @@ $(function () {
     };
 
     $amf.fioSuggest = function(value, callback) {
-        $.post("/?r=person/autocomplete", {
-            surname: value
-        }, function (ans) {
-            if (ans && ans.answer && ans.answer.length) {
-                var person = ans.answer;
+        if (value) {
+            $.post("/?r=person/autocomplete", {
+                surname: value
+            }, function (ans) {
+                if (ans && ans.answer && ans.answer.length) {
+                    var person = ans.answer;
 
-                var win = $('<div class="main-window roster-playerWin">\
+                    var win = $('<div class="main-window roster-playerWin">\
                 <h3>В системе найдены следующие персоны:</h3>\
                 <div class="roster-windowRows"></div>\
                 <a class="roster-windowClose" href="javascript:void(0)">Нужного нет в списке</a>\
                 </div>').appendTo($('body'));
-                win.show();
-                $(".roster-windowRows").empty();
-                for (var i = 0; i < person.length; i++) {
-                    var date = person[i].birthdate.split('-');
-                    person[i].birthdate = date[2] + "." + date[1] + "." + date[0];
-                    $('<div>' +
-                    '<span class="roster-surname_fio">' + person[i]['surname'] + ' ' + person[i]['name'] + ' ' + person[i]['patronymic'] + ' ' + person[i].birthdate + '</span>\n' +
-                    '<a href="javascript:void(0)" class="roster-surname_choose" data-id="' + person[i]['id'] + '">выбрать</a>' +
-                    '</div>').appendTo($(".roster-windowRows"));
-                }
-                $(".roster-windowClose").click(function () {
-                    $(".main-window").hide();
-                    $(".roster-person").val('');
+                    win.show();
                     $(".roster-windowRows").empty();
-                });
-                $(".roster-surname_choose").click(function () {
-                    var id = $(this).data('id');
-                    for (var j = 0; j < person.length; j++) {
-                        if (parseInt(person[j].id, 10) == id) {
-                            callback(person[j]);
-                            $(".main-window").hide();
-                            $(".main-window-rows").empty();
-                            break;
+                    for (var i = 0; i < person.length; i++) {
+                        if (person[i].birthdate) {
+                            var date = person[i].birthdate.split('-');
+                            person[i].birthdate = date[2] + "." + date[1] + "." + date[0];
                         }
+                        $('<div>' +
+                        '<span class="roster-surname_fio">' + person[i]['surname'] + ' ' + person[i]['name'] + ' ' + person[i]['patronymic'] + ' ' + person[i].birthdate + '</span>\n' +
+                        '<a href="javascript:void(0)" class="roster-surname_choose" data-id="' + person[i]['id'] + '">выбрать</a>' +
+                        '</div>').appendTo($(".roster-windowRows"));
                     }
+                    $(".roster-windowClose").click(function () {
+                        $(".main-window").hide();
+                        $(".roster-person").val('');
+                        $(".roster-windowRows").empty();
+                    });
+                    $(".roster-surname_choose").click(function () {
+                        var id = $(this).data('id');
+                        for (var j = 0; j < person.length; j++) {
+                            if (parseInt(person[j].id, 10) == id) {
+                                callback(person[j]);
+                                $(".main-window").hide();
+                                $(".main-window-rows").empty();
+                                break;
+                            }
+                        }
 
-                });
-            }
-        });
+                    });
+                }
+            });
+        }
     };
 
     if (!window.mobile) {
     	$('.main-textEditor').ckeditor();
     }
     else {
-    	$('.main-textEditor').get(0).outerHTML = '<h2>Функционал ограничен для мобильных устройств</h1>';
+        $('.main-textEditor').each(function(i, item){
+            item.outerHTML = '<h2>Функционал ограничен для мобильных устройств</h1>';
+        })
     }
 });

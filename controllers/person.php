@@ -1,14 +1,14 @@
 <?php
     function person_navig($person=null) {
         if (!$person) $person = $_GET['person'];
+        $menu = array(
+            'Профиль' => '/?r=person/view&person='. $person
+        );
+        if ($_SESSION['userType'] == 3) {
+            $menu['Команды'] = '/?r=userteam/index&person=' . $person;
+        }
         $navig = array(
-            'menu' => array(
-                'Профиль' => '/?r=person/view&person='. $person
-                /*'Статистика' => '/?r=person/stat&id='.$_GET['id'],
-                /*'Карьера' => '/?r=person/stat&id='.$_GET['id'],
-                'Биография' => '/?r=person/stat&id='.$_GET['id'],
-                'Галерея' => '/?r=person/stat&id='.$_GET['id']*/
-            ),
+            'menu' => $menu,
             'header' => 'профиль'
         );
         return $navig;
@@ -16,10 +16,9 @@
     function person_view($dbConnect, $CONSTPath) {
         $queryresult = $dbConnect->prepare('
         SELECT
-          P.name, surname, patronymic, birthdate, GC.id AS geo_country, GC.name AS geo_countryTitle, phone, P.email, vk_link, skype, city, geo_region, GR.name AS geo_regionTitle, avatar, weight, growth, U.id AS user
+          P.name, surname, patronymic, birthdate, GC.id AS geo_country, GC.name AS geo_countryTitle, phone, P.email, vk_link, skype, avatar, weight, growth, U.id AS user, U.type AS utype
         FROM
           person P LEFT JOIN user U ON U.person = P.id LEFT JOIN geo_country GC ON GC.id = P.geo_country
-          LEFT JOIN geo_region GR ON GR.id = P.geo_region
         WHERE
           P.id = :id
         LIMIT 1');
@@ -58,24 +57,21 @@
         }
     }
 
-    function person_update($dbConnect, $CONSTPath) {
-        $id = $_POST['person'];
-        if (($id == $_SESSION['userPerson']) || ($_SESSION['userType'] == 3)) {
-            $queryresult = $dbConnect->prepare('
+    function person_getNewAvatar($dbConnect, $CONSTPath, $person, $fileName) {
+        $avatar = null;
+        $oldRecord = common_getrecord($dbConnect, '
               SELECT
                 avatar
               FROM
                 person AS P
-              WHERE id = :id');
-            $queryresult->execute(array(
-                'id' => $id
-            ));
-            $data = $queryresult->fetchAll();
-            if (count($data)) {
-                $oldAvatar = $data[0]['avatar'];
-            }
-
-            $avatar = common_loadFile('avatar', $CONSTPath);
+              WHERE id = :id',
+                array(
+                    'id' => $person
+                )
+        );
+        if ($oldRecord) {
+            $oldAvatar = $oldRecord['avatar'];
+            $avatar = common_loadFile($fileName, $CONSTPath);
             if ($avatar) {
                 if ($oldAvatar) {
                     unlink($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/upload/' . $oldAvatar);
@@ -84,7 +80,16 @@
             else {
                 $avatar = $oldAvatar;
             }
+        }
+        return $avatar;
+    }
 
+
+    function person_update($dbConnect, $CONSTPath) {
+        $id = $_POST['person'];
+        if (($id == $_SESSION['userPerson']) || ($_SESSION['userType'] == 3)) {
+
+            $avatar = person_getNewAvatar($dbConnect, $CONSTPath, $id, 'avatar');
             $date = common_dateToSQL($_POST['birthdate']);
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/geolocation.php');
             $queryresult = $dbConnect->prepare('
@@ -95,8 +100,6 @@
               growth = :growth,
               weight = :weight,
               geo_country = :geo_country,
-              geo_region = :geo_region,
-              city = :city,
               phone = :phone,
               skype = :skype,
               vk_link = :vk_link,
@@ -104,14 +107,19 @@
             WHERE
               id = :id');
 
+            if (strlen($_POST['geo_country'])) {
+                $geo_country = $_POST['geo_country'];
+            }
+            else {
+                $geo_country = NULL;
+            }
+
             $queryresult->execute(array(
                 'id' => $id,
                 'birthdate' => $date,
                 'growth' => $_POST['growth'],
                 'weight' => $_POST['weight'],
-                'geo_country' => $_POST['geo_country'],
-                'geo_region' => $_POST['geo_region'],
-                'city' => $_POST['city'],
+                'geo_country' => $geo_country,
                 'phone' => $_POST['phone'],
                 'skype' => $_POST['skype'],
                 'vk_link' => $_POST['vk_link'],
@@ -201,15 +209,14 @@
         $fields['patronymic'] = trim($fields['patronymic']);
         $fields['birthdate'] = common_dateToSQL($fields['birthdate']);
 
-        if ($fields['geo_country'] && $fields['geo_countryTitle']) {
-            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/geolocation.php');
-            unset($fields['geo_countryTitle']);
+        if (!strlen($fields['geo_country'])) {
+            $fields['geo_country'] = NULL;
         }
         common_query($dbConnect,
             'INSERT INTO person
-                      (surname, name, patronymic, birthdate, phone, email, vk_link, skype, geo_country, city, geo_region, avatar, growth, weight)
+                      (surname, name, patronymic, birthdate, phone, email, vk_link, skype, geo_country, avatar, growth, weight)
                       VALUES
-                      (:surname, :name, :patronymic, :birthdate, :phone, :email, :vk_link, :skype, :geo_country, :city, :region, :avatar, :growth, :weight)'
+                      (:surname, :name, :patronymic, :birthdate, :phone, :email, :vk_link, :skype, :geo_country, :avatar, :growth, :weight)'
             , $fields
         );
         $person = $dbConnect->lastInsertId('id');

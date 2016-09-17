@@ -11,7 +11,7 @@
         /*match*/
         $queryresult = $dbConnect->prepare(
             'SELECT
-                M.competition, T1.rus_name AS t1, T2.rus_name AS t2, date, P1.surname AS surname1, P1.name AS name1,  P2.surname AS surname2, P2.name  AS name2
+                M.competition, T1.rus_name AS t1, T2.rus_name AS t2, date, P1.surname AS surname1, P1.name AS name1,  P2.surname AS surname2, P2.name  AS name2, M.timeh, M.timem
              FROM
                 `match` AS M LEFT JOIN team T1 ON T1.id = M.team1
                 LEFT JOIN team T2 ON T2.id = M.team2

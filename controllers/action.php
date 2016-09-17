@@ -17,7 +17,7 @@
         return $res;
     }
     function action_insert($dbConnect, $CONSTPath) {
-        if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 2) || ($_SESSION['userType'] == 4) ) {
+        if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 2) || ($_SESSION['userType'] == 4) || ($_SESSION['userComp'][$_POST['comp']] == 1)) {
             if ($_POST['person'] == '0') {
                 $_POST['person'] = NULL;
             }
@@ -42,7 +42,7 @@
     }
 
     function action_delete($dbConnect, $CONSTPath) {
-        if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 2) || ($_SESSION['userType'] == 4)) {
+        if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 2) || ($_SESSION['userType'] == 4) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {
             $queryresult = $dbConnect->prepare('
                     DELETE FROM action WHERE id = :id
             ');

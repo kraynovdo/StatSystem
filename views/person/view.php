@@ -19,7 +19,7 @@
             <div class="main-infoText__element">Дата рождения: <?=$bitrhdate?></div>
             <div class="main-infoText__element">Рост: <?=($answer['person']['growth'] ? $answer['person']['growth'] . ' см' : '-')?></div>
             <div class="main-infoText__element">Вес: <?=($answer['person']['weight'] ? $answer['person']['weight'] . ' кг' : '-')?></div>
-            <div class="main-infoText__element">Город: <?=($answer['person']['city'] ? $answer['person']['city'] : '-')?></div>
+            <div class="main-infoText__element">Гражданство: <?=($answer['person']['geo_countryTitle'])?></div>
         </div>
         <div class="main-infoText__left">
             <div class="main-infoText__title"><?=($answer['person']['surname'] . ' ' . $answer['person']['name'])?></div>
@@ -34,6 +34,18 @@
     <?}?>
 
 </div>
+<?if (($answer['person']['user']) && ($_SESSION['userType'] == 3) && ($answer['person']['utype'] != 3)){?>
+    <h2>Права доступа</h2>
+    <form method="POST" action="/?r=user/changetype">
+        <input type="hidden" name="person" value="<?=$_GET['person']?>"/>
+        <input type="hidden" name="user" value="<?=$answer['person']['user']?>"/>
+        <select name="type">
+            <option value="1" <?if ($answer['person']['utype'] == 1) {?>selected="selected"<?}?>>Пользователь</option>
+            <option value="4" <?if ($answer['person']['utype'] == 4) {?>selected="selected"<?}?>>Судья</option>
+        </select>
+        <input type="button" class="main-btn main-submit" value="Сменить"/>
+    </form>
+<?}?>
 <?$stats = $answer['stats']; if (count($stats)){?>
     <h2>Персональная статистика</h2>
     <?$comp=null; $compName=null?>

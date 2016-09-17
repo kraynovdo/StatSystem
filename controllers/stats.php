@@ -17,3 +17,123 @@
                  WHERE actiontype = :type ORDER BY id', $params);
         return $result;
     }
+
+    function stats_matchAF($dbConnect, $CONSTPath) {
+        $match = $_GET['match'];
+        require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
+        require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/match.php');
+        $result = array(
+            'answer' => array(),
+            'navigation' => competition_NAVIG($dbConnect, $_GET['comp'])
+        );
+
+        $result['answer']['match'] = match_mainInfo($dbConnect, $CONSTPath);
+        $result['answer']['rush'] = common_getlist($dbConnect, '
+        SELECT stat.*, P.surname, P.name, T.logo FROM (
+            SELECT
+              count(A.id) AS num, sum(value) AS sumr, team, person
+            FROM
+              `stataction` A LEFT JOIN statperson SP ON SP.action = A.id AND SP.persontype = 1
+                LEFT JOIN statchar SC ON SC.action = A.id AND SC.chartype = 1
+            WHERE
+              `match` = :match AND actiontype = 1
+            GROUP BY
+            person, team
+        ) AS stat
+        LEFT JOIN person P ON stat.person = P.id
+        LEFT JOIN team T ON stat.team = T.id
+        ORDER BY sumr DESC, num ASC', array('match' => $match));
+
+        $result['answer']['pass'] = common_getlist($dbConnect, '
+        SELECT stat.*, P.surname, P.name, T.logo FROM (
+            SELECT count(A.id) AS num, sum(value) AS sumr, team, person
+            FROM `stataction` A LEFT JOIN statperson SP ON SP.action = A.id AND SP.persontype = 5
+            LEFT JOIN statchar SC ON SC.action = A.id AND SC.chartype = 12
+            WHERE `match` = :match AND actiontype = 2 AND SP.person
+            GROUP BY person, team
+        ) AS stat
+        LEFT JOIN person P ON stat.person = P.id
+        LEFT JOIN team T ON stat.team = T.id
+        ORDER BY sumr DESC, num ASC', array('match' => $match));
+
+        $result['answer']['qb'] = common_getlist($dbConnect, '
+            SELECT stat.*, P.surname, P.name, T.logo FROM (
+                            SELECT count(A.id) AS num, sum(value) AS sumr, team, SP.person,
+                sum(case WHEN rec.person IS NULL THEN 0 ELSE 1 END) AS rec,
+                sum(case WHEN inter.person IS NULL THEN 0 ELSE 1 END) AS inter,
+                sum(case WHEN A.pointsget = 1 THEN 1 ELSE 0 END) AS td
+                FROM `stataction` A
+                LEFT JOIN statperson SP ON SP.action = A.id AND SP.persontype = 2
+                LEFT JOIN statperson rec ON rec.action = A.id AND rec.persontype = 5
+                LEFT JOIN statperson inter ON inter.action = A.id AND inter.persontype = 6
+                LEFT JOIN statchar SC ON SC.action = A.id AND SC.chartype = 12
+                WHERE `match` = :match AND actiontype = 2 AND SP.person
+                GROUP BY person, team
+        ) AS stat
+        LEFT JOIN person P ON stat.person = P.id
+        LEFT JOIN team T ON stat.team = T.id
+        ORDER BY sumr DESC, num ASC', array('match' => $match));
+
+
+
+        return $result;
+    }
+
+    function stats_compAF($dbConnect, $CONSTPath) {
+        $comp = $_GET['comp'];
+        require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
+        require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/match.php');
+        $result = array(
+            'answer' => array(),
+            'navigation' => competition_NAVIG($dbConnect, $_GET['comp'])
+        );
+
+        $result['answer']['match'] = match_mainInfo($dbConnect, $CONSTPath);
+        $result['answer']['rush'] = common_getlist($dbConnect, '
+            SELECT stat.*, P.surname, P.name, T.logo FROM (
+                SELECT
+                  count(A.id) AS num, sum(value) AS sumr, team, person
+                FROM
+                  `stataction` A LEFT JOIN statperson SP ON SP.action = A.id AND SP.persontype = 1
+                    LEFT JOIN statchar SC ON SC.action = A.id AND SC.chartype = 1
+                WHERE
+                  competition = :comp AND actiontype = 1
+                GROUP BY
+                person, team
+            ) AS stat
+            LEFT JOIN person P ON stat.person = P.id
+            LEFT JOIN team T ON stat.team = T.id
+            ORDER BY sumr DESC, num ASC', array('comp' => $comp));
+
+        $result['answer']['pass'] = common_getlist($dbConnect, '
+            SELECT stat.*, P.surname, P.name, T.logo FROM (
+                SELECT count(A.id) AS num, sum(value) AS sumr, team, person
+                FROM `stataction` A LEFT JOIN statperson SP ON SP.action = A.id AND SP.persontype = 5
+                LEFT JOIN statchar SC ON SC.action = A.id AND SC.chartype = 12
+                WHERE competition = :comp AND actiontype = 2 AND SP.person
+                GROUP BY person, team
+            ) AS stat
+            LEFT JOIN person P ON stat.person = P.id
+            LEFT JOIN team T ON stat.team = T.id
+            ORDER BY sumr DESC, num ASC', array('comp' => $comp));
+
+        $result['answer']['qb'] = common_getlist($dbConnect, '
+                SELECT stat.*, P.surname, P.name, T.logo FROM (
+                                SELECT count(A.id) AS num, sum(value) AS sumr, team, SP.person,
+                    sum(case WHEN rec.person IS NULL THEN 0 ELSE 1 END) AS rec,
+                    sum(case WHEN inter.person IS NULL THEN 0 ELSE 1 END) AS inter,
+                    sum(case WHEN A.pointsget = 1 THEN 1 ELSE 0 END) AS td
+                    FROM `stataction` A
+                    LEFT JOIN statperson SP ON SP.action = A.id AND SP.persontype = 2
+                    LEFT JOIN statperson rec ON rec.action = A.id AND rec.persontype = 5
+                    LEFT JOIN statperson inter ON inter.action = A.id AND inter.persontype = 6
+                    LEFT JOIN statchar SC ON SC.action = A.id AND SC.chartype = 12
+                    WHERE competition = :comp AND actiontype = 2 AND SP.person
+                    GROUP BY person, team
+            ) AS stat
+            LEFT JOIN person P ON stat.person = P.id
+            LEFT JOIN team T ON stat.team = T.id
+            ORDER BY sumr DESC, num ASC', array('comp' => $comp));
+
+        return $result;
+    }

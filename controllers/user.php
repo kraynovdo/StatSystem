@@ -58,10 +58,28 @@
                 $userteam = userfederation_index($dbConnect, $CONSTPath, null, $person);
 
                 $fed = $userteam['answer'];
-                if (count($teams)) {
+                if (count($fed)) {
                     $_SESSION['userFederations'] = array();
                     foreach($fed as $fedid) {
                         $_SESSION['userFederations'][$fedid['federation']] = $fedid['type'];
+                    }
+                }
+
+                /*получаем права на турниры*/
+                /*TODO перенести в контроллер*/
+                $usercomp = common_getlist($dbConnect,
+                    'SELECT
+                        competition as comp
+                      FROM
+                        usercomp UC
+                      WHERE person = :person',
+                    array(
+                        'person' => $person
+                    ));
+                if (count($usercomp)) {
+                    $_SESSION['userComp'] = array();
+                    foreach($usercomp as $compid) {
+                        $_SESSION['userComp'][$compid['comp']] = 1;
                     }
                 }
             }
@@ -84,6 +102,7 @@
         unset($_SESSION['userFio']);
         unset($_SESSION['userTeams']);
         unset($_SESSION['userFederations']);
+        unset($_SESSION['userComp']);
         return (array(
             'page' => 'index.php'
         ));
@@ -152,7 +171,7 @@
                 'id' => $id,
                 'forget' => $forget
             ));
-            common_sendmail($email, 'Access restoring', 'Вы запросили восстановление пароля на сайте amfoot.net<br/>Перейдите пожалуйста по ссылке <a href="http://amfoot.net/?r=user/restore&code='.$forget.'">http://amfoot.net/?r=user/restore&code='.$forget.'</a><br/>Внимание! По ссылке можно перейти только один раз');
+            common_sendmail($email, 'Access restoring', 'Вы запросили восстановление пароля на сайте amfoot.ru<br/>Перейдите пожалуйста по ссылке <a href="http://amfoot.ru/?r=user/restore&code='.$forget.'">http://amfoot.ru/?r=user/restore&code='.$forget.'</a><br/>Внимание! По ссылке можно перейти только один раз');
             $_SESSION['message'] = 'На ваш E-mail ' . $email . ' выслано письмо со ссылкой на восстановление доступа';
         }
         else {
@@ -265,4 +284,24 @@
         return (array(
             'page' => '/'
         ));
+    }
+
+    function user_changetype($dbConnect) {
+        if ($_SESSION['userType'] == 3) {
+            $queryresult = $dbConnect->prepare('
+                    UPDATE
+                      user
+                    SET
+                      type = :type
+                    WHERE
+                      id = :id');
+
+            $queryresult->execute(array(
+                'id' => $_POST['user'],
+                'type' => $_POST['type']
+            ));
+            return (array(
+                'page' => '/?r=person/view&person='.$_POST['person']
+            ));
+        }
     }

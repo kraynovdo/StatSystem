@@ -1,0 +1,56 @@
+.main-navigation {
+    width: 100%;
+    position: absolute;
+}
+.main-navigation__link{
+    height: 100px;
+    font-size: 30px;
+    line-height: 100px;
+    display: block;
+    box-sizing: border-box;
+    padding: 0 20px;
+    color: #20232C;
+}
+.main-navigation__link:hover{
+    text-decoration: none;
+}
+.main-logo {
+    margin-left: 20px;
+    width: 100px;
+    text-align: center;
+}
+.main-header_title {
+    margin-top: 38px;
+    padding-left: 120px;
+}
+.main-navbar {
+    position: absolute;
+    width: 100px;
+    left: 120px;
+    top: 0;
+    z-index: 2;
+}
+.main-topNavigation__list {
+    background: #fff;
+    border-bottom: 2px solid #20232C;
+}
+.main-navShowPanel {
+    width: 100px;
+    height: 100px;
+    display: block;
+    box-sizing: border-box;
+    background: url('img/burger.png?3') center center;
+}
+.main-navShowPanel:active {
+    background-color: #2c4d7f;
+}
+.comp-resultsTable_match {
+    margin-left: 10px;
+    width: 196px;
+}
+.comp-resultsTable_datetime{
+    font-size: 14px;
+}
+.comp-resultsTable_team{
+    font-size: 14px;
+}

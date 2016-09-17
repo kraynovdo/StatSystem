@@ -1,6 +1,6 @@
 <?php
     //OK
-    function userteam_index($dbConnect, $CONSTPath, $team=null, $person=null) {
+    function userteam_list($dbConnect, $CONSTPath, $team=null, $person=null) {
         $result = array();
         $where = ' WHERE TRUE';
         $params = array();
@@ -13,8 +13,6 @@
         if ($person) {
             $where .= ' AND person = :person';
             $params['person'] = $person;
-            require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/admin.php');
-            $result['navigation'] = admin_navig();
         }
         if ($team) {
             $where .= ' AND team = :team';
@@ -26,8 +24,13 @@
             FROM userteam UR LEFT JOIN team T ON T.id = UR.team'. $where);
         $queryresult->execute($params);
         $dataset = $queryresult->fetchAll();
-        $result['answer'] = $dataset;
 
+        return $dataset;
+    }
+    function userteam_index($dbConnect, $CONSTPath, $team=null, $person=null) {
+        $result['answer'] = userteam_list($dbConnect, $CONSTPath, $team, $person);
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/person.php');
+        $result['navigation'] = person_navig();
         return $result;
     }
 
@@ -40,10 +43,8 @@
             $teamres = team_index($dbConnect, $CONSTPath);
             $_GET['comp'] = $comp;
             $result['answer'] = $teamres['answer'];
-            $result['navigation'] = array (
-                'menu' => array(),
-                'header' => 'Права пользователя'
-            );
+            require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/admin.php');
+            $result['navigation'] = admin_navig();
             return $result;
         }
         else {

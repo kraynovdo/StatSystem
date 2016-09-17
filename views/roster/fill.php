@@ -1,4 +1,14 @@
+<?
+    $isover = false;
+    if ($answer['compinfo']['reqdate']) {
+        $reqtime = strtotime($answer['compinfo']['reqdate']) + 86400;
+        if (time() > $reqtime) {
+            $isover = true;
+        }
+    }
+?>
 <h1><?=$answer['team']?></h1>
+    <?if (($_SESSION['userType'] == 3) || (!$isover) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
     <h2>Добавление <a href="javascript:void(0)" class="roster-addLink roster-addLink_player roster-addLink_active">игрока</a> <a href="javascript:void(0)" class="roster-addLink roster-addLink_face">официального лица</a></h2>
     <div class="roster-addPerson">
         <form class="roster-addForm" method="POST" action="/?r=roster/create" enctype="multipart/form-data">
@@ -48,8 +58,8 @@
             <input type="text" name="patronymic" data-validate="req" class="roster-patronymic_face" placeholder="Отчество"/>
             <input type="text" name="birthdate" data-validate="date" class="roster-birthdate_face main-date" placeholder="Дата рожд."/>
 
-            <input class="roster-citizenship_face_code" name="geo_country" type="hidden" data-geo="country" value="<?=$answer['person']['geo_country']?>"/>
-            <input placeholder="Гражданство" autocomplete="off" class="roster-citizenship_face geo-country" data-validate="geo" data-geo="country" name="geo_countryTitle" type="text" value="<?=$answer['person']['geo_countryTitle']?>">
+            <input class="roster-citizenship_face_code" name="geo_country" type="hidden" data-geo="country_face" value="<?=$answer['person']['geo_country']?>"/>
+            <input placeholder="Гражданство" autocomplete="off" class="roster-citizenship_face geo-country" data-validate="geo" data-geo="country_face" name="geo_countryTitle" type="text" value="<?=$answer['person']['geo_countryTitle']?>">
 
             <select name="facetype" data-validate="req" class="roster-facetype">
                 <option value="">--</option>
@@ -65,7 +75,9 @@
             </div>
         </form>
     </div>
-
+<?} else {?>
+    <h3 class="main-warning">Период заявки игроков истек!</h3>
+<?}?>
     <h2>Официальные лица</h2>
     <table class="datagrid roster-grid">
         <colgroup>
@@ -77,6 +89,7 @@
             <col/>
             <col/>
             <col width="30px"/>
+            <col width="30px"/>
         </colgroup>
         <thead class="datagrid_thead">
         <tr>
@@ -87,6 +100,7 @@
             <th>Гражданство</th>
             <th>Должность</th>
             <th>Телефон</th>
+            <th>&nbsp;</th>
             <th>&nbsp;</th>
         </tr>
         </thead>
@@ -107,6 +121,9 @@
                 <td><?=$answer['face'][$i]['facetype']?></td>
                 <td><?=$answer['face'][$i]['phone']?></td>
                 <td>
+                    <a href="/?r=roster/editFace&face=<?=$answer['face'][$i]['id']?>">[Ред]</a>
+                </td>
+                <td>
                     <a href="/?r=roster/deleteFace&face=<?=$answer['face'][$i]['id']?>">[X]</a>
                 </td>
             </tr>
@@ -117,16 +134,17 @@
 <h2>Игроки</h2>
 <table class="datagrid roster-grid">
     <colgroup>
-        <?if ($_SESSION['userType'] == 3) {?>
+        <col width="15px"/>
+        <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
             <col width="27px"/>
         <?}?>
-        <col width="50px"/>
+        <col width="15px"/>
         <col/>
         <col/>
         <col/>
         <col width="80px"/>
         <col/>
-        <col width="80px"/>
+        <col width="15px"/>
         <col width="60px"/>
         <col width="50px"/>
         <col width="50px"/>
@@ -136,16 +154,17 @@
     </colgroup>
     <thead class="datagrid_thead">
         <tr>
-            <?if ($_SESSION['userType'] == 3) {?>
+            <th><input type="checkbox" class="roster-choose_mainCheckbox"/></th>
+            <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
                 <th><span class="roster-confirm roster-confirm_1" href="javascript: void(0);"></span></th>
             <?}?>
-            <th>№ п/п</th>
+            <th></th>
             <th>Фамилия</th>
             <th>Имя</th>
             <th>Отчество</th>
             <th>Д.Р.</th>
             <th>Гражданство</th>
-            <th>№ игрока</th>
+            <th>№</th>
             <th>Позиция</th>
             <th>Рост (см.)</th>
             <th>Вес (кг.)</th>
@@ -161,9 +180,10 @@
         $bitrhdate = $birth_arr[2] . '.' . $birth_arr[1] . '.' . $birth_arr[0];
     }
 ?>
-    <tr>
-        <?if ($_SESSION['userType'] == 3) {?>
-            <td><a data-id="<?=$answer['roster'][$i]['id']?>" class="roster-confirm roster-confirm_<?=$answer['roster'][$i]['confirm']?>" href="javascript: void(0);"></a></td>
+    <tr data-id="<?=$answer['roster'][$i]['id']?>" class="roster-row_confirm<?=$answer['roster'][$i]['confirm']?>">
+        <td><input type="checkbox" class="roster-choose_checkbox"/></td>
+        <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
+            <td><a class="roster-confirm roster-confirm_<?=$answer['roster'][$i]['confirm']?>" href="javascript: void(0);"></a></td>
         <?}?>
         <td><?=$i+1?></td>
         <td><?=$answer['roster'][$i]['surname']?></td>
@@ -177,11 +197,7 @@
         <td><?=$answer['roster'][$i]['weight']?></td>
         <td><?=$answer['roster'][$i]['phone']?></td>
         <td class="roster-editTD">
-            <? if (!$answer['roster'][$i]['confirm']) {?>
-                <a title="Редактировать" href="/?r=roster/edit&roster=<?=$answer['roster'][$i]['id']?>">[Ред]</a>
-            <?} else {?>
-                &nbsp;
-            <?}?>
+        	<a title="Редактировать" href="/?r=roster/edit&roster=<?=$answer['roster'][$i]['id']?>">[Ред]</a>
         </td>
         <td class="roster-delTD">
             <? if (!$answer['roster'][$i]['confirm']) {?>
@@ -214,8 +230,12 @@ if (count($comps) > 1 && !count($answer['roster'])) {
         </form>
     </h3>
 <?}?>
-<a class='main-btn' target="_blank" href="/?r=roster/print&comp=<?=$_GET['comp']?>&team=<?=$_GET['team']?>">Вывод на печать</a>
-<a class='main-btn' target="_blank" href="/?r=roster/printCards&comp=<?=$_GET['comp']?>&team=<?=$_GET['team']?>">Карточки</a>
-<?if ($_SESSION['userType'] != 3) {?>
+<?if ($_SESSION['userType'] == 3) {?>
+<a class='main-btn' target="_blank" href="/?r=roster/printCards&comp=<?=$_GET['comp']?>&team=<?=$_GET['team']?>">Карточки (для проверки фото)</a>
+<?}?>
+<a class='main-btn' target="_blank" href="/?r=roster/print&comp=<?=$_GET['comp']?>&team=<?=$_GET['team']?>">Печать</a>
+<a class='main-btn roster-printChooseLink main-hidden' target="_blank" href="/?r=roster/print&comp=<?=$_GET['comp']?>&team=<?=$_GET['team']?>">Печать выбранных</a>
+
+<?if (($_SESSION['userType'] != 3) && ($_SESSION['userComp'][$_GET['comp']] != 1)) {?>
 <a class='main-btn main-btn_important' href="/?r=roster/request&comp=<?=$_GET['comp']?>&team=<?=$_GET['team']?>">Отправить заявку</a>
 <?}?>

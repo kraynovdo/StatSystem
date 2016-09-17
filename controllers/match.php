@@ -1,5 +1,5 @@
 <?php
-    function match_index($dbConnect, $CONSTPath) {
+    function match_index($dbConnect, $CONSTPath, $team = null) {
         $filter = '';
         $result = array();
         $params = array();
@@ -7,22 +7,31 @@
             $filter .= ' AND M.competition = :competition';
             $params['competition'] = $_GET['comp'];
 
-            require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
             $result['navigation'] = competition_NAVIG($dbConnect, $_GET['comp']);
 
+        }
+        if ($team) {
+            $filter .= ' AND (M.team1 = :team OR M.team2 = :team)';
+            $params['team'] = $team;
         }
         $query = '
             SELECT
               M.id, M.competition, M.team1, M.team2, M.score1, M.score2, date,
-              T1.rus_name AS t1name,
-              T2.rus_name AS t2name
+              T1.rus_name AS t1name, T1.logo AS t1logo,
+              T2.rus_name AS t2name, T2.logo AS t2logo,
+	      G1.id as g1, G2.id as g2, G1.name as g1name, G2.name as g2name
             FROM
               `match` M
             LEFT JOIN team T1 ON T1.id = M.team1
             LEFT JOIN team T2 ON T2.id = M.team2
+            LEFT JOIN `compteam` C1 ON C1.competition = :competition AND C1.team = T1.id
+            LEFT JOIN `compteam` C2 ON C2.competition = :competition AND C2.team = T2.id
+            LEFT JOIN `group` G1 ON G1.id = C1.group
+            LEFT JOIN `group` G2 ON G2.id = C2.group
             WHERE TRUE
             '.$filter.'
-            ORDER BY M.date, M.id
+            ORDER BY M.date, M.timeh, M.timem, M.id
         ';
         $queryresult = $dbConnect->prepare($query);
         $queryresult->execute($params);
@@ -33,42 +42,71 @@
     }
 
     function match_add($dbConnect, $CONSTPath) {
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/team.php');
-        $team = team_index($dbConnect, $CONSTPath);
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
-        return array(
-            'navigation' => competition_NAVIG($dbConnect, $_GET['comp']),
-            'answer' => array(
-                'team' => $team['answer']
-            )
-        );
+        if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/team.php');
+            $team = team_complist($dbConnect, $CONSTPath);
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
+            return array(
+                'navigation' => competition_NAVIG($dbConnect, $_GET['comp']),
+                'answer' => array(
+                    'team' => $team['answer']
+                )
+            );
+        }
+        else {
+            return 'ERROR-403';
+        }
     }
+
     function match_edit($dbConnect, $CONSTPath) {
-        $matchMeta = match_add($dbConnect, $CONSTPath);
-        $queryresult = $dbConnect->prepare('
-            SELECT M.id, M.competition, M.team1, M.team2, M.date, M.score1, M.score2 FROM `match` M
-            WHERE id = :match
-        ');
-        $queryresult->execute(array(
-            'match' => $_GET['match']
-        ));
-        $match = $queryresult->fetchAll();
-        $matchMeta['answer']['match'] = $match;
-        return $matchMeta;
+        if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {
+            $matchMeta = match_add($dbConnect, $CONSTPath);
+            $queryresult = $dbConnect->prepare('
+                SELECT M.id, M.competition, M.team1, M.team2, M.date, M.score1, M.score2, M.city, M.timeh, M.timem FROM `match` M
+                WHERE id = :match
+            ');
+            $queryresult->execute(array(
+                'match' => $_GET['match']
+            ));
+            $match = $queryresult->fetchAll();
+            $matchMeta['answer']['match'] = $match;
+            return $matchMeta;
+        }
+        else {
+            return 'ERROR-403';
+        }
     }
     function match_create($dbConnect, $CONSTPath) {
-        if ($_SESSION['userType'] == 3) {
+        if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_POST['comp']] == 1)) {
             $comp = $_POST['comp'];
             $queryresult = $dbConnect->prepare('
-                INSERT INTO `match` (team1, team2, `date`, competition)
-                VALUES (:team1, :team2, :date, :comp)
+                INSERT INTO `match` (team1, team2, `date`, competition, city, timeh, timem)
+                VALUES (:team1, :team2, :date, :comp, :city, :timeh, :timem)
             ');
+            if (!$_POST['timeh']) {
+                $timeh = NULL;
+            }
+            else {
+                $timeh = $_POST['timeh'];
+                if (strlen($timeh) == 1) {
+                    $timeh = '0'.$timeh;
+                }
+            }
+            if (!$_POST['timem']) {
+                $timem = NULL;
+            }
+            else {
+                $timem = $_POST['timem'];
+            }
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/common.php');
             $queryresult->execute(array(
                 'team1' => $_POST['team1'],
                 'team2' => $_POST['team2'],
                 'date' => common_dateToSQL($_POST['date']),
-                'comp' => $comp
+                'comp' => $comp,
+                'city' => $_POST['city'],
+                'timeh' => $timeh,
+                'timem' => $timem
             ));
             return array(
                 'page' => '/?r=match&comp='.$comp
@@ -79,7 +117,7 @@
         }
     }
     function match_update($dbConnect, $CONSTPath) {
-        if ($_SESSION['userType'] == 3) {
+        if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_POST['comp']] == 1)) {
             $comp = $_POST['comp'];
             $match = $_POST['match'];
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/common.php');
@@ -89,7 +127,8 @@
                 'team1' => $_POST['team1'],
                 'team2' => $_POST['team2'],
                 'date' => common_dateToSQL($_POST['date']),
-                'match' => $match
+                'match' => $match,
+                'city' => $_POST['city']
             );
 
 
@@ -106,8 +145,26 @@
                 $param['score2'] = NULL;
             }
 
+            if (!$_POST['timeh']) {
+                $param['timeh'] = NULL;
+            }
+            else {
+                $param['timeh'] = $_POST['timeh'];
+                if (strlen($param['timeh']) == 1) {
+                    $param['timeh'] = '0'.$param['timeh'];
+                }
+            }
+            if (!$_POST['timem']) {
+                $param['timem'] = NULL;
+            }
+            else {
+                $param['timem'] = $_POST['timem'];
+            }
+
             $queryresult = $dbConnect->prepare('
-                    UPDATE `match` SET team1 = :team1, team2 = :team2, `date` = :date, score1 = :score1, score2 = :score2 WHERE id = :match
+                    UPDATE `match` SET team1 = :team1, team2 = :team2, `date` = :date, score1 = :score1, score2 = :score2,
+                    city = :city, timeh = :timeh, timem = :timem
+                    WHERE id = :match
                 ');
 
             $queryresult->execute($param);
@@ -120,7 +177,7 @@
         }
     }
     function match_delete($dbConnect, $CONSTPath) {
-        if ($_SESSION['userType'] == 3) {
+        if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {
             $match = $_GET['match'];
             $comp = $_GET['comp'];
             $queryresult = $dbConnect->prepare('
@@ -137,11 +194,10 @@
             return 'ERROR-403';
         }
     }
-    function match_view($dbConnect, $CONSTPath) {
-        $answer = array();
+    function match_mainInfo($dbConnect, $CONSTPath) {
         $query = '
             SELECT
-              M.id, M.competition, M.team1, M.team2, M.score1, M.score2, date,
+              M.id, M.competition, M.team1, M.team2, M.score1, M.score2, date, M.video, M.city, M.timeh, M.timem,
               T1.rus_name AS t1name,
               T2.rus_name AS t2name
             FROM
@@ -155,7 +211,12 @@
             'm' => $_GET['match']
         ));
         $dataset = $queryresult->fetchAll();
-        $answer['match'] = $dataset[0];
+        return $dataset[0];
+    }
+    function match_view($dbConnect, $CONSTPath) {
+        $answer = array();
+
+        $answer['match'] = match_mainInfo($dbConnect, $CONSTPath);
         $team1 = $answer['match']['team1'];
         $team2 = $answer['match']['team2'];
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/matchroster.php');
@@ -194,19 +255,7 @@
 
     function match_playbyplay($dbConnect, $CONSTPath) {
         $answer = array();
-        $answer['match'] = common_getrecord($dbConnect, '
-            SELECT
-              M.id, M.competition, M.team1, M.team2, M.score1, M.score2, date,
-              T1.rus_name AS t1name,
-              T2.rus_name AS t2name
-            FROM
-              `match` M
-            LEFT JOIN team T1 ON T1.id = M.team1
-            LEFT JOIN team T2 ON T2.id = M.team2
-            WHERE M.id = :m
-        ', array(
-            'm' => $_GET['match']
-        ));
+        $answer['match'] = match_mainInfo($dbConnect, $CONSTPath);
         require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statconfig.php');
         $answer['statconfig'] = statconfig_list($dbConnect, $CONSTPath);
 
@@ -328,6 +377,31 @@
             'page' => '/?r=match/playbyplay&match=' . $_POST['match'] . '&comp=' . $_POST['competition']
         );
 
+    }
+
+    function match_deleteEvent($dbConnect) {
+        $id = $_GET['event'];
+        $evRec = common_getrecord($dbConnect, 'SELECT stataction FROM matchevents WHERE id = :id', array('id' => $id));
+        if ($evRec) {
+            common_query($dbConnect, 'DELETE FROM stataction WHERE id = :id', array('id' => $evRec['stataction']));
+        }
+        common_query($dbConnect, 'DELETE FROM matchevents WHERE id = :id', array('id' => $id));
+        return array(
+            'page' => '/?r=match/playbyplay&match=' . $_GET['match'] . '&comp=' . $_GET['comp']
+        );
+    }
+
+    function match_videoupdate($dbConnect) {
+        common_query($dbConnect,'
+            UPDATE `match`
+            SET video = :video WHERE id = :match
+            ', array(
+            'video' => $_POST['video'],
+            'match' => $_POST['match']
+        ));
+        return array(
+            'page' => '/?r=match/view&match=' . $_POST['match'] . '&comp=' . $_POST['competition']
+        );
     }
 /*
 SELECT

@@ -36,7 +36,6 @@ $active = '1.11.2015';
                         <div class="roster-card_fio"><?=$answer['roster'][$i]['patronymic']?></div>
                         <div class="roster-card_info">д.р.:   <?=$bitrhdate?></div>
                         <div class="roster-card_info">клуб:   <?=$answer['teamRec']['rus_name']?></div>
-                        <div class="roster-card_info">город:   <?=$answer['teamRec']['city']?></div>
                         <div class="roster-card_info">действителен до:   <?=$active?></div>
                         <div class="roster-card_info roster-card_pres">президент фафр</div>
                     </td>

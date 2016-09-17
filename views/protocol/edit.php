@@ -4,6 +4,10 @@
     if (count($answer['protocol'])) {
         $protocol = $answer['protocol'][0];
     }
+    else {
+        $protocol = array();
+        $protocol['timeb'] = $answer['match']['timeh'].':'.$answer['match']['timem'];
+    }
 ?>
 <form method="POST" action="/?r=protocol/update">
     <div class="main-fieldWrapper">

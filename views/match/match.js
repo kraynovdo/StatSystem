@@ -21,7 +21,7 @@
                     $(item).change(function (k, itemInt) {
                         var
                             team = $(this).val(),
-                            cont = this.closest('.main-fieldWrapper'),
+                            cont = this.closest('.stats-teamBlock'),
                             select = $('.stats-persontype', cont);
                         select.html('<option value="">Игрок</option>');
                         for (var l in $amf.teamroster[team]) {
@@ -158,4 +158,16 @@
             })
         }
     });
+
+    $('.match-videoEdit').click(function(){
+        $('.match-videoForm').toggleClass('main-hidden');
+    });
+
+    $('.match-teamHome').change(function(){
+        var value = $(this).val();
+        var cityContainer = $('.match-cityList').find('[data-id='+value+']');
+        if (cityContainer.length) {
+            $('.match-cityField').val(cityContainer.text())
+        }
+    })
 })();

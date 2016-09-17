@@ -35,17 +35,6 @@
         <input name="geo_country" type="hidden" data-geo="country" value="<?=$answer['person']['geo_country']?>"/>
         <div class="person-edit_field"><input autocomplete="off" class="person-edit_citizenship geo-country" data-validate="geo" data-geo="country" name="geo_countryTitle" type="text" value="<?=$answer['person']['geo_countryTitle']?>"></div>
     </div>
-    <div class="person-edit_block">
-        <div class="person-edit_label">Регион</div>
-        <input name="geo_region" type="hidden" data-geo="region" value="<?=$answer['person']['geo_region']?>"/>
-        <div class="person-edit_field">
-            <input autocomplete="off" class="geo-region person-edit_citizenship" name="geo_regionTitle" data-validate="geo2" data-geo="region" type="text" placeholder="Регион" data-geo-country="country"  value="<?=$answer['person']['geo_regionTitle']?>"/>
-        </div>
-    </div>
-    <div class="person-edit_block">
-        <div class="person-edit_label">Город</div>
-        <div class="person-edit_field"><input class="person-edit_city" name="city" type="text" value="<?=$answer['person']['city']?>"></div>
-    </div>
     <h3 class="person-edit__title">Контакты</h3>
     <div class="person-edit_block">
         <div class="person-edit_label">Телефон</div>

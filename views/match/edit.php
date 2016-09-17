@@ -14,7 +14,7 @@
     </div>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Команда - хозяин</label>
-        <select name="team1" data-validate="req">
+        <select name="team1" data-validate="req" class="match-teamHome">
             <option value="">-Выберите команду-</option>
             <?
             $team = $answer['team'];
@@ -54,5 +54,18 @@
         <label class="main-label_top">Очки</label>
         <input type="text" name="score2" value="<?=$answer['match'][0]['score2']?>"/>
     </div>
+    <div class="main-fieldWrapper">
+        <label class="main-label_top">Город проведения матча</label>
+        <input class="match-cityField" type="text" name="city" value="<?=$answer['match'][0]['city']?>"/>
+    </div>
+    <div class="main-fieldWrapper">
+        <label class="main-label_top">Время начала (по Москве)</label>
+        <input class="match-timeField" type="text" name="timeh" maxlength="2" value="<?=$answer['match'][0]['timeh']?>"/>:<input class="match-timeField" type="text" name="timem" maxlength="2" value="<?=$answer['match'][0]['timem']?>"/>
+    </div>
     <input type="button" class="main-btn main-submit" value="Готово"/>
+    <div class="main-hidden match-cityList">
+        <?for ($i = 0; $i < count($team); $i++) {?>
+            <div data-id="<?=$team[$i]['id']?>"><?=$team[$i]['city']?></div>
+        <?}?>
+    </div>
 </form>

@@ -1,4 +1,5 @@
 <h2>Виды действий для статистики</h2>
+<h3>Тут пока ничего менять не надо, а то сломаете статистику!</h3>
 <a class="main-addLink" href="/?r=statconfig/add">Добавить действие</a>
 <div class="listview">
     <?php for ($i = 0; $i < count($answer); $i++) {?>

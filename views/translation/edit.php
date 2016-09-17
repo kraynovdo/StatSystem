@@ -1,5 +1,6 @@
 <form method="POST" action="/?r=translation/update">
     <input type="hidden" name="trans" value="<?=$_GET['trans']?>"/>
+    <input type="hidden" name="comp" value="<?=$_GET['comp']?>"/>
     <div>Заголовок</div>
     <input class="trans_input" type="text" name="title" value="<?=$answer['title']?>"/>
     <div>Код плеера</div>

@@ -20,10 +20,12 @@
         $navig = array(
             'menu' => array(
                 'Новости' => '/?r=news&federation='. $federation,
-                'Лица'  => '/?r=userfederation/index&federation='. $federation,
                 'Соревнования' => '/?r=competition/index&federation='. $federation,
                 'Команды' => '/?r=team&federation='. $federation,
-                'Контакты' => '/?r=federation/view&federation='. $federation
+                'Документы' => '/?r=document&federation='. $federation,
+                'Лица'  => '/?r=userfederation/index&federation='. $federation,
+                'Контакты' => '/?r=federation/view&federation='. $federation,
+                'Товарищеские матчи' => '/?r=friendlymatch&federation='. $federation
                 /*'Статистика' => '/?r=person/stat&id='.$_GET['id'],
                 /*'Карьера' => '/?r=person/stat&id='.$_GET['id'],
                 'Биография' => '/?r=person/stat&id='.$_GET['id'],
@@ -33,8 +35,11 @@
             'title' => $fedInfo['fullname'],
             'description' => 'Официальный сайт '. $fedInfo['fullname'] . '. Здесь вы можете найти свежие новости, информацию о соревнованиях и командах',
             'keywords' => array($fedInfo['fullname'], $fedInfo['name']),
-            'logo' => $fedInfo['logo']
+            //'logo' => $fedInfo['logo']
         );
+        if ($federation == 11) {
+        	$navig['theme'] = 'fafr';
+        }
         return $navig;
     }
     function federation_index($dbConnect, $CONSTPath) {

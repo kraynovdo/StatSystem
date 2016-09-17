@@ -27,7 +27,7 @@
         }
         $keywords = implode(',', $keywordsArr);
 
-        if ($result['navigation']['logo'] && $theme) {
+        if ($result['navigation']['logo']) {
             $logo = 'upload/' . $result['navigation']['logo'];
         }
     } else {
@@ -36,9 +36,7 @@
         $header = '';
     }
 
-    if (strstr($_SERVER['HTTP_HOST'], 'amfoot.net')) {
-        $HOST='amfoot.net';
-    } else if (strstr($_SERVER['HTTP_HOST'], 'amfoot.ru')) {
+    if (strstr($_SERVER['HTTP_HOST'], 'amfoot.ru')) {
         $HOST='amfoot.ru';
     }
     else {
