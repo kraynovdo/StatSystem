@@ -23,6 +23,17 @@
     </div>
     <?if (count($answer['match'])) {?>
         <h2>Календарь игр</h2>
+        <?if (count($answer['comps'])) {?>
+            <div class="main-fieldWrapper">
+                <label>Турнир - </label>
+                <select class="team-compSelector">
+                    <?for ($i = 0; $i < count($answer['comps']); $i++) {?>
+                        <option value="<?=$answer['comps'][$i]['id']?>"
+                            <?if ($answer['comps'][$i]['id'] == $answer['compId']) {?> selected="selected"<?}?>><?=$answer['comps'][$i]['name']?> <?=$answer['comps'][$i]['yearB']?></option>
+                    <?}?>
+                </select>
+            </div>
+        <?}?>
         <?$match = $answer['match']; $ctrlMode = false;?>
         <? include $_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/views/match/_schedule.php'?>
     <?}?>

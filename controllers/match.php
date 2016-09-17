@@ -1,14 +1,17 @@
 <?php
-    function match_index($dbConnect, $CONSTPath, $team = null) {
+    function match_index($dbConnect, $CONSTPath, $team = null, $comp = null) {
         $filter = '';
         $result = array();
         $params = array();
-        if ($_GET['comp']) {
+        if (!$comp) {
+            $comp = $_GET['comp'];
+        }
+        if ($comp) {
             $filter .= ' AND M.competition = :competition';
-            $params['competition'] = $_GET['comp'];
+            $params['competition'] = $comp;
 
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
-            $result['navigation'] = competition_NAVIG($dbConnect, $_GET['comp']);
+            $result['navigation'] = competition_NAVIG($dbConnect, $comp);
 
         }
         if ($team) {

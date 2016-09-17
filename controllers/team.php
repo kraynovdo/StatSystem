@@ -108,15 +108,20 @@
 
     function team_view($dbConnect, $CONSTPath) {
         $result = team_info($dbConnect, $CONSTPath);
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/match.php');
+        $comps = team_comps($dbConnect, $_GET['team']);
         if ($_GET['comp']) {
-            $match = match_index($dbConnect, $CONSTPath, $_GET['team']);
-            $result['answer']['match'] = $match['answer'];
+            $compId = $_GET['comp'];
         }
         else {
-            $result['answer']['match'] = array();
+            $compId = $comps[0]['id'];
         }
 
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/match.php');
+
+        $match = match_index($dbConnect, $CONSTPath, $_GET['team'], $compId);
+        $result['answer']['match'] = $match['answer'];
+        $result['answer']['comps'] = $comps;
+        $result['answer']['compId'] = $compId;
         return $result;
     }
     function team_edit($dbConnect, $ConstPath) {

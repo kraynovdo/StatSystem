@@ -11,9 +11,7 @@
     else {
         $age = '';
     }
-?>
-        <?=$answer[$i]['rus_name']?>
-        </a>
+?><?=$answer[$i]['rus_name']?></a>
         <?=$answer[$i]['city']?><?=$age?>
     </div>
 <?}?>
