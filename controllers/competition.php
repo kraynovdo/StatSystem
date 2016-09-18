@@ -69,7 +69,7 @@
                TRUE'.$filter.'
             ORDER BY S.yearB DESC, competition.federation DESC, competition.name', $params);
         $result['answer'] = $dataset;
-
+        $result['navigation']['mobile_view'] = 1;
         return $result;
     }
 

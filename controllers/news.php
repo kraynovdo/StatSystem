@@ -30,6 +30,7 @@
             ORDER BY date DESC';
 
         $result['answer'] = common_getlist($dbConnect, $query, $queryparams);
+        $result['navigation']['mobile_view'] = 1;
         return $result;
 
     }

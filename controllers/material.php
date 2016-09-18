@@ -48,7 +48,7 @@
                 require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/federation.php');
                 $result['navigation'] = federation_navig($dbConnect, $_GET['federation']);
             }
-
+            $result['navigation']['mobile_view'] = 1;
             return $result;
         /*}
         else {
@@ -190,6 +190,7 @@
             $access = ($_SESSION['userType'] == 3) || ($_SESSION['userFederations'][$_GET['federation']]);
         }
         if ($access) {
+            $result['navigation']['mobile_view'] = 1;
             return $result;
         }
         else {

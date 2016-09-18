@@ -21,6 +21,7 @@
             $result['answer']['all'] = referee_list($dbConnect, $CONSTPath);
             require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/competition.php');
             $result['navigation'] = competition_NAVIG($dbConnect, $_GET['comp']);
+            $result['navigation']['mobile_view'] = 1;
         }
         return $result;
     }

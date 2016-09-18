@@ -26,11 +26,15 @@
 <table class="datagrid roster-view datagrid_zebra">
     <colgroup>
         <col width="60px"/>
-        <col/>
-        <col width="80px"/>
-        <col width="80px"/>
-        <?if ($_SESSION['userType'] == 3) {?>
-            <col width="50px"/>
+        <?if (!$IS_MOBILE) {?>
+            <col/>
+            <col width="80px"/>
+            <col width="80px"/>
+            <?if ($_SESSION['userType'] == 3) {?>
+                <col width="50px"/>
+            <?}?>
+        <?} else {?>
+            <col/>
         <?}?>
     </colgroup>
     <tbody class="datagrid_tbody">
@@ -47,18 +51,32 @@
                     </a>
                 <?}?>
             </td>
-            <td>
-                <a target="_blank" href="/?r=person/view&person=<?=$answer['referee'][$i]['id']?>"><?=implode(' ', array($answer['referee'][$i]['surname'], $answer['referee'][$i]['name'], $answer['referee'][$i]['patronymic']))?></a>
-            </td>
-            <td>
-                <?=common_dateFromSQL($answer['referee'][$i]['birthdate'])?>
-            </td>
-            <td>
-                <?=$answer['referee'][$i]['country']?>
-            </td>
-            <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
+            <?if (!$IS_MOBILE) {?>
                 <td>
-                    <a class="main-dellink" href="/?r=refereecomp/delete&rc=<?=$answer['referee'][$i]['rc']?>&comp=<?=$_GET['comp']?>">[X]</a>
+                    <a target="_blank" href="/?r=person/view&person=<?=$answer['referee'][$i]['id']?>"><?=implode(' ', array($answer['referee'][$i]['surname'], $answer['referee'][$i]['name'], $answer['referee'][$i]['patronymic']))?></a>
+                </td>
+                <td>
+                    <?=common_dateFromSQL($answer['referee'][$i]['birthdate'])?>
+                </td>
+                <td>
+                    <?=$answer['referee'][$i]['country']?>
+                </td>
+                <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
+                    <td>
+                        <a class="main-dellink" href="/?r=refereecomp/delete&rc=<?=$answer['referee'][$i]['rc']?>&comp=<?=$_GET['comp']?>">[X]</a>
+                    </td>
+                <?}?>
+            <?} else {?>
+                <td>
+                    <div>
+                        <a target="_blank" href="/?r=person/view&person=<?=$answer['referee'][$i]['id']?>"><?=implode(' ', array($answer['referee'][$i]['surname'], $answer['referee'][$i]['name'], $answer['referee'][$i]['patronymic']))?></a>
+                        <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
+                            <a class="main-dellink refereecomp-dellink_m" href="/?r=refereecomp/delete&rc=<?=$answer['referee'][$i]['rc']?>&comp=<?=$_GET['comp']?>">[X]</a>
+                        <?}?>
+                    </div>
+                    <?=common_dateFromSQL($answer['referee'][$i]['birthdate'])?>
+                    <?=$answer['referee'][$i]['country']?>
+
                 </td>
             <?}?>
         </tr>

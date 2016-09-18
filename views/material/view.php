@@ -13,7 +13,7 @@
 ?>
     <h2><?=$answer['title']?></h2>
     <div class="material-content"><?=$answer['content']?></div>
-    <div class="material-date"><?=$answer['date']?></div>
+    <div class="material-date"><?=common_dateFromSQL($answer['date'])?></div>
 
     <?if (($_SESSION['userID'] == $answer['user']) || ($_SESSION['userType'] == 3)) {?>
         <a href="/?r=material/edit&mater=<?=$answer['id']?><?=$filter?>">Редактировать</a>
