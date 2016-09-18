@@ -77,6 +77,7 @@
         $params = array();
 
         $result['answer'] = common_getlist($dbConnect, $query, $params);;
+        $result['navigation']['mobile_view'] = 1;
 
         return $result;
     }

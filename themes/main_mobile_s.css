@@ -1,6 +1,9 @@
 h2 {
    font-size: 20px;
 }
+input[type=text],input[type=password], input[type=number], textarea, select{
+   width: 100%;
+}
 .main-wrapper {
    max-width: 800px;
    min-width: 320px;
@@ -98,10 +101,6 @@ h2 {
 }
 .team-divName {
    padding: 0;
-}
-/**/
-.material-editTitle {
-   width: 100%;
 }
 /**/
 .refereecomp-dellink_m {
