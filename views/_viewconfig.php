@@ -30,6 +30,10 @@
         if ($result['navigation']['logo']) {
             $logo = 'upload/' . $result['navigation']['logo'];
         }
+
+        if ($result['navigation']['mobile_view']) {
+            $mobile_view = 1;
+        }
     } else {
         require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/start.php');
         $navigation = start_NAVIG();

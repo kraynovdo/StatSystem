@@ -636,6 +636,9 @@ $(function () {
             });
         }
     };
+    $('.main-auth_inplink').click(function(){
+        $(this).closest('.main-auth').toggleClass('main-auth_expanded')
+    });
 
     if (!window.mobile) {
     	$('.main-textEditor').ckeditor();

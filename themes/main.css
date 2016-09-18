@@ -321,6 +321,9 @@ textarea {
     color: #ffffff;
     margin-right: 10px;
 }
+.main-auth_reglink a{
+    margin: 0;
+}
 .main-auth_form {
     float: right;
     color: #ffffff;

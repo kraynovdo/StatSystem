@@ -10,12 +10,19 @@
     <?if ($IS_MOBILE) {?>
         <script type="text/javascript">window.mobile = true;</script>
     <?}?>
-    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main.css?74"/>
+    <?if ($IS_MOBILE && $mobile_view) {?>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <?}?>
+    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main.css?75"/>
     <?if (false && $theme) {?>
         <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?7"/>
     <?}?>
     <?if ($IS_MOBILE) {?>
-        <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main_mobile.css?6"/>
+        <?if ($mobile_view) {?>
+            <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main_mobile_s.css?6"/>
+        <?} else {?>
+            <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main_mobile.css?7"/>
+        <?}?>
     <?}?>
     <link rel="shortcut icon" href="//<?=$HOST?>/themes/img/fafr_logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery-ui.css">
@@ -50,7 +57,7 @@ else {
 <?}?>
 <script src="//<?=$HOST?>/jquery/jquery.Jcrop.min.js?1"></script>
 
-<script type="text/javascript" src="//<?=$HOST?>/themes/components.js?21"></script>
+<script type="text/javascript" src="//<?=$HOST?>/themes/components.js?22"></script>
 <?if (file_exists($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/' . $controller . '/' . $controller . '.js')) {?>
     <script type="text/javascript" src="//<?=$HOST?>/views/<?=$controller?>/<?=$controller?>.js?23"></script>
 <?}?>
