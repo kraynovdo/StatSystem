@@ -8,7 +8,7 @@ html {
 body {
     font-size: 13px;
     font-family : Trebuchet MS, Helvetica, sans-serif;
-    background: #20232C;
+    background: #ffffff;
     overflow-y: scroll;
     color : #20232C;
     height: 100%;
@@ -99,7 +99,6 @@ textarea {
     color: #880000;
 }
 .main-wrapper {
-    background: #ffffff;
     min-height: 100%;
     box-sizing: border-box;
     position: relative;
@@ -112,6 +111,17 @@ textarea {
     width: 1000px;
     margin: 0 auto;
     overflow: hidden;
+}
+.main-content {
+    padding : 179px 30px 0 30px;
+}
+@media (max-width: 1016px) {
+    .main-top-fixed {
+        position: static;
+    }
+    .main-content {
+        padding-top: 15px;
+    }
 }
 
 .main-overlay {
@@ -161,9 +171,6 @@ textarea {
     width: 100px;
 }
 
-.main-content {
-    padding : 183px 30px 0 30px;
-}
 .main-valid_error {
     border: 1px solid red !important;
     background-color: #ffc9b8 !important;
