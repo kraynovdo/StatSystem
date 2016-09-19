@@ -31,18 +31,10 @@ function standings_index($dbConnect, $CONSTPath)
 
     $matchRes[4] = standings_getInfo($matchAnswer, 233);
     $matchRes[5] = standings_getInfo($matchAnswer, 232);
-    $matchRes[6] = array(
-        't1name' => 'Патриоты',
-        't1logo' => '6EB64AC4-BCED-475C-9C11-C7A7BC4468BA.png',
-        't2name' => 'Рэйдерс 52',
-        't2logo' => 'FC671875-8A98-4264-98D2-37991F0B8DE6.png'
-    );
-    $matchRes[7] = array(
-        't1name' => 'Литвины',
-        't1logo' => '9582B6D5-C04E-4FAC-AB4C-F05DB11C19F8.png',
-        't2name' => 'Спартанцы',
-        't2logo' => 'E90185C5-8F25-4100-AF50-CAEE15625960.png'
-    );
+	
+    $matchRes[6] = standings_getInfo($matchAnswer, 275);
+    $matchRes[7] = standings_getInfo($matchAnswer, 253);
+	
     $matchRes[8] = array(
         't1name' => 'Победитель 7',
         't2name' => 'Победитель 8'
