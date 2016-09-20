@@ -1,3 +1,4 @@
+<?if (!$viewHref) $viewHref='match/view';?>
 <table class="datagrid match-grid">
     <colgroup>
         <col/>
@@ -43,7 +44,7 @@
             <td class="match-centerAl">:</td>
             <td class="match-score"><?=$score2?></td>
             <td class="match-team" style="white-space: nowrap"><?=$match[$i]['t2name']?></td>
-            <td class="match-rightAl"><a href="/?r=match/view&match=<?=$match[$i]['id']?>&comp=<?=$_GET['comp']?>">Подробнее</a></td>
+            <td class="match-rightAl"><a href="/?r=<?=$viewHref?>&match=<?=$match[$i]['id']?>&comp=<?=$_GET['comp']?>">Подробнее</a></td>
             <?if ((($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1))  && ($ctrlMode)) {?>
                 <td>
                     <a href="/?r=match/edit&comp=<?=$_GET['comp']?>&match=<?=$match[$i]['id']?>">Редактировать</a>
