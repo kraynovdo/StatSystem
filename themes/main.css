@@ -764,21 +764,39 @@ textarea {
     display: block;
     color: inherit;
 }
+.match-list_team {
+    font-size: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+}
 .match-list_itemContent {
     background: #f4f2f2;
     margin-bottom: 10px;
+    padding: 0 5px;
+    overflow: hidden;
 }
 .match-list_itemLeft {
     float: left;
     width: 50%;
+    white-space: nowrap;
 }
 .match-list_itemRight {
     float: right;
     width: 50%;
+    white-space: nowrap;
+}
+.match-list_footerItemLeft {
+    float: left;
+    width: 100%;
+    text-align: center;
+    color: #bbbbbb;
+}
+.match-list_footerItemRight {
+    float: right;
 }
 .match-list_itemFooter {
     clear: both;
-    padding: 0 5px;
     border-top: 1px solid #ccc;
 }
 .match-list_itemDivName {

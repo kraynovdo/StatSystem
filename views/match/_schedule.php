@@ -27,20 +27,20 @@
         <div class="match-list_itemContent">
 
             <div class="match-list_itemLeft main-rightAlign">
-                <span class="main-bigText"><?=$match[$i]['t1name']?></span>
+                <span class="match-list_team"><?=$match[$i]['t1name']?></span>
                 <span class="match-list_value match-list_value_left"><?=$score1?></span>
             </div>
             <div class="match-list_itemRight">
                 <span class="match-list_value match-list_value_left"><?=$score2?></span>
-                <span class="main-bigText"><?=$match[$i]['t2name']?></span>
+                <span class="match-list_team"><?=$match[$i]['t2name']?></span>
             </div>
             <div class="match-list_itemFooter clearfix">
-                <div class="match-list_itemLeft">
+                <div class="match-list_footerItemLeft">
                     <?if ($match[$i]['g1'] == $match[$i]['g2']){?><span class="match-list_itemDivName"><?=$match[$i]['g1name']?></span><?}?>
                     <?if ($match[$i]['city']){?><?=$match[$i]['city']?><?}?>
                     <?if ($match[$i]['timeh']){?><?=$match[$i]['timeh']?>:<?=$match[$i]['timem']?><?}?>
                 </div>
-                <div class="match-list_itemRight main-rightAlign">
+                <div class="match-list_footerItemRight main-rightAlign">
                     <?if ((($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1))  && ($ctrlMode)) {?>
                         <a href="/?r=match/edit&comp=<?=$_GET['comp']?>&match=<?=$match[$i]['id']?>">[Ред]</a>
                         <a class="main-delLink main-danger" href="/?r=match/delete&comp=<?=$_GET['comp']?>&match=<?=$match[$i]['id']?>">[X]</a>

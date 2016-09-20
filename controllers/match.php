@@ -40,6 +40,7 @@
         $queryresult->execute($params);
         $dataset = $queryresult->fetchAll();
         $result['answer'] = $dataset;
+        $result['navigation']['mobile_view'] = 1;
 
         return $result;
     }
@@ -49,12 +50,14 @@
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/team.php');
             $team = team_complist($dbConnect, $CONSTPath);
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
-            return array(
+            $result = array(
                 'navigation' => competition_NAVIG($dbConnect, $_GET['comp']),
                 'answer' => array(
                     'team' => $team['answer']
                 )
             );
+            $result['navigation']['mobile_view'] = 1;
+            return $result;
         }
         else {
             return 'ERROR-403';

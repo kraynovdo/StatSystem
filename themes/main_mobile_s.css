@@ -106,3 +106,25 @@ input[type=text],input[type=password], input[type=number], textarea, select{
 .refereecomp-dellink_m {
    float: right;
 }
+/**/
+.match-timeField {
+   width: 28px !important;
+}
+.match-list_value {
+   font-size: 15px;
+}
+.match-list_team {
+   font-size: inherit;
+}
+.match-list_value {
+   width: 24px;
+   overflow: hidden;
+}
+.match-list_footerItemLeft {
+   font-size: 11px;
+}
+.match-list_team {
+   white-space: nowrap;
+   max-width: 113px;
+   text-overflow: ellipsis;
+}

@@ -13,13 +13,13 @@
     <?if ($IS_MOBILE && $mobile_view) {?>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <?}?>
-    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main.css?80"/>
+    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main.css?83"/>
     <?if (false && $theme) {?>
         <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?7"/>
     <?}?>
     <?if ($IS_MOBILE) {?>
         <?if ($mobile_view) {?>
-            <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main_mobile_s.css?13"/>
+            <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main_mobile_s.css?17"/>
         <?} else {?>
             <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main_mobile.css?7"/>
         <?}?>
