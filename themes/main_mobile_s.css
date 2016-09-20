@@ -89,7 +89,7 @@ input[type=text],input[type=password], input[type=number], textarea, select{
    font-size: 14px;
 }
 /**/
-.team-clItem {
+.main-columnItem {
    width: 100%;
    padding: 0 0 10px 0;
 }

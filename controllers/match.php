@@ -20,7 +20,7 @@
         }
         $query = '
             SELECT
-              M.id, M.competition, M.team1, M.team2, M.score1, M.score2, date,
+              M.id, M.competition, M.team1, M.team2, M.score1, M.score2, date, M.city, M.timeh, M.timem,
               T1.rus_name AS t1name, T1.logo AS t1logo,
               T2.rus_name AS t2name, T2.logo AS t2logo,
 	      G1.id as g1, G2.id as g2, G1.name as g1name, G2.name as g2name

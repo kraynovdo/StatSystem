@@ -2,7 +2,7 @@
 function friendlymatch_index($dbConnect, $CONSTPath) {
     $list = common_getlist($dbConnect, '
         SELECT
-            C.id AS comp, M.id, T1.rus_name AS t1name, T2.rus_name AS t2name, score1, score2, date
+            C.id AS comp, M.id, T1.rus_name AS t1name, T2.rus_name AS t2name, score1, score2, date, M.city, M.timem, M.timeh
         FROM
             competition C LEFT JOIN `match` M ON M.competition = C.id
             LEFT JOIN team T1 ON T1.id = M.team1
