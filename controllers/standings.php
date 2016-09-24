@@ -35,10 +35,7 @@ function standings_index($dbConnect, $CONSTPath)
     $matchRes[6] = standings_getInfo($matchAnswer, 275);
     $matchRes[7] = standings_getInfo($matchAnswer, 253);
 	
-    $matchRes[8] = array(
-        't1name' => 'Победитель 7',
-        't2name' => 'Победитель 8'
-    );
+    $matchRes[8] = standings_getInfo($matchAnswer, 278);
     $result['answer'] = $matchRes;
 
 
