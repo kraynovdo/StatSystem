@@ -80,7 +80,7 @@ input[type=text],input[type=password], input[type=number], textarea, select{
 }
 .comp-resultsTable_match {
    margin-left: 10px;
-   width: 180px;
+   width: 178px;
 }
 .comp-resultsTable_datetime{
    font-size: 14px;

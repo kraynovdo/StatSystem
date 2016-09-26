@@ -1,9 +1,6 @@
-.main-logo {
+.main-header {
     background-color: #a18c67;
 }
-.main-header {
-    background: url('img/legion_bg.jpg');
-}
-.main-header_title {
-    color: #fff;
+.main-topNavigation {
+    background-color: #a18c67;
 }

@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-    <div class="main-min-width">
+    <div class="main-min-width main-contentShadow">
         <div class="main-content">
 
             <?php

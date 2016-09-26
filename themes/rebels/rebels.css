@@ -1,9 +1,6 @@
-.main-logo {
+.main-header {
     background-color: #C8332D;
 }
-.main-header {
-    background: url('img/rebels.jpg');
-}
-.main-header_title {
-    color: #fff;
+.main-topNavigation {
+    background-color: #C8332D;
 }
