@@ -110,6 +110,7 @@ textarea {
 .main-top-fixed {
     position: fixed;
     width: 100%;
+    z-index: 10;
 }
 .main-min-width {
     width: 1000px;
