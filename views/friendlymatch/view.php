@@ -5,4 +5,4 @@
 <?}?>
 
 
-<? include ($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/views/match/_head.php')?>
+<? include ($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/views/match/_score.php')?>
