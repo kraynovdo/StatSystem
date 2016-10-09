@@ -32,7 +32,7 @@
         }
 
         if ($result['navigation']['mobile_view']) {
-            $mobile_view = 0;
+            $mobile_view = 1;
         }
     } else {
         require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/start.php');

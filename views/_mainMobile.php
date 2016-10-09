@@ -1,8 +1,8 @@
 <div class="main-wrapper">
-    <div class="main-auth main-wrapper_allWidth">
+    <div class="main-auth">
         <div class="main-auth_form"><?php require ($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/user/login.php');?></div>
     </div>
-    <div class="main-header main-wrapper_allWidth">
+    <div class="main-header">
         <a class="main-logo" href="/">
             <img class="main-logo_img" src="//<?=$HOST?>/<?=$logo?>?1">
         </a>
