@@ -699,6 +699,7 @@ textarea {
     top: 50%;
     display: none;
     box-shadow: 0 0 15px #000000;
+    z-index: 100;
 }
 
 /*Регистрация*/
@@ -1059,6 +1060,7 @@ textarea {
     background: #ffffff;
     border: 2px solid #999999;
     border-radius: 4px;
+    z-index: 100;
 }
 .ac-item {
     cursor: pointer;

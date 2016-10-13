@@ -10,6 +10,6 @@
         $global_config = array(
             'dbString' => 'mysql:host=localhost;dbname=bh56558_StatSystem',
             'dbUser' => 'bh56558_user',
-            'dbPassword' => '0cc9afd'
+            'dbPassword' => 'gus_smotrit_v_okno'
         );
     }
