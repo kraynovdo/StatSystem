@@ -127,15 +127,18 @@
         }
 
 
-
         $result['answer']['results'] = $dataset;
+
+        $compRec = common_getrecord($dbConnect, 'SELECT sport FROM competition WHERE id = :comp', array('comp' => $_GET['comp']));
 
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/action.php');
         $top10 = action_top10($dbConnect, $CONSTPath);
         $result['answer']['top10'] = $top10['answer'];
-	    $top10kick = action_top10kickers($dbConnect, $CONSTPath);
-        $result['answer']['top10kick'] = $top10kick['answer'];
 
+        if ($compRec['sport'] == 1) {
+            $top10kick = action_top10kickers($dbConnect, $CONSTPath);
+            $result['answer']['top10kick'] = $top10kick['answer'];
+        }
 
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/translation.php');
         $result['answer']['trans'] = translation_mainpage($dbConnect, $CONSTPath);
