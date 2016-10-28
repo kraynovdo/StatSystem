@@ -956,9 +956,20 @@ textarea {
 .comp-resultsTable_team_big {
     text-transform: uppercase;
 }
+.top10 {
+    overflow: hidden;
+}
+.top10_column {
+    padding: 4px;
+    box-sizing: border-box;
+}
+.top10_column_2 {
+    width: 50%;
+    float: left;
+}
 .top10-item {
     overflow: hidden;
-    width: 500px;
+    width: 400px;
     margin: 0 auto 10px;
     color: inherit;
 }
@@ -986,6 +997,7 @@ textarea {
     font-size: 30px;
     text-align: center;
     line-height: 50px;
+    width: 50px;
 }
 .top10-item_fio {
     line-height: 50px;

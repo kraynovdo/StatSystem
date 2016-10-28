@@ -27,19 +27,11 @@
         </div>
         <div class="comp-resultsTable_row">
             <div class="comp-resultsTable_score"><?=$score1?></div>
-            <?if (($res[$i]['t1abbr'])&& ($IS_MOBILE)) {?>
-                <div class="comp-resultsTable_team comp-resultsTable_team_big"><?=$res[$i]['t1abbr']?></div>
-            <?} else {?>
-                <div class="comp-resultsTable_team"><?=$res[$i]['t1name']?></div>
-            <?}?>
+            <div class="comp-resultsTable_team"><?=$res[$i]['t1name']?></div>
         </div>
         <div class="comp-resultsTable_row">
             <div class="comp-resultsTable_score"><?=$score2?></div>
-            <?if (($res[$i]['t2abbr']) && ($IS_MOBILE)) {?>
-                <div class="comp-resultsTable_team comp-resultsTable_team_big"><?=$res[$i]['t2abbr']?></div>
-            <?} else {?>
-                <div class="comp-resultsTable_team"><?=$res[$i]['t2name']?></div>
-            <?}?>
+            <div class="comp-resultsTable_team"><?=$res[$i]['t2name']?></div>
         </div>
     </a>
 <?}?>
@@ -73,22 +65,16 @@
                 ?><br/><br/>
         <?  }?>
 <?  }?>
-
-<table style="width: 100%;">
-<colgroup>
-	<col width="50%"/>
-	<col width="50%"/>
-</colgroup>
-<tr>
-<?if (count($answer['top10'])) {?>
-<td style="vertical-align:top; padding: 4px" <?if (!count($answer['top10kick'])) {?> colspan="2"<?}?>>
+        <div class="top10">
+        <?if (count($answer['top10'])) {?>
+<div class="top10_column<?if (count($answer['top10kick'])) {?> top10_column_2<?}?>">
 <?$top = $answer['top10'];?>
 
     <div class="main-card">
     <?if (count($top)){?><h2 style="text-align: center;">ТОП по набранным очкам</h2><?}?>
     <?
     for ($i = 0; $i < count($top) ; $i++) {?>
-        <div class="top10-item" style="width:400px">
+        <div class="top10-item">
             <a class="top10-item_avatar top10-item_img" target="_blank" href="/?r=person/view&person=<?=$top[$i]['person']?>">
                 <?if ($top[$i]['avatar']) {?>
                     <img style="width:50px" src="//<?=$HOST?>/upload/<?=$top[$i]['avatar']?>">
@@ -97,7 +83,7 @@
                 <?}?>
             </a>
             <div class="top10-item_content">
-                <div class="top10-item_point top10-item_img"><?=$top[$i]['points']?></div>
+                <div class="top10-item_point"><?=$top[$i]['points']?></div>
                 <a class="top10-item_fio"  target="_blank" href="/?r=person/view&person=<?=$top[$i]['person']?>"><?=$top[$i]['surname'] . ' ' . $top[$i]['name']?></a>
             </div>
             <a class="top10-item_logo top10-item_img" target="_blank" href="//<?=$HOST?>/?r=team/view&team=<?=$top[$i]['team']?>&comp=<?=$_GET['comp']?>">
@@ -110,16 +96,17 @@
         </div>
     <?}?>
     </div>
-	</td>
+	</div>
 	<?}?>
+
 	<?if (count($answer['top10kick'])) {?>
-	<td style="vertical-align:top; padding: 4px">
+	<div class="top10_column top10_column_2">
 	<?$top = $answer['top10kick'];?>
     <div class="main-card">
 	<h2 style="text-align: center;">ТОП кикеров по очкам</h2>
 
     <?for ($i = 0; $i < count($top) ; $i++) {?>
-        <div class="top10-item" style="width:400px">
+        <div class="top10-item">
             <a class="top10-item_avatar top10-item_img" target="_blank" href="/?r=person/view&person=<?=$top[$i]['person']?>">
                 <?if ($top[$i]['avatar']) {?>
                     <img style="width:50px" src="//<?=$HOST?>/upload/<?=$top[$i]['avatar']?>">
@@ -128,7 +115,7 @@
                 <?}?>
             </a>
             <div class="top10-item_content">
-                <div class="top10-item_point top10-item_img"><?=$top[$i]['points']?></div>
+                <div class="top10-item_point"><?=$top[$i]['points']?></div>
                 <a class="top10-item_fio"  target="_blank" href="/?r=person/view&person=<?=$top[$i]['person']?>"><?=$top[$i]['surname'] . ' ' . $top[$i]['name']?></a>
             </div>
             <a class="top10-item_logo top10-item_img" target="_blank" href="//<?=$HOST?>/?r=team/view&team=<?=$top[$i]['team']?>&comp=<?=$_GET['comp']?>">
@@ -141,11 +128,9 @@
         </div>
     <?}?>
     </div>
-</td>
+</div>
 <?}?>
-</tr>
-</table>
-
+    </div>
 
 
     </div>
