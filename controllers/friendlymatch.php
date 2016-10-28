@@ -11,9 +11,11 @@ function friendlymatch_index($dbConnect, $CONSTPath) {
         ORDER BY date
     ', array());
     require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/federation.php');
+    $navig = federation_navig($dbConnect);
+    $navig['mobile_view'] = 1;
     return array(
         'answer' => $list,
-        'navigation' => federation_navig($dbConnect)
+        'navigation' => $navig
     );
 }
 function friendlymatch_view($dbConnect, $CONSTPath) {
