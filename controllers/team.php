@@ -124,6 +124,7 @@
         $result['answer']['match'] = $match['answer'];
         $result['answer']['comps'] = $comps;
         $result['answer']['compId'] = $compId;
+        $result['navigation']['mobile_view'] = 1;
         return $result;
     }
     function team_edit($dbConnect, $ConstPath) {
