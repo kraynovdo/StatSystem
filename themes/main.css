@@ -789,11 +789,13 @@ textarea {
     float: left;
     width: 50%;
     white-space: nowrap;
+    overflow: hidden;
 }
 .match-list_itemRight {
     float: right;
     width: 50%;
     white-space: nowrap;
+    overflow: hidden;
 }
 .match-list_footerItemLeft {
     float: left;

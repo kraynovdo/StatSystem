@@ -129,8 +129,6 @@ input[type=text],input[type=password], input[type=number], textarea, select{
 }
 .match-list_team {
    white-space: nowrap;
-   max-width: 113px;
-   text-overflow: ellipsis;
 }
 .top10_column_2 {
    float: none;
