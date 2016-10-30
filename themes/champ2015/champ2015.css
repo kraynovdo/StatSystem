@@ -4,3 +4,6 @@
 .main-topNavigation {
     background-color: #db4437;
 }
+.main-navShowPanel:active {
+    background-color: #a02e28 !important;
+}
