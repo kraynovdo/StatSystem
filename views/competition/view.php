@@ -40,9 +40,11 @@
         <?if($_GET['comp'] == 18){?><h2><a href="/?r=standings">Сетка плей-офф</a></h2><?}?>
     </div>
     <br/>
-    <div style="text-align:center">
+    <div>
         <?if ($_SESSION['userType'] == 3) {?>
-        <a href="/?r=translation/edit&comp=<?=$_GET['comp']?>">Добавить трансляцию</a>
+            <div style="text-align: center">
+                <a href="/?r=translation/edit&comp=<?=$_GET['comp']?>">Добавить трансляцию</a>
+            </div>
         <?}?>
 <?
     $trans = $answer['trans'];
@@ -72,29 +74,7 @@
 
     <div class="main-card">
     <?if (count($top)){?><h2 style="text-align: center;">ТОП по набранным очкам</h2><?}?>
-    <?
-    for ($i = 0; $i < count($top) ; $i++) {?>
-        <div class="top10-item">
-            <a class="top10-item_avatar top10-item_img" target="_blank" href="/?r=person/view&person=<?=$top[$i]['person']?>">
-                <?if ($top[$i]['avatar']) {?>
-                    <img style="width:50px" src="//<?=$HOST?>/upload/<?=$top[$i]['avatar']?>">
-                <?} else {?>
-                    <div class="main-noPhoto">?</div>
-                <?}?>
-            </a>
-            <div class="top10-item_content">
-                <div class="top10-item_point"><?=$top[$i]['points']?></div>
-                <a class="top10-item_fio"  target="_blank" href="/?r=person/view&person=<?=$top[$i]['person']?>"><?=$top[$i]['surname'] . ' ' . $top[$i]['name']?></a>
-            </div>
-            <a class="top10-item_logo top10-item_img" target="_blank" href="//<?=$HOST?>/?r=team/view&team=<?=$top[$i]['team']?>&comp=<?=$_GET['comp']?>">
-                <?if ($top[$i]['logo']) {?>
-                    <img style="width:50px" src="//<?=$HOST?>/upload/<?=$top[$i]['logo']?>">
-                <?} else {?>
-                    <div class="main-noPhoto">?</div>
-                <?}?>
-            </a>
-        </div>
-    <?}?>
+        <? include '_top.php'?>
     </div>
 	</div>
 	<?}?>
@@ -104,29 +84,7 @@
 	<?$top = $answer['top10kick'];?>
     <div class="main-card">
 	<h2 style="text-align: center;">ТОП кикеров по очкам</h2>
-
-    <?for ($i = 0; $i < count($top) ; $i++) {?>
-        <div class="top10-item">
-            <a class="top10-item_avatar top10-item_img" target="_blank" href="/?r=person/view&person=<?=$top[$i]['person']?>">
-                <?if ($top[$i]['avatar']) {?>
-                    <img style="width:50px" src="//<?=$HOST?>/upload/<?=$top[$i]['avatar']?>">
-                <?} else {?>
-                    <div class="main-noPhoto">?</div>
-                <?}?>
-            </a>
-            <div class="top10-item_content">
-                <div class="top10-item_point"><?=$top[$i]['points']?></div>
-                <a class="top10-item_fio"  target="_blank" href="/?r=person/view&person=<?=$top[$i]['person']?>"><?=$top[$i]['surname'] . ' ' . $top[$i]['name']?></a>
-            </div>
-            <a class="top10-item_logo top10-item_img" target="_blank" href="//<?=$HOST?>/?r=team/view&team=<?=$top[$i]['team']?>&comp=<?=$_GET['comp']?>">
-                <?if ($top[$i]['logo']) {?>
-                    <img style="width:50px" src="//<?=$HOST?>/upload/<?=$top[$i]['logo']?>">
-                <?} else {?>
-                    <div class="main-noPhoto">?</div>
-                <?}?>
-            </a>
-        </div>
-    <?}?>
+        <? include '_top.php'?>
     </div>
 </div>
 <?}?>

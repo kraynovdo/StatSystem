@@ -134,13 +134,3 @@ input[type=text],input[type=password], input[type=number], textarea, select{
    float: none;
    width: 100%;
 }
-
-.top10-item {
-   width: auto;
-}
-.top10-item_logo {
-   display: none;
-}
-.top10-item_fio {
-   max-width: 180px;
-}

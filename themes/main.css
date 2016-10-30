@@ -971,15 +971,21 @@ textarea {
 }
 .top10-item {
     overflow: hidden;
-    width: 400px;
     margin: 0 auto 10px;
     color: inherit;
 }
+.top10-item_content {
+    margin-left: -50px;
+    width: 100%;
+    overflow: hidden;
+    float: left;
+    padding-left: 50px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 .top10-item_avatar {
     float: left;
-}
-.top10-item_logo {
-    float: right;
 }
 .top10-item_img {
     width: 50px;
@@ -995,17 +1001,15 @@ textarea {
     line-height: 50px;
 }
 .top10-item_point {
-    float: left;
-    font-size: 30px;
+    font-size: 19px;
     text-align: center;
     line-height: 50px;
-    width: 50px;
+    display: inline-block;
+    width: 30px;
 }
 .top10-item_fio {
     line-height: 50px;
-    font-size: 18px;
-    float: left;
-    display: block;
+    font-size: 19px;
     color: inherit;
     max-width: 245px;
     white-space: nowrap;
