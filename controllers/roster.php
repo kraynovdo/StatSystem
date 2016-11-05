@@ -42,7 +42,7 @@ function rosterface_list($dbConnect, $CONSTPath, $team = NULL, $comp = NULL) {
     }
     return common_getlist($dbConnect, '
                 SELECT
-                  R.id, P.id AS person, P.surname, P.name, P.patronymic, P.birthdate, F.name as facetype, P.phone, GC.id AS geo_country, GC.name AS geo_countryTitle
+                  R.id, P.id AS person, P.surname, P.name, P.patronymic, P.birthdate, F.name as facetype, P.phone, GC.id AS geo_country, GC.name AS geo_countryTitle, P.avatar
                 FROM
                   rosterface AS R LEFT JOIN person AS P ON P.id = R.person
                   LEFT JOIN facetype F ON F.id = R.facetype LEFT JOIN geo_country GC ON GC.id = P.geo_country
@@ -67,10 +67,7 @@ function roster_index($dbConnect, $CONSTPath) {
 
     $roster = roster_list($dbConnect, $CONSTPath, ' ORDER BY surname, name ', $_GET['team'], $compId, TRUE);
     $face = rosterface_list($dbConnect, $CONSTPath, $_GET['team'], $compId);
-
-
-    return array(
-        'navigation' => team_NAVIG($dbConnect, $_GET['team'], count($comps)),
+    $result = array(
         'answer' => array(
             'face' => $face,
             'roster' => $roster,
@@ -78,6 +75,10 @@ function roster_index($dbConnect, $CONSTPath) {
             'compId' => $compId
         )
     );
+    $result['navigation'] = team_NAVIG($dbConnect, $_GET['team'], count($comps));
+    $result['navigation']['mobile_view'] = 1;
+
+    return $result;
 }
 function roster_bind($dbConnect, $roster, $type='roster') {
     $res = array (

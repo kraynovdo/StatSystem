@@ -1,7 +1,7 @@
 <h2>Состав</h2>
 <?if (count($answer['comps'])) {?>
     <div class="main-fieldWrapper">
-    <label>Турнир - </label>
+    <label>Турнир</label>
     <select class="team-compSelector">
 <?for ($i = 0; $i < count($answer['comps']); $i++) {?>
    <option value="<?=$answer['comps'][$i]['id']?>"
@@ -10,81 +10,67 @@
     </select>
     </div>
 <?}?>
-<table class="datagrid roster-view datagrid_zebra">
-    <colgroup>
-        <col width="500px"/>
-        <col width="80px"/>
-        <col/>
-        <col width="80px"/>
-        <col width="60px"/>
-        <col width="50px"/>
-        <col width="50px"/>
-
-    </colgroup>
-    <thead class="datagrid_thead">
-    <tr>
-        <th></th>
-        <th>Д.Р.</th>
-        <th>Гражданство</th>
-        <th>№ игрока</th>
-        <th>Позиция</th>
-        <th>Рост</th>
-        <th>Вес</th>
-    </tr>
-    </thead>
-    <tbody class="datagrid_tbody">
-    <?php for ($i = 0; $i < count($answer['roster']); $i++) {?>
-
+<div class="roster-view">
+    <?for ($i = 0; $i < count($answer['roster']); $i++) {?>
         <?
-        if ($answer['roster'][$i]['birthdate'] != '0000-00-00') {
-            $birth_arr = explode('-', $answer['roster'][$i]['birthdate']);
-            $bitrhdate = $birth_arr[2] . '.' . $birth_arr[1] . '.' . $birth_arr[0];
-        }
+            $roster = $answer['roster'][$i];
+            if ($roster['birthdate'] != '0000-00-00') {
+                $bitrhdate = common_dateFromSQL($answer['roster'][$i]['birthdate']);
+            }
         ?>
-        <tr>
-            <td><a target="_blank" href="/?r=person/view&person=<?=$answer['roster'][$i]['person']?>">
-                <?=$answer['roster'][$i]['surname']?>
-                <?=$answer['roster'][$i]['name']?>
-                <?=$answer['roster'][$i]['patronymic']?>
-                </a>
-            </td>
-            <td><?=$bitrhdate?></td>
-            <td><?=$answer['roster'][$i]['geo_countryTitle']?></td>
-            <td><?=$answer['roster'][$i]['number']?></td>
-            <td><?=$answer['roster'][$i]['pos']?></td>
-            <td><?=$answer['roster'][$i]['growth']?></td>
-            <td><?=$answer['roster'][$i]['weight']?></td>
-
-        </tr>
-
+        <div class="roster-view_item main-columnItem<?if ($i % 2 == 1){?> main-columnItem_odd<?}?>">
+            <div class="roster-view_itemContent">
+                <div class="roster-view_photo">
+                    <?if ($roster['avatar']) {?>
+                        <img style="width:50px" src="//<?=$HOST?>/upload/<?=$roster['avatar']?>">
+                    <?} else {?>
+                        <div class="main-noPhoto">?</div>
+                    <?}?>
+                </div>
+                <div class="roster-view_fio">
+                    <a target="_blank" href="/?r=person/view&person=<?=$roster['person']?>">
+                            <?=$roster['surname']?>
+                            <?=$roster['name']?>
+                    </a>
+                </div>
+                <div class="roster-view_info">
+                    <span class="roster-view_number"><?=$roster['number']?></span>
+                    <?=$roster['pos']?>
+                    <?=$roster['geo_countryTitle']?>
+                </div>
+            </div>
+        </div>
     <?}?>
-    </tbody>
-</table>
-
+</div>
 <h2>Официальные лица</h2>
-<table class="datagrid roster-view datagrid_zebra">
-    <colgroup>
-        <col width="500px"/>
-        <col width="80px"/>
-        <col/>
-    </colgroup>
-    <tbody class="datagrid_tbody">
-    <?php for ($i = 0; $i < count($answer['face']); $i++) {?>
+<div class="roster-view">
+    <?for ($i = 0; $i < count($answer['face']); $i++) {?>
         <?
-        if ($answer['face'][$i]['birthdate'] != '0000-00-00') {
-            $birth_arr = explode('-', $answer['face'][$i]['birthdate']);
-            $bitrhdate = $birth_arr[2] . '.' . $birth_arr[1] . '.' . $birth_arr[0];
+        $roster = $answer['face'][$i];
+        if ($roster['birthdate'] != '0000-00-00') {
+            $bitrhdate = common_dateFromSQL($answer['roster'][$i]['birthdate']);
         }
         ?>
-        <tr>
-            <td><a target="_blank" href="/?r=person/view&person=<?=$answer['face'][$i]['person']?>">
-                <?=$answer['face'][$i]['surname']?>
-                <?=$answer['face'][$i]['name']?>
-                <?=$answer['face'][$i]['patronymic']?></a>
-            </td>
-            <td><?=$bitrhdate?></td>
-            <td><?=$answer['face'][$i]['facetype']?></td>
-        </tr>
+        <div class="roster-view_item main-columnItem<?if ($i % 2 == 1){?> main-columnItem_odd<?}?>">
+            <div class="roster-view_itemContent">
+                <div class="roster-view_photo">
+                    <?if ($roster['avatar']) {?>
+                        <img style="width:50px" src="//<?=$HOST?>/upload/<?=$roster['avatar']?>">
+                    <?} else {?>
+                        <div class="main-noPhoto">?</div>
+                    <?}?>
+                </div>
+                <div class="roster-view_fio">
+                    <a target="_blank" href="/?r=person/view&person=<?=$roster['person']?>">
+                        <?=$roster['surname']?>
+                        <?=$roster['name']?>
+                    </a>
+                    (<?=$roster['geo_countryTitle']?>)
+                </div>
+                <div class="roster-view_info">
+                    <?=$answer['face'][$i]['facetype']?>
+                </div>
+            </div>
+        </div>
     <?}?>
-    </tbody>
-</table>
+</div>

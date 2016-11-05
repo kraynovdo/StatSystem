@@ -14,7 +14,7 @@
             ?>
             <h3 class="main-centerAlign main-h3_columns clearfix"><?=$answer[$i]['groupname']?></h3>
         <?}?>
-        <div class="team-clItem main-columnItem main-columnItem<?if ($odd) {?>_odd<?}?>">
+        <div class="team-clItem main-columnItem <?if ($odd) {?>main-columnItem_odd<?}?>">
             <div class="team-clItemContent">
                 <div class="team-clLogo">
                     <?if ($answer[$i]['logo']) {?>
