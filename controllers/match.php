@@ -1,6 +1,7 @@
 <?php
     function match_index($dbConnect, $CONSTPath, $team = null, $comp = null) {
         $filter = '';
+        $join = '';
         $result = array();
         $params = array();
         if (!$comp) {
@@ -8,6 +9,11 @@
         }
         if ($comp) {
             $filter .= ' AND M.competition = :competition';
+            $join .= '
+            LEFT JOIN `compteam` C1 ON C1.competition = :competition AND C1.team = T1.id
+            LEFT JOIN `compteam` C2 ON C2.competition = :competition AND C2.team = T2.id
+            LEFT JOIN `group` G1 ON G1.id = C1.group
+            LEFT JOIN `group` G2 ON G2.id = C2.group';
             $params['competition'] = $comp;
 
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
@@ -27,11 +33,7 @@
             FROM
               `match` M
             LEFT JOIN team T1 ON T1.id = M.team1
-            LEFT JOIN team T2 ON T2.id = M.team2
-            LEFT JOIN `compteam` C1 ON C1.competition = :competition AND C1.team = T1.id
-            LEFT JOIN `compteam` C2 ON C2.competition = :competition AND C2.team = T2.id
-            LEFT JOIN `group` G1 ON G1.id = C1.group
-            LEFT JOIN `group` G2 ON G2.id = C2.group
+            LEFT JOIN team T2 ON T2.id = M.team2 ' . $join . '
             WHERE TRUE
             '.$filter.'
             ORDER BY M.date, M.timeh, M.timem, M.id
