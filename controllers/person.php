@@ -35,6 +35,7 @@
         $result['answer']['stats'] = action_personstats($dbConnect, $CONSTPath, $_GET['person']);
 
         $result['navigation'] = person_navig();
+        $result['navigation']['mobile_view'] = 1;
 
         return $result;
     }

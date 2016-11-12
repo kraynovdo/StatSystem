@@ -1,37 +1,38 @@
 <?php if (count($answer['person'])) {?>
-<div class="main-infoBlock">
+<div class="main-infoBlock person-infoBlock">
     <div class="main-avatar">
         <?if ($answer['person']['avatar']) {?>
-            <img style="width:190px" src="//<?=$HOST?>/upload/<?=$answer['person']['avatar']?>">
+            <img style="width:100%" src="//<?=$HOST?>/upload/<?=$answer['person']['avatar']?>">
         <?} else {?>
             <div class="main-noPhoto">?</div>
         <?}?>
     </div>
-    <div class="main-infoText">
-<?
+    <div class="main-infoText__title team-infoText__title"><?=($answer['person']['surname'] . ' ' . $answer['person']['name'])?></div>
+    <?
     $bitrhdate = '-';
     if ($answer['person']['birthdate'] != '0000-00-00') {
-        $birth_arr = explode('-', $answer['person']['birthdate']);
-        $bitrhdate = $birth_arr[2] . '.' . $birth_arr[1] . '.' . $birth_arr[0];
+        $bitrhdate = common_dateFromSQL($answer['person']['birthdate']);
     }
-?>
-        <div class="main-infoText__right">
-            <div class="main-infoText__element">Дата рождения: <?=$bitrhdate?></div>
-            <div class="main-infoText__element">Рост: <?=($answer['person']['growth'] ? $answer['person']['growth'] . ' см' : '-')?></div>
-            <div class="main-infoText__element">Вес: <?=($answer['person']['weight'] ? $answer['person']['weight'] . ' кг' : '-')?></div>
-            <div class="main-infoText__element">Гражданство: <?=($answer['person']['geo_countryTitle'])?></div>
-        </div>
-        <div class="main-infoText__left">
-            <div class="main-infoText__title"><?=($answer['person']['surname'] . ' ' . $answer['person']['name'])?></div>
-        </div>
+    ?>
+    <?if ($IS_MOBILE){?>
+        <div class="clearfix"></div>
+    <?}?>
+    <span class="main-infoText__value">Дата рождения: <span class="main-infoText__content"><?=$bitrhdate?></span></span>
+    <span class="main-infoText__value">Рост: <span class="main-infoText__content"><?=($answer['person']['growth'] ? $answer['person']['growth'] . ' см' : '-')?></span></span>
+    <span class="main-infoText__value">Вес: <span class="main-infoText__content"><?=($answer['person']['weight'] ? $answer['person']['weight'] . ' кг' : '-')?></span></span>
+    <span class="main-infoText__value">Гражданство: <span class="main-infoText__content"><?=($answer['person']['geo_countryTitle'])?></span></span>
+
+
+
+    <div class="main-infoBlock__footer">
+        <?if ($_SESSION['userID'] && ($_GET['person'] == $_SESSION['userPerson'])) {?>
+            <a class="main-editLink" href="/?r=user/changepass&id=<?=$_GET['person']?>">Сменить пароль</a>
+        <?}?>
+        <?if (($_GET['person'] == $_SESSION['userPerson']) || ($_SESSION['userType'] == 3)) {?>
+            <a class="main-editLink" href="/?r=person/edit&person=<?=$_GET['person']?>">Редактировать данные</a>
+        <?}?>
 
     </div>
-    <?if ($_SESSION['userID'] && ($_GET['person'] == $_SESSION['userPerson'])) {?>
-        <a class="main-editLink" href="/?r=user/changepass&id=<?=$_GET['person']?>">Сменить пароль</a>
-    <?}?>
-    <?if (($_GET['person'] == $_SESSION['userPerson']) || ($_SESSION['userType'] == 3)) {?>
-        <a class="main-editLink" href="/?r=person/edit&person=<?=$_GET['person']?>">Редактировать данные</a>
-    <?}?>
 
 </div>
 <?if (($answer['person']['user']) && ($_SESSION['userType'] == 3) && ($answer['person']['utype'] != 3)){?>

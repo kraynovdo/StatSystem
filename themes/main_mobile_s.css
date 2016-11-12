@@ -45,7 +45,7 @@ input[type=text],input[type=password], input[type=number], textarea, select{
 .main-header_title {
    font-size: 11px;
    margin-top: 19px;
-   padding-right: 50px;
+   padding: 0 50px 0 10px;
 }
 .main-logo {
    margin-left: 0;
@@ -133,4 +133,8 @@ input[type=text],input[type=password], input[type=number], textarea, select{
 .top10_column_2 {
    float: none;
    width: 100%;
+}
+.main-avatar {
+   width: 100px;
+   height: 100px;
 }
