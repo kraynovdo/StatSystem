@@ -5,7 +5,7 @@
     <div class="listview-item refcheck-item" data-mr="<?=$roster[$i]['id']?>">
         <div class="refcheck-photo">
             <?if ($roster[$i]['avatar']) {?>
-                <img style="width:200px" src="//<?=$HOST?>/upload/<?=$roster[$i]['avatar']?>">
+                <img style="width:100px" src="//<?=$HOST?>/upload/<?=$roster[$i]['avatar']?>">
             <?} else {?>
                 <div class="main-noPhoto">?</div>
             <?}?>

@@ -209,7 +209,8 @@
             ),
             'navigation' => array(
                 'header' => $teamData['answer']['team']['rus_name'],
-                'menu' => array()
+                'menu' => array(),
+                'mobile_view' => 1
             )
         );
     }

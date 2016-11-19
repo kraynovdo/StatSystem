@@ -689,8 +689,8 @@ textarea {
     font-size: 18px;
 }
 .refcheck-photo {
-    width: 200px;
-    height: 250px;
+    width: 100px;
+    height: 100px;
     float: left;
     overflow: hidden;
 }
@@ -698,7 +698,7 @@ textarea {
     overflow: hidden;
 }
 .refcheck-main {
-    margin-left : 220px;
+    margin-left : 120px;
 }
 .refcheck-fio {
     margin-bottom: 20px;
@@ -711,10 +711,7 @@ textarea {
     width: 63px;
 }
 .refcheck-inputCont {
-    margin-bottom: 20px;
-}
-.refcheck-bigfont {
-    font-size: 35px;
+    margin-bottom: 10px;
 }
 
 .main-window {
