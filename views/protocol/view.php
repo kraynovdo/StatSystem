@@ -14,6 +14,9 @@
         '4' => 'Хорошо',
         '3' => 'Удовлетворительно',
     );
+        if ($IS_MOBILE) {
+            $points['3'] = 'Удовл.';
+        }
 }?>
     <table class="protocol-view">
         <colgroup>
@@ -111,6 +114,13 @@
                     <td colspan="2"><?=nl2br($protocol['incident'])?></span></td>
                 </tr>
             <?}?>
+            </tbody>
+        </table>
+        <table class="protocol-view">
+            <colgroup>
+                <col width="40px"/>
+                <col/>
+            </colgroup>
             <tr>
                 <td colspan="2"><h2>Судейская бригада</h2></td>
             </tr>
