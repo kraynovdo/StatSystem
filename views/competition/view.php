@@ -22,16 +22,28 @@
         <div class="comp-resultsTable_datetime">
             <?=common_dateFromSQL($res[$i]['date'])?>
             <?if (strlen($res[$i]['timeh']) && strlen($res[$i]['timeh'])) {?>
-                <?=$res[$i]['timeh']?>:<?=$res[$i]['timem']?> (мск.)
+                <?=$res[$i]['timeh']?>:<?=$res[$i]['timem']?> (мск)
             <?}?>
         </div>
         <div class="comp-resultsTable_row">
             <div class="comp-resultsTable_score"><?=$score1?></div>
-            <div class="comp-resultsTable_team"><?=$res[$i]['t1name']?></div>
+            <div class="comp-resultsTable_team">
+                <?if (!$IS_MOBILE) {?>
+                    <?=$res[$i]['t1name']?>
+                <?} else {?>
+                    <?=$res[$i]['t1abbr']?>
+                <?}?>
+            </div>
         </div>
         <div class="comp-resultsTable_row">
             <div class="comp-resultsTable_score"><?=$score2?></div>
-            <div class="comp-resultsTable_team"><?=$res[$i]['t2name']?></div>
+            <div class="comp-resultsTable_team">
+                <?if (!$IS_MOBILE) {?>
+                    <?=$res[$i]['t2name']?>
+                <?} else {?>
+                    <?=$res[$i]['t2abbr']?>
+                <?}?>
+            </div>
         </div>
     </a>
 <?}?>

@@ -82,12 +82,18 @@ input[type=text],input[type=password], input[type=number], textarea, select{
    display: block;
 }
 .comp-resultsTable_match {
-   float: none;
-   margin: 0 0 10px 0;
-   width: 100%;
+   width: calc(20% - 1px) ;
+   margin-left: 1px;
+   height: 80px;
+}
+.comp-resultsTable_score {
+   font-size: 18px;
 }
 .comp-resultsTable_datetime{
-   font-size: 14px;
+   font-size: 10px;
+}
+.comp-resultsTable_row {
+   line-height: 23px;
 }
 .comp-resultsTable_team{
    font-size: 14px;
