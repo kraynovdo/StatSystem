@@ -4,6 +4,9 @@ h2 {
 input[type=text],input[type=password], input[type=number], textarea, select{
    width: 100%;
 }
+table {
+   font-size: 13px;
+}
 .main-wrapper {
    max-width: 800px;
    min-width: 320px;
@@ -21,6 +24,9 @@ input[type=text],input[type=password], input[type=number], textarea, select{
 .main-auth_form {
    margin-right: 0;
    float: none;
+}
+.main-auth_header {
+   height: 30px;
 }
 .main-navigation {
    width: 100%;
@@ -143,4 +149,17 @@ input[type=text],input[type=password], input[type=number], textarea, select{
 .main-avatar {
    width: 100px;
    height: 100px;
+}
+.matchview-navigLink {
+   display: block;
+   margin: 0 0 10px 0;
+}
+.action-person, .action-pointsget, .action-team {
+   width: 100%;
+}
+.match_maintable_header {
+   text-align: center;
+}
+.match_maintable td {
+   padding: 1px;
 }

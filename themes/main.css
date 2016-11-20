@@ -342,9 +342,6 @@ textarea {
     color: #ffffff;
     margin-right: 10px;
 }
-.main-auth_reglink a{
-    margin: 0;
-}
 .main-auth_form {
     float: right;
     color: #ffffff;
@@ -851,6 +848,19 @@ textarea {
     top: 2px;
     padding-right: 2px;
 }
+.match-point_fio {
+    white-space: nowrap;
+    margin-left: 2px;
+}
+.match-point_item {
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.match-point_delLink {
+    float: right;
+}
 .match-header {
     margin-bottom: 20px;
 }
@@ -860,6 +870,7 @@ textarea {
 .match_maintable {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 .match_maintable td{
     padding: 5px;

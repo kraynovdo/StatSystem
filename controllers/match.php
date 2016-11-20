@@ -255,10 +255,12 @@
 
 
         require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
-        return array(
+        $result = array(
             'answer' => $answer,
             'navigation' => competition_NAVIG($dbConnect, $_GET['comp'])
         );
+        $result['navigation']['mobile_view'] = 1;
+        return $result;
     }
 
     function match_playbyplay($dbConnect, $CONSTPath) {

@@ -39,34 +39,39 @@
             </td></tr>
         <?}?>
     <tr>
-        <td class="match_cellborder">
-<?for ($i = 0; $i < count($answer['action']); $i++) {
-    $action = $answer['action'][$i];
-    if ($action['team'] == $answer['match']['team1']) {?>
-        <div style="margin-bottom: 8px;">
-            <span class="match-point"><?='+'.$action['point']?></span>
-            <?=$action['surname']. ' '.$action['name'] . ' - '.$action['pgname']?>
-            <?if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 2) || ($_SESSION['userType'] == 4)|| ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
-                <a href="/?r=action/delete&action=<?=$action['id']?>&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">[X]</a>
-            <?}?>
-        </div>
-<?  }
-}?>
-        </td>
-        <td class="match_cellborder">
-            <?for ($i = 0; $i < count($answer['action']); $i++) {
-                $action = $answer['action'][$i];
-                if ($action['team'] == $answer['match']['team2']) {?>
-                    <div style="margin-bottom: 8px;">
-                        <span class="match-point"><?='+'.$action['point']?></span>
-                    	<?=$action['surname']. ' '.$action['name'] . ' - '.$action['pgname']?>
-                        <?if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 2) || ($_SESSION['userType'] == 4) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
-                            <a href="/?r=action/delete&action=<?=$action['id']?>&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">[X]</a>
-                        <?}?>
-                    </div>
+    <?$teamArr = array('team1', 'team2');?>
+    <?for ($j = 0; $j < count($teamArr); $j++) {?>
+            <td class="match_cellborder">
+                <?for ($i = 0; $i < count($answer['action']); $i++) {
+                    $action = $answer['action'][$i];
+                    if ($action['team'] == $answer['match'][$teamArr[$j]]) {?>
+                        <?
+                            $actionStr = trim($action['surname']. ' '.$action['name']);
+                            if (!$IS_MOBILE) {
+                                if ($actionStr) {
+
+                                    $actionStr .= ' - ';
+                                }
+                                $actionStr .= $action['pgname'];
+                            }
+                            else {
+                                if (!$actionStr) {
+                                    $actionStr .= $action['pgname'];
+                                }
+                            }
+
+                        ?>
+                        <div class="match-point_item">
+                            <span class="match-point"><?='+'.$action['point']?></span><span class="match-point_fio"><?=$actionStr?></span>
+                            <?if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 2) || ($_SESSION['userType'] == 4)|| ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
+                                <?if($IS_MOBILE){?><br/><?}?><a class="match-point_delLink main-delLink" href="/?r=action/delete&action=<?=$action['id']?>&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">[X]</a>
+                            <?}?>
+                        </div>
                 <?  }
-            }?>
-        </td>
+                }?>
+            </td>
+    <?}?>
+
     </tr>
 
     <tr>

@@ -15,11 +15,9 @@
 <?} else {?>
     <?if (!$_SESSION['userID']) {?>
         <form action="/?r=user/auth" method="POST">
-            <div>
+            <div class="main-auth_header">
                 <input type="button" class="main-btn main-auth_inplink roster-submit" value="Вход"/>
-                <button class="main-btn main-auth_reglink" value="Регистрация">
-                    <a href="/?r=registration">Регистрация</a>
-                </button>
+                <a href="/?r=registration">Регистрация</a>
             </div>
             <input class='main-auth_login' type="text" name="username" autocomplete="false" placeholder="E-mail"/>
             <input  class='main-auth_pass' type="password" name="password" autocomplete="false" placeholder="Пароль"/>
