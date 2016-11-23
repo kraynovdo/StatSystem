@@ -223,12 +223,15 @@
           INSERT INTO team (rus_name, abbr, rus_abbr, name, geo_region, city, org_form, sport, sex, age, email, vk_link, inst_link, twitter_link, logo, vect_logo, ogrn_doc, geo_country)
           VALUES (:rus_name, :abbr, :rus_abbr, :name, :geo_region, :city, :org_form, :sport, :sex, :age, :email, :vk_link, :inst_link, :twitter_link, :logo, :vect_logo, :ogrn_doc, :geo_country)
         ');
+
+        $region = $_POST['geo_region'] ? $_POST['geo_region'] : NULL;
+
         $queryresult->execute(array(
             'rus_name' => $_POST['rus_name'],
             'abbr' => substr($_POST['name'], 0, 3),
             'rus_abbr' => mb_substr($_POST['rus_name'], 0, 6),
             'name' => $_POST['name'],
-            'geo_region' => $_POST['geo_region'],
+            'geo_region' => $region,
             'city' => $_POST['city'],
             'sport' => $_POST['sport'],
             'org_form' => $_POST['org_form'],
