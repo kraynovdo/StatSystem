@@ -76,6 +76,7 @@
     </div>
     <input type="hidden" name="person" class="reg-person"/>
     <input type="hidden" name="newEmail" class="reg-newEmail"/>
+    <input type="checkbox" name="imnothuman" class="reg-humanCheckbox"/>
     <input type="hidden" name="personEmail" class="reg-personEmail"/>
     <input type="button" class="main-btn reg-submit" value="Готово"/>
 </form>

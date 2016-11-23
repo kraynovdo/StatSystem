@@ -747,7 +747,7 @@ textarea {
     width: 350px
 }
 .reg-secondList {
-    margin-left: 380px;
+    margin-left: 368px;
 }
 .reg-referree_link {
     font-size: 15px;
@@ -771,6 +771,11 @@ textarea {
 .reg-teamOGRN {
     width: 320px;
     height: 36px;
+}
+.reg-humanCheckbox {
+    position: absolute;
+    top: -10000px;
+    left: -10000px;
 }
 .match-cityField {
     width: 200px;

@@ -13,7 +13,7 @@
     <?if ($IS_MOBILE && $mobile_view) {?>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <?}?>
-    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main.css?94"/>
+    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main.css?95"/>
     <?if ($theme) {?>
         <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?9"/>
     <?}?>

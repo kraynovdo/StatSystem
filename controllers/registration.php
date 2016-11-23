@@ -62,6 +62,12 @@
 
     function registration_reg($dbConnect, $CONSTPath){
         /*Если автовыбрали человека*/
+        if ($_POST['imnothuman']) {
+            return array(
+                'answer' => 'У нас можно регистрироваться только реальным людям',
+                'navigation' => registration_index()
+            );
+        }
         if ($_POST['person']) {
             $personId = $_POST['person'];
             /*Но у него не была задана почта*/
