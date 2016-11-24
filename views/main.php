@@ -12,14 +12,15 @@
     <?}?>
     <?if ($IS_MOBILE && $mobile_view) {?>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <script type="text/javascript">window.mobileView = true;</script>
     <?}?>
-    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main.css?95"/>
+    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main.css?96"/>
     <?if ($theme) {?>
         <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?9"/>
     <?}?>
     <?if ($IS_MOBILE) {?>
         <?if ($mobile_view) {?>
-            <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main_mobile_s.css?25"/>
+            <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main_mobile_s.css?29"/>
         <?} else {?>
             <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main_mobile.css?8"/>
         <?}?>
@@ -57,7 +58,7 @@ else {
 <?}?>
 <script src="//<?=$HOST?>/jquery/jquery.Jcrop.min.js?1"></script>
 
-<script type="text/javascript" src="//<?=$HOST?>/themes/components.js?22"></script>
+<script type="text/javascript" src="//<?=$HOST?>/themes/components.js?24"></script>
 <?if (file_exists($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/' . $controller . '/' . $controller . '.js')) {?>
     <script type="text/javascript" src="//<?=$HOST?>/views/<?=$controller?>/<?=$controller?>.js?23"></script>
 <?}?>

@@ -59,8 +59,8 @@ $(function () {
     MainPopup.prototype.move = function(field, coords) {
         if (field) {
             this._container.css({
-                left : parseInt(field.offset().left) - (window.mobile ? $(window).scrollLeft() : 0) + 'px',
-                top: parseInt(field.offset().top) + parseInt(field.outerHeight()) - (window.mobile ? $(window).scrollTop() : 0) + 'px'
+                left : parseInt(field.offset().left) - (window.mobile && !window.mobileView ? $(window).scrollLeft() : 0) + 'px',
+                top: parseInt(field.offset().top) + parseInt(field.outerHeight()) - (window.mobile && !window.mobileView ? $(window).scrollTop() : 0) + 'px'
             });
         }
         this._container.show();
@@ -383,8 +383,8 @@ $(function () {
 
             var
                 offset = container.offset(),
-                left = offset.left - (window.mobile ? $(window).scrollLeft() : 0),
-                top = offset.top - 40 - (window.mobile ? $(window).scrollTop() : 0);
+                left = offset.left - (window.mobile && !window.mobileView ? $(window).scrollLeft() : 0),
+                top = offset.top - 40 - (window.mobile && !window.mobileView ? $(window).scrollTop() : 0);
             this.inst.css({
                 left: left - 10,
                 top: top
@@ -473,9 +473,7 @@ $(function () {
         this._container = cfg.container;
         this._name = $('.main-file_input', this._container.get(0)).attr('name');
         this._reader = new FileReader();
-        this._picture = {
-            coef : 1
-        };
+        this._picture = {};
 
     };
     $amf.FileLoader.prototype._loadedCallbackSimple = function(e) {
@@ -512,6 +510,7 @@ $(function () {
 	            if (w > 600) {
 	                coef = 600 / w;
 	            }
+
 	        }
 	        else {
 	            coef = 1;
@@ -519,7 +518,7 @@ $(function () {
 	                coef = 600 / h;
 	            }
 	        }
-	        self._picture.coef = coef;
+
 	        self._picture.pic = img;
 	        console.log(Math.round(w * coef) + ' ' + Math.round(h * coef));
 	        img.Jcrop({

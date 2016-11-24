@@ -358,7 +358,7 @@ textarea {
     position: relative;
 }
 .main-file_label {
-    width: 100%;
+    width: calc(100% - 2px);
     height: 100%;
     text-align: center;
 }

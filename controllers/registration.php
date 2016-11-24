@@ -5,7 +5,8 @@
                 'menu' => array(
                     'Рег. персоны' => '/?r=registration/index'
                 ),
-                'header' => 'Регистрация'
+                'header' => 'Регистрация',
+                'mobile_view' => 1
             ),
 
         );
