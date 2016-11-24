@@ -9,7 +9,8 @@
         }
         $navig = array(
             'menu' => $menu,
-            'header' => 'профиль'
+            'header' => 'профиль',
+            'mobile_view' => 1
         );
         return $navig;
     }
