@@ -237,3 +237,6 @@ table {
 .match-matchroster_player {
    font-size: 11px;
 }
+.roster-growth, .roster-weight {
+   width: 36px !important;
+}

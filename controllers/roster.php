@@ -408,7 +408,8 @@ function roster_edit ($dbConnect, $CONSTPath) {
         $data = $queryresult->fetchAll();
         return array(
             'navigation' => array(
-                'menu' => array()
+                'menu' => array(),
+                'mobile_view' => 1
             ),
             'answer' => array(
                 'position' => $position['answer'],
@@ -440,7 +441,8 @@ function roster_editFace ($dbConnect, $CONSTPath) {
         $data = $queryresult->fetchAll();
         return array(
             'navigation' => array(
-                'menu' => array()
+                'menu' => array(),
+                'mobile_view' => 1
             ),
             'answer' => array(
                 'facetype' => $facetype['answer'],
