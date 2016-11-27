@@ -181,9 +181,11 @@ table {
    text-align: center;
 }
 .match_maintable td {
-   padding: 1px;
+   padding: 2px;
 }
-
+.match-point_delLink {
+   float: right;
+}
 .reg-leftCol {
    float: none;
    width: 100%;
@@ -225,4 +227,13 @@ table {
 .federation-mainInfo {
    margin-left: 0;
    padding: 10px 0;
+}
+.match-matchroster_fioinput {
+   white-space: nowrap;
+}
+.match-matchroster_numberinput, .match-matchroster_numberinputAdd {
+   width: 30px !important;
+}
+.match-matchroster_player {
+   font-size: 11px;
 }

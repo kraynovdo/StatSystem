@@ -863,9 +863,6 @@ textarea {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.match-point_delLink {
-    float: right;
-}
 .match-header {
     margin-bottom: 20px;
 }
@@ -891,22 +888,43 @@ textarea {
 .match_cellborder {
     vertical-align: top;
 }
-.match-matchroster-edit {
+.match-matchroster_item {
+    background: #f4f2f2;
     padding: 0 5px;
+    margin-bottom: 10px;
+}
+.match-matchroster_fio {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.match-matchroster_playerInfo_face {
+    font-size: 10px;
+}
+.match-matchroster_fioLink {
+    white-space: nowrap;
+}
+.match-matchroster_fio, .match-matchroster_playerInfo, .match-matchroster_ctrl {
+    line-height: 25px;
+    height: 25px;
+}
+.match-matchroster_number {
+    font-size: 18px;
+}
+.match-matchroster_ctrl {
+    float: right;
+}
+.match-matchroster-edit {
     display: none;
     position: absolute;
-    border: 1px solid #b3b3b3;
     background: #dedede;
 }
 .match-matchroster_add {
-    padding: 2px 5px;
     display: none;
-    border: 1px solid #b3b3b3;
     background: #dedede;
+    margin-bottom: 10px;
 }
 
 .match-matchroster_numberinput, .match-matchroster_numberinputAdd {
-    margin: 1px 0 0 6px;
     font: inherit;
     width: 27px;
 }

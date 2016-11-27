@@ -18,42 +18,40 @@
             <button class="main-btn match-matchroster_addlink" data-match="<?=$_GET['match']?>" data-team="<?=$teamID?>">+</button>
         <?}?>
     </h3>
-    <table class="match-mathcroster_table" data-team="<?=$teamID?>">
-        <colgroup>
-            <col width="20px"/>
-            <col/>
-            <?if ($hasAccess) {?><col width="100px"<?}?>
-        </colgroup>
+    <div class="match-mathcroster_table" data-team="<?=$teamID?>">
+
 
         <?
         for ($i = 0; $i < count($roster); $i++) {?>
-            <tr>
-                <td class="match-matchroster_number">#<?=$roster[$i]['number']?></td>
-                <td class="match-matchroster_fio"><a target="_blank" href="/?r=person/view&person=<?=$roster[$i]['personID']?>"><?=initials($roster[$i])?></a> (<?=$roster[$i]['abbr']?>)</td>
-                <?if ($hasAccess) {?>
-                    <td>
-                        <a href="javascript: void(0)" class="match-matchroster_edit" data-mr="<?=$roster[$i]['id']?>">[ред]</a>
-                        <a href="javascript: void(0)" class="match-matchroster_del" data-mr="<?=$roster[$i]['id']?>">[x]</a>
-                    </td>
-                <?}?>
-            </tr>
+            <div class="match-matchroster_item">
+
+                <div class="match-matchroster_fio">
+                    <a class="match-matchroster_fioLink" target="_blank" href="/?r=person/view&person=<?=$roster[$i]['personID']?>"><?=initials($roster[$i])?></a>
+                </div>
+                <div class="match-matchroster_playerInfo">
+                    <span class="match-matchroster_number"><?=$roster[$i]['number']?></span>
+                    <span class="match-matchroster_pos"><?=$roster[$i]['abbr']?></span>
+                    <?if ($hasAccess) {?>
+                        <span class="match-matchroster_ctrl">
+                            <a href="javascript: void(0)" class="match-matchroster_edit" data-mr="<?=$roster[$i]['id']?>">[ред]</a>
+                            <a href="javascript: void(0)" class="match-matchroster_del" data-mr="<?=$roster[$i]['id']?>">[x]</a>
+                        </span>
+                    <?}?>
+                </div>
+            </div>
         <?}?>
-    </table>
     <h3>Официальные лица</h3>
-    <table class="match-mathcroster_table">
-        <colgroup>
-            <col/>
-            <col/>
-        </colgroup>
-        <?
-        $roster = $answer['face1'];
-        for ($i = 0; $i < count($roster); $i++) {?>
+    <div class="match-mathcroster_table" data-team="<?=$teamID?>">
 
-            <tr>
-                <td class="match-matchroster_fio"><?=initials($roster[$i])?></td>
-                <td class="match-matchroster_fio"><?=$roster[$i]['facetype']?></td>
-            </tr>
+        <?
+        for ($i = 0; $i < count($rosterFace); $i++) {?>
+            <div class="match-matchroster_item">
+                <div class="match-matchroster_fio"><?=initials($rosterFace[$i])?></div>
+                <div class="match-matchroster_playerInfo match-matchroster_playerInfo_face">
+                    <?=$rosterFace[$i]['facetype']?>
+                </div>
+            </div>
         <?}?>
-    </table>
+    </div>
     <a href="/?r=matchroster/print&team=<?=$teamID?>&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">Печать</a>
 <?}?>

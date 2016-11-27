@@ -55,16 +55,16 @@
     $('.match-matchroster_edit').click(function(){
 
         var
-            tr = $(this).closest('tr'),
-            number = $(".match-matchroster_number", tr).text().substr(1),
-            fio = $(".match-matchroster_fio", tr).text();
+            tr = $(this).closest('.match-matchroster_item'),
+            number = $(".match-matchroster_number", tr).text(),
+            fio = $(".match-matchroster_fioLink", tr).text();
         $('.match-matchroster_add').hide();
         var editWin = $(".match-matchroster-edit");
         editWin.css({
-            left: tr.position().left - (window.mobile ? $(window).scrollLeft() : 0),
-            top: tr.position().top - (window.mobile ? $(window).scrollTop() : 0),
-            width: tr.width(),
-            height: tr.height()
+            left: tr.position().left,
+            top: tr.position().top,
+            width: tr.outerWidth(),
+            height: tr.outerHeight()
         }).show();
         $(".match-matchroster_numberinput", editWin).val(number);
         $(".match-matchroster_fioinput", editWin).text(fio);
@@ -87,8 +87,8 @@
             $(".match-matchroster-edit").hide();
             var
                 editLink = $('.match-matchroster_edit[data-mr="' + mr + '"]'),
-                tr = editLink.closest('tr');
-            $(".match-matchroster_number", tr).text('#' + number);
+                tr = editLink.closest('.match-matchroster_item');
+            $(".match-matchroster_number", tr).text(number);
         });
     });
 
@@ -97,7 +97,7 @@
             team = $(this).data('team'),
             match = $(this).data('match');
         $('.match-matchroster-edit').hide();
-        $(this).after($('.match-matchroster_add').show().attr({
+        $(this).closest('h3').after($('.match-matchroster_add').show().attr({
             'data-team' : team,
             'data-match' : match
         }));

@@ -1,3 +1,8 @@
+<?
+function initials($record) {
+    return $record['surname'] . ' ' . $record['name'];
+}
+?>
 <? include '_head.php'?>
 <table class="match_maintable">
     <colgroup>
@@ -77,16 +82,12 @@
     <tr>
         <td colspan="2" class="match_maintable_header"><h2>Составы на игру</h2></td>
     </tr>
-<?
-function initials($record) {
-    return $record['surname'] . ' ' . $record['name'] . ' '. $record['patronymic'];
-}
-?>
     <tr>
         <td class="match_cellborder">
 
             <?
                 $roster = $answer['team1roster'];
+                $rosterFace = $answer['face1'];
                 $hasAccess = $team1;
                 $teamID = $answer['match']['team1'];
                 include '_matchroster.php';
@@ -96,6 +97,7 @@ function initials($record) {
         <td class="match_cellborder">
             <?
                 $roster = $answer['team2roster'];
+                $rosterFace = $answer['face2'];
                 $hasAccess = $team2;
                 $teamID = $answer['match']['team2'];
                 include '_matchroster.php';
@@ -104,15 +106,27 @@ function initials($record) {
     </tr>
 </table>
 <div class="match-matchroster-edit">
-    <input type="text" class="match-matchroster_numberinput"/>
-    <span class="match-matchroster_fioinput"></span>
-    <a class="match-matchroster_ok" href="javascript:void(0);">[ok]</a>
-    <a class="match-matchroster_cancel" href="javascript:void(0);">[отмена]</a>
+    <div class="match-matchroster_fio">
+        <span class="match-matchroster_fioinput"></span>
+    </div>
+    <div>
+        <input type="text" class="match-matchroster_numberinput"/>
+        <span class="match-matchroster_ctrl">
+            <a class="match-matchroster_ok" href="javascript:void(0);">[ok]</a>
+            <a class="match-matchroster_cancel" href="javascript:void(0);">[отмена]</a>
+        </span>
+    </div>
 </div>
 <div class="match-matchroster_add">
-    <input type="text" class="match-matchroster_numberinputAdd" data-validate="req" placeholder="№"/>
-    <select class="match-matchroster_player">
+    <div class="match-matchroster_fio">
+        <select class="match-matchroster_player">
 
-    </select>
-    <a class="match-matchroster_okAdd" href="javascript:void(0);">[ok]</a>
+        </select>
+    </div>
+    <div>
+        <input type="text" class="match-matchroster_numberinputAdd" data-validate="req" placeholder="№"/>
+        <span class="match-matchroster_ctrl">
+            <a class="match-matchroster_okAdd" href="javascript:void(0);">[ok]</a>
+        </span>
+    </div>
 </div>
