@@ -46,7 +46,7 @@
             $.post("/?r=matchroster/delete", {
                 matchroster: id
             }, function (res) {
-                self.closest('tr').remove();
+                self.closest('.match-matchroster_item').remove();
             });
         }
 
