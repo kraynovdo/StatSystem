@@ -35,6 +35,7 @@
             'title' => $fedInfo['fullname'],
             'description' => 'Официальный сайт '. $fedInfo['fullname'] . '. Здесь вы можете найти свежие новости, информацию о соревнованиях и командах',
             'keywords' => array($fedInfo['fullname'], $fedInfo['name']),
+            'mobile_view' => 1
             //'logo' => $fedInfo['logo']
         );
         if ($federation == 11) {

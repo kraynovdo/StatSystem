@@ -20,7 +20,7 @@
     <?}?>
     <?if ($IS_MOBILE) {?>
         <?if ($mobile_view) {?>
-            <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main_mobile_s.css?29"/>
+            <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main_mobile_s.css?30"/>
         <?} else {?>
             <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main_mobile.css?8"/>
         <?}?>
