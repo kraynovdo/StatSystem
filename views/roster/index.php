@@ -42,6 +42,9 @@
         </div>
     <?}?>
 </div>
+<?if (count($answer['roster'])) {?>
+    <div class="roster-count">Всего: <?=count($answer['roster'])?></div>
+<?}?>
 <h2>Официальные лица</h2>
 <div class="roster-view">
     <?for ($i = 0; $i < count($answer['face']); $i++) {?>
@@ -74,3 +77,6 @@
         </div>
     <?}?>
 </div>
+<?if (count($answer['face'])) {?>
+    <div class="roster-count">Всего: <?=count($answer['face'])?></div>
+<?}?>

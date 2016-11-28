@@ -698,6 +698,11 @@ textarea {
     padding: 5px;
     background-color: rgba(51, 200, 106, 0.24);
 }
+.roster-count {
+    font-size: 11px;
+    color: #999;
+    margin-bottom: 20px;
+}
 .roster-view {
     overflow: hidden;
 }
