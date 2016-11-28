@@ -16,7 +16,7 @@
         <a class="matchview-navigLink" href="/?r=match/playbyplay&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">Ход игры</a>
         
     <?}?>
-    <?if (($_SESSION['userType'] == 3) || ($_GET['comp'] == 41)) {?>
+    <?if ((($_SESSION['userType'] == 3) || ($_GET['comp'] == 41)) && (!$IS_MOBILE)) {?>
     	<a class="matchview-navigLink" href="/?r=stats/matchAF&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">Статистика</a>
     <?}?>
     <form method="POST" action="/?r=match/videoupdate" class="main-hidden match-videoForm">

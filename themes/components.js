@@ -59,8 +59,8 @@ $(function () {
     MainPopup.prototype.move = function(field, coords) {
         if (field) {
             this._container.css({
-                left : parseInt(field.offset().left) - (window.mobile && !window.mobileView ? $(window).scrollLeft() : 0) + 'px',
-                top: parseInt(field.offset().top) + parseInt(field.outerHeight()) - (window.mobile && !window.mobileView ? $(window).scrollTop() : 0) + 'px'
+                left : parseInt(field.offset().left) + 'px',
+                top: parseInt(field.offset().top) + parseInt(field.outerHeight()) + 'px'
             });
         }
         this._container.show();
@@ -383,8 +383,8 @@ $(function () {
 
             var
                 offset = container.offset(),
-                left = offset.left - (window.mobile && !window.mobileView ? $(window).scrollLeft() : 0),
-                top = offset.top - 40 - (window.mobile && !window.mobileView ? $(window).scrollTop() : 0);
+                left = offset.left,
+                top = offset.top - 40;
             this.inst.css({
                 left: left - 10,
                 top: top

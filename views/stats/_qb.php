@@ -8,9 +8,8 @@
     </colgroup>
     <thead class="datagrid_thead">
     <tr>
-        <th>Игрок</th>
-        <th class="main-rightAlign">Поп</th>
-        <th class="main-rightAlign">Прин</th>
+        <th>&nbsp;</th>
+        <th class="main-rightAlign">%</th>
         <th class="main-rightAlign">ТД</th>
         <th class="main-rightAlign">Пер</th>
         <th class="main-rightAlign">Ярды</th>
@@ -23,10 +22,7 @@
                 <?=$arr[$i]['surname']. ' '.$arr[$i]['name']?>
             </td>
             <td class="stats-counter main-rightAlign">
-                <?=$arr[$i]['num']?>
-            </td>
-            <td class="stats-counter main-rightAlign">
-                <?=$arr[$i]['rec']?>
+                <?=$arr[$i]['rec']?>/<?=$arr[$i]['num']?>
             </td>
             <td class="stats-counter main-rightAlign">
                 <?=$arr[$i]['td']?>

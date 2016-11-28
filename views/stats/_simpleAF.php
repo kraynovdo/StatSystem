@@ -6,7 +6,7 @@
     </colgroup>
     <thead class="datagrid_thead">
     <tr>
-        <th>Игрок</th>
+        <th>&nbsp;</th>
         <th class="main-rightAlign"><?=$head1?></th>
         <th class="main-rightAlign"><?=$head2?></th>
     </tr>

@@ -10,11 +10,10 @@
     <thead class="datagrid_thead">
     <tr>
         <th></th>
-        <th>Игрок</th>
-        <th class="main-rightAlign">Попыток</th>
-        <th class="main-rightAlign">Принято</th>
-        <th class="main-rightAlign">Тачдауны</th>
-        <th class="main-rightAlign">Перехваты</th>
+        <th>&nbsp;</th>
+        <th class="main-rightAlign">%</th>
+        <th class="main-rightAlign">ТД</th>
+        <th class="main-rightAlign">Пер</th>
         <th class="main-rightAlign">Ярды</th>
     </tr>
     </thead>
@@ -34,10 +33,7 @@
                 <?=$arr[$i]['surname']. ' '.$arr[$i]['name']?>
             </td>
             <td class="stats-counter main-rightAlign">
-                <?=$arr[$i]['num']?>
-            </td>
-            <td class="stats-counter main-rightAlign">
-                <?=$arr[$i]['rec']?>
+                <?=$arr[$i]['rec']?>/<?=$arr[$i]['num']?>
             </td>
             <td class="stats-counter main-rightAlign">
                 <?=$arr[$i]['td']?>

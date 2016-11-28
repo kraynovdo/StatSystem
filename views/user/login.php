@@ -1,4 +1,4 @@
-<?if (!$IS_MOBILE || !$mobile_view) {?>
+<?if (!$IS_MOBILE) {?>
     <?if (!$_SESSION['userID']) {?>
     <form action="/?r=user/auth" method="POST">
         <a href="/?r=registration" class="login-regLink">Регистрация</a>
