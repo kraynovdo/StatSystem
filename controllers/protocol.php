@@ -37,7 +37,6 @@
         $comp = $match[0]['competition'];
         require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/competition.php');
         $result['navigation'] = competition_NAVIG($dbConnect, $comp);
-        $result['navigation']['mobile_view'] = 1;
 
         return $result;
     }

@@ -76,7 +76,6 @@ function roster_index($dbConnect, $CONSTPath) {
         )
     );
     $result['navigation'] = team_NAVIG($dbConnect, $_GET['team'], count($comps));
-    $result['navigation']['mobile_view'] = 1;
 
     return $result;
 }
@@ -124,8 +123,7 @@ function roster_fill($dbConnect, $CONSTPath, $ids = null) {
         return array(
             'navigation' => array(
                 'menu' => array(),
-                'header' => 'Заявка на '.$compInfo['name']. ' ' . $compInfo['yearB'],
-                'mobile_view' => 1
+                'header' => 'Заявка на '.$compInfo['name']. ' ' . $compInfo['yearB']
             ),
             'answer' => array(
                 'team' => $team['answer']['team']['name'],
@@ -409,8 +407,7 @@ function roster_edit ($dbConnect, $CONSTPath) {
         $data = $queryresult->fetchAll();
         return array(
             'navigation' => array(
-                'menu' => array(),
-                'mobile_view' => 1
+                'menu' => array()
             ),
             'answer' => array(
                 'position' => $position['answer'],
@@ -442,8 +439,7 @@ function roster_editFace ($dbConnect, $CONSTPath) {
         $data = $queryresult->fetchAll();
         return array(
             'navigation' => array(
-                'menu' => array(),
-                'mobile_view' => 1
+                'menu' => array()
             ),
             'answer' => array(
                 'facetype' => $facetype['answer'],
@@ -581,6 +577,5 @@ function roster_complist($dbConnect, $CONSTPath) {
             'roster' => $roster['answer']
         )
     );
-    $result['navigation']['mobile_view'] = 1;
     return $result;
 }

@@ -26,8 +26,7 @@
             'title' => $data[0]['rus_name'] . ' ' . $data[0]['city'] . ' клуб американского футбола',
             'description' => 'Сайт ' . $data[0]['rus_name'] . ' клуб американского футбола. Здесь вы можете найти свежие новости, информацию о матчах, статистику',
             'keywords' => array($data[0]['rus_name'] . ' ' . $data[0]['city'] , $data[0]['rus_name'], $data[0]['name']),
-            'logo' => $data[0]['logo'],
-            'mobile_view' => 1
+            'logo' => $data[0]['logo']
         );
         if (!$withRoster) {
             $comps = team_comps($dbConnect, $id);
@@ -58,7 +57,6 @@
         $result['answer'] = common_getlist($dbConnect, $query, $params);
         require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/competition.php');
         $result['navigation'] = competition_NAVIG($dbConnect, $_GET['comp']);
-        $result['navigation']['mobile_view'] = 1;
         return $result;
     }
     function team_index($dbConnect, $CONSTPath) {
@@ -77,8 +75,7 @@
             rus_name';
         $params = array();
 
-        $result['answer'] = common_getlist($dbConnect, $query, $params);;
-        $result['navigation']['mobile_view'] = 1;
+        $result['answer'] = common_getlist($dbConnect, $query, $params);
 
         return $result;
     }
@@ -125,7 +122,6 @@
         $result['answer']['match'] = $match['answer'];
         $result['answer']['comps'] = $comps;
         $result['answer']['compId'] = $compId;
-        $result['navigation']['mobile_view'] = 1;
         return $result;
     }
     function team_edit($dbConnect, $ConstPath) {

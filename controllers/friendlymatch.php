@@ -12,7 +12,6 @@ function friendlymatch_index($dbConnect, $CONSTPath) {
     ', array());
     require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/federation.php');
     $navig = federation_navig($dbConnect);
-    $navig['mobile_view'] = 1;
     return array(
         'answer' => $list,
         'navigation' => $navig

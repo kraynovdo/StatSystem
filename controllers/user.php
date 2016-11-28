@@ -143,8 +143,7 @@
     function user_forget() {
         return array(
             'navigation' => array(
-                'menu' => array(),
-                'mobile_view' => 1
+                'menu' => array()
             ),
             'answer' => 1
         );

@@ -4,7 +4,6 @@
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
         $result['navigation'] = competition_NAVIG($dbConnect, $_GET['comp']);
         $result['answer'] = common_getlist($dbConnect, 'SELECT id, name FROM `group` WHERE competition = :comp', array('comp' => $_GET['comp']));
-        $result['navigation']['mobile_view'] = 1;
         return $result;
     }
 
@@ -13,7 +12,6 @@
             $result = array();
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
             $result['navigation'] = competition_NAVIG($dbConnect, $_GET['comp']);
-            $result['navigation']['mobile_view'] = 1;
             return $result;
         }
         else {

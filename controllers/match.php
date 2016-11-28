@@ -42,7 +42,6 @@
         $queryresult->execute($params);
         $dataset = $queryresult->fetchAll();
         $result['answer'] = $dataset;
-        $result['navigation']['mobile_view'] = 1;
 
         return $result;
     }
@@ -58,7 +57,6 @@
                     'team' => $team['answer']
                 )
             );
-            $result['navigation']['mobile_view'] = 1;
             return $result;
         }
         else {
@@ -259,7 +257,6 @@
             'answer' => $answer,
             'navigation' => competition_NAVIG($dbConnect, $_GET['comp'])
         );
-        $result['navigation']['mobile_view'] = 1;
         return $result;
     }
 

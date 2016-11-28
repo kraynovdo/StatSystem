@@ -69,7 +69,6 @@
                TRUE'.$filter.'
             ORDER BY S.yearB DESC, competition.federation DESC, competition.name', $params);
         $result['answer'] = $dataset;
-        $result['navigation']['mobile_view'] = 1;
         return $result;
     }
 
@@ -144,7 +143,6 @@
         $result['answer']['trans'] = translation_mainpage($dbConnect, $CONSTPath);
 
         $result['navigation'] = competition_NAVIG($dbConnect, $_GET['comp']);
-        $result['navigation']['mobile_view'] = 1;
         return $result;
 
     }

@@ -9,8 +9,7 @@
         }
         $navig = array(
             'menu' => $menu,
-            'header' => 'профиль',
-            'mobile_view' => 1
+            'header' => 'профиль'
         );
         return $navig;
     }
@@ -36,7 +35,6 @@
         $result['answer']['stats'] = action_personstats($dbConnect, $CONSTPath, $_GET['person']);
 
         $result['navigation'] = person_navig();
-        $result['navigation']['mobile_view'] = 1;
 
         return $result;
     }

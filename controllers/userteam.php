@@ -31,7 +31,6 @@
         $result['answer'] = userteam_list($dbConnect, $CONSTPath, $team, $person);
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/person.php');
         $result['navigation'] = person_navig();
-        $result['navigation']['mobile_view'] = 1;
         return $result;
     }
 
@@ -46,7 +45,6 @@
             $result['answer'] = $teamres['answer'];
             require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/admin.php');
             $result['navigation'] = admin_navig();
-            $result['navigation']['mobile_view'] = 1;
             return $result;
         }
         else {

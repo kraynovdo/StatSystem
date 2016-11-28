@@ -12,7 +12,6 @@
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/team.php');
             $group = team_index($dbConnect, $CONSTPath);
             $result['answer']['team'] = $group['answer'];
-            $result['navigation']['mobile_view'] = 1;
 
             return $result;
         }

@@ -9,8 +9,7 @@
         $result = array();
         $result['navigation'] = array(
             'header' => 'Упс!',
-            'menu' => array(),
-            'mobile_view' => 1
+            'menu' => array()
         );
         $result['answer'] = array(
             'code' => $code,

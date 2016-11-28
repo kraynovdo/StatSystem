@@ -23,9 +23,7 @@
         }
         return array(
             'menu' => $menu,
-            'header' => 'Панель пользователя',
-            'mobile_view' => 1
-
+            'header' => 'Панель пользователя'
         );
     }
     function admin_index($db, $CONSTPath) {
