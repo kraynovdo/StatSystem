@@ -557,6 +557,35 @@ textarea {
 .datagrid td{
     padding: 1px 5px;
 }
+.roster-list {
+    display: table;
+    width: 100%;
+}
+.roster-item {
+    display: table-row;
+}
+.roster-itemContent {
+    border-top: 1px solid #cccccc;
+    display: table-cell;
+    padding: 0 3px;
+    white-space: nowrap;
+    width: 1px;
+    height: 25px;
+    line-height: 25px;
+    position: relative;
+}
+.roster-itemFio {
+    width: auto;
+}
+.roster-itemCheckbox {
+    width: 13px;
+}
+.roster-itemConfirm {
+    width: 16px;
+}
+.roster-itemWork, .roster-itemCtrl, .roster-itemPhone, .roster-itemDate {
+    width: 1px;
+}
 .roster-photo, .roster-photo_face {
     width: 100px;
     height: 100px;
@@ -628,16 +657,27 @@ textarea {
     width: 16px;
     height: 16px;
     background: none;
+    position: absolute;
+    top: 5px;
 }
 .roster-confirm.roster-confirm_1 {
     display: inline-block;
-    background: url('img/success.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url('img/success.png');
 }
-.roster-row_confirm1 td{
+.roster-row_confirm1 {
     background-color: #beffde;
 }
 .roster-choose_checkbox, .roster-choose_mainCheckbox {
     cursor: pointer;
+}
+.roster-choose_checkbox {
+    position: absolute;
+    top: 6px;
+}
+.roster-choose_mainCheckbox {
+    margin: 0 0 6px 3px;
 }
 .roster-clear, .roster-clear_face {
     display: none;

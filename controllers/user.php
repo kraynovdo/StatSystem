@@ -141,7 +141,13 @@
         ));
     }
     function user_forget() {
-
+        return array(
+            'navigation' => array(
+                'menu' => array(),
+                'mobile_view' => 1
+            ),
+            'answer' => 1
+        );
     }
     function user_sendpass($dbConnect, $CONSTPath) {
         $email = $_POST['email'];

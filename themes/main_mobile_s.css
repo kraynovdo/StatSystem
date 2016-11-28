@@ -240,3 +240,39 @@ table {
 .roster-growth, .roster-weight {
    width: 36px !important;
 }
+.roster-addForm input, .roster-addForm select {
+   margin-bottom: 5px;
+}
+.roster-list, .roster-item {
+   display: block;
+}
+.roster-itemContent {
+   display: inline-block;
+   width: auto;
+   border-top-width: 0;
+}
+.roster-item {
+   border-top: 1px solid #cccccc;
+   overflow: hidden;
+}
+.roster-itemCtrl {
+   float: right;
+}
+.roster-itemFio {
+   font-size: 14px;
+}
+.roster-itemCheckbox, .roster-choose_mainCheckbox {
+   display: none;
+}
+.roster-itemConfirm {
+   width: 24px;
+   float: left;
+}
+.roster-confirm{
+   width: 24px;
+   height: 24px;
+   top: 0;
+}
+.roster-confirm:not(.roster-confirm_1) {
+   border: 1px dotted #ccc;
+}

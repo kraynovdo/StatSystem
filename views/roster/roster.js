@@ -120,22 +120,22 @@
     $('.roster-confirm').click(function(){
         var
             $self = $(this),
-            tr = $self.closest('tr'),
-            id = tr.data('id');
+            item = $self.closest('.roster-item'),
+            id = item.data('id');
 
         $.post("/?r=roster/confirm", {
             roster: id
         }, function (ans) {
             var
-                tdEdit = $('.roster-editTD', tr),
-                tdDel = $('.roster-delTD', tr);
+                tdEdit = $('.roster-editTD', item),
+                tdDel = $('.roster-delTD', item);
             if (parseInt(ans, 10)) {
-                tr.addClass('roster-row_confirm1').removeClass('roster-row_confirm0');
+                item.addClass('roster-row_confirm1').removeClass('roster-row_confirm0');
                 $self.addClass('roster-confirm_1');
                 tdDel.empty('&nbsp;');
             }
             else {
-                tr.addClass('roster-row_confirm0').removeClass('roster-row_confirm1');
+                item.addClass('roster-row_confirm0').removeClass('roster-row_confirm1');
                 $self.removeClass('roster-confirm_1');
                 tdDel.html('<a title="Редактировать" href="/?r=roster/edit&roster='+id+'">[X]</a>');
             }

@@ -79,138 +79,90 @@
     <h3 class="main-warning">Период заявки игроков истек!</h3>
 <?}?>
     <h2>Официальные лица</h2>
-    <table class="datagrid roster-grid">
-        <colgroup>
-            <col/>
-            <col/>
-            <col/>
-            <col width="80px"/>
-            <col/>
-            <col/>
-            <col/>
-            <col width="30px"/>
-            <col width="30px"/>
-        </colgroup>
-        <thead class="datagrid_thead">
-        <tr>
-            <th>Фамилия</th>
-            <th>Имя</th>
-            <th>Отчество</th>
-            <th>Д.Р.</th>
-            <th>Гражданство</th>
-            <th>Должность</th>
-            <th>Телефон</th>
-            <th>&nbsp;</th>
-            <th>&nbsp;</th>
-        </tr>
-        </thead>
-        <tbody class="datagrid_tbody">
-        <?php for ($i = 0; $i < count($answer['face']); $i++) {?>
-            <?
-            if ($answer['face'][$i]['birthdate'] != '0000-00-00') {
-                $birth_arr = explode('-', $answer['face'][$i]['birthdate']);
-                $bitrhdate = $birth_arr[2] . '.' . $birth_arr[1] . '.' . $birth_arr[0];
-            }
-            ?>
-            <tr>
-                <td><?=$answer['face'][$i]['surname']?></td>
-                <td><?=$answer['face'][$i]['name']?></td>
-                <td><?=$answer['face'][$i]['patronymic']?></td>
-                <td><?=$bitrhdate?></td>
-                <td><?=$answer['face'][$i]['geo_countryTitle']?></td>
-                <td><?=$answer['face'][$i]['facetype']?></td>
-                <td><?=$answer['face'][$i]['phone']?></td>
-                <td>
-                    <a href="/?r=roster/editFace&face=<?=$answer['face'][$i]['id']?>">[Ред]</a>
-                </td>
-                <td>
-                    <a href="/?r=roster/deleteFace&face=<?=$answer['face'][$i]['id']?>">[X]</a>
-                </td>
-            </tr>
-        <?}?>
-        </tbody>
-    </table>
 
-<h2>Игроки</h2>
-<table class="datagrid roster-grid">
-    <colgroup>
-        <col width="15px"/>
-        <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
-            <col width="27px"/>
-        <?}?>
-        <col width="15px"/>
-        <col/>
-        <col/>
-        <col/>
-        <col width="80px"/>
-        <col/>
-        <col width="15px"/>
-        <col width="60px"/>
-        <col width="50px"/>
-        <col width="50px"/>
-        <col/>
-        <col width="30px"/>
-
-    </colgroup>
-    <thead class="datagrid_thead">
-        <tr>
-            <th><input type="checkbox" class="roster-choose_mainCheckbox"/></th>
-            <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
-                <th><span class="roster-confirm roster-confirm_1" href="javascript: void(0);"></span></th>
-            <?}?>
-            <th></th>
-            <th>Фамилия</th>
-            <th>Имя</th>
-            <th>Отчество</th>
-            <th>Д.Р.</th>
-            <th>Гражданство</th>
-            <th>№</th>
-            <th>Позиция</th>
-            <th>Рост (см.)</th>
-            <th>Вес (кг.)</th>
-            <th>Телефон</th>
-            <th colspan="2">Управление</th>
-        </tr>
-    </thead>
-    <tbody class="datagrid_tbody">
-<?php for ($i = 0; $i < count($answer['roster']); $i++) {?>
-<?
-    if ($answer['roster'][$i]['birthdate'] != '0000-00-00') {
-        $birth_arr = explode('-', $answer['roster'][$i]['birthdate']);
-        $bitrhdate = $birth_arr[2] . '.' . $birth_arr[1] . '.' . $birth_arr[0];
+<div class="roster-list">
+<?php for ($i = 0; $i < count($answer['face']); $i++) {?>
+    <?
+    $bitrhdate = '';
+    if ($answer['face'][$i]['birthdate'] != '0000-00-00') {
+        $bitrhdate = common_dateFromSQL($answer['face'][$i]['birthdate']);
     }
-?>
-    <tr data-id="<?=$answer['roster'][$i]['id']?>" class="roster-row_confirm<?=$answer['roster'][$i]['confirm']?>">
-        <td><input type="checkbox" class="roster-choose_checkbox"/></td>
-        <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
-            <td><a class="roster-confirm roster-confirm_<?=$answer['roster'][$i]['confirm']?>" href="javascript: void(0);"></a></td>
+    ?>
+    <div class="roster-itemFace roster-item">
+        <span class="roster-itemFio roster-itemContent">
+            <?=$answer['face'][$i]['surname']?>
+            <?=$answer['face'][$i]['name']?>
+            <?=$answer['face'][$i]['patronymic']?>
+        </span>
+        <span class="roster-itemDate roster-itemContent">
+            <?=$bitrhdate?>
+        </span>
+        <?if ($IS_MOBILE){?>
+            <br/>
         <?}?>
-        <td><?=$i+1?></td>
-        <td><?=$answer['roster'][$i]['surname']?></td>
-        <td><?=$answer['roster'][$i]['name']?></td>
-        <td><?=$answer['roster'][$i]['patronymic']?></td>
-        <td><?=$bitrhdate?></td>
-        <td><?=$answer['roster'][$i]['geo_countryTitle']?></td>
-        <td><?=$answer['roster'][$i]['number']?></td>
-        <td><?=$answer['roster'][$i]['pos']?></td>
-        <td><?=$answer['roster'][$i]['growth']?></td>
-        <td><?=$answer['roster'][$i]['weight']?></td>
-        <td><?=$answer['roster'][$i]['phone']?></td>
-        <td class="roster-editTD">
+        <span class="roster-itemContent roster-itemWork">
+            <?=$answer['face'][$i]['facetype']?>
+        </span>
+
+
+        <span class="roster-itemPhone roster-itemContent">
+            <?=$answer['face'][$i]['phone']?>
+        </span>
+        <span class="roster-itemContent roster-itemCtrl">
+            <a href="/?r=roster/editFace&face=<?=$answer['face'][$i]['id']?>">[Ред]</a>
+            <a href="/?r=roster/deleteFace&face=<?=$answer['face'][$i]['id']?>">[X]</a>
+        </span>
+    </div>
+<?}?>
+</div>
+<h2>Игроки</h2>
+
+    <input type="checkbox" class="roster-choose_mainCheckbox"/>
+<div class="roster-list">
+<?php for ($i = 0; $i < count($answer['roster']); $i++) {?>
+    <?
+    $bitrhdate = '';
+    if ($answer['roster'][$i]['birthdate'] != '0000-00-00') {
+        $bitrhdate = common_dateFromSQL($answer['roster'][$i]['birthdate']);
+    }
+    ?>
+    <div class="roster-item roster-row_confirm<?=$answer['roster'][$i]['confirm']?>" data-id="<?=$answer['roster'][$i]['id']?>">
+        <span class="roster-itemContent roster-itemCheckbox">
+            <input type="checkbox" class="roster-choose_checkbox"/>
+        </span>
+
+        <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
+            <span class="roster-itemContent roster-itemConfirm">
+                <a class="roster-confirm roster-confirm_<?=$answer['roster'][$i]['confirm']?>" href="javascript: void(0);"></a>
+            </span>
+        <?}?>
+        <span class="roster-itemContent"><?=$i+1?></span>
+        <span class="roster-itemContent roster-itemFio">
+            <?=$answer['roster'][$i]['surname']?>
+            <?=$answer['roster'][$i]['name']?>
+            <?=$answer['roster'][$i]['patronymic']?>
+        </span>
+        <span class="roster-itemContent"><?=$bitrhdate?></span>
+        <span class="roster-itemContent"><?=$answer['roster'][$i]['geo_countryTitle']?></span>
+        <span class="roster-itemContent"><?=$answer['roster'][$i]['number']?></span>
+        <span class="roster-itemContent"><?=$answer['roster'][$i]['pos']?></span>
+        <span class="roster-itemContent"><?=$answer['roster'][$i]['growth']?></span>
+        <span class="roster-itemContent"><?=$answer['roster'][$i]['weight']?></span>
+        <span class="roster-itemContent"><?=$answer['roster'][$i]['phone']?></span>
+        <span class="roster-itemContent roster-editTD">
         	<a title="Редактировать" href="/?r=roster/edit&roster=<?=$answer['roster'][$i]['id']?>">[Ред]</a>
-        </td>
-        <td class="roster-delTD">
+        </span>
+        <span class="roster-itemContent roster-delTD">
             <? if (!$answer['roster'][$i]['confirm']) {?>
                 <a title="Удалить" href="/?r=roster/delete&roster=<?=$answer['roster'][$i]['id']?>">[X]</a>
             <?} else {?>
                 &nbsp;
             <?}?>
-        </td>
+        </span>
 
-    </tr>
+    </div>
 <?}?>
-    </tbody>
-</table>
+</div>
 <br/>
 <?
 $comps = $answer['compsPast'];

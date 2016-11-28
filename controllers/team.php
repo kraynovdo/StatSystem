@@ -26,7 +26,8 @@
             'title' => $data[0]['rus_name'] . ' ' . $data[0]['city'] . ' клуб американского футбола',
             'description' => 'Сайт ' . $data[0]['rus_name'] . ' клуб американского футбола. Здесь вы можете найти свежие новости, информацию о матчах, статистику',
             'keywords' => array($data[0]['rus_name'] . ' ' . $data[0]['city'] , $data[0]['rus_name'], $data[0]['name']),
-            'logo' => $data[0]['logo']
+            'logo' => $data[0]['logo'],
+            'mobile_view' => 1
         );
         if (!$withRoster) {
             $comps = team_comps($dbConnect, $id);
