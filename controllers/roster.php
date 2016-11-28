@@ -153,7 +153,7 @@ function roster_request($dbConnect, $CONSTPath) {
     $team = $_GET['team'];
     $comp = $_GET['comp'];
     if ($_SESSION['userTeams'][$team]) {
-        common_sendmail('afc.rebels.yar@gmail.com', 'Заявка на Чемпионат России 2015', 'Команда оставила заявку на Чемпионат Росиии 2015. Пройдите по ссылке, чтобы подтвердить заявку <a href="http://amfoot.ru/?r=roster/fill&team='. $team . '&comp=' . $comp .'">http://amfoot.ru/?r=roster/fill&team='. $team . '&comp=' . $comp .'</a>');
+        common_sendmail('afc.rebels.yar@gmail.com', 'Заявка на турнир', 'Команда оставила заявку на турнир. Пройдите по ссылке, чтобы подтвердить заявку <a href="http://amfoot.ru/?r=roster/fill&team='. $team . '&comp=' . $comp .'">http://amfoot.ru/?r=roster/fill&team='. $team . '&comp=' . $comp .'</a>');
         $_SESSION['message'] = 'Заявка успешно создана';
     }
     else {
