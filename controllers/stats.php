@@ -33,10 +33,13 @@
             SELECT
               count(A.id) AS num, sum(value) AS sumr, team, person
             FROM
-              `stataction` A LEFT JOIN statperson SP ON SP.action = A.id AND SP.persontype = 1
-                LEFT JOIN statchar SC ON SC.action = A.id AND SC.chartype = 1
+              `stataction` A LEFT JOIN statperson SP ON SP.action = A.id
+              JOIN statpersontype SPT ON SP.persontype = SPT.id AND SPT.code = "runner"
+              JOIN statchar SC ON SC.action = A.id
+              JOIN statchartype SCT ON SC.chartype = SCT.id AND SCT.code = "run"
+              JOIN statactiontype AT ON A.actiontype = AT.id
             WHERE
-              `match` = :match AND actiontype = 1
+              `match` = :match AND AT.code = "rush"
             GROUP BY
             person, team
         ) AS stat
@@ -47,9 +50,12 @@
         $result['answer']['pass'] = common_getlist($dbConnect, '
         SELECT stat.*, P.surname, P.name, T.logo FROM (
             SELECT count(A.id) AS num, sum(value) AS sumr, team, person
-            FROM `stataction` A LEFT JOIN statperson SP ON SP.action = A.id AND SP.persontype = 5
-            LEFT JOIN statchar SC ON SC.action = A.id AND SC.chartype = 12
-            WHERE `match` = :match AND actiontype = 2 AND SP.person
+            FROM `stataction` A JOIN statperson SP ON SP.action = A.id
+            JOIN statpersontype SPT ON SP.persontype = SPT.id AND SPT.code = "receiver"
+            JOIN statchar SC ON SC.action = A.id
+            JOIN statchartype SCT ON SC.chartype = SCT.id AND SCT.code = "pass"
+            JOIN statactiontype AT ON A.actiontype = AT.id
+            WHERE `match` = :match AND AT.code = "pass" AND SP.person
             GROUP BY person, team
         ) AS stat
         LEFT JOIN person P ON stat.person = P.id
@@ -94,10 +100,13 @@
                 SELECT
                   count(A.id) AS num, sum(value) AS sumr, team, person
                 FROM
-                  `stataction` A LEFT JOIN statperson SP ON SP.action = A.id AND SP.persontype = 1
-                    LEFT JOIN statchar SC ON SC.action = A.id AND SC.chartype = 1
+                  `stataction` A JOIN statperson SP ON SP.action = A.id AND SP.persontype = 1
+                    JOIN statpersontype SPT ON SP.persontype = SPT.id AND SPT.code = "runner"
+                    JOIN statchar SC ON SC.action = A.id
+                    JOIN statchartype SCT ON SC.chartype = SCT.id AND SCT.code = "run"
+                    JOIN statactiontype AT ON A.actiontype = AT.id
                 WHERE
-                  competition = :comp AND actiontype = 1
+                  competition = :comp AND AT.code = "rush"
                 GROUP BY
                 person, team
             ) AS stat
@@ -108,9 +117,12 @@
         $result['answer']['pass'] = common_getlist($dbConnect, '
             SELECT stat.*, P.surname, P.name, T.logo FROM (
                 SELECT count(A.id) AS num, sum(value) AS sumr, team, person
-                FROM `stataction` A LEFT JOIN statperson SP ON SP.action = A.id AND SP.persontype = 5
-                LEFT JOIN statchar SC ON SC.action = A.id AND SC.chartype = 12
-                WHERE competition = :comp AND actiontype = 2 AND SP.person
+                FROM `stataction` A JOIN statperson SP ON SP.action = A.id
+                JOIN statpersontype SPT ON SP.persontype = SPT.id AND SPT.code = "receiver"
+                JOIN statchar SC ON SC.action = A.id
+                JOIN statchartype SCT ON SC.chartype = SCT.id AND SCT.code = "pass"
+                JOIN statactiontype AT ON A.actiontype = AT.id
+                WHERE competition = :comp AND AT.code = "pass" AND SP.person
                 GROUP BY person, team
             ) AS stat
             LEFT JOIN person P ON stat.person = P.id
