@@ -276,32 +276,49 @@
         $answer['team2roster'] = $team2roster['answer'];
 
         $answer['event'] = common_getlist($dbConnect, '
-            SELECT * FROM (
-                    SELECT
-                        M.id, M.comment, PG.name AS pg, AT.name AS action, T.logo AS team, PT.name AS ch, CONCAT_WS(" ", P.surname, P.name) AS val
-                    FROM
-                        matchevent M LEFT JOIN stataction S ON M.id = S.matchevent
+            SELECT
+                M.id, M.comment, PG.name AS pg, AT.name AS action, T.logo AS team,
+                SP_INFO.surname, SP_INFO.code AS spcode, SP_INFO.spname AS spname,
+                SC_INFO.code AS sccode, SC_INFO.scname AS scname, SC_INFO.value AS scvalue
+            FROM
+        	    matchevent M LEFT JOIN stataction S ON M.id = S.matchevent
                             LEFT JOIN pointsget PG ON PG.id = S.pointsget
                             LEFT JOIN statactiontype AT ON AT.id = S.actiontype
                             LEFT JOIN team T ON T.id = S.team
-                            LEFT JOIN statperson SP ON SP.action = S.id
-                            LEFT JOIN statpersontype PT ON PT.id = SP.persontype
-                            LEFT JOIN person P ON P.id = SP.person
+                            LEFT JOIN (
+                            	SELECT
+                                	GROUP_CONCAT(CONCAT_WS(" ", P.surname, P.name)) AS surname,
+                                        GROUP_CONCAT(SPT.code) AS code,
+                                        GROUP_CONCAT(SPT.name) AS spname,
+                                        SP.action
+                            	FROM
+                                	statperson SP
+                                LEFT JOIN
+                                	person P ON P.id = SP.person
+                                LEFT JOIN
+                                	statpersontype SPT ON SPT.id = SP.persontype
+                                        GROUP BY SP.action
+
+                            ) AS SP_INFO ON SP_INFO.action = S.id
+                            LEFT JOIN (
+                            	SELECT
+                                        GROUP_CONCAT(SCT.code) AS code,
+                                        GROUP_CONCAT(SCT.name) AS scname,
+                                        GROUP_CONCAT(SC.value) AS value,
+                                        SC.action
+                            	FROM
+                                	statchar SC
+
+                                LEFT JOIN
+                                	statchartype SCT ON SCT.id = SC.chartype
+                                        GROUP BY SC.action
+
+                            ) AS SC_INFO ON SC_INFO.action = S.id
+
+
+
                     WHERE
-                        M.`match` = :match
-                    UNION
-                    SELECT
-                        M.id, M.comment, PG.name AS pg, AT.name AS action, T.logo AS team, CT.name AS ch, C.value AS val
-                    FROM
-                        matchevent M LEFT JOIN stataction S ON M.id = S.matchevent
-                            LEFT JOIN pointsget PG ON PG.id = S.pointsget
-                            LEFT JOIN statactiontype AT ON AT.id = S.actiontype
-                            LEFT JOIN team T ON T.id = S.team
-                            LEFT JOIN statchar C ON C.action = S.id
-                            LEFT JOIN statchartype CT ON CT.id = C.chartype
-                    WHERE
-                        M.`match` = :match
-                    ) X ORDER BY X.id DESC
+                        M.`match` = 234 ORDER BY M.id DESC
         ', array(
             'match' => $_GET['match']
         ));

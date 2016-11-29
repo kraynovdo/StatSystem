@@ -36,17 +36,8 @@
 <?}?>
 <?
     $event = $answer['event'];
-    $action = NULL;
-    $flag = false;
 ?>
 <?for ($i = 0; $i < count($event); $i++) {?>
-    <?$flag = true;?>
-    <?if ($action != $event[$i]['id']) {
-        $action = $event[$i]['id']?>
-        <?if ($i > 0) {?>
-            </div></div>
-        <?}?>
-
         <div class="listview-item">
             <a class="main-delLink match-eventDelLink"
                 href="/?r=match/deleteEvent&event=<?=$event[$i]['id']?>&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">[X]</a>
@@ -65,14 +56,31 @@
                 <?}?>
             </div>
             <div class="match-eventAddInfo">
+<?
+    $spArr = explode(",", $event[$i]['spname']);
+    if (count($spArr)) {
+        $surname = explode(",", $event[$i]['surname']);
+    }
+?>
+            <?for ($j = 0; $j < count($spArr); $j++){?>
+                <div class="match-eventChar">
+                    <span><?=$spArr[$j]?></span>
+                    <span><?=$surname[$j]?></span>
+                </div>
             <?}?>
-            <?if($event[$i]['ch']){?>
-            <div class="match-eventChar">
-                <span><?=$event[$i]['ch']?></span>
-                <span><?=$event[$i]['val']?></span>
+<?
+    $scArr = explode(",", $event[$i]['scname']);
+    if (count($spArr)) {
+        $scvalue = explode(",", $event[$i]['scvalue']);
+    }
+?>
+            <?for ($j = 0; $j < count($scArr); $j++){?>
+                <div class="match-eventChar">
+                    <span><?=$scArr[$j]?></span>
+                    <span><?=$scvalue[$j]?></span>
+                </div>
+            <?}?>
             </div>
-            <?}?>
-<?}?>
-<?if ($flag) {?>
-</div></div>
+        </div>
+
 <?}?>
