@@ -277,7 +277,7 @@
 
         $answer['event'] = common_getlist($dbConnect, '
             SELECT
-                M.id, M.comment, PG.name AS pg, AT.name AS action, T.logo AS team,
+                M.id, M.comment, PG.name AS pg, AT.name AS action, T.logo AS team, AT.code,
                 SP_INFO.surname, SP_INFO.code AS spcode, SP_INFO.spname AS spname,
                 SC_INFO.code AS sccode, SC_INFO.scname AS scname, SC_INFO.value AS scvalue
             FROM
@@ -287,7 +287,7 @@
                             LEFT JOIN team T ON T.id = S.team
                             LEFT JOIN (
                             	SELECT
-                                	GROUP_CONCAT(CONCAT_WS(" ", P.surname, P.name)) AS surname,
+                                	GROUP_CONCAT(CONCAT_WS(" ", P.name, P.surname)) AS surname,
                                         GROUP_CONCAT(SPT.code) AS code,
                                         GROUP_CONCAT(SPT.name) AS spname,
                                         SP.action

@@ -57,6 +57,18 @@
         return  $arr;
     }
 
+    function common_twins($needed, $known, $value) {
+        $arrNeeded = explode(",", $needed);
+        $arrKnown = explode(",", $known);
+        if (strlen(array_search($value, $arrKnown))) {
+            return $arrNeeded[array_search($value, $arrKnown)];
+        }
+        else {
+            return '';
+        }
+
+    }
+
     function common_dateToSQL($date) {
         $arr = explode('.', $date);
         $date = $arr[2] . '-' . $arr[1] . '-' . $arr[0];

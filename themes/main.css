@@ -1279,7 +1279,6 @@ textarea {
 }
 .match-eventDelLink {
     float: right;
-    font-size: 24px;
 }
 .match-eventImgContainer {
     width: 50px;
@@ -1295,14 +1294,22 @@ textarea {
     font-style: italic;
 }
 .match-eventPG {
-    color: #258844;
+    color: #30a04f;
+}
+.match-eventTitle {
     font-size: 15px;
     font-weight: bold;
+    min-height: 25px;
+    line-height: 25px;
 }
 .match-eventAction {
     font-size: 14px;
+    min-height: 25px;
+    line-height: 25px;
 }
-
+.match-eventMainInfo {
+    margin-left: 60px;
+}
 .main-crop {
     width: 750px;
     max-height: 750px;
