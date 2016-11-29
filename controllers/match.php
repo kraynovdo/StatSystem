@@ -280,7 +280,7 @@
                     SELECT
                         M.id, M.comment, PG.name AS pg, AT.name AS action, T.logo AS team, PT.name AS ch, CONCAT_WS(" ", P.surname, P.name) AS val
                     FROM
-                        matchevents M LEFT JOIN stataction S ON S.id = M.stataction
+                        matchevent M LEFT JOIN stataction S ON M.id = S.matchevent
                             LEFT JOIN pointsget PG ON PG.id = S.pointsget
                             LEFT JOIN statactiontype AT ON AT.id = S.actiontype
                             LEFT JOIN team T ON T.id = S.team
@@ -293,7 +293,7 @@
                     SELECT
                         M.id, M.comment, PG.name AS pg, AT.name AS action, T.logo AS team, CT.name AS ch, C.value AS val
                     FROM
-                        matchevents M LEFT JOIN stataction S ON S.id = M.stataction
+                        matchevent M LEFT JOIN stataction S ON M.id = S.matchevent
                             LEFT JOIN pointsget PG ON PG.id = S.pointsget
                             LEFT JOIN statactiontype AT ON AT.id = S.actiontype
                             LEFT JOIN team T ON T.id = S.team
@@ -322,17 +322,28 @@
                 break;
             }
         }
+        common_query($dbConnect,'
+            INSERT INTO matchevent
+            (comment, period, `match`)
+            VALUES (:comment, :period, :match)
+            ', array(
+            'comment' => $_POST['comment'],
+            'period' => 1,
+            'match' => $_POST['match'],
+        ));
+        $matchevent = $dbConnect->lastInsertId('id');
         if ($_POST['actionType']) {
             common_query($dbConnect,'
             INSERT INTO stataction
-            (pointsget, actiontype, `match`, team, competition)
-            VALUES (:pointsget, :actiontype, :match, :team, :competition)
+            (pointsget, actiontype, `match`, team, competition, matchevent)
+            VALUES (:pointsget, :actiontype, :match, :team, :competition, :matchevent)
             ', array(
                 'pointsget' => $point,
                 'actiontype' => $_POST['actionType'],
                 'match' => $_POST['match'],
                 'team' => $team,
-                'competition' => $_POST['competition']
+                'competition' => $_POST['competition'],
+                'matchevent' => $matchevent
             ));
             $action = $dbConnect->lastInsertId('id');
 
@@ -370,16 +381,7 @@
             }
 
         }
-        common_query($dbConnect,'
-            INSERT INTO matchevents
-            (comment, stataction, period, `match`)
-            VALUES (:comment, :stataction, :period, :match)
-            ', array(
-            'comment' => $_POST['comment'],
-            'stataction' => $action,
-            'period' => 1,
-            'match' => $_POST['match'],
-        ));
+
         return array(
             'page' => '/?r=match/playbyplay&match=' . $_POST['match'] . '&comp=' . $_POST['competition']
         );
@@ -388,11 +390,7 @@
 
     function match_deleteEvent($dbConnect) {
         $id = $_GET['event'];
-        $evRec = common_getrecord($dbConnect, 'SELECT stataction FROM matchevents WHERE id = :id', array('id' => $id));
-        if ($evRec) {
-            common_query($dbConnect, 'DELETE FROM stataction WHERE id = :id', array('id' => $evRec['stataction']));
-        }
-        common_query($dbConnect, 'DELETE FROM matchevents WHERE id = :id', array('id' => $id));
+        common_query($dbConnect, 'DELETE FROM matchevent WHERE id = :id', array('id' => $id));
         return array(
             'page' => '/?r=match/playbyplay&match=' . $_GET['match'] . '&comp=' . $_GET['comp']
         );
@@ -410,62 +408,3 @@
             'page' => '/?r=match/view&match=' . $_POST['match'] . '&comp=' . $_POST['competition']
         );
     }
-/*
-SELECT
-	M.id, M.comment, PG.name, AT.name, T.name, PT.name AS ch, CONCAT_WS(' ', P.surname, P.name) AS val
-FROM
-	matchevents M LEFT JOIN stataction S ON S.id = M.stataction
-        LEFT JOIN pointsget PG ON PG.id = S.pointsget
-        LEFT JOIN statactiontype AT ON AT.id = S.actiontype
-        LEFT JOIN team T ON T.id = S.team
-        LEFT JOIN statperson SP ON SP.action = S.id
-        LEFT JOIN statpersontype PT ON PT.id = SP.persontype
-        LEFT JOIN person P ON p.id = SP.person
-WHERE
-	M.`match` = 75
-ORDER BY M.id DESC, PT.id DESC
-
-
-
-SELECT
-	M.id, M.comment, PG.name, AT.name, T.name, CT.name AS ch, C.value AS val
-FROM
-	matchevents M LEFT JOIN stataction S ON S.id = M.stataction
-        LEFT JOIN pointsget PG ON PG.id = S.pointsget
-        LEFT JOIN statactiontype AT ON AT.id = S.actiontype
-        LEFT JOIN team T ON T.id = S.team
-        LEFT JOIN statchar C ON C.action = S.id
-        LEFT JOIN statchartype CT ON CT.id = C.chartype
-WHERE
-	M.`match` = 75
-ORDER BY M.id DESC, CT.id DESC
-
-
-
-SELECT * FROM (
-SELECT
-	M.id, M.comment, PG.name AS pg, AT.name AS action, T.name AS team, PT.name AS ch, CONCAT_WS(' ', P.surname, P.name) AS val
-FROM
-	matchevents M LEFT JOIN stataction S ON S.id = M.stataction
-        LEFT JOIN pointsget PG ON PG.id = S.pointsget
-        LEFT JOIN statactiontype AT ON AT.id = S.actiontype
-        LEFT JOIN team T ON T.id = S.team
-        LEFT JOIN statperson SP ON SP.action = S.id
-        LEFT JOIN statpersontype PT ON PT.id = SP.persontype
-        LEFT JOIN person P ON p.id = SP.person
-WHERE
-	M.`match` = 75
-UNION
-SELECT
-	M.id, M.comment, PG.name AS pg, AT.name AS action, T.name AS team, CT.name AS ch, C.value AS val
-FROM
-	matchevents M LEFT JOIN stataction S ON S.id = M.stataction
-        LEFT JOIN pointsget PG ON PG.id = S.pointsget
-        LEFT JOIN statactiontype AT ON AT.id = S.actiontype
-        LEFT JOIN team T ON T.id = S.team
-        LEFT JOIN statchar C ON C.action = S.id
-        LEFT JOIN statchartype CT ON CT.id = C.chartype
-WHERE
-	M.`match` = 75
-) X ORDER BY X.id DESC
- */
