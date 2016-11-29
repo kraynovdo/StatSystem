@@ -318,7 +318,7 @@
 
 
                     WHERE
-                        M.`match` = 234 ORDER BY M.id DESC
+                        M.`match` = :match ORDER BY M.id DESC
         ', array(
             'match' => $_GET['match']
         ));
