@@ -13,6 +13,26 @@
         <col width="50%"/>
     </colgroup>
     <tr>
+        <td class="match_teamhead main-centerAlign">
+            <div class="match-teamLogo">
+                <?if ($answer['match']['t1logo']) {?>
+                    <img style="width:80px" src="//<?=$HOST?>/upload/<?=$answer['match']['t1logo']?>">
+                <?} else {?>
+                    <div class="main-noPhoto">?</div>
+                <?}?>
+            </div>
+        </td>
+        <td class="match_teamhead main-centerAlign">
+            <div class="match-teamLogo">
+                <?if ($answer['match']['t2logo']) {?>
+                    <img style="width:80px" src="//<?=$HOST?>/upload/<?=$answer['match']['t2logo']?>">
+                <?} else {?>
+                    <div class="main-noPhoto">?</div>
+                <?}?>
+            </div>
+        </td>
+    </tr>
+    <tr>
         <td class="match_teamhead main-centerAlign"><h3><?=$answer['match']['t1name']?></h3></td>
         <td class="match_teamhead main-centerAlign"><h3><?=$answer['match']['t2name']?></h3></td>
     </tr>

@@ -205,7 +205,9 @@
             SELECT
               M.id, M.competition, M.team1, M.team2, M.score1, M.score2, date, M.video, M.city, M.timeh, M.timem,
               T1.rus_name AS t1name,
-              T2.rus_name AS t2name
+              T2.rus_name AS t2name,
+              T1.logo AS t1logo,
+              T2.logo AS t2logo
             FROM
               `match` M
             LEFT JOIN team T1 ON T1.id = M.team1
