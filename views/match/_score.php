@@ -1,4 +1,4 @@
-<div class="match-dateinfo">
+<div class="match-dateinfo main-centerAlign">
     <?=common_dateFromSQL($answer['match']['date'])?>
     <?if (strlen($answer['match']['timeh']) && strlen($answer['match']['timeh'])) {?>
         <?=$answer['match']['timeh']?>:<?=$answer['match']['timem']?> (мск.)
@@ -13,8 +13,8 @@
         <col width="50%"/>
     </colgroup>
     <tr>
-        <td class="match_teamhead"><h3><?=$answer['match']['t1name']?></h3></td>
-        <td class="match_teamhead"><h3><?=$answer['match']['t2name']?></h3></td>
+        <td class="match_teamhead main-centerAlign"><h3><?=$answer['match']['t1name']?></h3></td>
+        <td class="match_teamhead main-centerAlign"><h3><?=$answer['match']['t2name']?></h3></td>
     </tr>
     <?
     if (!$answer['match']['score1'] && $answer['match']['score1'] !== '0') {
@@ -31,8 +31,8 @@
     }
     ?>
     <tr>
-        <td class="match_teamhead"><h1><?=$score1?></h1></td>
-        <td class="match_teamhead"><h1><?=$score2?></h1></td>
+        <td class="match_teamhead main-centerAlign"><h1><?=$score1?></h1></td>
+        <td class="match_teamhead main-centerAlign"><h1><?=$score2?></h1></td>
     </tr>
     <?
     if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$answer['match']['team1']]) || ($_SESSION['userComp'][$_GET['comp']] == 1) ) {

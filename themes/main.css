@@ -227,7 +227,6 @@ textarea {
 .main-topNavigation__list {
     overflow: hidden;
     padding: 0 30px;
-    text-align: center;
 }
 .main-topNavigation__point {
     list-style: none;
@@ -396,7 +395,6 @@ textarea {
 }
 .main-infoBlock_results {
     height: auto;
-    text-align: center;
 }
 .main-infoText__content {
     text-transform: capitalize;
@@ -467,11 +465,6 @@ textarea {
 }
 .team-infoText__title {
     margin-bottom: 20px;
-}
-.team-divName {
-    clear: left;
-    text-align: center;
-    padding: 20px 0 0 0;
 }
 .team-clItemContent {
     height: 100px;
@@ -842,7 +835,6 @@ textarea {
 .match-dateinfo {
     margin-bottom: 10px;
     font-size: 14px;
-    text-align: center;
 }
 .match-rostercheck {
     margin-bottom: 20px;
@@ -878,7 +870,6 @@ textarea {
 .match-list_footerItemLeft {
     float: left;
     width: 100%;
-    text-align: center;
     color: #bbbbbb;
 }
 .match-list_footerItemRight {
@@ -931,9 +922,6 @@ textarea {
     vertical-align: top;
 }
 
-.match_teamhead {
-    text-align: center;
-}
 .match_maintable .match_maintable_header {
     padding-top: 20px;
 }
@@ -1112,7 +1100,6 @@ textarea {
 }
 .top10-item_point {
     font-size: 19px;
-    text-align: center;
     line-height: 50px;
     display: inline-block;
     width: 30px;

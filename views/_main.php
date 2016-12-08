@@ -19,7 +19,7 @@
 
     <div class="main-topNavigation">
         <div class="main-min-width">
-            <ul class="main-topNavigation__list">
+            <ul class="main-topNavigation__list main-centerAlign">
                 <? foreach ($navigation as $point => $href) { ?>
                     <li class="main-topNavigation__point"><a class="main-topNavigation__link"
                                                              href="<?= $href ?>"><?= $point ?></a></li>

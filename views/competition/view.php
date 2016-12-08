@@ -1,4 +1,4 @@
-<div class="main-infoBlock main-infoBlock_results">
+<div class="main-infoBlock main-infoBlock_results main-centerAlign">
 
     <br/><h2 style="text-align: center">Результаты матчей</h2>
     <div class="comp-resultsTable">
