@@ -49,28 +49,56 @@
     </div>
 <?}?>
 <?
-$addr = array();
-array_push ($addr, $answer['federation']['country']);
-array_push ($addr, $answer['federation']['region']);
-array_push ($addr, $answer['federation']['city']);
-if ($answer['federation']['street']) {
-    array_push ($addr, $answer['federation']['street']);
-}
-if ($answer['federation']['house']) {
-    array_push ($addr, $answer['federation']['house']);
-}
-if ($answer['federation']['corpse']) {
-    array_push ($addr, 'к(лит) '.$answer['federation']['corpse']);
-}
-if ($answer['federation']['flat']) {
-    array_push ($addr, 'кв(оф) '.$answer['federation']['flat']);
-}
+    $addr = array();
+    array_push ($addr, $answer['federation']['country']);
+    array_push ($addr, $answer['federation']['region']);
+    array_push ($addr, $answer['federation']['city']);
+    if ($answer['federation']['street']) {
+        array_push ($addr, $answer['federation']['street']);
+    }
+    if ($answer['federation']['house']) {
+        array_push ($addr, $answer['federation']['house']);
+    }
+    if ($answer['federation']['corpse']) {
+        array_push ($addr, 'к(лит) '.$answer['federation']['corpse']);
+    }
+    if ($answer['federation']['flat']) {
+        array_push ($addr, 'кв(оф) '.$answer['federation']['flat']);
+    }
 
 ?>
 
 <div class="main-fieldWrapper">
     Адрес - <?=implode(', ', $addr)?>
 </div>
+<?$userfederation = $answer['userfederation'];?>
+<h2>Официальные лица</h2>
+<?if (($_SESSION['userType'] == 3) || ($_SESSION['userFederations'][$_GET['federation']] == 1)) {?>
+    <a href="/?r=userfederation/add&federation=<?=$_GET['federation']?>" class="main-addLink">Добавить</a>
+<?}?>
+<?for ($i = 0; $i < count($userfederation); $i++) {?>
+    <?if (($userfederation[$i]['work']) || ($_SESSION['userType'] == 3) || ($_SESSION['userFederations'][$_GET['federation']])) {?>
+        <div class="listview-item<?if (!$userfederation[$i]['work']){?> federation-itemUser<?}?>">
+        <span class="federation-itemWork">
+            <?=$userfederation[$i]['work']?> -
+        </span>
+            <?=$userfederation[$i]['surname'] . ' ' . $userfederation[$i]['name'] . ' ' . $userfederation[$i]['patronymic']?>
+            <?
+            $contArr = array();
+            if ($userfederation[$i]['phone']) {
+                array_push($contArr, 'тел: '.$userfederation[$i]['phone']);
+            }
+            if ($userfederation[$i]['email']) {
+                array_push($contArr, 'e-mail: '.$userfederation[$i]['email']);
+            }
+            ?>
+            (<?=implode($contArr, ', ')?>)
+            <?if ((($_SESSION['userType'] == 3)) || (($_SESSION['userFederations'][$_GET['federation']] == 1)) && $userfederation[$i]['person'] != $_SESSION['userPerson']) {?>
+                <a class="main-delLink" href="/?r=userfederation/delete&uf=<?=$userfederation[$i]['uf']?>&federation=<?=$_GET['federation']?>">[X]</a>
+            <?}?>
+        </div>
+    <?}?>
+<?}?>
 <?if ($answer['federation']['type'] == 1) {?>
     <h2>Состав федерации</h2>
     <div class="federation-listPart">

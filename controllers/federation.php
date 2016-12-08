@@ -23,7 +23,6 @@
                 'Соревнования' => '/?r=competition/index&federation='. $federation,
                 'Команды' => '/?r=team&federation='. $federation,
                 'Документы' => '/?r=document&federation='. $federation,
-                'Лица'  => '/?r=userfederation/index&federation='. $federation,
                 'Контакты' => '/?r=federation/view&federation='. $federation,
                 'Товарищеские матчи' => '/?r=friendlymatch&federation='. $federation
                 /*'Статистика' => '/?r=person/stat&id='.$_GET['id'],
@@ -155,6 +154,11 @@
         }
         $result['answer']['countries'] = $countries;
         $result['answer']['regions'] = $regions;
+
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/userfederation.php');
+        $userfed = userfederation_index($dbConnect, $CONSTPath, $_GET['federation']);
+        $result['answer']['userfederation'] = $userfed['answer'];
+
         return $result;
     }
 

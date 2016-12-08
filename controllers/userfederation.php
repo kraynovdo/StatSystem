@@ -94,7 +94,7 @@
                 , $params
             );
             return array(
-                'page' => '/?r=userfederation/index&federation=' . $_POST['federation']
+                'page' => '/?r=federation/view&federation=' . $_POST['federation']
             );
         }
         else {
@@ -112,7 +112,7 @@
                 )
             );
             return array(
-                'page' => '/?r=userfederation/index&federation=' . $_GET['federation']
+                'page' => '/?r=federation/view&federation=' . $_GET['federation']
             );
         }
         else {
