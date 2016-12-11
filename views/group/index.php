@@ -1,6 +1,6 @@
-<h2>Дивизионы</h2>
+<h2>Группы</h2>
 <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
-    <a class="main-addLink" href="/?r=group/add&comp=<?=$_GET['comp']?>">Добавить дивизион</a>
+    <a class="main-addLink" href="/?r=group/add&comp=<?=$_GET['comp']?>">Добавить группу</a>
 <?}?>
 <div class="listview">
 

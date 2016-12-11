@@ -39,7 +39,7 @@
             $res['menu']['Статистика'] = '/?r=stats/compAF&comp=' . $id;
         }
         if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {
-            $res['menu']['* Дивизоны'] = '/?r=group&comp=' . $id;
+            $res['menu']['* Группы'] = '/?r=group&comp=' . $id;
             $res['menu']['* Заявки'] = '/?r=roster/complist&comp=' . $id;
         }
         return $res;

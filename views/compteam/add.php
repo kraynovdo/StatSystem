@@ -19,10 +19,10 @@
         </select>
     </div>
     <div class="main-fieldWrapper">
-        <label class="main-label_top">Дивизион</label>
+        <label class="main-label_top">Группа</label>
         <?$group = $answer['group'];?>
         <select name="group"<?if (count($group)){?> data-validate="req"<?}?>>
-            <option value="">-Выберите дивизион-</option>
+            <option value="">-Выберите группу-</option>
 
 
 

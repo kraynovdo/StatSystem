@@ -1,4 +1,4 @@
-<h2>Добавление дивизиона</h2>
+<h2>Добавление группы</h2>
 <form action="/?r=group/create" method="POST">
     <input type="hidden" value="<?=$_GET['comp']?>" name="comp"/>
     <p>
