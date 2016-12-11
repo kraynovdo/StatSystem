@@ -6,6 +6,17 @@
         <input type="text" class="main-date" name="date" data-validate="req"/>
     </div>
     <div class="main-fieldWrapper">
+        <label class="main-label_top">Группа</label>
+        <select name="group">
+            <option value="">-Выберите группу-</option>
+            <?
+            $group = $answer['group'];
+            for ($i = 0; $i < count($group); $i++) {?>
+                <option value="<?=$group[$i]['id']?>"><?=$group[$i]['name']?></option>
+            <?   }?>
+        </select>
+    </div>
+    <div class="main-fieldWrapper">
         <label class="main-label_top">Команда - хозяин</label>
         <select name="team1" data-validate="req" class="match-teamHome">
             <option value="">-Выберите команду-</option>

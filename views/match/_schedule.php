@@ -36,7 +36,7 @@
             </div>
             <div class="match-list_itemFooter clearfix">
                 <div class="match-list_footerItemLeft main-centerAlign">
-                    <?if ($match[$i]['g1'] == $match[$i]['g2']){?><span class="match-list_itemDivName"><?=$match[$i]['g1name']?></span><?}?>
+                    <?if ($match[$i]['g']){?><span class="match-list_itemDivName"><?=$match[$i]['gname']?></span><?}?>
                     <?if ($match[$i]['city']){?><?=$match[$i]['city']?><?}?>
                     <?if ($match[$i]['timeh']){?><?=$match[$i]['timeh']?>:<?=$match[$i]['timem']?><?}?>
                 </div>

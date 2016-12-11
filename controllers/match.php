@@ -12,8 +12,7 @@
             $join .= '
             LEFT JOIN `compteam` C1 ON C1.competition = :competition AND C1.team = T1.id
             LEFT JOIN `compteam` C2 ON C2.competition = :competition AND C2.team = T2.id
-            LEFT JOIN `group` G1 ON G1.id = C1.group
-            LEFT JOIN `group` G2 ON G2.id = C2.group';
+            LEFT JOIN `group` G ON G.id = M.group';
             $params['competition'] = $comp;
 
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
@@ -29,7 +28,7 @@
               M.id, M.competition, M.team1, M.team2, M.score1, M.score2, date, M.city, M.timeh, M.timem,
               T1.rus_name AS t1name, T1.logo AS t1logo,
               T2.rus_name AS t2name, T2.logo AS t2logo,
-	      G1.id as g1, G2.id as g2, G1.name as g1name, G2.name as g2name
+	      G.id as g, G.name as gname
             FROM
               `match` M
             LEFT JOIN team T1 ON T1.id = M.team1
@@ -50,11 +49,14 @@
         if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/team.php');
             $team = team_complist($dbConnect, $CONSTPath);
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/group.php');
+            $group = group_index($dbConnect, $CONSTPath);
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
             $result = array(
                 'navigation' => competition_NAVIG($dbConnect, $_GET['comp']),
                 'answer' => array(
-                    'team' => $team['answer']
+                    'team' => $team['answer'],
+                    'group' => $group['answer']
                 )
             );
             return $result;
@@ -68,13 +70,14 @@
         if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {
             $matchMeta = match_add($dbConnect, $CONSTPath);
             $queryresult = $dbConnect->prepare('
-                SELECT M.id, M.competition, M.team1, M.team2, M.date, M.score1, M.score2, M.city, M.timeh, M.timem FROM `match` M
+                SELECT M.id, M.competition, M.team1, M.team2, M.date, M.score1, M.score2, M.city, M.timeh, M.timem, M.group FROM `match` M
                 WHERE id = :match
             ');
             $queryresult->execute(array(
                 'match' => $_GET['match']
             ));
             $match = $queryresult->fetchAll();
+
             $matchMeta['answer']['match'] = $match;
             return $matchMeta;
         }
@@ -86,8 +89,8 @@
         if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_POST['comp']] == 1)) {
             $comp = $_POST['comp'];
             $queryresult = $dbConnect->prepare('
-                INSERT INTO `match` (team1, team2, `date`, competition, city, timeh, timem)
-                VALUES (:team1, :team2, :date, :comp, :city, :timeh, :timem)
+                INSERT INTO `match` (team1, team2, `date`, competition, city, timeh, timem, `group`)
+                VALUES (:team1, :team2, :date, :comp, :city, :timeh, :timem, :group)
             ');
             if (!$_POST['timeh']) {
                 $timeh = NULL;
@@ -112,7 +115,8 @@
                 'comp' => $comp,
                 'city' => $_POST['city'],
                 'timeh' => $timeh,
-                'timem' => $timem
+                'timem' => $timem,
+                'group' => $_POST['group']
             ));
             return array(
                 'page' => '/?r=match&comp='.$comp
@@ -134,7 +138,8 @@
                 'team2' => $_POST['team2'],
                 'date' => common_dateToSQL($_POST['date']),
                 'match' => $match,
-                'city' => $_POST['city']
+                'city' => $_POST['city'],
+                'group' => $_POST['group']
             );
 
 
@@ -169,7 +174,7 @@
 
             $queryresult = $dbConnect->prepare('
                     UPDATE `match` SET team1 = :team1, team2 = :team2, `date` = :date, score1 = :score1, score2 = :score2,
-                    city = :city, timeh = :timeh, timem = :timem
+                    city = :city, timeh = :timeh, timem = :timem, `group` = :group
                     WHERE id = :match
                 ');
 
