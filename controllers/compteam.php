@@ -1,6 +1,6 @@
 <?php
     function compteam_add($dbConnect, $CONSTPath) {
-        if ($_SESSION['userType'] == 3) {
+        if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {
             $result = array();
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
             $result['navigation'] = competition_NAVIG($dbConnect, $_GET['comp']);
@@ -21,7 +21,7 @@
     }
 
     function compteam_create($dbConnect, $CONSTPath) {
-        if ($_SESSION['userType'] == 3) {
+        if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_POST['comp']] == 1)) {
             $group = null;
             if ($_POST['group']) {
                 $group = $_POST['group'];
@@ -49,7 +49,7 @@
 
     function compteam_delete($dbConnect, $CONSTPath) {
 
-        if ($_SESSION['userType'] == 3) {
+        if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {
             $queryresult = $dbConnect->prepare('
                     DELETE FROM
                       `compteam`

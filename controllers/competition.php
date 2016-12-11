@@ -176,11 +176,16 @@
     }
 
     function competition_admin($dbConnect, $CONSTPath) {
-        $result = array();
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
-        $result['navigation'] = competition_NAVIG($dbConnect, $_GET['comp']);
-        $result['answer'] = common_getlist($dbConnect, 'SELECT id, name FROM `group` WHERE competition = :comp', array('comp' => $_GET['comp']));
-        return $result;
+        if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {
+            $result = array();
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
+            $result['navigation'] = competition_NAVIG($dbConnect, $_GET['comp']);
+            $result['answer'] = common_getlist($dbConnect, 'SELECT id, name FROM `group` WHERE competition = :comp', array('comp' => $_GET['comp']));
+            return $result;
+        }
+        else {
+            return 'ERROR-403';
+        }
     }
 
     function competition_create($dbConnect, $CONSTPath) {

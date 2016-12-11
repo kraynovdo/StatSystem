@@ -1,5 +1,5 @@
 <h2>Команды</h2>
-<?if ($_SESSION['userType'] == 3) {?>
+<?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
     <a href="/?r=compteam/add&comp=<?=$_GET['comp']?>">Добавить команду</a>
 <?}?>
 <div class="listview">
@@ -34,7 +34,7 @@
                     <span class="team-clCity"><?=$answer[$i]['city']?></span>
                     <div class="team-clLinks">
                         <a target="_blank" href="/?r=roster&team=<?=$answer[$i]['id']?><?=$filter?>">Состав</a>
-                        <?if ($_SESSION['userType'] == 3) {?>
+                        <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
                             <a class="main-delLink main-danger" href="/?r=compteam/delete&id=<?=$answer[$i]['ctid']?>&comp=<?=$_GET['comp']?>">Удалить</a>
                         <?}?>
                     </div>
