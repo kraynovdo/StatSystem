@@ -16,7 +16,7 @@
         <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?9"/>
     <?}?>
     <?if ($IS_MOBILE) {?>
-        <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main_mobile_s.css?34"/>
+        <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main_mobile_s.css?35"/>
     <?}?>
     <link rel="shortcut icon" href="//<?=$HOST?>/themes/img/fafr_logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery-ui.css">

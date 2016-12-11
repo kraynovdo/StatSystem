@@ -276,3 +276,17 @@ table {
 .roster-confirm:not(.roster-confirm_1) {
    border: 1px dotted #ccc;
 }
+
+.po-name {
+   display: none;
+}
+.po-match {
+   width: 90%;
+}
+.po-date {
+   font-size: 11px;
+}
+
+.po-count {
+   font-size: 20px;
+}
