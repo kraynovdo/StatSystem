@@ -247,6 +247,9 @@ textarea {
     text-decoration: none;
     border-bottom-color: #ffffff;
 }
+.main-navig2_link {
+    margin-right: 10px;
+}
 .main-leftColumn {
     float: left;
     width: 210px;
@@ -840,9 +843,6 @@ textarea {
 .match-timeField {
     width: 28px;
 }
-.matchview-navigLink {
-    margin-right: 10px;
-}
 
 .match-dateinfo {
     margin-bottom: 10px;
@@ -1015,7 +1015,9 @@ textarea {
     padding-right: 10px;
 }
 
-
+.comp-navig2 {
+    margin-bottom: 30px;
+}
 .comp-resultsTable {
     display: inline-block;
     margin-bottom: 20px;

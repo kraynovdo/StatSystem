@@ -39,8 +39,7 @@
             $res['menu']['Статистика'] = '/?r=stats/compAF&comp=' . $id;
         }
         if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {
-            $res['menu']['* Группы'] = '/?r=group&comp=' . $id;
-            $res['menu']['* Заявки'] = '/?r=roster/complist&comp=' . $id;
+            $res['menu']['* Управление'] = '/?r=competition/admin&comp=' . $id;
         }
         return $res;
     }
@@ -174,6 +173,14 @@
                 'team' => $team['answer']
             )
         );
+    }
+
+    function competition_admin($dbConnect, $CONSTPath) {
+        $result = array();
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
+        $result['navigation'] = competition_NAVIG($dbConnect, $_GET['comp']);
+        $result['answer'] = common_getlist($dbConnect, 'SELECT id, name FROM `group` WHERE competition = :comp', array('comp' => $_GET['comp']));
+        return $result;
     }
 
     function competition_create($dbConnect, $CONSTPath) {
