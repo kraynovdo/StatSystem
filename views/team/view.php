@@ -25,7 +25,7 @@
         <h2>Календарь игр</h2>
         <?if (count($answer['comps'])) {?>
             <div class="main-fieldWrapper">
-                <label>Турнир - </label>
+                <label>Турнир </label>
                 <select class="team-compSelector">
                     <?for ($i = 0; $i < count($answer['comps']); $i++) {?>
                         <option value="<?=$answer['comps'][$i]['id']?>"

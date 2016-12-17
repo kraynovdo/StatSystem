@@ -23,6 +23,10 @@
             $filter .= ' AND (M.team1 = :team OR M.team2 = :team)';
             $params['team'] = $team;
         }
+        if ($_GET['group']) {
+            $filter .= ' AND M.group = :group';
+            $params['group'] = $_GET['group'];
+        }
         $query = '
             SELECT
               M.id, M.competition, M.team1, M.team2, M.score1, M.score2, date, M.city, M.timeh, M.timem,
@@ -40,8 +44,10 @@
         $queryresult = $dbConnect->prepare($query);
         $queryresult->execute($params);
         $dataset = $queryresult->fetchAll();
-        $result['answer'] = $dataset;
-
+        $result['answer']['match'] = $dataset;
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/group.php');
+        $group = group_index($dbConnect, $CONSTPath);
+        $result['answer']['group'] = $group['answer'];
         return $result;
     }
 

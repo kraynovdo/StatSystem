@@ -119,7 +119,7 @@
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/match.php');
 
         $match = match_index($dbConnect, $CONSTPath, $_GET['team'], $compId);
-        $result['answer']['match'] = $match['answer'];
+        $result['answer']['match'] = $match['answer']['match'];
         $result['answer']['comps'] = $comps;
         $result['answer']['compId'] = $compId;
         return $result;
