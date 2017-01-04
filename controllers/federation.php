@@ -25,10 +25,6 @@
                 'Документы' => '/?r=document&federation='. $federation,
                 'Контакты' => '/?r=federation/view&federation='. $federation,
                 'Товарищеские матчи' => '/?r=friendlymatch&federation='. $federation
-                /*'Статистика' => '/?r=person/stat&id='.$_GET['id'],
-                /*'Карьера' => '/?r=person/stat&id='.$_GET['id'],
-                'Биография' => '/?r=person/stat&id='.$_GET['id'],
-                'Галерея' => '/?r=person/stat&id='.$_GET['id']*/
             ),
             'header' => $header,
             'title' => $fedInfo['fullname'],
@@ -41,6 +37,9 @@
         }
         return $navig;
     }
+
+
+
     function federation_index($dbConnect, $CONSTPath) {
         if ($_SESSION['userID'] && ($_SESSION['userType'] == 3)) {
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/admin.php');
@@ -431,4 +430,16 @@
                 'page' => '/?r=federation/view&federation='.$federation
             );
         }
+    }
+
+
+    function federation_info ($dbConnect, $CONSTPath) {
+        $result = array();
+        if ($_GET['federation'] == 11) {
+            $result['navigation'] = array(
+                'code' => 'main'
+            );
+        }
+
+        return $result;
     }

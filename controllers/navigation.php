@@ -6,6 +6,9 @@
             $queryArgs['par'] = $par;
             $queryFilter .= ' AND parent = :par';
         }
+        else {
+            $queryFilter .= ' AND parent IS NULL';
+        }
         $result = common_getlist($dbConnect, '
             SELECT
               id, title, href, alias

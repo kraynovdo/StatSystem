@@ -120,8 +120,11 @@ textarea {
     width: 1000px;
     margin: 0 auto;
 }
-.main-content {
+.main-middle {
 
+}
+.main-content {
+    background: #ffffff;
 }
 
 
@@ -221,7 +224,6 @@ textarea {
     font-size: 0;
 }
 .main-topNavigation__point {
-    list-style: none;
     display: inline-block;
 }
 .main-topNavigation__link {
@@ -237,9 +239,43 @@ textarea {
     font-size: 13px;
 }
 .main-topNavigation__link:hover {
-    text-decoration: none;
-    border-bottom-color: #ffffff;
+    background-color: #025b97;
+}
+.main-topNavigation__link:hover, .main-topNavigation__link:active {
     color: #ffffff;
+    text-decoration: none;
+}
+.main-topNavigation__link__selected {
+    border-bottom-color: #ffffff;
+    background-color: transparent;
+}
+
+.main-lvl2Navigation {
+    margin-bottom: 41px;
+}
+.main-lvl2Navigation__link {
+    height : 58px;
+    line-height: 58px;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+    border-bottom: 3px solid #025b97;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #0071bc;
+}
+.main-lvl2Navigation__link:hover {
+    background-color: #025b97;
+}
+.main-lvl2Navigation__link:hover, .main-topNavigation__link:active {
+    color: #ffffff;
+    text-decoration: none;
+}
+.main-lvl2Navigation__link__selected {
+    border-bottom-color: #b8b8b8;
+    background-color: #ffffff !important;
+    color: #000000 !important;
 }
 
 
@@ -265,6 +301,42 @@ textarea {
     text-align: center;
     line-height: 200px;
 }
+
+.main-lvl3Navigation {
+    bottom: 0;
+    white-space: nowrap;
+}
+.main-lvl3Navigation__list {
+    overflow: hidden;
+    font-size: 0;
+}
+.main-lvl3Navigation__point {
+    display: inline-block;
+}
+.main-lvl3Navigation__link {
+    height : 60px;
+    line-height: 60px;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: #0071bc;
+    box-sizing: border-box;
+    padding: 0 20px;
+    font-size: 13px;
+}
+.main-lvl3Navigation__link:hover {
+    background-color: #025b97;
+}
+.main-lvl3Navigation__link:hover, .main-topNavigation__link:active {
+    color: #ffffff;
+    text-decoration: none;
+}
+.main-lvl3Navigation__link__selected {
+    color: #000000 !important;
+    background-color: #ffffff !important;
+}
+
 
 .main-error {
     border: 1px #880000;

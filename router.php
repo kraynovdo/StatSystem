@@ -61,7 +61,7 @@
         $page = $result['page'];
         if (!$page) {
             if (strpos($action, 'print') === false) {
-                if ($controller == 'start') {
+                if ($result['navigation']['code']) {
                     require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/views/main2.php');
                 }
                 else {
