@@ -9,7 +9,7 @@
         </div>
         <div class="main-topNavigation">
             <ul class="main-topNavigation__list">
-                <? foreach ($navigation as $point => $href) { ?>
+                <? foreach ($NAVIGATION as $point => $href) { ?>
                     <li class="main-topNavigation__point"><a class="main-topNavigation__link"
                                                              href="<?= $href ?>"><?= $point ?></a></li>
                 <? } ?>

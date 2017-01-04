@@ -1,11 +1,7 @@
 <?php
     function start_NAVIG() {
         $navig_arr = array(
-            'Главная' => '/',
-            'Фафр' => '/',
-            'Турниры' => '/',
-            'Сборные' => '/',
-            'Регионы' => '/'
+            'code' => 'main'
         );
         return $navig_arr;
     }

@@ -56,7 +56,7 @@
         }
 
     }
-    else{
+    else {
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/views/_viewconfig.php');
         $page = $result['page'];
         if (!$page) {

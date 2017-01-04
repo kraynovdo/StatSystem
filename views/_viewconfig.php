@@ -1,17 +1,26 @@
 <?php
     /*View*/
-    $theme = '';
-    if ($result['navigation']['theme']) {
-        $theme = $result['navigation']['theme'];
-    }
-    $logo = 'themes/img/fafr_logo.png';
     if (isset($result['navigation'])) {
-        if (!isset($result['navigation']['menu'])) {
-            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/start.php');
-            $navigation = start_NAVIG();
+        $theme = '';
+        if ($result['navigation']['theme']) {
+            $theme = $result['navigation']['theme'];
+        }
+        $logo = 'themes/img/fafr_logo.png';
+
+        /*Обработка меню навигации*/
+        if ($result['navigation']['code']) {
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/navigation.php');
+            $navArr = navigation_list($dbConnect, $CONSTPath, $result['navigation']['code']);
+            $navAlias = $controller.'/'.$action;
+            for ($i = 0; $i < count($navArr); $i++) {
+                $NAVIGATION[$navArr[$i]['title']] = $navArr[$i]['href'];
+                if ($navArr[$i]['alias'] == $navAlias) {
+                    $NAVCURRENT = $navArr[$i]['title'];
+                }
+            }
         }
         else {
-            $navigation = $result['navigation'] ? $result['navigation']['menu'] : array();
+            $NAVIGATION = $result['navigation']['menu'] ? $result['navigation']['menu'] : array();
         }
 
         $header = $result['navigation']['header'] ? $result['navigation']['header'] : 'Федерация американского футбола России';
@@ -33,6 +42,7 @@
     } else {
         require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/start.php');
         $navigation = start_NAVIG();
+        $navigation = $navigation['menu'];
         $header = '';
     }
 
