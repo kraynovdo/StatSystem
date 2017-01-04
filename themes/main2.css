@@ -650,9 +650,6 @@ textarea {
 .roster-grid tr {
     height: 18px;
 }
-.roster-grid td:hover .roster-confirm{
-    background: url('img/success.png');
-}
 .roster-confirm {
     display: inline-block;
     width: 16px;
@@ -661,7 +658,7 @@ textarea {
     position: absolute;
     top: 5px;
 }
-.roster-confirm.roster-confirm_1 {
+.roster-confirm.roster-confirm_1, .roster-confirm.roster-confirm_0:hover {
     display: inline-block;
     background-repeat: no-repeat;
     background-position: center center;
