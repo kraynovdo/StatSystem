@@ -1,11 +1,12 @@
 <?php
     function start_NAVIG() {
         $navig_arr = array(
-                'Главная страница' => '/'
+            'Главная' => '/',
+            'Фафр' => '/',
+            'Турниры' => '/',
+            'Сборные' => '/',
+            'Регионы' => '/'
         );
-        if ($_SESSION['userID'] && $_SESSION['userType'] == 3) {
-            $navig_arr['Администрирование'] = '/?r=admin';
-        }
         return $navig_arr;
     }
     function start_index(){
