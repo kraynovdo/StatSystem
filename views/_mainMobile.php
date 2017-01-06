@@ -14,7 +14,7 @@
     </div>
     <div class="main-navigation main-hidden">
         <ul class="main-navigation__list">
-            <?foreach($navigation as $point => $href) {?>
+            <?foreach($NAVIGATION as $point => $href) {?>
                 <li class="main-navigation__point"><a class="main-navigation__link" href="<?=$href?>"><?=$point?></a></li>
             <?}?>
         </ul>

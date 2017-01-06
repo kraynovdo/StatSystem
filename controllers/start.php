@@ -8,6 +8,5 @@
     function start_index(){
         $result = array();
         $result['navigation'] = start_NAVIG();
-        $result['answer'] = 'Главная страница';
         return $result;
     }
