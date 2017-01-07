@@ -444,17 +444,60 @@
         return $result;
     }
 
-function federation_func ($dbConnect, $CONSTPath) {
-    $result = array();
-    if ($_GET['federation'] == 11) {
-        $result['navigation'] = array(
-            'code' => 'main'
-        );
+    function federation_func ($dbConnect, $CONSTPath) {
+        $result = array();
+        if ($_GET['federation'] == 11) {
+            $result['navigation'] = array(
+                'code' => 'main'
+            );
+        }
+
+        return $result;
     }
 
-    return $result;
-}
+    function federation_history($dbConnect, $CONSTPath) {
+        if ($_GET['federation'] == 11) {
+            $result['navigation'] = array(
+                'code' => 'main'
+            );
+        }
 
+        return $result;
+    }
+
+    function federation_contacts ($dbConnect, $CONSTPath) {
+        $result = array();
+        if ($_GET['federation'] == 11) {
+            $result['navigation'] = array(
+                'code' => 'main'
+            );
+        }
+
+        return $result;
+    }
+    function federation_logo ($dbConnect, $CONSTPath) {
+        $result = array();
+        if ($_GET['federation'] == 11) {
+            $result['navigation'] = array(
+                'code' => 'main'
+            );
+        }
+        $result['answer'] = array();
+        $federation = federation_read($dbConnect, $CONSTPath);
+        $result['answer']['federation'] = $federation;
+
+        return $result;
+    }
+    function federation_presentation ($dbConnect, $CONSTPath) {
+        $result = array();
+        if ($_GET['federation'] == 11) {
+            $result['navigation'] = array(
+                'code' => 'main'
+            );
+        }
+
+        return $result;
+    }
     function federation_face ($dbConnect, $CONSTPath) {
         $result = array();
         if ($_GET['federation'] == 11) {
