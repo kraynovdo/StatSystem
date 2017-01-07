@@ -10,18 +10,18 @@ body {
     font-family : Trebuchet MS, Helvetica, sans-serif;
     background: #E0E0E0;
     overflow-y: scroll;
-    color : #20232C;
+    color : #000000;
     height: 100%;
 }
 table {
     font-size: inherit;
 }
 a {
-    color: #4b5c82;
-    text-decoration: none;
+    color: #0071bc;
+    text-decoration: underline;
 }
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 h1, h2, h3, h4 {
     font-weight: normal;
@@ -125,6 +125,8 @@ textarea {
 }
 .main-content {
     background: #ffffff;
+    padding: 22px;
+    box-sizing: border-box;
 }
 
 
@@ -1314,6 +1316,38 @@ textarea {
     width: 150px;
     height: 150px;
     line-height: 150px;
+}
+.federation-faceItem {
+    overflow: hidden;
+    margin-bottom: 33px;
+}
+.federation-faceAvatar {
+    width: 110px;
+    height: 110px;
+    box-sizing: border-box;
+    float: left;
+    border-radius: 55px;
+    overflow: hidden;
+    border: 8px solid #0071bc;
+}
+
+.federation-faceAvatar .main-noPhoto {
+    width: 110px;
+    height: 110px;
+    line-height: 110px;
+    font-size: 110px;
+    margin: -8px;
+}
+.federation-faceAvatar img{
+    margin: -8px;
+}
+
+.federation-faceInfo {
+    margin: 26px 0 0 147px;
+}
+.federation-faceFio {
+    font-size: 15px;
+    text-transform: uppercase;
 }
 .federation-workField {
     display: none;

@@ -1,1 +1,4 @@
-<h2>Раздел "главная" в разработке</h2>
+<?
+    $news = $answer['news'];
+    include ($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/views/news/_list.php')
+?>

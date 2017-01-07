@@ -443,3 +443,18 @@
 
         return $result;
     }
+
+    function federation_face ($dbConnect, $CONSTPath) {
+        $result = array();
+        if ($_GET['federation'] == 11) {
+            $result['navigation'] = array(
+                'code' => 'main'
+            );
+        }
+
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/userfederation.php');
+        $userfed = userfederation_index($dbConnect, $CONSTPath, $_GET['federation']);
+        $result['answer']['userfederation'] = $userfed['answer'];
+
+        return $result;
+    }

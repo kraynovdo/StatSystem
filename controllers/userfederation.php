@@ -19,7 +19,7 @@
         $result = array();
         $result['answer'] = common_getlist($dbConnect,
             'SELECT
-                person, federation, P.name, P.surname, P.patronymic, P.phone, P.email, F.name AS fname, F.fullname, UF.type, UF.work, UF.id AS uf
+                person, federation, P.avatar, P.name, P.surname, P.patronymic, P.phone, P.email, F.name AS fname, F.fullname, UF.type, UF.work, UF.id AS uf
              FROM
                 userfederation UF LEFT JOIN person P ON P.id = UF.person
                 LEFT JOIN federation F ON F.id = UF.federation' . $where . ' ORDER BY UF.type',
