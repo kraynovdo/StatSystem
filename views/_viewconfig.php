@@ -6,44 +6,79 @@
             $theme = $result['navigation']['theme'];
         }
         $logo = 'themes/img/fafr_logo.png';
-
         /*Обработка меню навигации*/
         if ($result['navigation']['code']) {
+
             $navAlias = $controller.'/'.$action;
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/navigation.php');
-            $navArr = navigation_list($dbConnect, $CONSTPath, $result['navigation']['code']);
+            $navList = navigation_list($dbConnect, $CONSTPath, $result['navigation']['code']);
 
-            for ($i = 0; $i < count($navArr); $i++) {
-                $NAVIGATION[$navArr[$i]['title']] = $navArr[$i]['href'];
-                if ($navArr[$i]['alias'] == $navAlias) {
-                    $NAVCURRENT = $navArr[$i]['title'];
-                    $NAVCURRENTID = $navArr[$i]['id'];
+            $lvl = 1;
+            $NAVCURRENT = NULL; $NAVCURRENT2 = NULL; $NAVCURRENT3 = NULL;
+            $path = array();
+            $ids = array();
+
+            for ($i = 0; $i < count($navList); $i++) {
+                if ($navList[$i]['alias'] == $navAlias) {
+                    $parent = $navList[$i]['parent'];
+                    array_unshift($path, $navList[$i]['parent']);
+                    array_unshift($ids, $navList[$i]['id']);
+                    break;
                 }
             }
 
-            if ($NAVCURRENTID) {
-                $navArr = navigation_list($dbConnect, $CONSTPath, $result['navigation']['code'], $NAVCURRENTID);
-                for ($i = 0; $i < count($navArr); $i++) {
-                    $NAVIGATION2[$navArr[$i]['title']] = $navArr[$i]['href'];
-                    if ($navArr[$i]['alias'] == $navAlias) {
-                        $NAVCURRENT2 = $navArr[$i]['title'];
-                        $NAVCURRENTID2 = $navArr[$i]['id'];
+            //Идем вверх
+            while ($parent) {
+                for ($i = 0; $i < count($navList); $i++) {
+                    if ($navList[$i]['id'] == $parent) {
+                        $parent = $navList[$i]['parent'];
+                        array_unshift($path, $navList[$i]['parent']);
+                        array_unshift($ids, $navList[$i]['id']);
+                        break;
                     }
                 }
             }
-            if ($NAVCURRENTID2) {
-                $navArr = navigation_list($dbConnect, $CONSTPath, $result['navigation']['code'], $NAVCURRENTID2);
-                for ($i = 0; $i < count($navArr); $i++) {
-                    $NAVIGATION3[$navArr[$i]['title']] = $navArr[$i]['href'];
-                    if ($navArr[$i]['alias'] == $navAlias) {
-                        $NAVCURRENT3 = $navArr[$i]['title'];
-                        $NAVCURRENTID3 = $navArr[$i]['id'];
+            //Идем вниз
+            $go = false;
+            $parent = $ids[count($path) - 1];
+            do {
+                $go = false;
+                for ($i = 0; $i < count($navList); $i++) {
+                    if ($navList[$i]['parent'] == $parent) {
+                        $go = true;
+                        $parent = $navList[$i]['id'];
+                        array_push($path, $navList[$i]['parent']);
+                        array_push($ids, $parent);
+                        break;
                     }
                 }
+            } while($go);
+
+            for ($i = 0; $i < count($navList); $i++) {
+                if (strlen($path[0]) && $navList[$i]['parent'] == $path[0]) {
+                    $NAVIGATION[$navList[$i]['title']] = $navList[$i]['href'];
+                }
+                if (strlen($path[1]) && $navList[$i]['parent'] == $path[1]) {
+                    $NAVIGATION2[$navList[$i]['title']] = $navList[$i]['href'];
+                }
+                if (strlen($path[2]) && $navList[$i]['parent'] == $path[2]) {
+                    $NAVIGATION3[$navList[$i]['title']] = $navList[$i]['href'];
+                }
+
+                if (strlen($ids[0]) && $navList[$i]['id'] == $ids[0]) {
+                    $NAVCURRENT = $navList[$i]['title'];
+                }
+                if (strlen($ids[0]) && $navList[$i]['id'] == $ids[1]) {
+                    $NAVCURRENT2 = $navList[$i]['title'];
+                }
+                if (strlen($ids[0]) && $navList[$i]['id'] == $ids[2]) {
+                    $NAVCURRENT3 = $navList[$i]['title'];
+                }
             }
+
         }
         else {
-            $NAVIGATION = $result['navigation']['menu'] ? $result['navigation']['menu'] : array();
+            $NAVIGATION = $result['navigation']['menu'] ? $result['navigation']['menu'] : array('Главная' => '/');
         }
         /**/
 
@@ -68,9 +103,10 @@
         }
     } else {
         require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/start.php');
-        $navigation = start_NAVIG();
-        $navigation = $navigation['menu'];
+        $NAVIGATION = array('Главная' => '/');
         $header = '';
+        $logo = 'themes/img/fafr_logo.png';
+        $theme = '';
     }
 
     if (strstr($_SERVER['HTTP_HOST'], 'amfoot.ru')) {
