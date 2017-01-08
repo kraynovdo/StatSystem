@@ -23,7 +23,6 @@
                 'Соревнования' => '/?r=competition/index&federation='. $federation,
                 'Команды' => '/?r=team&federation='. $federation,
                 'Документы' => '/?r=document&federation='. $federation,
-                'Контакты' => '/?r=federation/view&federation='. $federation,
                 'Товарищеские матчи' => '/?r=friendlymatch&federation='. $federation
             ),
             'header' => $header,
