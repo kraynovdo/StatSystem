@@ -38,7 +38,15 @@
         return $navig;
     }
 
-
+    function federation_regions($dbConnect, $CONSTPath) {
+        $result = array(
+            'navigation' => array(
+                'code' => 'main'
+            )
+        );
+        $result['answer'] = common_getlist($dbConnect, 'SELECT id, name, type FROM federation ORDER BY type');
+        return $result;
+    }
 
     function federation_index($dbConnect, $CONSTPath) {
         if ($_SESSION['userID'] && ($_SESSION['userType'] == 3)) {
