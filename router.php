@@ -6,7 +6,7 @@
         $action = (count($routeArr) > 1) ? $routeArr[1] : 'index';
     }
     else {
-        $controller = 'news';
+        $controller = 'start';
         $action = 'index';
         $_GET['federation'] = 11;
     }

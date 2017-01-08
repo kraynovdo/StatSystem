@@ -53,7 +53,7 @@
                     }
                 }
             } while($go);
-            
+
             for ($i = 0; $i < count($navList); $i++) {
                 if (strlen($ids[0]) && $navList[$i]['id'] == $ids[0]) {
                     $NAVCURRENT = $navList[$i]['title'];

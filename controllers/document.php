@@ -1,8 +1,8 @@
 <?php
     function document_index($dbConnect, $CONSTPath) {
     	$res = array();
-    	require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/federation.php');
-    	$res['navigation'] = federation_navig($dbConnect, $federation=null);
+    	require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/start.php');
+    	$res['navigation'] = start_navig();
         $res['answer'] = common_getlist($dbConnect, '
           SELECT id, title, link, date FROM document WHERE federation = :federation ORDER BY date DESC', array(
             'federation' => $_GET['federation']

@@ -117,7 +117,8 @@ textarea {
     z-index: 10;
 }
 .main-min-width {
-    width: 1000px;
+    max-width: 1256px;
+    min-width: 1000px;
     margin: 0 auto;
 }
 .main-middle {
@@ -283,6 +284,7 @@ textarea {
     box-sizing: border-box;
     text-align: center;
     background-color: #0071bc;
+    font-size: 15px;
 }
 .main-lvl2Navigation__link:hover {
     background-color: #025b97;
@@ -342,7 +344,8 @@ textarea {
     background: #0071bc;
     box-sizing: border-box;
     padding: 0 20px;
-    font-size: 13px;
+    font-size: 16px;
+    font-weight: bold;
 }
 .main-lvl3Navigation__link:hover {
     background-color: #025b97;

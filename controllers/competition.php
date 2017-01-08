@@ -50,15 +50,9 @@
         $filter = '';
         $params = array();
         if ($_GET['federation']) {
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
+            $result['navigation'] = start_NAVIG();
 
-            if (!strstr($_SERVER['HTTP_HOST'], 'amfoot.ru')) {
-                require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
-                $result['navigation'] = start_NAVIG();
-            }
-            else {
-                require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/federation.php');
-                $result['navigation'] = federation_navig($dbConnect, $_GET['federation']);
-            }
             if ($_GET['federation'] != 11) {
                 $filter .= ' AND competition.federation = :federation';
                 $params['federation'] = $_GET['federation'];

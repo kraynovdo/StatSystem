@@ -1,4 +1,3 @@
-<h2>Документы</h2>
 <?if (($_SESSION['userType'] == 3)  || ($_SESSION['userFederations'][$_GET['federation']] == 1)) {?>
     <a class="main-addLink" href="/?r=document/add&federation=<?=$_GET['federation']?>">Добавить документ</a>
 <?}?>
