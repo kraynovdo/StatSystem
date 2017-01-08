@@ -44,7 +44,14 @@
                 'code' => 'main'
             )
         );
-        $result['answer'] = common_getlist($dbConnect, 'SELECT id, name, type FROM federation ORDER BY type');
+        $result['answer'] = common_getlist($dbConnect, '
+          SELECT
+              id, name, fullname, logo,
+              (select count(*) FROM team T WHERE T.geo_region = federation.geo_region AND sex = 1 AND age = 21) AS m,
+              (select count(*) FROM team T WHERE T.geo_region = federation.geo_region AND sex = 2) AS w,
+              (select count(*) FROM team T WHERE T.geo_region = federation.geo_region AND age != 21) AS u
+          FROM federation WHERE type = 4 AND geo_country = 1
+        ');
         return $result;
     }
 

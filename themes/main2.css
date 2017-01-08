@@ -1285,6 +1285,61 @@ textarea {
 .ac-item:hover {
     background-color: #cccccc;
 }
+.federation-regions-item {
+    overflow: hidden;
+    margin-bottom: 2px;
+}
+.federation-regions-logo {
+    float: left;
+    width: 95px;
+    height: 95px;
+    overflow: hidden;
+    background-color: #e0e0e0;
+}
+.federation-regions-logo .main-noPhoto {
+    width: 95px;
+    height: 95px;
+    line-height: 95px;
+    font-size: 95px;
+}
+.federation-regions-name {
+    margin-left: 97px;
+    margin-right: 292px;
+    background-color: #e0e0e0;
+    height: 95px;
+}
+.federation-regions-count {
+    width: 290px;
+    float: right;
+    background-color: #e0e0e0;
+    height: 95px;
+}
+.federation-regions-fullname {
+    font-size: 11px;
+    padding: 20px 0 5px 0;
+}
+.federation-regions-abbr {
+    font-weight: bold;
+}
+.federation-regions-count {
+    padding-top: 20px;
+}
+.federation-regions-cell {
+    display: inline-block;
+}
+.federation-regions-cellTitle {
+    width: 83px;
+    padding-left: 13px;
+}
+.federation-regions-cellCountTitle {
+    width: 65px;
+    text-align: center;
+}
+.federation-regions-cellCount {
+    font-weight: bold;
+    width: 65px;
+    text-align: center;
+}
 .federation-field {
     width: 600px;
 }
