@@ -50,13 +50,13 @@
         $filter = '';
         $params = array();
         if ($_GET['federation']) {
-            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/federation.php');
+
             if (!strstr($_SERVER['HTTP_HOST'], 'amfoot.ru')) {
-                $result['navigation'] = array(
-                    'code' => 'main'
-                );
+                require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
+                $result['navigation'] = start_NAVIG();
             }
             else {
+                require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/federation.php');
                 $result['navigation'] = federation_navig($dbConnect, $_GET['federation']);
             }
             if ($_GET['federation'] != 11) {

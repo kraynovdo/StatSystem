@@ -12,7 +12,7 @@ $typeName = array(
         <div class="federation-regions-item">
             <div class="federation-regions-logo">
                 <?if ($answer[$i]['logo']) {?>
-                    <img style="width:95px" src="//<?=$HOST?>/upload/<?=$answer[$i]['logo']?>">
+                    <img alt="Логотип федерации" style="width:85px" src="//<?=$HOST?>/upload/<?=$answer[$i]['logo']?>">
                 <?} else {?>
                     <div class="main-noPhoto">?</div>
                 <?}?>

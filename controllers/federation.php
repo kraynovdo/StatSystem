@@ -39,11 +39,8 @@
     }
 
     function federation_regions($dbConnect, $CONSTPath) {
-        $result = array(
-            'navigation' => array(
-                'code' => 'main'
-            )
-        );
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
+        $result['navigation'] = start_NAVIG();
         $result['answer'] = common_getlist($dbConnect, '
           SELECT
               id, name, fullname, logo,
@@ -451,9 +448,8 @@
     function federation_info ($dbConnect, $CONSTPath) {
         $result = array();
         if ($_GET['federation'] == 11) {
-            $result['navigation'] = array(
-                'code' => 'main'
-            );
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
+            $result['navigation'] = start_NAVIG();
         }
 
         return $result;
@@ -462,9 +458,8 @@
     function federation_func ($dbConnect, $CONSTPath) {
         $result = array();
         if ($_GET['federation'] == 11) {
-            $result['navigation'] = array(
-                'code' => 'main'
-            );
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
+            $result['navigation'] = start_NAVIG();
         }
 
         return $result;
@@ -472,9 +467,8 @@
 
     function federation_history($dbConnect, $CONSTPath) {
         if ($_GET['federation'] == 11) {
-            $result['navigation'] = array(
-                'code' => 'main'
-            );
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
+            $result['navigation'] = start_NAVIG();
         }
 
         return $result;
@@ -483,9 +477,8 @@
     function federation_contacts ($dbConnect, $CONSTPath) {
         $result = array();
         if ($_GET['federation'] == 11) {
-            $result['navigation'] = array(
-                'code' => 'main'
-            );
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
+            $result['navigation'] = start_NAVIG();
         }
 
         return $result;
@@ -493,9 +486,8 @@
     function federation_logo ($dbConnect, $CONSTPath) {
         $result = array();
         if ($_GET['federation'] == 11) {
-            $result['navigation'] = array(
-                'code' => 'main'
-            );
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
+            $result['navigation'] = start_NAVIG();
         }
         $result['answer'] = array();
         $federation = federation_read($dbConnect, $CONSTPath);
@@ -506,9 +498,8 @@
     function federation_presentation ($dbConnect, $CONSTPath) {
         $result = array();
         if ($_GET['federation'] == 11) {
-            $result['navigation'] = array(
-                'code' => 'main'
-            );
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
+            $result['navigation'] = start_NAVIG();
         }
 
         return $result;
@@ -516,9 +507,8 @@
     function federation_face ($dbConnect, $CONSTPath) {
         $result = array();
         if ($_GET['federation'] == 11) {
-            $result['navigation'] = array(
-                'code' => 'main'
-            );
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
+            $result['navigation'] = start_NAVIG();
         }
 
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/userfederation.php');

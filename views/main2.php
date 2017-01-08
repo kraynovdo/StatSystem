@@ -36,7 +36,7 @@
     <div class="main-min-width">
         <div class="main-header">
             <a class="main-logo" href="/">
-                <img class="main-logo_img" src="//<?= $HOST ?>/<?= $logo ?>?1">
+                <img alt="Логотип" class="main-logo_img" src="//<?= $HOST ?>/<?= $logo ?>?1">
             </a>
 
             <h1 class="main-header_title"><?= $header ?></h1>
