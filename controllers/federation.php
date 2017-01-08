@@ -137,7 +137,8 @@
         $result['answer'] = array();
         $federation = federation_read($dbConnect, $CONSTPath);
         $result['answer']['federation'] = $federation;
-        $result['navigation'] = federation_navig($dbConnect);
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/admin.php');
+        $result['navigation'] = admin_navig($dbConnect);
 
         $countries = array();
         $regions = array();
