@@ -53,8 +53,18 @@
                     }
                 }
             } while($go);
-
+            
             for ($i = 0; $i < count($navList); $i++) {
+                if (strlen($ids[0]) && $navList[$i]['id'] == $ids[0]) {
+                    $NAVCURRENT = $navList[$i]['title'];
+                }
+                if (strlen($ids[1]) && $navList[$i]['id'] == $ids[1]) {
+                    $NAVCURRENT2 = $navList[$i]['title'];
+                }
+                if (strlen($ids[2]) && $navList[$i]['id'] == $ids[2]) {
+                    $NAVCURRENT3 = $navList[$i]['title'];
+                }
+
                 if (strlen($path[0]) && $navList[$i]['parent'] == $path[0]) {
                     $NAVIGATION[$navList[$i]['title']] = $navList[$i]['href'];
                 }
@@ -64,17 +74,20 @@
                 if (strlen($path[2]) && $navList[$i]['parent'] == $path[2]) {
                     $NAVIGATION3[$navList[$i]['title']] = $navList[$i]['href'];
                 }
-
-                if (strlen($ids[0]) && $navList[$i]['id'] == $ids[0]) {
-                    $NAVCURRENT = $navList[$i]['title'];
-                }
-                if (strlen($ids[0]) && $navList[$i]['id'] == $ids[1]) {
-                    $NAVCURRENT2 = $navList[$i]['title'];
-                }
-                if (strlen($ids[0]) && $navList[$i]['id'] == $ids[2]) {
-                    $NAVCURRENT3 = $navList[$i]['title'];
-                }
             }
+
+            if (!count($NAVIGATION3) && ($NAVCURRENT2 || $NAVCURRENT) /*TODO*/&& $ids[0] != 3) {
+
+                if ($NAVCURRENT2) {
+                    $cur = $NAVCURRENT2;
+                }
+                else {
+                    $cur = $NAVCURRENT;
+                }
+                $NAVIGATION3[$cur] = '';
+                $NAVCURRENT3 = $cur;
+            }
+
 
         }
         else {
