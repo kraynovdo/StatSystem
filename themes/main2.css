@@ -129,8 +129,35 @@ textarea {
     padding: 22px;
     box-sizing: border-box;
 }
+.main-banner {
+    background-color: #0071bc;
+    padding: 18px;
+    margin-bottom: 41px;
+}
+.main-banner_header {
+    color: #ffffff;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 60px;
+}
 
+.main-documentsBanner {
 
+}
+.main-banner_btn {
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    color: #ffffff;
+    background-color: #931919;
+    text-decoration: none;
+    padding: 20px 0;
+    border-bottom: 3px solid #600b0b;
+}
+.main-banner_btn:hover {
+    background-color: #600b0b;
+}
 .main-overlay {
     background: rgba(0,0,0,0.55);
     position: fixed;

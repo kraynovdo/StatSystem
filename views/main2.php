@@ -12,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <?}?>
     <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main2.css?1"/>
+    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main2.css?2"/>
     <link rel="shortcut icon" href="//<?=$HOST?>/themes/img/fafr_logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery-ui.css">
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery.Jcrop.min.css?1">
@@ -85,6 +85,10 @@
                         </ul>
                     </div>
                 <?}?>
+                <div class="main-banner main-documentsBanner">
+                    <div class="main-banner_header">Официальные документы</div>
+                    <a href="/?r=document&federation=11" class="main-banner_btn main-documentsBannerBtn">Просмотреть</a>
+                </div>
             </div>
         </div>
         <div class="main-content-space"></div>

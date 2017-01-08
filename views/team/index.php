@@ -1,4 +1,3 @@
-<h2>Команды</h2>
 <div class="listview">
 <?$filter = $_GET['comp'] ? '&comp='.$_GET['comp'] : ''?>
 <?php for ($i = 0; $i < count($answer); $i++) {?>
