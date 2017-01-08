@@ -51,7 +51,14 @@
         $params = array();
         if ($_GET['federation']) {
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/federation.php');
-            $result['navigation'] = federation_navig($dbConnect);
+            if (!strstr($_SERVER['HTTP_HOST'], 'amfoot.ru')) {
+                $result['navigation'] = array(
+                    'code' => 'main'
+                );
+            }
+            else {
+                $result['navigation'] = federation_navig($dbConnect, $_GET['federation']);
+            }
             if ($_GET['federation'] != 11) {
                 $filter .= ' AND competition.federation = :federation';
                 $params['federation'] = $_GET['federation'];
@@ -66,7 +73,7 @@
               LEFT JOIN federation F ON competition.federation = F.id
             WHERE
                TRUE'.$filter.'
-            ORDER BY S.yearB DESC, competition.federation DESC, competition.name', $params);
+            ORDER BY S.yearB DESC, F.type, competition.federation DESC, competition.name', $params);
         $result['answer'] = $dataset;
         return $result;
     }
