@@ -114,6 +114,10 @@
                 $timem = $_POST['timem'];
             }
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/common.php');
+            $group = $_POST['group'];
+            if (!$group) {
+                $group  = NULL;
+            }
             $queryresult->execute(array(
                 'team1' => $_POST['team1'],
                 'team2' => $_POST['team2'],
@@ -122,7 +126,7 @@
                 'city' => $_POST['city'],
                 'timeh' => $timeh,
                 'timem' => $timem,
-                'group' => $_POST['group']
+                'group' => $group
             ));
             return array(
                 'page' => '/?r=match&comp='.$comp
