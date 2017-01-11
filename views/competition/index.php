@@ -1,4 +1,3 @@
-<h2>Соревнования</h2>
 <div class="listview">
     <?$year = NULL; $fed = NULL;?>
     <?php for ($i = 0; $i < count($answer); $i++) {?>

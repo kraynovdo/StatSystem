@@ -23,12 +23,7 @@
                 'Соревнования' => '/?r=competition/index&federation='. $federation,
                 'Команды' => '/?r=team&federation='. $federation,
                 'Документы' => '/?r=document&federation='. $federation,
-                'Контакты' => '/?r=federation/view&federation='. $federation,
                 'Товарищеские матчи' => '/?r=friendlymatch&federation='. $federation
-                /*'Статистика' => '/?r=person/stat&id='.$_GET['id'],
-                /*'Карьера' => '/?r=person/stat&id='.$_GET['id'],
-                'Биография' => '/?r=person/stat&id='.$_GET['id'],
-                'Галерея' => '/?r=person/stat&id='.$_GET['id']*/
             ),
             'header' => $header,
             'title' => $fedInfo['fullname'],
@@ -41,6 +36,21 @@
         }
         return $navig;
     }
+
+    function federation_regions($dbConnect, $CONSTPath) {
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
+        $result['navigation'] = start_NAVIG();
+        $result['answer'] = common_getlist($dbConnect, '
+          SELECT
+              id, name, fullname, logo,
+              (select count(*) FROM team T WHERE T.geo_region = federation.geo_region AND sex = 1 AND age = 21) AS m,
+              (select count(*) FROM team T WHERE T.geo_region = federation.geo_region AND sex = 2) AS w,
+              (select count(*) FROM team T WHERE T.geo_region = federation.geo_region AND age != 21) AS u
+          FROM federation WHERE type = 4 AND geo_country = 1
+        ');
+        return $result;
+    }
+
     function federation_index($dbConnect, $CONSTPath) {
         if ($_SESSION['userID'] && ($_SESSION['userType'] == 3)) {
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/admin.php');
@@ -126,7 +136,8 @@
         $result['answer'] = array();
         $federation = federation_read($dbConnect, $CONSTPath);
         $result['answer']['federation'] = $federation;
-        $result['navigation'] = federation_navig($dbConnect);
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/admin.php');
+        $result['navigation'] = admin_navig($dbConnect);
 
         $countries = array();
         $regions = array();
@@ -432,3 +443,78 @@
             );
         }
     }
+
+
+    function federation_info ($dbConnect, $CONSTPath) {
+        $result = array();
+        if ($_GET['federation'] == 11) {
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
+            $result['navigation'] = start_NAVIG();
+        }
+
+        return $result;
+    }
+
+    function federation_func ($dbConnect, $CONSTPath) {
+        $result = array();
+        if ($_GET['federation'] == 11) {
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
+            $result['navigation'] = start_NAVIG();
+        }
+
+        return $result;
+    }
+
+    function federation_history($dbConnect, $CONSTPath) {
+        if ($_GET['federation'] == 11) {
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
+            $result['navigation'] = start_NAVIG();
+        }
+
+        return $result;
+    }
+
+    function federation_contacts ($dbConnect, $CONSTPath) {
+        $result = array();
+        if ($_GET['federation'] == 11) {
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
+            $result['navigation'] = start_NAVIG();
+        }
+
+        return $result;
+    }
+    function federation_logo ($dbConnect, $CONSTPath) {
+        $result = array();
+        if ($_GET['federation'] == 11) {
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
+            $result['navigation'] = start_NAVIG();
+        }
+        $result['answer'] = array();
+        $federation = federation_read($dbConnect, $CONSTPath);
+        $result['answer']['federation'] = $federation;
+
+        return $result;
+    }
+    function federation_presentation ($dbConnect, $CONSTPath) {
+        $result = array();
+        if ($_GET['federation'] == 11) {
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
+            $result['navigation'] = start_NAVIG();
+        }
+
+        return $result;
+    }
+    function federation_face ($dbConnect, $CONSTPath) {
+        $result = array();
+        if ($_GET['federation'] == 11) {
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
+            $result['navigation'] = start_NAVIG();
+        }
+
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/userfederation.php');
+        $userfed = userfederation_index($dbConnect, $CONSTPath, $_GET['federation']);
+        $result['answer']['userfederation'] = $userfed['answer'];
+
+        return $result;
+    }
+

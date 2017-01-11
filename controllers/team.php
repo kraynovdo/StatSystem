@@ -63,8 +63,8 @@
 
         $result = array();
         if ($_GET['federation']) {
-            require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/federation.php');
-            $result['navigation'] = federation_navig($dbConnect, $_GET['federation']);
+            require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/start.php');
+            $result['navigation'] = start_navig();
         }
         $query = '
           SELECT

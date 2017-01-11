@@ -6,7 +6,7 @@
         $action = (count($routeArr) > 1) ? $routeArr[1] : 'index';
     }
     else {
-        $controller = 'news';
+        $controller = 'start';
         $action = 'index';
         $_GET['federation'] = 11;
     }
@@ -56,12 +56,17 @@
         }
 
     }
-    else{
+    else {
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/views/_viewconfig.php');
         $page = $result['page'];
         if (!$page) {
             if (strpos($action, 'print') === false) {
-                require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/views/main.php');
+                if ($result['navigation']['code']) {
+                    require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/views/main2.php');
+                }
+                else {
+                    require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/views/main.php');
+                }
             }
             else {
                 require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/views/print.php');

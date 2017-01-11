@@ -1,16 +1,18 @@
 <?php
     function start_NAVIG() {
         $navig_arr = array(
-                'Главная страница' => '/'
+            'code' => 'main',
+            'title' => 'Федерация Американского Футбола России',
+            'description' => 'Официальный сайт Федерации Американского Футбола России (ФАФР). Здесь вы можете найти свежие новости, информацию о соревнованиях и командах',
+            'keywords' => array('Федерация Американского Футбола России', 'ФАФР')
         );
-        if ($_SESSION['userID'] && $_SESSION['userType'] == 3) {
-            $navig_arr['Администрирование'] = '/?r=admin';
-        }
         return $navig_arr;
     }
-    function start_index(){
+    function start_index($dbConnect, $CONSTPath){
         $result = array();
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/news.php');
+        $news = news_index($dbConnect, $CONSTPath);
+        $result['answer']['news'] = $news['answer'];
         $result['navigation'] = start_NAVIG();
-        $result['answer'] = 'Главная страница';
         return $result;
     }

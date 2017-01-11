@@ -19,7 +19,7 @@
             <h3 class="federation-typeHeader"><?=$typeName[$type]?></h3>
         <?}?>
         <div class="listview-item">
-            <a target="_blank" href="/?r=federation/view&federation=<?=$answer[$i]['id']?>"><?=$answer[$i]['name']?></a>
+            <a href="/?r=federation/view&federation=<?=$answer[$i]['id']?>"><?=$answer[$i]['name']?></a>
         </div>
     <?}?>
 </div>
