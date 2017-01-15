@@ -114,6 +114,7 @@ table {
 }
 .comp-resultsTable_score {
    font-size: 18px;
+   width: 21px;
 }
 .comp-resultsTable_datetime{
    font-size: 10px;
@@ -123,6 +124,7 @@ table {
 }
 .comp-resultsTable_team{
    font-size: 14px;
+   margin-right: 24px;
 }
 /**/
 .main-columnItem {
