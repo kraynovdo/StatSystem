@@ -149,9 +149,6 @@ table {
 .match-list_value {
    font-size: 15px;
 }
-.match-list_team {
-   font-size: inherit;
-}
 .match-list_value {
    width: 24px;
    overflow: hidden;
@@ -161,6 +158,8 @@ table {
 }
 .match-list_team {
    white-space: nowrap;
+   font-size: inherit;
+   max-width: 74%;
 }
 .top10_column_2 {
    float: none;
