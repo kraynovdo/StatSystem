@@ -116,7 +116,7 @@
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/common.php');
             $group = $_POST['group'];
             if (!$group) {
-                $group  = NULL;
+            	$group  = NULL;
             }
             $queryresult->execute(array(
                 'team1' => $_POST['team1'],
@@ -143,13 +143,18 @@
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/common.php');
 
             $score = '';
+
+            $group = $_POST['group'];
+            if (!$group) {
+                $group  = NULL;
+            }
             $param = array(
                 'team1' => $_POST['team1'],
                 'team2' => $_POST['team2'],
                 'date' => common_dateToSQL($_POST['date']),
                 'match' => $match,
                 'city' => $_POST['city'],
-                'group' => $_POST['group']
+                'group' => $group
             );
 
 
