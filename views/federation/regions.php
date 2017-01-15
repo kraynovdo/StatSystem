@@ -33,7 +33,13 @@ $typeName = array(
             </div>
             <div class="federation-regions-name">
                 <div class="federation-regions-fullname"><?=$answer[$i]['fullname']?></div>
-                <div class="federation-regions-abbr"><?=$answer[$i]['name']?></div>
+                <div class="federation-regions-abbr">
+                    <?if ($answer[$i]['id']) {?>
+                        <?=$answer[$i]['name']?>
+                    <?} else {?>
+                        <?=$answer[$i]['reg']?>
+                    <?}?>
+                </div>
             </div>
 
         </div>

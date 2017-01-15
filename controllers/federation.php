@@ -42,11 +42,13 @@
         $result['navigation'] = start_NAVIG();
         $result['answer'] = common_getlist($dbConnect, '
           SELECT
-              id, name, fullname, logo,
-              (select count(*) FROM team T WHERE T.geo_region = federation.geo_region AND sex = 1 AND age = 21) AS m,
-              (select count(*) FROM team T WHERE T.geo_region = federation.geo_region AND sex = 2) AS w,
-              (select count(*) FROM team T WHERE T.geo_region = federation.geo_region AND age != 21) AS u
-          FROM federation WHERE type = 4 AND geo_country = 1
+              F.id, F.name, fullname, logo, R.name AS reg,
+              (select count(*) FROM team T WHERE T.geo_region = R.id AND sex = 1 AND age >= 21) AS m,
+              (select count(*) FROM team T WHERE T.geo_region = R.id AND sex = 2) AS w,
+              (select count(*) FROM team T WHERE T.geo_region = R.id AND age < 21) AS u
+          FROM geo_region R LEFT JOIN federation F ON F.geo_region = R.id AND F.type = 4
+          WHERE R.geo_country = 1
+          ORDER BY R.code
         ');
         return $result;
     }
