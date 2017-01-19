@@ -402,6 +402,24 @@ textarea {
 .news-title {
     font-size: 16px;
 }
+.news-main {
+    display: block;
+    position: relative;
+    margin: -22px -22px 22px -22px;
+}
+.news-main_img {
+    width: 100%;
+}
+.news-main_title {
+    font-size: 26px;
+    text-decoration: none;
+    color: #ffffff;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 80px;
+    left: 22px;
+    font-weight: bold;
+}
 .main-addLink {
     margin-bottom: 15px;
     display: inline-block;

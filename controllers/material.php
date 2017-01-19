@@ -188,9 +188,18 @@
             if($_POST['federation']) {
                 $filter .= '&federation='.$_POST['federation'];
             }
-            return array(
-                'page' => '/?r=news'.$filter
-            );
+            if ($_POST['federation'] && $_POST['federation'] == 11) {
+                $ret = array(
+                    'page' => '/?r=start/index'
+                );
+            }
+            else {
+                $ret = array(
+                    'page' => '/?r=news'.$filter
+                );
+            }
+
+            return $ret;
         }
         else {
             return 'ERROR-403';
@@ -300,9 +309,19 @@
             $queryresult = $dbConnect->prepare($query);
             $queryresult->execute($arguments);
 
-            return array(
-                'page' => '/?r=news'.$filter
-            );
+
+            if ($_POST['federation'] && $_POST['federation'] == 11) {
+                $ret = array(
+                    'page' => '/?r=start/index'
+                );
+            }
+            else {
+                $ret = array(
+                    'page' => '/?r=news'.$filter
+                );
+            }
+
+            return $ret;
         }
         else {
             return 'ERROR-403';

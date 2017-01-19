@@ -13,6 +13,8 @@
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/news.php');
         $news = news_index($dbConnect, $CONSTPath);
         $result['answer']['news'] = $news['answer'];
+        $newsmain = news_index($dbConnect, $CONSTPath, true);
+        $result['answer']['newsmain'] = $newsmain['answer'];
         $result['navigation'] = start_NAVIG();
         return $result;
     }
