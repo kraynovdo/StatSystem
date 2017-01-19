@@ -1457,5 +1457,9 @@ textarea {
 	text-align: left;
 }
 .po-date {
-	height: 20px;
+    height: 20px;
+}
+
+.material-img {
+    width: 400px;
 }

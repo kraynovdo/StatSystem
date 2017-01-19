@@ -12,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <?}?>
     <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main2.css?2"/>
+    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main2.css?3"/>
     <link rel="shortcut icon" href="//<?=$HOST?>/themes/img/fafr_logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery-ui.css">
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery.Jcrop.min.css?1">
@@ -113,7 +113,7 @@
 <?}?>
 <script src="//<?=$HOST?>/jquery/jquery.Jcrop.min.js?1"></script>
 
-<script type="text/javascript" src="//<?=$HOST?>/themes/components.js?25"></script>
+<script type="text/javascript" src="//<?=$HOST?>/themes/components.js?26"></script>
 <?if (file_exists($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/' . $controller . '/' . $controller . '.js')) {?>
     <script type="text/javascript" src="//<?=$HOST?>/views/<?=$controller?>/<?=$controller?>.js?28"></script>
 <?}?>

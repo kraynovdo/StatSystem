@@ -1673,3 +1673,6 @@ textarea {
 .po-date {
 	height: 20px;
 }
+.material-img {
+    width: 400px;
+}

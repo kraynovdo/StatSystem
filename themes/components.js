@@ -472,6 +472,7 @@ $(function () {
         this._type = cfg.type;
         this._container = cfg.container;
         this._name = $('.main-file_input', this._container.get(0)).attr('name');
+        this._ratio = parseFloat(this._container.attr('data-ratio')) || 1;
         this._reader = new FileReader();
         this._picture = {};
 
@@ -520,11 +521,10 @@ $(function () {
 	        }
 
 	        self._picture.pic = img;
-	        console.log(Math.round(w * coef) + ' ' + Math.round(h * coef));
 	        img.Jcrop({
-	            aspectRatio: 1,
+	            aspectRatio: self._ratio,
 	            minSize: 50,
-	            setSelect: [30, 30, 180, 180],
+	            setSelect: [30, 30, 180 * self._ratio, 180],
 	            boxWidth : Math.round(w * coef),
 	            boxHeight : Math.round(h * coef),
 	            onSelect : $amf.FileLoader.prototype._cropCallback.bind(self)

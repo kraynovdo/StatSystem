@@ -19,7 +19,7 @@
         /*if (isset($_SESSION['userID'])) {*/
             $queryresult = $dbConnect->prepare('
                 SELECT
-                  M.id, M.title, M.preview, M.content, M.date, user
+                  M.id, M.title, M.preview, M.content, M.date, user, M.ismain, M.image
                 FROM
                   material AS M
                 WHERE
@@ -118,7 +118,7 @@
         }
     }
 
-    function material_update($dbConnect) {
+    function material_update($dbConnect, $CONSTPath) {
 
         $user = material_user($dbConnect, $_POST['id']);
 
@@ -134,20 +134,49 @@
         }
         if ($access) {
             $queryresult = $dbConnect->prepare('
+              SELECT
+                image
+              FROM
+                material AS M
+              WHERE id = :id');
+            $queryresult->execute(array(
+                'id' => $_POST['mater']
+            ));
+            $data = $queryresult->fetchAll();
+            if (count($data)) {
+                $oldImage = $data[0]['image'];
+            }
+
+            $image = common_loadFile('image', $CONSTPath, NULL, 940);
+            if ($image) {
+                if ($oldImage) {
+                    unlink($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/upload/' . $oldImage);
+                }
+            }
+            else {
+                $image = $oldImage;
+            }
+
+            $queryresult = $dbConnect->prepare('
             UPDATE
               material
             SET
               title = :title,
               preview = :preview,
-              content = :content
+              content = :content,
+              ismain = :ismain,
+              image = :image
             WHERE
               id = :id');
 
+            $ismain = $_POST['ismain'] ?  1 : 0;
             $queryresult->execute(array(
                 'id' => $_POST['mater'],
                 'title' => $_POST['title'],
                 'preview' => $_POST['preview'],
-                'content' => $_POST['content']
+                'content' => $_POST['content'],
+                'ismain' => $ismain,
+                'image' => $image
             ));
             $filter = '';
             if($_POST['comp']) {
@@ -195,7 +224,7 @@
             return 'ERROR-403';
         }
     }
-    function material_create($dbConnect) {
+    function material_create($dbConnect, $CONSTPath) {
         $filter = '';
         $access = $_SESSION['userType'] == 3;
         if($_POST['comp']) {
@@ -216,16 +245,20 @@
             $queryresult = $dbConnect->prepare('
             INSERT INTO
               material
-            (title, content, preview, user, date)
+            (title, content, preview, user, date, ismain, image)
             VALUES
-              (:title, :content, :preview, :user, :date)');
+              (:title, :content, :preview, :user, :date, :ismain, :image)');
 
+            $ismain = $_POST['ismain'] ?  1 : 0;
+            $image = common_loadFile('image', $CONSTPath, NULL, 940);
             $queryresult->execute(array(
                 'user' => $user,
                 'date' => $date,
                 'title' => $_POST['title'],
                 'preview' => $_POST['preview'],
-                'content' => $_POST['content']
+                'content' => $_POST['content'],
+                'ismain' => $ismain,
+                'image' => $image
             ));
             $mater_id = $dbConnect->lastInsertId('id');
 

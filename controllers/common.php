@@ -94,7 +94,7 @@
         return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
     }
 
-    function common_loadFile($name, $CONSTPath, $filename = null) {
+    function common_loadFile($name, $CONSTPath, $filename = null, $max = 600) {
         if (is_uploaded_file($_FILES[$name]["tmp_name"])) {
             $fname = $_FILES[$name]['name'];
             $arr = explode('.', $fname);
@@ -118,7 +118,7 @@
                         $_POST[$name . '_cropWidth'],
                         $_POST[$name . '_cropHeight'],
                         $_POST[$name . '_cropX'],
-                        $_POST[$name . '_cropY'], $ext);
+                        $_POST[$name . '_cropY'], $ext, $max);
                 }
                 return $uploadfile;
             }
@@ -126,7 +126,7 @@
         else return '';
     }
 
-    function common_cropandresize($path, $w, $h, $x, $y, $ext) {
+    function common_cropandresize($path, $w, $h, $x, $y, $ext, $max) {
         switch ($ext) {
             case 'gif' : $img_src = imagecreatefromgif($path); break;
             case 'jpeg' : case 'jpg' : $img_src = imagecreatefromjpeg($path); break;
@@ -134,14 +134,14 @@
         }
         if ($w > $h) {
             $coef = 1;
-            if ($w > 600) {
-                $coef = 600 / $w;
+            if ($w > $max) {
+                $coef = $max / $w;
             }
         }
         else {
             $coef = 1;
-            if ($h > 600) {
-                $coef = 600 / $h;
+            if ($h > $max) {
+                $coef = $max / $h;
             }
         }
         $img_dst = imagecreatetruecolor(round($w * $coef), round($h * $coef));
