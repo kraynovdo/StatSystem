@@ -33,6 +33,7 @@
         );
         if ($federation == 11) {
         	$navig['theme'] = 'fafr';
+            $navig['menu'] = array('Главная' => '/');
         }
         return $navig;
     }
