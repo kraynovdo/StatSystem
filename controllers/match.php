@@ -351,6 +351,75 @@
         );
     }
 
+    function match_playbyplayAF($dbConnect, $CONSTPath) {
+        $answer = array();
+        $answer['match'] = match_mainInfo($dbConnect, $CONSTPath);
+        require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statconfig.php');
+        $answer['statconfig'] = statconfig_list($dbConnect, $CONSTPath);
+
+        $team1 = $answer['match']['team1'];
+        $team2 = $answer['match']['team2'];
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/matchroster.php');
+        $team1roster = matchroster_index($dbConnect, $CONSTPath, $team1);
+        $team2roster = matchroster_index($dbConnect, $CONSTPath, $team2);
+
+        $answer['team1roster'] = $team1roster['answer'];
+        $answer['team2roster'] = $team2roster['answer'];
+
+        $answer['event'] = common_getlist($dbConnect, '
+            SELECT
+                M.id, M.comment, PG.name AS pg, AT.name AS action, T.logo AS team, AT.code,
+                SP_INFO.surname, SP_INFO.code AS spcode, SP_INFO.spname AS spname,
+                SC_INFO.code AS sccode, SC_INFO.scname AS scname, SC_INFO.value AS scvalue
+            FROM
+        	    matchevent M LEFT JOIN stataction S ON M.id = S.matchevent
+                            LEFT JOIN pointsget PG ON PG.id = S.pointsget
+                            LEFT JOIN statactiontype AT ON AT.id = S.actiontype
+                            LEFT JOIN team T ON T.id = S.team
+                            LEFT JOIN (
+                            	SELECT
+                                	GROUP_CONCAT(CONCAT_WS(" ", P.name, P.surname)) AS surname,
+                                        GROUP_CONCAT(SPT.code) AS code,
+                                        GROUP_CONCAT(SPT.name) AS spname,
+                                        SP.action
+                            	FROM
+                                	statperson SP
+                                LEFT JOIN
+                                	person P ON P.id = SP.person
+                                LEFT JOIN
+                                	statpersontype SPT ON SPT.id = SP.persontype
+                                        GROUP BY SP.action
+
+                            ) AS SP_INFO ON SP_INFO.action = S.id
+                            LEFT JOIN (
+                            	SELECT
+                                        GROUP_CONCAT(SCT.code) AS code,
+                                        GROUP_CONCAT(SCT.name) AS scname,
+                                        GROUP_CONCAT(SC.value) AS value,
+                                        SC.action
+                            	FROM
+                                	statchar SC
+
+                                LEFT JOIN
+                                	statchartype SCT ON SCT.id = SC.chartype
+                                        GROUP BY SC.action
+
+                            ) AS SC_INFO ON SC_INFO.action = S.id
+
+
+
+                    WHERE
+                        M.`match` = :match ORDER BY M.id DESC
+        ', array(
+            'match' => $_GET['match']
+        ));
+        require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
+        return array(
+            'answer' => $answer,
+            'navigation' => competition_NAVIG($dbConnect, $_GET['comp'])
+        );
+    }
+
     function match_createEvent($dbConnect, $CONSTPath) {
         $point = $_POST['point'] ? $_POST['point'] : NULL;
         $team = NULL;
