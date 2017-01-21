@@ -94,6 +94,21 @@
         return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
     }
 
+    function common_wordForm($num, $word1, $word2, $word3) {
+        $ost100 = abs($num % 100);
+        $ost10 = abs($num % 10);
+        if ($ost100 >= 11 && $ost100 <= 14) {
+            return $word3;
+        }
+        if ($ost10 == 1) {
+            return $word1;
+        }
+        if ($ost10 >= 2 && $ost10 <= 4) {
+            return $word2;
+        }
+        return $word3;
+    }
+
     function common_loadFile($name, $CONSTPath, $filename = null, $max = 600) {
         if (is_uploaded_file($_FILES[$name]["tmp_name"])) {
             $fname = $_FILES[$name]['name'];
