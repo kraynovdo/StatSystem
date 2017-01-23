@@ -22,6 +22,8 @@
     }
     function document_create($dbConnect, $CONSTPath) {
         if (($_SESSION['userType'] == 3)  || ($_SESSION['userFederations'][$_POST['federation']] == 1)) {
+
+            $date = common_dateToSQL($_POST['date']);
             common_query($dbConnect, '
             INSERT INTO
               document
@@ -31,7 +33,7 @@
             ', array(
                 'title' => trim($_POST['title']),
                 'link' => common_loadFile('link', $CONSTPath, 'document/' . time() . '_' .common_translit($_FILES['link']['name'])),
-                'date' => date('Y-m-d'),
+                'date' => $date,
                 'federation' => $_POST['federation']
             ));
             return array(
@@ -76,7 +78,7 @@
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/federation.php');
             $res['navigation'] = federation_navig($dbConnect, $federation = null);
             $rec = common_getrecord($dbConnect, '
-                    SELECT title FROM document WHERE id = :doc LIMIT 1',
+                    SELECT title, date FROM document WHERE id = :doc LIMIT 1',
                 array(
                     'doc' => $_GET['doc']
                 )
@@ -91,14 +93,16 @@
     }
     function document_update($dbConnect, $CONSTPath) {
         if (($_SESSION['userType'] == 3)  || ($_SESSION['userFederations'][$_POST['federation']] == 1)) {
+            $date = common_dateToSQL($_POST['date']);
             common_query($dbConnect, '
                 UPDATE
                   document
-                SET title = :title
+                SET title = :title, date = :date
                 WHERE id = :doc
                 ', array(
                     'title' => trim($_POST['title']),
-                    'doc' => $_POST['doc']
+                    'doc' => $_POST['doc'],
+                    'date' => $date
                 )
             );
             return array(
