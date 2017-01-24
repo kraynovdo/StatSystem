@@ -66,9 +66,7 @@
                     'vk_link' => null,
                     'skype' => null,
                     'geo_country' => null,
-                    'city' => null,
-                    'region' => null,
-                    'avatar' => null,
+                    'avatar' => common_loadFile('avatar', $CONSTPath),
                     'weight' => null,
                     'growth' => null
                 ));
@@ -87,7 +85,8 @@
                 'person' => $did,
                 'federation' => $_POST['federation'],
                 'work' => '',
-                'type' => $_POST['type']
+                'type' => $_POST['type'],
+                'group' => $_POST['group']
             );
 
             if ($_POST['isEmployee']) {
@@ -96,12 +95,21 @@
 
             common_query($dbConnect,
                 'INSERT INTO userfederation
-             (person, federation, type, work)
-             VALUES (:person, :federation, :type, :work)'
+             (person, federation, type, work, federationgroup)
+             VALUES (:person, :federation, :type, :work, :group)'
                 , $params
             );
+            $page = '';
+            switch ($_POST['group']) {
+                case 2: $page = 'exec'; break;
+                case 3: $page = 'team'; break;
+                case 4: $page = 'ref'; break;
+                case 5: $page = 'disc'; break;
+                case 6: $page = 'rev'; break;
+                default: $page = 'gen';
+            }
             return array(
-                'page' => '/?r=federation/view&federation=' . $_POST['federation']
+                'page' => '/?r=federation/' . $page . 'staff&federation=' . $_POST['federation']
             );
         }
         else {
@@ -117,6 +125,18 @@
                 array(
                     'id' => $_GET['uf']
                 )
+            );
+            $page = '';
+            switch ($_GET['group']) {
+                case 2: $page = 'exec'; break;
+                case 3: $page = 'team'; break;
+                case 4: $page = 'ref'; break;
+                case 5: $page = 'disc'; break;
+                case 6: $page = 'rev'; break;
+                default: $page = 'gen';
+            }
+            return array(
+                'page' => '/?r=federation/' . $page . 'staff&federation=' . $_GET['federation']
             );
             return array(
                 'page' => '/?r=federation/view&federation=' . $_GET['federation']

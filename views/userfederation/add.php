@@ -1,6 +1,11 @@
 <h2>Добавление лица</h2>
-<form method="post" action="/?r=userfederation/create" class="federation-formPerson">
+<form method="post" action="/?r=userfederation/create" class="federation-formPerson" enctype="multipart/form-data">
     <input type="hidden" name="federation" value="<?=$_GET['federation']?>"/>
+    <input type="hidden" name="group" value="<?=$_GET['group']?>"/>
+    <div class="main-file roster-photo" data-validate>
+        <div class="main-file_label">Добавить<br/>фотографию<br/>(формат jpeg)</div>
+        <input class="main-file_input" type="file" name="avatar"/>
+    </div>
     <div class="main-fieldWrapper">
         <input type="text" name="d_fio" class="federation-field federation-surname_d" data-validate="req" placeholder="Фамилия"/>
     </div>

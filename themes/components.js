@@ -448,7 +448,9 @@ $(function () {
         });
 
         fileField.click(function(){
-            fileInput.click();
+            if (!$(this).attr('disabled')) {
+                fileInput.click();
+            }
         });
 
         fileInput.change(function () {

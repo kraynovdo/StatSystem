@@ -1,1 +1,4 @@
-<? include '_face.php'?>
+<?
+    $group = 3;
+    include '_face.php'
+?>
