@@ -363,10 +363,8 @@ textarea {
     height : 30px;
     line-height: 30px;
     display: block;
-    text-transform: uppercase;
     box-sizing: border-box;
     font-weight: bold;
-    text-transform: capitalize;
 }
 .main-lvl3Navigation__link__selected {
     color: #000000 !important;
