@@ -507,7 +507,9 @@
 
         return $result;
     }
-    function federation_face ($dbConnect, $CONSTPath) {
+
+    /*TODO сделать через одно*/
+    function federation_face ($dbConnect, $CONSTPath, $group) {
         $result = array();
         if ($_GET['federation'] == 11) {
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
@@ -515,9 +517,27 @@
         }
 
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/userfederation.php');
-        $userfed = userfederation_index($dbConnect, $CONSTPath, $_GET['federation']);
+        $userfed = userfederation_index($dbConnect, $CONSTPath, $_GET['federation'], NULL, $group);
         $result['answer']['userfederation'] = $userfed['answer'];
 
         return $result;
     }
 
+    function federation_genstaff($dbConnect, $CONSTPath) {
+        return federation_face($dbConnect, $CONSTPath, 1);
+    }
+    function federation_execstaff($dbConnect, $CONSTPath) {
+        return federation_face($dbConnect, $CONSTPath, 2);
+    }
+    function federation_teamstaff($dbConnect, $CONSTPath) {
+        return federation_face($dbConnect, $CONSTPath, 3);
+    }
+    function federation_refstaff($dbConnect, $CONSTPath) {
+        return federation_face($dbConnect, $CONSTPath, 4);
+    }
+    function federation_discstaff($dbConnect, $CONSTPath) {
+        return federation_face($dbConnect, $CONSTPath, 5);
+    }
+    function federation_revstaff($dbConnect, $CONSTPath) {
+        return federation_face($dbConnect, $CONSTPath, 6);
+    }

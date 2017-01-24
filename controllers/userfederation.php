@@ -1,5 +1,5 @@
 <?php
-    function userfederation_index($dbConnect, $CONSTPath, $federation = null, $person=null) {
+    function userfederation_index($dbConnect, $CONSTPath, $federation = null, $person=null, $group=null) {
         $where = ' WHERE TRUE';
         $params = array();
         if (!$person) {
@@ -8,6 +8,9 @@
         if (!$federation) {
             $federation = $_GET['federation'];
         }
+        if (!$group) {
+            $group = 1;
+        }
         if ($person) {
             $where .= ' AND person = :person';
             $params['person'] = $person;
@@ -15,6 +18,10 @@
         if ($federation) {
             $where .= ' AND federation = :federation';
             $params['federation'] = $federation;
+        }
+        if ($group) {
+            $where .= ' AND federationgroup = :group';
+            $params['group'] = $group;
         }
         $result = array();
         $result['answer'] = common_getlist($dbConnect,
