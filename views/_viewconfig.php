@@ -14,7 +14,9 @@
             $navList = navigation_list($dbConnect, $CONSTPath, $result['navigation']['code']);
 
             $lvl = 1;
-            $NAVCURRENT = NULL; $NAVCURRENT2 = NULL; $NAVCURRENT3 = NULL;
+            $NAVCURRENT = NULL; $NAVCURRENT2 = NULL; $NAVCURRENT3 = NULL; $NAVCURRENT4 = NULL;
+            $NAVIGATION = array(); $NAVIGATION2 = array(); $NAVIGATION3 = array(); $NAVIGATION4 = array();
+
             $path = array();
             $ids = array();
 
@@ -76,16 +78,21 @@
                 }
             }
 
-            if (!count($NAVIGATION3) && ($NAVCURRENT2 || $NAVCURRENT) /*TODO*/&& $ids[0] != 3) {
+            $NAVIGATION4 = array();
+            if (!count($NAVIGATION4) && ($NAVCURRENT3 || $NAVCURRENT2 || $NAVCURRENT) /*TODO*/&& $ids[0] != 3) {
 
-                if ($NAVCURRENT2) {
-                    $cur = $NAVCURRENT2;
+                if ($NAVCURRENT3) {
+                    $cur = $NAVCURRENT3;
+                } else {
+                    if ($NAVCURRENT2) {
+                        $cur = $NAVCURRENT2;
+                    }
+                    else {
+                        $cur = $NAVCURRENT;
+                    }
                 }
-                else {
-                    $cur = $NAVCURRENT;
-                }
-                $NAVIGATION3[$cur] = '';
-                $NAVCURRENT3 = $cur;
+                $NAVIGATION4[$cur] = '';
+                $NAVCURRENT4 = $cur;
             }
 
 

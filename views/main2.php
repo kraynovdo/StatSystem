@@ -12,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <?}?>
     <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main2.css?4"/>
+    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main2.css?5"/>
     <link rel="shortcut icon" href="//<?=$HOST?>/themes/img/fafr_logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery-ui.css">
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery.Jcrop.min.css?1">
@@ -48,19 +48,22 @@
                 <? foreach ($NAVIGATION as $point => $href) { ?>
                     <li class="main-topNavigation__point list-unstyled">
                         <a class="main-topNavigation__link<?if ($point == $NAVCURRENT){?> main-topNavigation__link__selected<?}?>"
-                           href="<?= $href ?>"><?= $point ?></a></li>
+                           href="<?= $href ?>"><?= $point ?></a>
+                    </li>
                 <? } ?>
             </ul>
         </div>
 
-        <div class="main-lvl3Navigation">
-            <ul class="main-lvl3Navigation__list">
-                <? foreach ($NAVIGATION3 as $point => $href) { ?>
-                    <li class="main-lvl3Navigation__point list-unstyled">
-                        <a class="main-lvl3Navigation__link<?if ($point == $NAVCURRENT3){?> main-lvl3Navigation__link__selected<?}?>"
-                           href="<?= $href ?>"><?= $point ?></a></li>
-                <? } ?>
-            </ul>
+        <div class="main-lvl4Navigation">
+            <?if (count($NAVIGATION4)) {?>
+                <ul class="main-lvl4Navigation__list">
+                    <? foreach ($NAVIGATION4 as $point => $href) { ?>
+                        <li class="main-lvl4Navigation__point list-unstyled">
+                            <a class="main-lvl4Navigation__link<?if ($point == $NAVCURRENT4){?> main-lvl4Navigation__link__selected<?}?>"
+                               href="<?= $href ?>"><?= $point ?></a></li>
+                    <? } ?>
+                </ul>
+            <?}?>
         </div>
 
         <div class="main-middle row">
@@ -80,7 +83,17 @@
                             <? foreach ($NAVIGATION2 as $point => $href) { ?>
                                 <li class="main-lvl2Navigation__point list-unstyled">
                                     <a class="main-lvl2Navigation__link<?if ($point == $NAVCURRENT2){?> main-lvl2Navigation__link__selected<?}?>"
-                                       href="<?= $href ?>"><?= $point ?></a></li>
+                                       href="<?= $href ?>"><?= $point ?></a>
+                                    <?if (($point == $NAVCURRENT2) && count($NAVIGATION3)){?>
+                                        <ul class="main-lvl3Navigation__list">
+                                            <? foreach ($NAVIGATION3 as $point => $href) { ?>
+                                                <li class="main-lvl3Navigation__point list-unstyled">
+                                                    <a class="main-lvl3Navigation__link<?if ($point == $NAVCURRENT3){?> main-lvl3Navigation__link__selected<?}?>"
+                                                       href="<?= $href ?>"><?= $point ?></a></li>
+                                            <? } ?>
+                                        </ul>
+                                    <?}?>
+                                </li>
                             <? } ?>
                         </ul>
                     </div>
