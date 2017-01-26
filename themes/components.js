@@ -419,21 +419,22 @@ $(function () {
         }
     });
 
-    $(".main-submit").click(function(){
-
-        var
-            form = $(this).closest('form'),
-            error = false,
-            offset;
-
-        var result = myValidate(form);
-
+    $('form').submit(function(){
+        var result = myValidate($(this));
         if (!result.error) {
-            form.submit();
+            return true;
         }
         else {
             window.scrollTo(0, result.offset.top - 60);
+            return false;
         }
+    });
+
+    $(".main-submit").click(function(){
+
+        var
+            form = $(this).closest('form');
+        form.submit();
     });
 
 

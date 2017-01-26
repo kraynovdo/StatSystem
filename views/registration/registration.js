@@ -24,44 +24,29 @@
     //TODO копипаст с валидаторов
     $(".reg-submit").click(function(){
         var
-            form = $(this).closest('form'),
-            error = false;
-        $(this).removeClass('main-valid_error').removeAttr('data-validmsg');
-        $amf.validWin.hideWin();
-        $("[data-validate]", form.get(0)).each(function(i, item){
-            var validator = $(item).attr('data-validate');
-            if ($amf.validators[validator] instanceof Function) {
-                var result = $amf.validators[validator]($(item).val(), $(item));
-                if (result != true) {
-                    $(item).addClass('main-valid_error').attr('data-validmsg', result);
-                    error = true;
-                }
-                else {
-                    $(item).removeClass('main-valid_error').removeAttr('data-validmsg');
-                    $amf.validWin.hideWin();
-                }
-            }
-        });
+           form = $(this).closest('form'),
+           emailField = $(".reg-email", form);
 
-        if ($(".reg-email", form).length) {
-            var email = $(".reg-email", form).val();
-            $.post("/?r=person/checkemail", {
-                email: email
-            }, function (ans) {
-                if (ans.answer && ans.answer.length) {
-                    $(".reg-email", form).addClass('main-valid_error').attr('data-validmsg', 'Данный e-mail уже используется');
-                }
-                else {
-                    if (!error) {
+        if (emailField.length) {
+            var email = emailField.val();
+            if (!email) {
+                emailField.addClass('main-valid_error').attr('data-validmsg', 'Заполните e-mail');
+            }
+            else {
+                $.post("/?r=person/checkemail", {
+                    email: email
+                }, function (ans) {
+                    if (ans.answer && ans.answer.length) {
+                        emailField.addClass('main-valid_error').attr('data-validmsg', 'Данный e-mail уже используется');
+                    }
+                    else {
                         form.submit();
                     }
-                }
-            })
+                })
+            }
         }
         else {
-            if (!error) {
-                form.submit();
-            }
+            form.submit();
         }
     });
 })();
