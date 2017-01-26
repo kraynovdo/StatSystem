@@ -512,6 +512,9 @@ textarea {
 .person-edit_birth {
 
 }
+.person-item_hasAcc {
+    background: #beffde;;
+}
 .person-edit_block {
     overflow: hidden;
     margin-bottom: 5px;

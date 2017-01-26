@@ -4,9 +4,9 @@
             $result = array();
             $queryresult = $dbConnect->prepare('
                   SELECT
-                    P.id, P.surname, P.name, P.patronymic
+                    P.id, P.surname, P.name, P.patronymic, U.id AS user
                   FROM
-                    user U JOIN person AS P ON P.id = U.person
+                    person P LEFT JOIN user AS U ON P.id = U.person
                   ORDER BY P.surname, P.name');
             $queryresult->execute(array());
             $dataset = $queryresult->fetchAll();
