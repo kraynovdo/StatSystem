@@ -76,6 +76,7 @@
             LEFT JOIN person on PP.person = person.id
 			LEFT JOIN roster R on R.person = person.id AND R.competition = :comp
 			LEFT JOIN team T ON T.id = R.team
+			WHERE person.id
 			ORDER BY points DESC, surname
         ');
         $queryresult->execute(array(
@@ -103,6 +104,7 @@
             LEFT JOIN person on PP.person = person.id
 			LEFT JOIN roster R on R.person = person.id AND R.competition = :comp
 			LEFT JOIN team T ON T.id = R.team
+			WHERE person.id
 			ORDER BY points DESC, surname
         ');
         $queryresult->execute(array(
