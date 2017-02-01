@@ -3,8 +3,8 @@
     <input type="hidden" name="comp" value="<?=$_GET['comp']?>"/>
     <input type="hidden" name="match" value="<?=$_GET['match']?>"/>
     <?
-    if ($answer['match'][0]['date'] != '0000-00-00') {
-        $date_arr = explode('-', $answer['match'][0]['date']);
+    if ($answer['match']['date'] != '0000-00-00') {
+        $date_arr = explode('-', $answer['match']['date']);
         $date = $date_arr[2] . '.' . $date_arr[1] . '.' . $date_arr[0];
     }
     ?>
@@ -20,7 +20,7 @@
             $group = $answer['group'];
             for ($i = 0; $i < count($group); $i++) {
                 $selected = '';
-                if ($answer['match'][0]['group'] == $group[$i]['id']) {
+                if ($answer['match']['group'] == $group[$i]['id']) {
                     $selected = ' selected="selected"';
                 }
             ?>
@@ -37,7 +37,7 @@
 
             for ($i = 0; $i < count($team); $i++) {
                 $selected = '';
-                if ($answer['match'][0]['team1'] == $team[$i]['id']) {
+                if ($answer['match']['team1'] == $team[$i]['id']) {
                     $selected = ' selected="selected"';
                 }
             ?>
@@ -47,7 +47,7 @@
     </div>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Очки</label>
-        <input type="text" name="score1" value="<?=$answer['match'][0]['score1']?>"/>
+        <input type="text" name="score1" value="<?=$answer['match']['score1']?>"/>
     </div>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Команда - гость</label>
@@ -58,7 +58,7 @@
 
             for ($i = 0; $i < count($team); $i++) {
                 $selected = '';
-                if ($answer['match'][0]['team2'] == $team[$i]['id']) {
+                if ($answer['match']['team2'] == $team[$i]['id']) {
                     $selected = ' selected="selected"';
                 }
                 ?>
@@ -68,15 +68,15 @@
     </div>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Очки</label>
-        <input type="text" name="score2" value="<?=$answer['match'][0]['score2']?>"/>
+        <input type="text" name="score2" value="<?=$answer['match']['score2']?>"/>
     </div>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Город проведения матча</label>
-        <input class="match-cityField" type="text" name="city" value="<?=$answer['match'][0]['city']?>"/>
+        <input class="match-cityField" type="text" name="city" value="<?=$answer['match']['city']?>"/>
     </div>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Время начала (по Москве)</label>
-        <input class="match-timeField" type="text" name="timeh" maxlength="2" value="<?=$answer['match'][0]['timeh']?>"/>:<input class="match-timeField" type="text" name="timem" maxlength="2" value="<?=$answer['match'][0]['timem']?>"/>
+        <input class="match-timeField" type="text" name="timeh" maxlength="2" value="<?=$answer['match']['timeh']?>"/>:<input class="match-timeField" type="text" name="timem" maxlength="2" value="<?=$answer['match']['timem']?>"/>
     </div>
     <input type="button" class="main-btn main-submit" value="Готово"/>
     <div class="main-hidden match-cityList">

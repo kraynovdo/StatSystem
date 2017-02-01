@@ -8,17 +8,15 @@
 <br/>
 <table class="protocol-table_col2">
     <colgroup>
-        <col width="50%"/>
-        <col width="50%"/>
+        <col width="33%"/>
+        <col width="33%"/>
+        <col width="33%"/>
     </colgroup>
     <tbody>
     <tr>
-        <?
-        $date_arr = explode('-', $answer['match']['match'][0]['date']);
-        $date = $date_arr[2] . '.' . $date_arr[1] . '.' . $date_arr[0];
-        ?>
-        <td>КОМАНДА  - <?=$answer['team']['rus_name']?></td>
-        <td>ДАТА МАТЧА - <?=$date?></td>
+        <td>КОМАНДА  - <?=$answer['match']['match']['t1name']?></td>
+        <td>СОПЕРНИК  - <?=$answer['match']['match']['t2name']?></td>
+        <td>ДАТА МАТЧА - <?=common_dateFromSQL($answer['match']['match']['date'])?> <?=$answer['match']['match']['timeh']?>:<?=$answer['match']['match']['timem']?></td>
     </tr>
 
 </table>

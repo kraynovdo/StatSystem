@@ -75,14 +75,8 @@
     function match_edit($dbConnect, $CONSTPath) {
         if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {
             $matchMeta = match_add($dbConnect, $CONSTPath);
-            $queryresult = $dbConnect->prepare('
-                SELECT M.id, M.competition, M.team1, M.team2, M.date, M.score1, M.score2, M.city, M.timeh, M.timem, M.group FROM `match` M
-                WHERE id = :match
-            ');
-            $queryresult->execute(array(
-                'match' => $_GET['match']
-            ));
-            $match = $queryresult->fetchAll();
+
+            $match = match_mainInfo($dbConnect, $CONSTPath);
 
             $matchMeta['answer']['match'] = $match;
             return $matchMeta;
