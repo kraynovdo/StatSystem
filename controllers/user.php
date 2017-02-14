@@ -1,4 +1,14 @@
 <?php
+    function user_search($dbConnect, $CONSTPath) {
+        $result = common_getlist($dbConnect, '
+            SELECT
+                P.id, P.surname, P.name, P.patronymic, U.id AS user
+              FROM
+                person P LEFT JOIN user AS U ON P.id = U.person
+              ORDER BY P.surname, P.name
+        ', array());
+        return $result;
+    }
     function user_index($dbConnect, $CONSTPath) {
         if (isset($_SESSION['userID']) && $_SESSION['userType'] == 3) {
             $result = array();

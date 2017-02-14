@@ -29,9 +29,9 @@
             $queryresult = $dbConnect->prepare('
                 INSERT INTO
                   `compteam`
-                  (team, competition, `group`)
+                  (team, competition, `group`, confirm)
                 VALUES
-                  (:team, :comp, :group)');
+                  (:team, :comp, :group, 1)');
 
             $queryresult->execute(array(
                 'team' => $_POST['team'],

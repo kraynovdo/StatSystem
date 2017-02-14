@@ -1466,3 +1466,40 @@ textarea {
 .material-img {
     width: 400px;
 }
+
+
+/*-*/
+.team-req_name {
+    font-size: 16px;
+    line-height: 24px;
+}
+.team-req_links {
+    padding-left: 20px;
+}
+.team-req_link {
+    margin-right: 10px;
+}
+.request-already {
+    background-color: #fff08f;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.request-already.request-already_confrim-1 {
+    background-color: #beffde;
+}
+.request-field {
+    width: 500px;
+}
+.main-field_hint {
+   color: #999999;
+}
+.roster-complist {
+    padding: 5px;
+}
+.roster-complist_confirm-1 {
+    background-color: #beffde;
+}
+.request-confirmLink {
+    font-weight: bold;
+    padding: 0 20px;
+}

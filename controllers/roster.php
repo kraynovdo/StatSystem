@@ -569,7 +569,7 @@ function roster_autofill($dbConnect, $CONSTPath) {
 
 function roster_complist($dbConnect, $CONSTPath) {
 	require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/team.php');
-    $roster = team_complist($dbConnect, $CONSTPath);
+    $roster = team_complist($dbConnect, $CONSTPath, 0);
     require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
     $result = array(
         'navigation' => competition_NAVIG($dbConnect, $_GET['comp']),

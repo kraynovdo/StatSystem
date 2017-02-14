@@ -54,7 +54,7 @@
     function match_add($dbConnect, $CONSTPath) {
         if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/team.php');
-            $team = team_complist($dbConnect, $CONSTPath);
+            $team = team_complist($dbConnect, $CONSTPath, 1);
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/group.php');
             $group = group_index($dbConnect, $CONSTPath);
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');

@@ -8,7 +8,15 @@
             $link = $HOST;
         }
         ?>
-        <div class="listview-item"><a href="//<?=$link?>/?r=roster/fill&team=<?=$_GET['team']?>&comp=<?=$comps[$i]['id']?>"><?=$comps[$i]['name']?> (<?=$comps[$i]['yearB']?>)</a></div>
+        <div class="listview-item">
+            <div class="team-req_name">
+                <?=$comps[$i]['name']?>(<?=$comps[$i]['yearB']?>)
+            </div>
+            <div class="team-req_links">
+                <a class="team-req_link" href="//<?=$link?>/?r=request/fill&team=<?=$_GET['team']?>&comp=<?=$comps[$i]['id']?>">Заявка</a>
+                <a class="team-req_link" href="//<?=$link?>/?r=roster/fill&team=<?=$_GET['team']?>&comp=<?=$comps[$i]['id']?>">Состав</a>
+            </div>
+        </div>
     <?}?>
     <br/><br/>
 <?}?>
