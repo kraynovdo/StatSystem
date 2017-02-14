@@ -176,26 +176,28 @@
     }
 
     function matchroster_print($dbConnect, $CONSTPath) {
-        $team = $_GET['team'];
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/team.php');
-        $teamData = team_info($dbConnect, $CONSTPath);
-        $match = $_GET['match'];
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/match.php');
-        $matchData = match_edit($dbConnect, $CONSTPath);
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/competition.php');
-        $compInfo = competition_info ($dbConnect, $CONSTPath, $_GET['comp']);
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/roster.php');
-        return array(
-            'answer' => array(
-                'face' => rosterface_list($dbConnect, $CONSTPath, $_GET['team'], $_GET['comp']),
-                'roster' => matchroster_index($dbConnect, $CONSTPath, $team),
-                'team' => $teamData['answer']['team'],
-                'match'=> $matchData['answer'],
-                'compinfo'=>$compInfo
-            )
+            $team = $_GET['team'];
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/team.php');
+            $teamData = team_info($dbConnect, $CONSTPath);
+            $match = $_GET['match'];
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/match.php');
+            $matchData = match_mainInfo($dbConnect, $CONSTPath);
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/competition.php');
+            $compInfo = competition_info ($dbConnect, $CONSTPath, $_GET['comp']);
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/roster.php');
+            return array(
+                'answer' => array(
+                    'face' => rosterface_list($dbConnect, $CONSTPath, $_GET['team'], $_GET['comp']),
+                    'roster' => matchroster_index($dbConnect, $CONSTPath, $team),
+                    'team' => $teamData['answer']['team'],
+                    'match'=> array(
+                    	'match' => $matchData
+                    ),
+                    'compinfo'=>$compInfo
+                )
 
-        );
-    }
+            );
+        }
 
     function matchroster_refcheck($dbConnect, $CONSTPath) {
         $team = $_GET['team'];
