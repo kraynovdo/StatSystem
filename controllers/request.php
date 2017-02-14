@@ -210,3 +210,31 @@
         return request_confirm($dbConnect, $_GET['comp'], $_GET['team'], 0);
     }
 
+    function request_print($dbConnect, $CONSTPath) {
+        $result = array(
+            'answer' => array()
+        );
+        $team = common_getrecord($dbConnect, '
+            SELECT
+                city_adj, rus_name, C.name AS comp, S.yearB, F.name AS facetype, P.surname, P.name, P.patronymic
+            FROM
+                team T LEFT JOIN rosterface RF on RF.team = T.id AND RF.competition = :comp
+                LEFT JOIN competition C ON C.id = RF.competition
+                LEFT JOIN season S ON S.id = C.season
+                LEFT JOIN facetype F ON F.id = RF.facetype
+                LEFT JOIN person P ON P.id = RF.person
+
+            WHERE
+                T.id = :team
+            ORDER BY RF.id
+            LIMIT 1
+
+        ', array(
+            'team' => $_GET['team'],
+            'comp' => $_GET['comp']
+        ));
+        $result['answer']  = $team;
+
+        return $result;
+    }
+

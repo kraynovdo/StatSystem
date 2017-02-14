@@ -7,7 +7,7 @@
             <a class="request-confirmLink" href="/?r=request/confirm_<?=(1 - $answer['request']['confirm'])?>&team=<?=$_GET['team']?>&comp=<?=$_GET['comp']?>">
                 <?if ($answer['request']['confirm']) {?>Отменить одобрение<?} else {?>Одобрить<?}?></a>
         <?}?>
-        <a class="request-printLink">Печать</a>
+        <a target="_blank" class="request-printLink" href="/?r=request/print&comp=<?=$_GET['comp']?>&team=<?=$_GET['team']?>">Печать</a>
 
     </div>
 <?}?>

@@ -130,7 +130,7 @@ textarea {
     box-sizing: border-box;
 }
 .main-banner {
-    background-color: #0071bc;
+    background-color: #931919;
     padding: 18px;
     margin-bottom: 41px;
 }
@@ -142,22 +142,31 @@ textarea {
     margin-bottom: 60px;
 }
 
-.main-documentsBanner {
-
-}
 .main-banner_btn {
     display: block;
     text-align: center;
     font-size: 15px;
     color: #ffffff;
-    background-color: #931919;
+    background-color: #0071bc;
     text-decoration: none;
     padding: 20px 0;
-    border-bottom: 3px solid #600b0b;
+    border-bottom: 3px solid #025b97;
 }
 .main-banner_btn:hover {
+    background-color: #025b97;
+}
+
+.main-documentsBanner {
+    background-color: #0071bc;
+}
+.main-documentsBanner .main-banner_btn {
+    background-color: #931919;
+    border-bottom: 3px solid #600b0b;
+}
+.main-documentsBanner .main-banner_btn:hover {
     background-color: #600b0b;
 }
+
 .main-overlay {
     background: rgba(0,0,0,0.55);
     position: fixed;

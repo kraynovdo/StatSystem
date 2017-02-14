@@ -425,7 +425,7 @@ $(function () {
             return true;
         }
         else {
-            window.scrollTo(0, result.offset.top - 60);
+            window.scrollTo(0, result.offset.top - 200);
             return false;
         }
     });

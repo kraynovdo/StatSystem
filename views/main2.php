@@ -12,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <?}?>
     <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main2.css?6"/>
+    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main2.css?7"/>
     <link rel="shortcut icon" href="//<?=$HOST?>/themes/img/fafr_logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery-ui.css">
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery.Jcrop.min.css?1">
@@ -102,6 +102,12 @@
                     <div class="main-banner_header">Официальные документы</div>
                     <a href="/?r=document&federation=11" class="main-banner_btn main-documentsBannerBtn">Просмотреть</a>
                 </div>
+                <?if (false && ($_SESSION['userTeams']) && (count($_SESSION['userTeams']) >= 1)){?>
+                    <div class="main-banner">
+                        <div class="main-banner_header">Заявка на участие в ЛАФ 2017</div>
+                        <a href="/?r=request/choose&comp=64" class="main-banner_btn main-documentsBannerBtn">Подать заявку</a>
+                    </div>
+                <?}?>
             </div>
         </div>
         <div class="main-content-space"></div>
@@ -126,7 +132,7 @@
 <?}?>
 <script src="//<?=$HOST?>/jquery/jquery.Jcrop.min.js?1"></script>
 
-<script type="text/javascript" src="//<?=$HOST?>/themes/components.js?28"></script>
+<script type="text/javascript" src="//<?=$HOST?>/themes/components.js?29"></script>
 <?if (file_exists($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/' . $controller . '/' . $controller . '.js')) {?>
     <script type="text/javascript" src="//<?=$HOST?>/views/<?=$controller?>/<?=$controller?>.js?32"></script>
 <?}?>
