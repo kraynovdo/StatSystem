@@ -81,57 +81,57 @@
     <h3>Цвета</h3>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Основной цвет 1</label>
-        <input type="text" name="color_1" class="jscolor" value="<?=$answer['request']['color_1']?>"/>
+        <input type="text" name="color_1" data-validate="req" class="jscolor {required:false}" value="<?=$answer['request']['color_1']?>"/>
     </div>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Основной цвет 2</label>
-        <input type="text" name="color_2" class="jscolor" value="<?=$answer['request']['color_2']?>"/>
+        <input type="text" name="color_2" data-validate="req" class="jscolor {required:false}" value="<?=$answer['request']['color_2']?>"/>
     </div>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Основной цвет 3</label>
-        <input type="text" name="color_3" class="jscolor" value="<?=$answer['request']['color_3']?>"/>
+        <input type="text" name="color_3" data-validate="req" class="jscolor {required:false}" value="<?=$answer['request']['color_3']?>"/>
     </div>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Цвет шлема</label>
-        <input type="text" name="color_helmet" class="jscolor" value="<?=$answer['request']['color_helmet']?>"/>
+        <input type="text" name="color_helmet" data-validate="req" class="jscolor {required:false}" value="<?=$answer['request']['color_helmet']?>"/>
     </div>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Цвет маски</label>
-        <input type="text" name="color_mask" class="jscolor" value="<?=$answer['request']['color_mask']?>"/>
+        <input type="text" name="color_mask" data-validate="req" class="jscolor {required:false}" value="<?=$answer['request']['color_mask']?>"/>
     </div>
     <h3>Комплект формы 1</h3>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Джерси</label>
-        <input type="text" name="color_jersey1" class="jscolor" value="<?=$answer['request']['color_jersey1']?>"/>
+        <input type="text" name="color_jersey1" data-validate="req" class="jscolor {required:false}" value="<?=$answer['request']['color_jersey1']?>"/>
     </div>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Бриджи</label>
-        <input type="text" name="color_breeches1" class="jscolor" value="<?=$answer['request']['color_breeches1']?>"/>
+        <input type="text" name="color_breeches1" data-validate="req" class="jscolor {required:false}" value="<?=$answer['request']['color_breeches1']?>"/>
     </div>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Рукава</label>
-        <input type="text" name="color_sleeve1" class="jscolor" value="<?=$answer['request']['color_sleeve1']?>"/>
+        <input type="text" name="color_sleeve1" data-validate="req" class="jscolor {required:false}" value="<?=$answer['request']['color_sleeve1']?>"/>
     </div>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Леггинсы/носки</label>
-        <input type="text" name="color_socks1" class="jscolor" value="<?=$answer['request']['color_socks1']?>"/>
+        <input type="text" name="color_socks1" data-validate="req" class="jscolor {required:false}" value="<?=$answer['request']['color_socks1']?>"/>
     </div>
     <h3>Комплект формы 2</h3>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Джерси</label>
-        <input type="text" name="color_jersey2" class="jscolor" value="<?=$answer['request']['color_jersey2']?>"/>
+        <input type="text" name="color_jersey2" data-validate="req" class="jscolor {required:false}" value="<?=$answer['request']['color_jersey2']?>"/>
     </div>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Бриджи</label>
-        <input type="text" name="color_breeches2" class="jscolor" value="<?=$answer['request']['color_breeches2']?>"/>
+        <input type="text" name="color_breeches2" data-validate="req" class="jscolor {required:false}" value="<?=$answer['request']['color_breeches2']?>"/>
     </div>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Рукава</label>
-        <input type="text" name="color_sleeve2" class="jscolor" value="<?=$answer['request']['color_sleeve2']?>"/>
+        <input type="text" name="color_sleeve2" data-validate="req" class="jscolor {required:false}" value="<?=$answer['request']['color_sleeve2']?>"/>
     </div>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Леггинсы/носки</label>
-        <input type="text" name="color_socks2" class="jscolor" value="<?=$answer['request']['color_socks2']?>"/>
+        <input type="text" name="color_socks2" data-validate="req" class="jscolor {required:false}" value="<?=$answer['request']['color_socks2']?>"/>
     </div>
     <div class="main-fieldWrapper">
         <input type="button" class="main-btn main-submit" value="Отправить"/>
