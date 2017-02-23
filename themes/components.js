@@ -264,14 +264,26 @@ $(function () {
         $("[data-validate]", container.get(0)).each(function(i, item){
             var validator = $(item).attr('data-validate');
             if ($amf.validators[validator] instanceof Function) {
-                var result = $amf.validators[validator]($(item).val(), $(item));
-                if (result != true) {
-                    $(item).addClass('main-valid_error').attr('data-validmsg', result);
-                    error = true;
-                    offset = $(this).offset();
+                var value = $(item).val();
+                if ($(item).attr('type') == 'file') {
+                    value = value || $(item).attr('value');
+                }
+                var result = $amf.validators[validator](value, $(item));
+                var container;
+                if ($(item).attr('type') == 'file') {
+                    container = $(item).closest('.main-file');
                 }
                 else {
-                    $(item).removeClass('main-valid_error').removeAttr('data-validmsg');
+                    container = $(item);
+                }
+
+                if (result != true) {
+                    container.addClass('main-valid_error').attr('data-validmsg', result);
+                    error = true;
+                    offset = container.offset();
+                }
+                else {
+                    container.removeClass('main-valid_error').removeAttr('data-validmsg');
                     $amf.validWin.hideWin();
                 }
             }
@@ -371,6 +383,34 @@ $(function () {
             else {
                 return this.geo(value, item)
             }
+        },
+        ogrn : function(value, item) { // Работает как для организации, так и для ИП
+            var
+               field,
+               inputValue = value,
+               len, lastDig, ctrlDig, lstctrldig, firstDig,
+               effectivLen = parseInt(inputValue,10).toString().length,
+               allowsFirstDig = [1,2,3,5],
+               firstDigIsCorrect = false;
+
+
+            len = inputValue.length;
+
+            if ((len !== 13 && len !== 15)) {
+                return 'ОГРН должен состоять из 13 или 15 цифр';
+            }
+
+            firstDig = parseInt(inputValue.charAt(0), 10);
+            lastDig = parseInt(inputValue.charAt(len - 1), 10);
+            ctrlDig = parseInt(inputValue.substr(0, len - 1), 10) % (effectivLen - 2);
+            lstctrldig = ctrlDig % 10;
+
+            firstDigIsCorrect = (allowsFirstDig.indexOf(firstDig) !== -1);
+
+            if ((lstctrldig !== lastDig) || !firstDigIsCorrect) {
+                return 'Неверная контрольная сумма';
+            }
+            return true;
         }
     };
 

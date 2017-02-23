@@ -26,7 +26,9 @@
                   T.color_socks1,
                   T.color_socks2,
                   T.color_sleeve1,
-                  T.color_sleeve2
+                  T.color_sleeve2,
+                  T.ogrn,
+                  T.egrul_doc
                 FROM
                   team T LEFT JOIN compteam CT ON T.id = CT.team AND competition = :comp
                 WHERE
@@ -100,11 +102,38 @@
                     'facetype' => $_POST['work']
                 ));
             }
+
+            $oldRecord = common_getrecord($dbConnect, '
+              SELECT
+                egrul_doc
+              FROM
+                team AS T
+              WHERE id = :id',
+                array(
+                    'id' => $_POST['team']
+                )
+            );
+            if ($oldRecord) {
+                $oldEgrul = $oldRecord['egrul_doc'];
+                $egrul_doc = common_loadFile('egrul_doc', $CONSTPath);
+                if ($egrul_doc) {
+                    if ($oldEgrul) {
+                        unlink($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/upload/' . $oldEgrul);
+                    }
+                }
+                else {
+                    $egrul_doc = $oldEgrul;
+                }
+            }
+
+            $org_form = $_POST['org_form'] ? $_POST['org_form'] : NULL;
+
             common_query($dbConnect, '
                 UPDATE team
                 SET
                   name = :name,
                   rus_name = :rus_name,
+                  org_form = :org_form,
                   city = :city,
                   city_adj = :city_adj,
                   city_eng = :city_eng,
@@ -120,12 +149,15 @@
                   color_jersey2 = :color_jersey2,
                   color_breeches2 = :color_breeches2,
                   color_sleeve2 = :color_sleeve2,
-                  color_socks2 = :color_socks2
+                  color_socks2 = :color_socks2,
+                  ogrn = :ogrn,
+                  egrul_doc = :egrul_doc
                 WHERE
                   id = :team
             ', array(
                 'name' => $_POST['name'],
                 'rus_name' => $_POST['rus_name'],
+                'org_form' => $org_form,
                 'city' => $_POST['city'],
                 'city_adj' => $_POST['city_adj'],
                 'city_eng' => $_POST['city_eng'],
@@ -142,7 +174,9 @@
                 'color_jersey2' => $_POST['color_jersey2'],
                 'color_breeches2' => $_POST['color_breeches2'],
                 'color_sleeve2' => $_POST['color_sleeve2'],
-                'color_socks2' => $_POST['color_socks2']
+                'color_socks2' => $_POST['color_socks2'],
+                'ogrn' => $_POST['ogrn'],
+                'egrul_doc' => $egrul_doc
             ));
 
             return array(

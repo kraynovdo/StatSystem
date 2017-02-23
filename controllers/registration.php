@@ -225,6 +225,7 @@
         ');
 
         $region = $_POST['geo_region'] ? $_POST['geo_region'] : NULL;
+        $org_form = $_POST['org_form'] ? $_POST['org_form'] : NULL;
 
         $queryresult->execute(array(
             'rus_name' => $_POST['rus_name'],
@@ -234,7 +235,7 @@
             'geo_region' => $region,
             'city' => $_POST['city'],
             'sport' => $_POST['sport'],
-            'org_form' => $_POST['org_form'],
+            'org_form' => $org_form,
             'age' => $_POST['age'],
             'sex' => $_POST['sex'],
             'email' => $_POST['email'],

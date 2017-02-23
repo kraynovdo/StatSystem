@@ -13,18 +13,39 @@
 <?}?>
 <h2>Заполните необходимые данные</h2>
 
-<form action="/?r=request/post" method="post">
+<form action="/?r=request/post" method="post" enctype="multipart/form-data">
     <input type="hidden" name="team" value="<?=$_GET['team']?>"/>
     <input type="hidden" name="comp" value="<?=$_GET['comp']?>"/>
+    <h3>Юридический статус</h3>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Организационно-правовая форма</label>
-        <select name="org_form" data-validate="req"  class="request-field">
-            <option value="">--Выберите из списка--</option>
+        <select name="org_form" class="request-field request-status">
+            <option value="">--Юридически не зарегистрированы--</option>
             <?for ($j = 0; $j < count($answer['opf']); $j++) {?>
                 <option value="<?=$answer['opf'][$j]['id']?>"
                     <?if ($answer['request']['org_form'] == $answer['opf'][$j]['id']){?> selected="selected"<?}?>><?=$answer['opf'][$j]['name']?></option>
             <?}?>
         </select>
+    </div>
+    <div class="main-fieldWrapper request-statusField<?if (!$answer['request']['org_form']){?> main-hidden<?}?>">
+        <label class="main-label_top">ОГРН</label>
+        <input name="ogrn" <?if ($answer['request']['org_form']){?>data-validate="ogrn"<?}?> class="request-field request-ogrn" type="text" value="<?=$answer['request']['ogrn']?>"/>
+    </div>
+    <div class="main-fieldWrapper request-statusField<?if (!$answer['request']['org_form']){?> main-hidden<?}?>">
+        <label class="main-label_top">Выписка ЕГРЮЛ</label>
+        <?if ($answer['request']['egrul_doc']){?>
+            <a target="_blank" href="//<?=$HOST?>/upload/<?=$answer['request']['egrul_doc']?>">Загруженный файл</a>
+        <?}?>
+        <div class="main-file main-file_simple request-egrul">
+            <div class="main-file_label">
+                <?if ($answer['request']['egrul_doc']){?>
+                    Загрузить новую<br/>(1 файлом)
+                <?} else {?>
+                    Добавить выписку<br/>(1 файлом)
+                <?}?>
+            </div>
+            <input value="<?=$answer['request']['egrul_doc']?>" class="main-file_input request-egrulFile" type="file" name="egrul_doc"<?if ($answer['request']['org_form']){?> data-validate="req"<?}?>/>
+        </div>
     </div>
     <h3>Названия</h3>
     <div class="main-fieldWrapper">
@@ -109,11 +130,11 @@
         <input type="text" name="color_breeches1" data-validate="req" class="jscolor {required:false}" value="<?=$answer['request']['color_breeches1']?>"/>
     </div>
     <div class="main-fieldWrapper">
-        <label class="main-label_top">Рукава</label>
+        <label class="main-label_top">Рукава/поддевка</label>
         <input type="text" name="color_sleeve1" data-validate="req" class="jscolor {required:false}" value="<?=$answer['request']['color_sleeve1']?>"/>
     </div>
     <div class="main-fieldWrapper">
-        <label class="main-label_top">Леггинсы/носки</label>
+        <label class="main-label_top">Леггинсы/гетры</label>
         <input type="text" name="color_socks1" data-validate="req" class="jscolor {required:false}" value="<?=$answer['request']['color_socks1']?>"/>
     </div>
     <h3>Комплект формы 2</h3>
@@ -126,11 +147,11 @@
         <input type="text" name="color_breeches2" data-validate="req" class="jscolor {required:false}" value="<?=$answer['request']['color_breeches2']?>"/>
     </div>
     <div class="main-fieldWrapper">
-        <label class="main-label_top">Рукава</label>
+        <label class="main-label_top">Рукава/поддевка</label>
         <input type="text" name="color_sleeve2" data-validate="req" class="jscolor {required:false}" value="<?=$answer['request']['color_sleeve2']?>"/>
     </div>
     <div class="main-fieldWrapper">
-        <label class="main-label_top">Леггинсы/носки</label>
+        <label class="main-label_top">Леггинсы/гетры</label>
         <input type="text" name="color_socks2" data-validate="req" class="jscolor {required:false}" value="<?=$answer['request']['color_socks2']?>"/>
     </div>
     <div class="main-fieldWrapper">

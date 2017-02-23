@@ -23,8 +23,8 @@
                 <input name="geo_region" type="hidden" data-geo="region"/>
                 <input autocomplete="off" class="geo-region reg-field" name="geo_regionTitle" data-validate="geo2" data-geo="region" type="text" placeholder="Регион" data-geo-country="country"/>
                 <input class="reg-city reg-field" data-validate="req" name="city"  type="text" placeholder="Город *"/>
-                <select name="org_form" data-validate="req" class="reg-field">
-                    <option value="">--Организационно-правовая форма</option>
+                <select name="org_form" class="reg-field">
+                    <option value="">--Юридически не зарегистрированы--</option>
                     <?for ($j = 0; $j < count($answer['opf']); $j++) {?>
                         <option value="<?=$answer['opf'][$j]['id']?>"><?=$answer['opf'][$j]['name']?></option>
                     <?}?>
@@ -52,10 +52,6 @@
                 <input class="reg-vk reg-field" name="vk_link" type="text" placeholder="Ссылка на страницу ВК"/>
                 <input class="reg-email reg-field" name="inst_link" type="text" placeholder="Instagram"/>
                 <input class="reg-vk reg-field" name="twitter_link" type="text" placeholder="Twitter"/>
-                <div class="main-file main-file_simple reg-teamOGRN">
-                    <div class="main-file_label">Загрузить<br/>свидетельство ОГРН</div>
-                    <input class="main-file_input" type="file" name="ogrn_doc"/>
-                </div>
             </div>
         </div>
     </div>
