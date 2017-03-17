@@ -1506,3 +1506,20 @@ textarea {
 .request-egrul {
     height: 30px;
 }
+
+.main-tile_rb input:checked + label{
+    color: #000000;
+    background: #ffffff;
+}
+.main-tile {
+    box-sizing: border-box;
+    border: 6px solid #000000;
+    height: 50px;
+    font-size: 25px;
+    display: inline-block;
+    line-height: 38px;
+    cursor: pointer;
+    background: #000000;
+    color: #ffffff;
+    padding: 0 10px;
+}

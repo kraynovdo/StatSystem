@@ -61,7 +61,7 @@
     }
 
     function registration_reg($dbConnect, $CONSTPath){
-        if ($_POST['imnothuman'] || !$_POST['birthdate']) {
+        if ($_POST['imnothuman'] || (!$_POST['person'] && !$_POST['birthdate'])) {
             return array(
                 'answer' => 'У нас можно регистрироваться только реальным людям',
                 'navigation' => registration_index()

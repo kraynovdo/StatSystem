@@ -261,3 +261,20 @@
 
         return $result;
     }
+
+
+    function stats_screenAF ($dbConnect, $CONSTPath) {
+        $answer = array();
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/match.php');
+        $matchinfo = match_mainInfo($dbConnect, $CONSTPath);
+        $answer['matchInfo'] = $matchinfo;
+
+
+        require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
+        $result = array(
+            'answer' => $answer,
+            'navigation' => competition_NAVIG($dbConnect, $_GET['comp'])
+        );
+        return $result;
+    }
+
