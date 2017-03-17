@@ -13,22 +13,6 @@
         <input type="text" class="main-date" name="date" data-validate="req" value="<?=$date?>"/>
     </div>
     <div class="main-fieldWrapper">
-        <label class="main-label_top">Группа</label>
-        <select name="group">
-            <option value="">-Выберите группу-</option>
-            <?
-            $group = $answer['group'];
-            for ($i = 0; $i < count($group); $i++) {
-                $selected = '';
-                if ($answer['match']['group'] == $group[$i]['id']) {
-                    $selected = ' selected="selected"';
-                }
-            ?>
-                <option value="<?=$group[$i]['id']?>"<?=$selected?>><?=$group[$i]['name']?></option>
-            <?   }?>
-        </select>
-    </div>
-    <div class="main-fieldWrapper">
         <label class="main-label_top">Команда - хозяин</label>
         <select name="team1" data-validate="req" class="match-teamHome">
             <option value="">-Выберите команду-</option>
@@ -69,6 +53,22 @@
     <div class="main-fieldWrapper">
         <label class="main-label_top">Очки</label>
         <input type="text" name="score2" value="<?=$answer['match']['score2']?>"/>
+    </div>
+    <div class="main-fieldWrapper">
+        <label class="main-label_top">Группа</label>
+        <select name="group">
+            <option value="">-Выберите группу-</option>
+            <?
+            $group = $answer['group'];
+            for ($i = 0; $i < count($group); $i++) {
+                $selected = '';
+                if ($answer['match']['group'] == $group[$i]['id']) {
+                    $selected = ' selected="selected"';
+                }
+                ?>
+                <option value="<?=$group[$i]['id']?>"<?=$selected?>><?=$group[$i]['name']?></option>
+            <?   }?>
+        </select>
     </div>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Город проведения матча</label>

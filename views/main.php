@@ -53,7 +53,7 @@ else {
 
 <script type="text/javascript" src="//<?=$HOST?>/themes/components.js?31"></script>
 <?if (file_exists($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/' . $controller . '/' . $controller . '.js')) {?>
-    <script type="text/javascript" src="//<?=$HOST?>/views/<?=$controller?>/<?=$controller?>.js?32"></script>
+    <script type="text/javascript" src="//<?=$HOST?>/views/<?=$controller?>/<?=$controller?>.js?33"></script>
 <?}?>
 
 </body>
