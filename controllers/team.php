@@ -210,6 +210,7 @@
                 $logo = $oldLogo;
             }
 
+            $region = $_POST['geo_region'] ? $_POST['geo_region'] : NULL;
             $queryresult = $dbConnect->prepare('
             UPDATE
               team
@@ -232,7 +233,7 @@
                 'rus_name' => $_POST['rus_name'],
                 'rus_abbr' => $_POST['rus_abbr'],
                 'geo_country' => $_POST['geo_country'],
-                'geo_region' => $_POST['geo_region'],
+                'geo_region' => $region,
                 'city' => $_POST['city'],
                 'email' => $_POST['email'],
                 'vk_link' => $_POST['vk_link'],
