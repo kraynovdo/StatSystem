@@ -44,6 +44,7 @@ else {
     require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/views/_mainMobile.php');
 }?>
 <script src="//<?=$HOST?>/jquery/jquery-1.10.2.js"></script>
+<script src="//<?=$HOST?>/jquery/jquery.cookie.js"></script>
 <script src="//<?=$HOST?>/jquery/jquery-ui.js"></script>
 <?if ( !($IS_MOBILE) ) {?>
     <script type="text/javascript" src="//<?=$HOST?>/jquery/ckeditor/ckeditor.js"></script>

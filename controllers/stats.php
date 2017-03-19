@@ -269,6 +269,9 @@
         $matchinfo = match_mainInfo($dbConnect, $CONSTPath);
         $answer['matchInfo'] = $matchinfo;
 
+        require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/screenAF.php');
+        $qbRoster = screenAF_listplayers($dbConnect, $CONSTPath, $_GET['match'], $matchinfo['team1'], 'qb');
+        $answer['qbRoster'] = $qbRoster;
 
         require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
         $result = array(

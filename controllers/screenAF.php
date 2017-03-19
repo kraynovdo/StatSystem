@@ -16,6 +16,6 @@
               LEFT JOIN roster R ON R.id = MR.roster
               LEFT JOIN position pos ON pos.id = R.position
             WHERE
-                `match` = :MATCH AND MR.team = :team' . $where
+                `match` = :match AND MR.team = :team' . $where
         , $params);
     }
