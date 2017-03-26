@@ -47,7 +47,7 @@
 
     function competition_index($dbConnect, $CONSTPath) {
         $result = array();
-        $filter = '';
+        $filter = ' AND competition.id != 77';
         $params = array();
         if ($_GET['federation']) {
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
