@@ -8,10 +8,10 @@ function friendlymatch_index($dbConnect, $CONSTPath) {
             LEFT JOIN team T1 ON T1.id = M.team1
             LEFT JOIN team T2 ON T2.id = M.team2
         WHERE C.type = 1
-        ORDER BY date
+        ORDER BY date DESC
     ', array());
-    require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/federation.php');
-    $navig = federation_navig($dbConnect);
+    require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
+    $navig = start_NAVIG($dbConnect);
     return array(
         'answer' => $list,
         'navigation' => $navig

@@ -6,17 +6,6 @@
         <input type="text" class="main-date" name="date" data-validate="req"/>
     </div>
     <div class="main-fieldWrapper">
-        <label class="main-label_top">Группа</label>
-        <select name="group">
-            <option value="">-Выберите группу-</option>
-            <?
-            $group = $answer['group'];
-            for ($i = 0; $i < count($group); $i++) {?>
-                <option value="<?=$group[$i]['id']?>"><?=$group[$i]['name']?></option>
-            <?   }?>
-        </select>
-    </div>
-    <div class="main-fieldWrapper">
         <label class="main-label_top">Команда - хозяин</label>
         <select name="team1" data-validate="req" class="match-teamHome">
             <option value="">-Выберите команду-</option>
@@ -39,6 +28,17 @@
         </select>
     </div>
     <div class="main-fieldWrapper">
+        <label class="main-label_top">Группа</label>
+        <select name="group" class="match-groupField">
+            <option value="">-Выберите группу-</option>
+            <?
+            $group = $answer['group'];
+            for ($i = 0; $i < count($group); $i++) {?>
+                <option value="<?=$group[$i]['id']?>"><?=$group[$i]['name']?></option>
+            <?   }?>
+        </select>
+    </div>
+    <div class="main-fieldWrapper">
         <label class="main-label_top">Город проведения матча</label>
         <input class="match-cityField" type="text" name="city"/>
     </div>
@@ -50,6 +50,11 @@
     <div class="main-hidden match-cityList">
         <?for ($i = 0; $i < count($team); $i++) {?>
         <div data-id="<?=$team[$i]['id']?>"><?=$team[$i]['city']?></div>
+        <?}?>
+    </div>
+    <div class="main-hidden match-groupList">
+        <?for ($i = 0; $i < count($team); $i++) {?>
+            <div data-id="<?=$team[$i]['id']?>"><?=$team[$i]['group']?></div>
         <?}?>
     </div>
 </form>

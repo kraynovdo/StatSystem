@@ -566,6 +566,7 @@ textarea {
 .roster-list {
     display: table;
     width: 100%;
+    border-top: 1px solid #ccc;
 }
 .roster-item {
     display: table-row;
@@ -610,7 +611,7 @@ textarea {
     width: 150px;
 }
 .roster-birthdate, .roster-birthdate_face {
-    width: 80px;
+    width: 77px;
 }
 .roster-number {
     width: 30px;
@@ -628,7 +629,7 @@ textarea {
     width: 50px;
 }
 .roster-phone, .roster-phone_face {
-    width: 130px;
+    width: 97px;
 }
 .roster-submitContainer {
     margin: 5px 0 20px 0;

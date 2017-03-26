@@ -11,7 +11,7 @@
         <script type="text/javascript">window.mobile = true;</script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <?}?>
-    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main.css?111"/>
+    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main.css?112"/>
     <?if ($theme) {?>
         <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?9"/>
     <?}?>
@@ -54,7 +54,7 @@ else {
 
 <script type="text/javascript" src="//<?=$HOST?>/themes/components.js?31"></script>
 <?if (file_exists($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/' . $controller . '/' . $controller . '.js')) {?>
-    <script type="text/javascript" src="//<?=$HOST?>/views/<?=$controller?>/<?=$controller?>.js?32"></script>
+    <script type="text/javascript" src="//<?=$HOST?>/views/<?=$controller?>/<?=$controller?>.js?33"></script>
 <?}?>
 
 </body>

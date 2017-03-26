@@ -189,5 +189,9 @@
         if (cityContainer.length) {
             $('.match-cityField').val(cityContainer.text())
         }
+        var groupContainer = $('.match-groupList').find('[data-id='+value+']');
+        if (groupContainer.length) {
+            $('.match-groupField').val(groupContainer.text())
+        }
     })
 })();
