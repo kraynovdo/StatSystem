@@ -270,8 +270,14 @@
         $answer['matchInfo'] = $matchinfo;
 
         require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/screenAF.php');
-        $qbRoster = screenAF_listplayers($dbConnect, $CONSTPath, $_GET['match'], $matchinfo['team1'], 'qb');
+        $teamCookie = $_COOKIE['stats-' . $_GET['match'] . '-team'];
+        $teamID = $teamCookie ? $teamCookie : $matchinfo['team1'];
+        $qbRoster = screenAF_listplayers($dbConnect, $CONSTPath, $_GET['match'], $teamID, 'qb');
+        $answer['teamID'] = $teamID;
         $answer['qbRoster'] = $qbRoster;
+
+        require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statconfig.php');
+        $answer['statconfig'] = statconfig_list($dbConnect, $CONSTPath);
 
         require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
         $result = array(

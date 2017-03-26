@@ -1524,3 +1524,8 @@ textarea {
     color: #ffffff;
     padding: 0 10px;
 }
+
+.stats-screen_action {
+    background: #44863C;
+    border-color: #44863C;
+}
