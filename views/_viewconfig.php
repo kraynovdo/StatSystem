@@ -133,7 +133,13 @@
         $HOST='amfoot.ru';
     }
     else {
-        $HOST = $_SERVER['HTTP_HOST'];
+        if (strstr($_SERVER['HTTP_HOST'], 'amfoot.net')) {
+            $HOST='amfoot.net';
+        }
+        else {
+            $HOST = $_SERVER['HTTP_HOST'];
+        }
+
     }
 
     $detect = new Mobile_Detect;
