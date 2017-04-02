@@ -147,7 +147,7 @@
         $('.roster-choose_checkbox').each(function(i, item) {
             if ($(item).prop('checked')) {
                 var
-                    tr = $(item).closest('tr'),
+                    tr = $(item).closest('.roster-item'),
                     id = tr.data('id');
                 idArr.push(id);
             }
