@@ -276,6 +276,9 @@
         $answer['teamID'] = $teamID;
         $answer['qbRoster'] = $qbRoster;
 
+        $fullRoster = screenAF_listplayers($dbConnect, $CONSTPath, $_GET['match'], $teamID);
+        $answer['fullRoster'] = $fullRoster;
+
         require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statconfig.php');
         $answer['statconfig'] = statconfig_list($dbConnect, $CONSTPath);
 

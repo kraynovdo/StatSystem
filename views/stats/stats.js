@@ -1,4 +1,9 @@
 (function(){
+   function rosterSelector() {
+
+   }
+
+
    $('[name="team"]').change(function(){
       var value = $(this).val();
       var match = $('.stats-matchId').val();
