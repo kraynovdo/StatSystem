@@ -154,7 +154,7 @@
                   compteam CT LEFT JOIN competition C ON C.id = CT.competition
                   LEFT JOIN season S ON S.id = C.season
                 WHERE
-                  CT.team = :id
+                  CT.team = :id AND C.type IS NULL
                 ORDER BY C.id DESC');
         $queryresult->execute(array(
             'id' => $team
