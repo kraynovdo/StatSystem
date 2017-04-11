@@ -132,7 +132,7 @@
             if (parseInt(ans, 10)) {
                 item.addClass('roster-row_confirm1').removeClass('roster-row_confirm0');
                 $self.addClass('roster-confirm_1');
-                tdDel.empty('&nbsp;');
+                tdDel.html('&nbsp;');
             }
             else {
                 item.addClass('roster-row_confirm0').removeClass('roster-row_confirm1');

@@ -126,7 +126,7 @@ function roster_fill($dbConnect, $CONSTPath, $ids = null) {
                 'header' => 'Заявка на '.$compInfo['name']. ' ' . $compInfo['yearB']
             ),
             'answer' => array(
-                'team' => $team['answer']['team']['name'],
+                'team' => $team['answer']['team']['rus_name'],
                 'teamCity' => $team['answer']['team']['city'],
                 'teamRec' => $team['answer']['team'],
                 'position' => $position['answer'],

@@ -250,7 +250,7 @@ table {
 .roster-itemContent {
    display: inline-block;
    width: auto;
-   border-top-width: 0;
+   border-bottom-width: 0;
 }
 .roster-item {
    border-top: 1px solid #cccccc;
