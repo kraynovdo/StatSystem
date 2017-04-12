@@ -272,12 +272,21 @@
         require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/screenAF.php');
         $teamCookie = $_COOKIE['stats-' . $_GET['match'] . '-team'];
         $teamID = $teamCookie ? $teamCookie : $matchinfo['team1'];
-        $qbRoster = screenAF_listplayers($dbConnect, $CONSTPath, $_GET['match'], $teamID, 'qb');
         $answer['teamID'] = $teamID;
-        $answer['qbRoster'] = $qbRoster;
 
-        $fullRoster = screenAF_listplayers($dbConnect, $CONSTPath, $_GET['match'], $teamID);
-        $answer['fullRoster'] = $fullRoster;
+
+        $rosters = array();
+
+
+
+
+        $roster = screenAF_listplayers($dbConnect, $CONSTPath, $_GET['match'], $matchinfo['team1']);
+        $rosters[$matchinfo['team1']] = $roster;
+        $roster = screenAF_listplayers($dbConnect, $CONSTPath, $_GET['match'], $matchinfo['team2']);
+        $rosters[$matchinfo['team2']] = $roster;
+        $answer['rosters'] = $rosters;
+
+
 
         require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statconfig.php');
         $answer['statconfig'] = statconfig_list($dbConnect, $CONSTPath);

@@ -1526,6 +1526,49 @@ textarea {
 }
 
 .stats-screen_action {
+
+    margin-bottom: 5px;
+}
+
+.stats-screen_success {
     background: #44863C;
     border-color: #44863C;
+}
+.stats-screen_cancel {
+    background: #bc4809;
+    border-color: #bc4809;
+}
+
+
+.stats-screen_group {
+    background: #000000;
+    border-top: 15px solid #ffffff;
+    border-bottom: 15px solid #ffffff;
+
+}
+.stats-screen_groupContent {
+    font-size: 25px;
+    background: #ffffff;
+    padding: 6px;
+}
+
+.stats-screen_screenContent {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.stats-screen_screenContent_def {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+}
+
+.stats-screen_qbAdd {
+    margin-bottom: 6px;
 }
