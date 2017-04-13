@@ -3,11 +3,13 @@
         $params = array(
             'type' => $_GET['type']
         );
+        $result['answer']['action'] = common_getrecord($dbConnect,
+            'SELECT id, name, code FROM statactiontype WHERE id = :type', $params);
         $result['answer']['chartype'] = common_getlist($dbConnect,
-            'SELECT id, name FROM statchartype WHERE actiontype = :type ORDER BY id', $params);
+            'SELECT id, name, code FROM statchartype WHERE actiontype = :type ORDER BY id', $params);
 
         $result['answer']['persontype'] = common_getlist($dbConnect,
-            'SELECT id, name FROM statpersontype WHERE actiontype = :type ORDER BY id', $params);
+            'SELECT id, name, code, offdef FROM statpersontype WHERE actiontype = :type ORDER BY id', $params);
 
         $result['answer']['point'] = common_getlist($dbConnect,
             'SELECT

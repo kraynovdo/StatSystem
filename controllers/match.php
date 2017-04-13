@@ -489,6 +489,7 @@
 
 
             $person = $_POST['person'];
+            $xxx = count($person);
             if ($person) {
                 foreach ($person as $key => $value) {
                     common_query($dbConnect, '
@@ -506,7 +507,7 @@
         }
 
         return array(
-            'page' => '/?r=match/playbyplay&match=' . $_POST['match'] . '&comp=' . $_POST['competition']
+            'page' => $xxx
         );
 
     }

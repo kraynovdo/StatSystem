@@ -4,9 +4,12 @@
     $team2 = $answer['matchInfo']['team2'];
     $teamID = $answer['teamID']
 ?>
-<form>
+<div>
     <div class="stats-screen_screen stats-screen_screenMain">
+        <input type="hidden" name="comp" class="stats-compId" value="<?=$_GET['comp']?>"/>
         <input type="hidden" name="match" class="stats-matchId" value="<?=$_GET['match']?>"/>
+        <input type="hidden" name="team1" class="stats-team1Id" value="<?=$team1?>"/>
+        <input type="hidden" name="team2" class="stats-team2Id" value="<?=$team2?>"/>
         <div class="main-fieldWrapper">
             <label class="main-label_top">Владение</label>
             <span class="main-tile_rb">
@@ -45,4 +48,9 @@
 
     <?$fullRoster = $answer['rosters'][$team2];$team=$team2?>
     <? include 'screenAF/_fullRoster.php'?>
-</form>
+
+    <form class="stats-screen_char stats-screen_screen" style="display: none;">
+        <input type="hidden" name="statactiontype"/>
+        <div class="stats-screen_charContent"
+    </form>
+</div>

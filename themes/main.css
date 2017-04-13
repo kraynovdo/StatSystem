@@ -1572,3 +1572,29 @@ textarea {
 .stats-screen_qbAdd {
     margin-bottom: 6px;
 }
+
+.stats-screen_screen .main-label_top{
+    font-size: 20px;
+}
+.stats-screenCharHead {
+    margin-bottom: 20px;
+}
+input.stats-screenCharValue {
+    box-sizing: border-box;
+    border: 6px solid #000000;
+    height: 50px;
+    font-size: 25px;
+    line-height: 38px;
+    margin-bottom: 15px;
+}
+.stats-screen_tacklersList {
+    margin-bottom: 6px;
+}
+
+.stats-screen_tackleChoose {
+    margin-bottom: 20px;
+}
+
+.stats-screen_pg {
+    margin-bottom: 10px;
+}
