@@ -594,7 +594,7 @@
         }
 
         return array(
-            'page' => $xxx
+            'page' => '/?r=match/playbyplay&match=' . $_POST['match'] . '&comp=' . $_POST['competition']
         );
 
     }

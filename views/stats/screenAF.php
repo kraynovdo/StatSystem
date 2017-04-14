@@ -2,7 +2,7 @@
     include $_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/views/match/_navig.php';
     $team1 = $answer['matchInfo']['team1'];
     $team2 = $answer['matchInfo']['team2'];
-    $teamID = $answer['teamID']
+    $teamID = $answer['teamID'];
 ?>
 <div>
     <div class="stats-screen_screen">

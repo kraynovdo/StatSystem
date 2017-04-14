@@ -12,7 +12,7 @@
 
         $fulllist = common_getlist($dbConnect, '
             SELECT
-              person AS pid, MR.number, POS.abbr AS pos, offdef
+              person AS pid, MR.number, pos.abbr AS pos, offdef
             FROM
               matchroster MR
               LEFT JOIN roster R ON R.id = MR.roster
