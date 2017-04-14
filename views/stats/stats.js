@@ -1,4 +1,16 @@
 (function () {
+   $('.stats-screen_commentLabel').click(function(){
+      $('.stats-screen_comment').toggle();
+   });
+
+   $('.stats-screen_commentSbmt').click(function(){
+      myCharSelector.data = {};
+      myCharSelector._fillMainInfo();
+      myCharSelector.push(function(){
+         $('.stats-screen_comment').show();
+      });
+   });
+
    function RosterSelector() {
       this.team = undefined;
       this.type = undefined;
@@ -233,12 +245,15 @@
 
    }
 
-   CharSelector.prototype.push = function () {
+   CharSelector.prototype.push = function (callback) {
       var self = this;
       $.post('/?r=match/createEvent', this.data, function (res) {
          self._clear();
          myRosterSelector.hide();
          $('.stats-screen_screenMain').show();
+         $('.stats-screen_commentField').val('');
+         $('.stats-screen_comment').hide();
+         callback();
       });
    };
 
@@ -246,6 +261,7 @@
       myCharSelector.data.match = Team.match;
       myCharSelector.data.competition = Team.comp;
       myCharSelector.data.teamSt = [Team.curTeam];
+      myCharSelector.data.comment = $('.stats-screen_commentField').val();
    };
 
    CharSelector.prototype.passknock = function (team, id) {

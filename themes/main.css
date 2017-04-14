@@ -1587,6 +1587,13 @@ input.stats-screenCharValue {
     line-height: 38px;
     margin-bottom: 15px;
 }
+.stats-screen_comment {
+    box-sizing: border-box;
+    border: 6px solid #000000;
+    font-size: 25px;
+    line-height: 38px;
+    margin-bottom: 15px;
+}
 .stats-screen_tacklersList {
     margin-bottom: 6px;
 }
@@ -1600,4 +1607,8 @@ input.stats-screenCharValue {
 }
 .stats-screen_fum {
     margin-bottom: 10px;
+}
+.stats-screen_commentLabel {
+    margin-bottom: 10px;
+    cursor: pointer;
 }

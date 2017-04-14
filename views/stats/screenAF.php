@@ -5,6 +5,11 @@
     $teamID = $answer['teamID']
 ?>
 <div>
+    <div class="stats-screen_screen">
+        <a class="main-label_top stats-screen_commentLabel">Текстовый комментарий</a>
+        <textarea style="display: none" class="stats-screen_comment stats-screen_commentField" rows="2"></textarea>
+        <div><span style="display: none" class="main-tile stats-screen_comment stats-screen_commentSbmt">Отправить только текст</span></div>
+    </div>
     <div class="stats-screen_screen stats-screen_screenMain">
         <input type="hidden" name="comp" class="stats-compId" value="<?=$_GET['comp']?>"/>
         <input type="hidden" name="match" class="stats-matchId" value="<?=$_GET['match']?>"/>
@@ -49,8 +54,8 @@
     <?$fullRoster = $answer['rosters'][$team2];$team=$team2?>
     <? include 'screenAF/_fullRoster.php'?>
 
-    <form class="stats-screen_char stats-screen_screen" style="display: none;">
+    <div class="stats-screen_char stats-screen_screen" style="display: none;">
         <input type="hidden" name="statactiontype"/>
         <div class="stats-screen_charContent"
-    </form>
+    </div>
 </div>
