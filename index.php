@@ -2,6 +2,8 @@
 
     require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/config.php');
     require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/Mobile_Detect.php');
+    $detect = new Mobile_Detect;
+    $IS_MOBILE =  $detect->isMobile() ||  $detect->isAndroidOS() ||  $detect->isiOS();
     header("Content-Type: text/html; charset=utf-8");
 
 

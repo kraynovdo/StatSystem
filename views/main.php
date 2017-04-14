@@ -11,12 +11,12 @@
         <script type="text/javascript">window.mobile = true;</script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <?}?>
-    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main.css?114"/>
+    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main.css?115"/>
     <?if ($theme) {?>
         <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?9"/>
     <?}?>
     <?if ($IS_MOBILE) {?>
-        <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main_mobile_s.css?39"/>
+        <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main_mobile_s.css?40"/>
     <?}?>
     <link rel="shortcut icon" href="//<?=$HOST?>/themes/img/fafr_logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery-ui.css">
@@ -54,7 +54,7 @@ else {
 
 <script type="text/javascript" src="//<?=$HOST?>/themes/components.js?31"></script>
 <?if (file_exists($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/' . $controller . '/' . $controller . '.js')) {?>
-    <script type="text/javascript" src="//<?=$HOST?>/views/<?=$controller?>/<?=$controller?>.js?36"></script>
+    <script type="text/javascript" src="//<?=$HOST?>/views/<?=$controller?>/<?=$controller?>.js?37"></script>
 <?}?>
 
 </body>

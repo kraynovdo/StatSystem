@@ -134,13 +134,9 @@
     }
     else {
         if (strstr($_SERVER['HTTP_HOST'], 'amfoot.net')) {
-            $HOST='amfoot.net';
-        }
-        else {
+            $HOST = 'amfoot.net';
+        } else {
             $HOST = $_SERVER['HTTP_HOST'];
         }
 
     }
-
-    $detect = new Mobile_Detect;
-    $IS_MOBILE =  $detect->isMobile() ||  $detect->isAndroidOS() ||  $detect->isiOS();

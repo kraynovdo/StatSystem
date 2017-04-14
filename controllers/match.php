@@ -277,7 +277,11 @@
         return $result;
     }
 
-    function match_actionList ($dbConnect, $CONSTPath, $match) {
+    function match_actionList ($dbConnect, $CONSTPath, $match, $limit='') {
+        $limitStr = '';
+        if ($limit) {
+            $limitStr = 'LIMIT 0, 10';
+        }
         return common_getlist($dbConnect, '
             SELECT
                 M.id, M.comment, PG.name AS pg, AT.name AS action, T.logo AS team, AT.code,
@@ -321,7 +325,7 @@
 
 
                     WHERE
-                        M.`match` = :match ORDER BY M.id DESC
+                        M.`match` = :match ORDER BY M.id DESC ' . $limitStr .'
         ', array(
             'match' => $match
         ));
@@ -466,11 +470,11 @@
         );
     }
 
-    function match_playbyplayAF($dbConnect, $CONSTPath) {
+    function match_playbyplayAF($dbConnect, $CONSTPath, $limit='') {
         $answer = array();
         $answer['match'] = match_mainInfo($dbConnect, $CONSTPath);
 
-        $event = match_actionList($dbConnect, $CONSTPath, $_GET['match']);
+        $event = match_actionList($dbConnect, $CONSTPath, $_GET['match'], $limit);
         $eventResult = array();
 
 
@@ -519,11 +523,15 @@
         }
 
         $answer['event'] = $eventResult;
-        require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
         return array(
             'answer' => $answer,
             'navigation' => competition_NAVIG($dbConnect, $_GET['comp'])
         );
+    }
+
+    function match_playbyplayminiAF($dbConnect, $CONSTPath) {
+        return match_playbyplayAF($dbConnect, $CONSTPath, 10);
     }
 
     function match_createEvent($dbConnect, $CONSTPath) {
@@ -580,7 +588,6 @@
 
 
             $person = $_POST['person'];
-            $xxx = count($person);
             if ($person) {
                 foreach ($person as $key => $value) {
                     common_query($dbConnect, '

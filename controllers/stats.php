@@ -265,13 +265,22 @@
     }
 
 
-    function stats_screenAF ($dbConnect, $CONSTPath) {
+    function stats_screenAF ($dbConnect, $CONSTPath, $IS_MOBILE) {
         $answer = array();
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/match.php');
-        $matchinfo = match_mainInfo($dbConnect, $CONSTPath);
+
+        if (!$IS_MOBILE) {
+            $plBpl = match_playbyplayAF($dbConnect, $CONSTPath, $_GET['match'], 1);
+            $answer['event'] = $plBpl['answer']['event'];
+
+            $matchinfo = $plBpl['answer']['match'];
+        }
+        else {
+            $matchinfo = match_mainInfo($dbConnect, $CONSTPath);
+        }
         $answer['matchInfo'] = $matchinfo;
 
-        require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/screenAF.php');
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/screenAF.php');
         $teamCookie = $_COOKIE['stats-' . $_GET['match'] . '-team'];
         $teamID = $teamCookie ? $teamCookie : $matchinfo['team1'];
         $answer['teamID'] = $teamID;
@@ -293,7 +302,7 @@
         require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statconfig.php');
         $answer['statconfig'] = statconfig_list($dbConnect, $CONSTPath);
 
-        require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
         $result = array(
             'answer' => $answer,
             'navigation' => competition_NAVIG($dbConnect, $_GET['comp'])

@@ -21,7 +21,7 @@
 
 
         if (function_exists($methodName)) {
-            $result = $methodName($dbConnect, $CONSTPath);
+            $result = $methodName($dbConnect, $CONSTPath, $IS_MOBILE);
             if ($result == 'ERROR-403') {
                 $error_code = 403;
             }

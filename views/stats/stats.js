@@ -253,7 +253,12 @@
          $('.stats-screen_screenMain').show();
          $('.stats-screen_commentField').val('');
          $('.stats-screen_comment').hide();
-         callback();
+         if (callback) {
+            callback();
+         }
+         $.get('/?r=match/playbyplayminiAF', {match: Team.match, xhrView : true}, function (res) {
+            $('.stats-screen_events').html(res);
+         })
       });
    };
 
