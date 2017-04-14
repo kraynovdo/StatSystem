@@ -21,7 +21,13 @@
 
 
         if (function_exists($methodName)) {
-            $result = $methodName($dbConnect, $CONSTPath, $IS_MOBILE);
+            /*TODO костыль. Придумать что делать с аргументами*/
+            if ($methodName == 'stats_screenAF') {
+                $result = $methodName($dbConnect, $CONSTPath, $IS_MOBILE);
+            }
+            else {
+                $result = $methodName($dbConnect, $CONSTPath);
+            }
             if ($result == 'ERROR-403') {
                 $error_code = 403;
             }
