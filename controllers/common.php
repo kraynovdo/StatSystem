@@ -60,8 +60,9 @@
     function common_twins($needed, $known, $value) {
         $arrNeeded = explode(",", $needed);
         $arrKnown = explode(",", $known);
-        if (strlen(array_search($value, $arrKnown))) {
-            return $arrNeeded[array_search($value, $arrKnown)];
+        $search = array_search($value, $arrKnown);
+        if (strlen($search)) {
+            return $arrNeeded[$search];
         }
         else {
             return '';

@@ -357,6 +357,111 @@
         return common_wordForm($num, 'ярд', 'ярда', 'ярдов');
     }
 
+    function tacklers($needed, $known) {
+        $resArr = array();
+        $arrNeeded = explode(",", $needed);
+        $arrKnown = explode(",", $known);
+        for ($i = 0; $i < count($arrKnown); $i++) {
+            if (strpos($arrKnown[$i], 'tackle')) {
+                array_push($resArr, $arrNeeded[$i]);
+            }
+        }
+        return implode(", ", $resArr);
+    }
+
+    function _stdAction($event, $char, $person, $tackleFlag) {
+        $value = common_twins($event['scvalue'], $event['sccode'], $char);
+        $value = $value . ' ' . yds($value);
+        $man = common_twins($event['surname'], $event['spcode'], $person);
+        if ($tackleFlag) {
+            $tacklers = tacklers($event['surname'], $event['spcode']);
+            if ($tacklers) {
+                $man .= '. Захват - '.$tacklers;
+            }
+        }
+        $actionStr = $event['action'] . ' ' . $value;
+        return array(
+            'man' => $man,
+            'actionStr' => $actionStr
+        );
+    }
+
+    function _rush($event) {
+        return _stdAction($event, 'runyds', 'runner', 1);
+    }
+
+    function _return($event) {
+        return _stdAction($event, 'retyds', 'returner', 1);
+    }
+
+    function _pass($event) {
+        $value = common_twins($event['scvalue'], $event['sccode'], 'passyds');
+        $value = $value . ' ' . yds($value);
+        $man = common_twins($event['surname'], $event['spcode'], 'passer');
+        $manRec = common_twins($event['surname'], $event['spcode'], 'receiver');
+        $manInt = common_twins($event['surname'], $event['spcode'], 'intercept');
+        $manKnock = common_twins($event['surname'], $event['spcode'], 'passknock');
+        if (!$manRec) {
+            if ($manInt) {
+                $actionStr = 'Перехват';
+                $man = $man . '. Перехватил - ' . $manInt;
+            } else if ($manKnock){
+                $actionStr = 'Сбитый пас';
+                $man = $man . '. Cбил - ' . $manKnock;
+            } else {
+                $actionStr = 'Непринятый пас';
+            }
+        } else {
+            $actionStr = 'Пас ' . $value;
+            $man = $man . '. Принял - ' . $manRec;
+        }
+        return array(
+            'man' => $man,
+            'actionStr' => $actionStr
+        );
+    }
+
+    function _kickoff($event) {
+        return _stdAction($event, 'korange', 'kokicker', 0);
+    }
+
+    function _punt($event) {
+        return _stdAction($event, 'puntrange', 'punter', 0);
+    }
+
+    function _fumble($event) {
+        $man = common_twins($event['surname'], $event['spcode'], 'fum');
+        $manRec = common_twins($event['surname'], $event['spcode'], 'fumrec');
+        if (!$manRec) {
+            $actionStr = 'Фамбл. Без потери владения';
+        } else {
+            $actionStr = 'Фамбл. Потеря владения';
+            $man = $man . '. Подобрал - ' . $manRec;
+        }
+        return array(
+            'man' => $man,
+            'actionStr' => $actionStr
+        );
+    }
+
+    function _fgoal($event) {
+        if ($event['pg']) {
+            $value = common_twins($event['scvalue'], $event['sccode'], 'fgrange');
+            $value = $value . ' ' . yds($value);
+            $actionStr = $value;
+        }
+        else {
+            $actionStr = 'Неудачный ' . $event['action'];
+        }
+        $man = common_twins($event['surname'], $event['spcode'], 'fgkicker');
+
+
+        return array(
+            'man' => $man,
+            'actionStr' => $actionStr
+        );
+    }
+
     function match_playbyplayAF($dbConnect, $CONSTPath) {
         $answer = array();
         $answer['match'] = match_mainInfo($dbConnect, $CONSTPath);
@@ -368,54 +473,36 @@
         for ($i = 0; $i < count($event); $i++) {
             $firstStr = '';
             $secStr = '';
-            $value = '';
-            $actStr = '';
+
+
             $pg = 0;
             if ($event[$i]['action']) {
-                if ($event[$i]['code'] == 'rush') {
-                    $value = common_twins($event[$i]['scvalue'], $event[$i]['sccode'], 'runyds');
-                    $value = $value . ' ' . yds($value);
-                    $man = common_twins($event[$i]['surname'], $event[$i]['spcode'], 'runner');
-                    $actStr = $man;
-                } else if ($event[$i]['code'] == 'pass') {
-                    $value = common_twins($event[$i]['scvalue'], $event[$i]['sccode'], 'passyds');
-                    $value = $value . ' ' . yds($value);
-                    $man = common_twins($event[$i]['surname'], $event[$i]['spcode'], 'passer');
-                    $manRec = common_twins($event[$i]['surname'], $event[$i]['spcode'], 'receiver');
-                    $manInt = common_twins($event[$i]['surname'], $event[$i]['spcode'], 'intercept');
-                    if (!$manRec) {
-                        if ($manInt) {
-                            $firstStr = 'Перехват';
-                            $actStr = $man . ', перехватил - ' . $manInt;
-                        } else {
-                            $firstStr = 'Непринятый пас';
-                            $actStr = $man;
-                        }
-                    } else {
-                        $actStr = $man . ', принял - ' . $manRec;
-                    }
-                } else {
-                    $firstStr = $event[$i]['action'];
-                    $actArr = array();
-                    if ($event[$i]['surname']) {
-                        array_push($actArr, $event[$i]['surname']);
-                    }
-                    if (strlen($event[$i]['scvalue'])) {
-                        array_push($actArr, $event[$i]['scvalue'] . ' ' . yds($event[$i]['scvalue']));
-                    }
-                    $actStr = implode(", ", $actArr);
+
+                $res = array(
+                    'man' => null,
+                    'actionStr' => null
+                );
+                switch ($event[$i]['code']) {
+                    case 'rush' : $res = _rush($event[$i]); break;
+                    case 'pass' : $res = _pass($event[$i]); break;
+                    case 'return' : $res = _return($event[$i]); break;
+                    case 'kickoff': $res = _kickoff($event[$i]); break;
+                    case 'punt': $res = _punt($event[$i]); break;
+                    case 'fieldgoal': $res = _fgoal($event[$i]); break;
+                    case 'fumble': $res = _fumble($event[$i]); break;
                 }
+                $man = $res['man'];
+                $actionStr = $res['actionStr'];
                 if ($event[$i]['pg']) {
                     $firstStr = $event[$i]['pg'];
-                    $secStr = $actStr . ' ' . $value;
+                    $secStr = $actionStr . ' ' . $man;
                     $pg = 1;
                 }
-                if (!$firstStr) {
-                    $firstStr = $event[$i]['action'] . ' ' . $value;
+                else {
+                    $firstStr = $actionStr;
+                    $secStr = $man;
                 }
-                if (!$secStr) {
-                    $secStr = $actStr;
-                }
+
             }
             array_push($eventResult, array(
                 'firstStr' => $firstStr,
@@ -514,9 +601,10 @@
 
     function match_deleteEvent($dbConnect) {
         $id = $_GET['event'];
+        $ret = $_GET['ret'] ? $_GET['ret'] : '';
         common_query($dbConnect, 'DELETE FROM matchevent WHERE id = :id', array('id' => $id));
         return array(
-            'page' => '/?r=match/playbyplay&match=' . $_GET['match'] . '&comp=' . $_GET['comp']
+            'page' => '/?r=match/playbyplay' . $ret . '&match=' . $_GET['match'] . '&comp=' . $_GET['comp']
         );
     }
 

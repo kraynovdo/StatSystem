@@ -6,7 +6,7 @@
 <?for ($i = 0; $i < count($event); $i++) {?>
     <div class="listview-item">
         <a class="main-delLink match-eventDelLink"
-            href="/?r=match/deleteEvent&event=<?=$event[$i]['id']?>&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">[X]</a>
+            href="/?r=match/deleteEvent&event=<?=$event[$i]['id']?>&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&ret=AF">[X]</a>
         <?if ($event[$i]['firstStr']) {?>
             <div class="match-eventImgContainer">
                 <?if ($event[$i]['team']){?>
