@@ -414,6 +414,10 @@
         } else {
             $actionStr = 'Пас ' . $value;
             $man = $man . '. Принял - ' . $manRec;
+            $tacklers = tacklers($event['surname'], $event['spcode']);
+            if ($tacklers) {
+                $man .= '. Захват - '.$tacklers;
+            }
         }
         return array(
             'man' => $man,

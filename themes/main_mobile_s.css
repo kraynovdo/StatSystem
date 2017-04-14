@@ -4,6 +4,9 @@ h2 {
 input[type=text],input[type=password], input[type=number], textarea, select{
    width: 100%;
 }
+input[type=button], button {
+   border-radius: 0;
+}
 table {
    font-size: 13px;
 }
@@ -290,4 +293,8 @@ table {
 
 .po-count {
    font-size: 20px;
+}
+
+.main-tile {
+   margin-bottom: 5px;
 }
