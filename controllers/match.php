@@ -366,7 +366,7 @@
         $arrNeeded = explode(",", $needed);
         $arrKnown = explode(",", $known);
         for ($i = 0; $i < count($arrKnown); $i++) {
-            if (strpos($arrKnown[$i], 'tackle')) {
+            if ($arrKnown[$i] == 'tackle') {
                 array_push($resArr, $arrNeeded[$i]);
             }
         }

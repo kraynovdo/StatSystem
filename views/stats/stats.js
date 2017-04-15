@@ -169,7 +169,7 @@
 
    $('.stats-screen_charContent').on('click', '.stats-screen_pg', function () {
       function prepareCompletePassData() {
-         var def = myCharSelector.def['psstackle'];
+         var def = myCharSelector.def['tackle'];
          if (def && myCharSelector.data.tacklers) {
             for (var i = 0; i < myCharSelector.data.tacklers.arr.length; i++) {
                myCharSelector.data.person[def[i]] = myCharSelector.data.tacklers.arr[i];
@@ -179,7 +179,7 @@
       }
 
       function prepareRushData() {
-         var def = myCharSelector.def['runtackle'];
+         var def = myCharSelector.def['tackle'];
          if (def && myCharSelector.data.tacklers) {
             for (var i = 0; i < myCharSelector.data.tacklers.arr.length; i++) {
                myCharSelector.data.person[def[i]] = myCharSelector.data.tacklers.arr[i];
@@ -342,7 +342,7 @@
    CharSelector.prototype._findTacklers = function (def) {
       var result = [];
       for (var i in def) if (def.hasOwnProperty(i)) {
-         if (i.indexOf('tackle') >= 0) {
+         if (i == 'tackle') {
             result = def[i];
          }
       }
