@@ -4,5 +4,5 @@
     $admin = true;
 ?>
 <h2>Ход игры</h2>
-<?include '_eventListAf.php'?>
+<?include '_eventListAF.php'?>
 

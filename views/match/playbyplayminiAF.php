@@ -1,2 +1,2 @@
 <?$event = $answer['event']?>
-<?include '_eventListAf.php'?>
+<?include '_eventListAF.php'?>
