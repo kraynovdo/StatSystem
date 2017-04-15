@@ -29,10 +29,10 @@
                 <?=$arr[$i]['surname']. ' '.$arr[$i]['name']?>
             </td>
             <td class="stats-counter main-rightAlign">
-                <?=$arr[$i]['sumr']?>
+                <?=$arr[$i][$field1]?>
             </td>
             <td class="stats-counter main-rightAlign">
-                <?=$arr[$i]['num']?>
+                <?=$arr[$i][$field2]?>
             </td>
         </tr>
     <?}?>

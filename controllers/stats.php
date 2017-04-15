@@ -261,6 +261,35 @@
             LEFT JOIN team T ON stat.team = T.id
             ORDER BY sumr DESC, num ASC', array('comp' => $comp));
 
+            $result['answer']['tackle'] = common_getlist($dbConnect, 'SELECT
+  TT.logo, stat.solo, stat.assist, P.name, P.surname
+FROM
+  (SELECT
+    person, team2, SUM(case WHEN tcount = 1 THEN 1 ELSE 0 END) AS solo,
+          SUM(case WHEN tcount = 1 THEN 0 ELSE 1 END) AS assist
+  FROM (
+
+      SELECT
+              A.id, count(A.id) AS tcount
+      FROM
+              stataction A LEFT JOIN statperson SP ON SP.action = A.id
+              LEFT JOIN statpersontype SPT ON SP.persontype = SPT.id
+      WHERE
+              competition = :comp AND SPT.code = "tackle"
+      GROUP BY
+               A.id
+  ) T JOIN stataction A2 ON A2.id = T.id
+   JOIN statperson SP2 ON SP2.action = A2.id
+              JOIN statpersontype SPT2 ON SP2.persontype = SPT2.id
+   WHERE SPT2.code = "tackle"
+   GROUP BY person, team2) stat
+LEFT JOIN
+   team TT ON stat.team2 = TT.id
+LEFT JOIN
+   person P ON p.id = stat.person
+ORDER BY
+   solo DESC, assist DESC', array('comp' => $comp));
+
         return $result;
     }
 
