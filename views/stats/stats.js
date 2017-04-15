@@ -266,6 +266,7 @@
       myCharSelector.data.match = Team.match;
       myCharSelector.data.competition = Team.comp;
       myCharSelector.data.teamSt = [Team.curTeam];
+      myCharSelector.data.team2 = Team.otherTeam;
       myCharSelector.data.comment = $('.stats-screen_commentField').val();
    };
 

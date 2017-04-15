@@ -538,6 +538,10 @@
         $point = $_POST['point'] ? $_POST['point'] : NULL;
         $team = NULL;
         $actionType = NULL;
+        $team2 = NULL;
+        if ($_POST['team2']) {
+            $team2 = $_POST['team2'];
+        }
         for ($i = 0; $i < count($_POST['teamSt']); $i++) {
             if ($_POST['teamSt'][$i]) {
                 $team = $_POST['teamSt'][$i];
@@ -557,13 +561,14 @@
         if ($_POST['actionType']) {
             common_query($dbConnect,'
             INSERT INTO stataction
-            (pointsget, actiontype, `match`, team, competition, matchevent)
-            VALUES (:pointsget, :actiontype, :match, :team, :competition, :matchevent)
+            (pointsget, actiontype, `match`, team, team2, competition, matchevent)
+            VALUES (:pointsget, :actiontype, :match, :team, :team2, :competition, :matchevent)
             ', array(
                 'pointsget' => $point,
                 'actiontype' => $_POST['actionType'],
                 'match' => $_POST['match'],
                 'team' => $team,
+                'team2' => $team2,
                 'competition' => $_POST['competition'],
                 'matchevent' => $matchevent
             ));
