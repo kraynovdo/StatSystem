@@ -286,7 +286,7 @@ FROM
 LEFT JOIN
    team TT ON stat.team2 = TT.id
 LEFT JOIN
-   person P ON p.id = stat.person
+   person P ON P.id = stat.person
 ORDER BY
    solo DESC, assist DESC', array('comp' => $comp));
 

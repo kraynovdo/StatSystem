@@ -29,7 +29,13 @@ $active = '1.11.2015';
                     </td>
                 </tr>
                 <tr>
-                    <td><div class="roster-card_avatar"><img style="width:100px" src="//<?=$HOST?>/upload/<?=$answer['roster'][$i]['avatar']?>"/></div></td>
+                    <td><div class="roster-card_avatar">
+                            <?if ($answer['roster'][$i]['avatar']) {?>
+                            <img style="width:100px" src="//<?=$HOST?>/upload/<?=$answer['roster'][$i]['avatar']?>"/>
+                            <?} else {?>
+                                <div style="width: 100px; height: 100px; color: #999; background-color: #ddd; line-height: 100px; text-align: center">Нет фото</div>
+                            <?}?>
+                        </div></td>
                     <td class="roster-card_rightcol">
                         <div class="roster-card_fio"><?=$answer['roster'][$i]['surname']?></div>
                         <div class="roster-card_fio"><?=$answer['roster'][$i]['name']?></div>
