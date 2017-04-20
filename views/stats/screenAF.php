@@ -8,6 +8,17 @@ $teamID = $answer['teamID'];
     <?if (!$IS_MOBILE) {?>
     <div class="stats-screen_column">
     <?}?>
+        <div class="stats-screen_screen stats-screen_period">
+            <label class="main-label_top stats-screen_commentLabel">Четверть</label>
+            <?for ($i = 1; $i <= 5; $i++) {?>
+                <span class="main-tile_rb">
+                <input type="radio" name="period" id="period<?=$i?>" class="main-hidden"
+                       value="<?= $i ?>"
+                    <? if ($answer['matchInfo']['curperiod'] == $i) { ?> checked="checked"<? } ?>>
+                <label class="main-tile" for="period<?=$i?>"><?= ($i == 5) ? 'Овертайм' : $i ?></label>
+                </span>
+            <?}?>
+        </div>
         <div class="stats-screen_screen">
             <a class="main-label_top stats-screen_commentLabel">Текстовый комментарий</a>
             <textarea style="display: none" class="stats-screen_comment stats-screen_commentField" rows="2"></textarea>

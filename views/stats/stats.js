@@ -268,6 +268,7 @@
       myCharSelector.data.teamSt = [Team.curTeam];
       myCharSelector.data.team2 = Team.otherTeam;
       myCharSelector.data.comment = $('.stats-screen_commentField').val();
+      myCharSelector.data.period = $('[name=period]:checked').val();
    };
 
    CharSelector.prototype.passknock = function (team, id) {

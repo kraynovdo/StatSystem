@@ -89,8 +89,8 @@
         if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_POST['comp']] == 1)) {
             $comp = $_POST['comp'];
             $queryresult = $dbConnect->prepare('
-                INSERT INTO `match` (team1, team2, `date`, competition, city, timeh, timem, `group`)
-                VALUES (:team1, :team2, :date, :comp, :city, :timeh, :timem, :group)
+                INSERT INTO `match` (team1, team2, `date`, competition, city, timeh, timem, `group`, curperiod)
+                VALUES (:team1, :team2, :date, :comp, :city, :timeh, :timem, :group, 1)
             ');
             if (!$_POST['timeh']) {
                 $timeh = NULL;
@@ -222,7 +222,8 @@
               T2.rus_name AS t2name,
               M.group,
               T1.logo AS t1logo,
-              T2.logo AS t2logo
+              T2.logo AS t2logo,
+              M.curperiod
             FROM
               `match` M
             LEFT JOIN team T1 ON T1.id = M.team1
@@ -554,10 +555,14 @@
             VALUES (:comment, :period, :match)
             ', array(
             'comment' => $_POST['comment'],
-            'period' => 1,
+            'period' => $_POST['period'],
             'match' => $_POST['match'],
         ));
         $matchevent = $dbConnect->lastInsertId('id');
+        common_query($dbConnect, 'UPDATE `match` SET curperiod = :period WHERE id = :id', array(
+            'period' => $_POST['period'],
+            'id' => $_POST['match']
+        ));
         if ($_POST['actionType']) {
             common_query($dbConnect,'
             INSERT INTO stataction
