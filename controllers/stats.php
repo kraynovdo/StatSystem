@@ -295,47 +295,52 @@ ORDER BY
 
 
     function stats_screenAF ($dbConnect, $CONSTPath, $IS_MOBILE) {
-        $answer = array();
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/match.php');
+        if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 4) || ($_SESSION['userType'] == 5)) {
+            $answer = array();
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/match.php');
 
-        if (!$IS_MOBILE) {
-            $plBpl = match_playbyplayAF($dbConnect, $CONSTPath, $_GET['match'], 1);
-            $answer['event'] = $plBpl['answer']['event'];
+            if (!$IS_MOBILE) {
+                $plBpl = match_playbyplayAF($dbConnect, $CONSTPath, $_GET['match'], 1);
+                $answer['event'] = $plBpl['answer']['event'];
 
-            $matchinfo = $plBpl['answer']['match'];
+                $matchinfo = $plBpl['answer']['match'];
+            }
+            else {
+                $matchinfo = match_mainInfo($dbConnect, $CONSTPath);
+            }
+            $answer['matchInfo'] = $matchinfo;
+
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/screenAF.php');
+            $teamCookie = $_COOKIE['stats-' . $_GET['match'] . '-team'];
+            $teamID = $teamCookie ? $teamCookie : $matchinfo['team1'];
+            $answer['teamID'] = $teamID;
+
+
+            $rosters = array();
+
+
+
+
+            $roster = screenAF_listplayers($dbConnect, $CONSTPath, $_GET['match'], $matchinfo['team1']);
+            $rosters[$matchinfo['team1']] = $roster;
+            $roster = screenAF_listplayers($dbConnect, $CONSTPath, $_GET['match'], $matchinfo['team2']);
+            $rosters[$matchinfo['team2']] = $roster;
+            $answer['rosters'] = $rosters;
+
+
+
+            require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statconfig.php');
+            $answer['statconfig'] = statconfig_list($dbConnect, $CONSTPath);
+
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
+            $result = array(
+                'answer' => $answer,
+                'navigation' => competition_NAVIG($dbConnect, $_GET['comp'])
+            );
+            return $result;
         }
         else {
-            $matchinfo = match_mainInfo($dbConnect, $CONSTPath);
+            return 'ERROR-403';
         }
-        $answer['matchInfo'] = $matchinfo;
-
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/screenAF.php');
-        $teamCookie = $_COOKIE['stats-' . $_GET['match'] . '-team'];
-        $teamID = $teamCookie ? $teamCookie : $matchinfo['team1'];
-        $answer['teamID'] = $teamID;
-
-
-        $rosters = array();
-
-
-
-
-        $roster = screenAF_listplayers($dbConnect, $CONSTPath, $_GET['match'], $matchinfo['team1']);
-        $rosters[$matchinfo['team1']] = $roster;
-        $roster = screenAF_listplayers($dbConnect, $CONSTPath, $_GET['match'], $matchinfo['team2']);
-        $rosters[$matchinfo['team2']] = $roster;
-        $answer['rosters'] = $rosters;
-
-
-
-        require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statconfig.php');
-        $answer['statconfig'] = statconfig_list($dbConnect, $CONSTPath);
-
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
-        $result = array(
-            'answer' => $answer,
-            'navigation' => competition_NAVIG($dbConnect, $_GET['comp'])
-        );
-        return $result;
     }
 

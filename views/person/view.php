@@ -43,6 +43,7 @@
         <select name="type">
             <option value="1" <?if ($answer['person']['utype'] == 1) {?>selected="selected"<?}?>>Пользователь</option>
             <option value="4" <?if ($answer['person']['utype'] == 4) {?>selected="selected"<?}?>>Судья</option>
+            <option value="5" <?if ($answer['person']['utype'] == 5) {?>selected="selected"<?}?>>Статист</option>
         </select>
         <input type="button" class="main-btn main-submit" value="Сменить"/>
     </form>
