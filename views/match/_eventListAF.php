@@ -11,7 +11,7 @@
                 <?}?>
             </div>
             <div class="match-eventMainInfo clearfix">
-                <div class="match-eventTitle<?if ($event[$i]['pg']) {?> match-eventPG<?}?>"><?=$event[$i]['firstStr']?></div>
+                <div class="match-eventTitle<?if ($event[$i]['pg']) {?> match-eventPG<?=$event[$i]['pg']?><?}?>"><?=$event[$i]['firstStr']?></div>
                 <div class="match-eventAction"><?=$event[$i]['secStr']?></div>
             </div>
         <?}?>

@@ -285,7 +285,7 @@
         }
         return common_getlist($dbConnect, '
             SELECT
-                M.id, M.comment, PG.name AS pg, AT.name AS action, T.logo AS team, AT.code,
+                M.id, M.comment, PG.name AS pg, PG.type as pgtype, AT.name AS action, T.logo AS team, AT.code,
                 SP_INFO.surname, SP_INFO.code AS spcode, SP_INFO.spname AS spname,
                 SC_INFO.code AS sccode, SC_INFO.scname AS scname, SC_INFO.value AS scvalue
             FROM
@@ -505,7 +505,7 @@
                 if ($event[$i]['pg']) {
                     $firstStr = $event[$i]['pg'];
                     $secStr = $actionStr . ' ' . $man;
-                    $pg = 1;
+                    $pg = $event[$i]['pgtype'];
                 }
                 else {
                     $firstStr = $actionStr;
