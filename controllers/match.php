@@ -223,7 +223,8 @@
               M.group,
               T1.logo AS t1logo,
               T2.logo AS t2logo,
-              M.curperiod
+              M.curperiod,
+              M.confirm
             FROM
               `match` M
             LEFT JOIN team T1 ON T1.id = M.team1
@@ -645,4 +646,31 @@
         return array(
             'page' => '/?r=match/view&match=' . $_POST['match'] . '&comp=' . $_POST['competition']
         );
+    }
+
+    function match_confirm($dbConnect) {
+        $data = common_getrecord($dbConnect, '
+                SELECT
+                  confirm
+                FROM
+                  `match` AS M
+                WHERE
+                  M.id = :id', array(
+            'id' => $_POST['match']
+        ));
+        if (count($data)) {
+            $oldConfirm = $data['confirm'];
+            $confirm = 1 - $oldConfirm;
+
+            $match = $_POST['match'];
+            common_query($dbConnect, '
+                UPDATE
+                  `match`
+                SET confirm = :confirm WHERE id = :id', array(
+                'id' => $match,
+                'confirm' => $confirm
+            ));
+            return $confirm."";
+
+        }
     }

@@ -1,5 +1,9 @@
 <h2>Проверка состава</h2>
-<a class="refcheck-bigfont" href="/?r=match/view&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">Вернуться к матчу</a>
+<div class="refcheck_ctrlBlock">
+    <a data-id="<?=$_GET['match']?>" href="javascript: void(0);"
+       class="refcheck-bigfont refcheck_confirm"><?if ($answer['match']['confirm']) {?>Открыть на изменение<?} else {?>Закрыть от изменений<?}?></a>
+    <a class="refcheck-bigfont" href="/?r=match/view&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">Вернуться к матчу</a>
+</div>
 <?$roster = $answer['roster']['answer'];?>
 <?for ($i = 0; $i < count($roster); $i++) {?>
     <div class="listview-item refcheck-item" data-mr="<?=$roster[$i]['id']?>">
@@ -16,9 +20,14 @@
             <div class="refcheck-inputCont main-hidden">
                 <input class="refcheck-input refcheck-bigfont" value="<?=$roster[$i]['number']?>"/>
             </div>
-            <a href="javascript: void(0)" class="refcheck-change refcheck-bigfont">Изменить номер</a>
+            <a href="javascript: void(0)"
+               class="refcheck-change refcheck-bigfont<?if ($answer['match']['confirm']) {?> main-hidden<?}?>">Изменить номер</a>
             <a href="javascript: void(0)" class="main-hidden refcheck-ok refcheck-bigfont">Сохранить</a>
         </div>
     </div>
 <?}?>
-<a class="refcheck-bigfont" href="/?r=match/view&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">Вернуться к матчу</a>
+<div class="refcheck_ctrlBlock">
+    <a data-id="<?=$_GET['match']?>" href="javascript: void(0);"
+       class="refcheck-bigfont refcheck_confirm"><?if ($answer['match']['confirm']) {?>Открыть на изменение<?} else {?>Закрыть от изменений<?}?></a>
+    <a class="refcheck-bigfont" href="/?r=match/view&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">Вернуться к матчу</a>
+</div>

@@ -203,11 +203,14 @@
         $team = $_GET['team'];
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/team.php');
         $teamData = team_info($dbConnect, $CONSTPath);
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/match.php');
+        $matchData = match_mainInfo($dbConnect, $CONSTPath);
         return array(
             'answer' => array(
 
                 'roster' => matchroster_index($dbConnect, $CONSTPath, $team),
-                'team' => $teamData['answer']['team']
+                'team' => $teamData['answer']['team'],
+                'match' => $matchData
             ),
             'navigation' => array(
                 'header' => $teamData['answer']['team']['rus_name'],

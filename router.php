@@ -49,11 +49,11 @@
     }
 
     $content = $_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/' . $controller . '/' . $action . '.php';
-    $answer = $result['answer'];
     if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
         if ($_GET['xhrView']) {
             if (file_exists($content)) {
                 require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/views/_viewconfig.php');
+                $answer = $result['answer'];
                 require $content;
             }
         }
@@ -64,6 +64,7 @@
 
     }
     else {
+        $answer = $result['answer'];
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/views/_viewconfig.php');
         $page = $result['page'];
         if (!$page) {

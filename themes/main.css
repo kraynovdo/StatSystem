@@ -734,11 +734,24 @@ textarea {
 .roster-view_number {
     font-size: 18px;
 }
+.refcheck_ctrlBlock {
+    margin-bottom: 5px;
+}
+.refcheck_confirm {
+    margin-right: 5px;
+    font-size: 16px;
+}
 .refcheck-photo {
     width: 100px;
     height: 100px;
     float: left;
     overflow: hidden;
+}
+.refcheck-photo .main-noPhoto {
+    width: 100px;
+    height: 100px;
+    font-size: 100px;
+    line-height: 100px;
 }
 .refcheck-item {
     overflow: hidden;

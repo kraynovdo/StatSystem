@@ -88,7 +88,7 @@ function initials($record) {
             <?
                 $roster = $answer['team1roster'];
                 $rosterFace = $answer['face1'];
-                $hasAccess = $team1;
+                $hasAccess = $team1 && !$answer['match']['confirm'];
                 $teamID = $answer['match']['team1'];
                 include '_matchroster.php';
             ?>
@@ -98,7 +98,7 @@ function initials($record) {
             <?
                 $roster = $answer['team2roster'];
                 $rosterFace = $answer['face2'];
-                $hasAccess = $team2;
+                $hasAccess = $team2 && !$answer['match']['confirm'];
                 $teamID = $answer['match']['team2'];
                 include '_matchroster.php';
             ?>
