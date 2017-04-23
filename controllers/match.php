@@ -621,12 +621,17 @@
     }
 
     function match_deleteEvent($dbConnect) {
-        $id = $_GET['event'];
-        $ret = $_GET['ret'] ? $_GET['ret'] : '';
-        common_query($dbConnect, 'DELETE FROM matchevent WHERE id = :id', array('id' => $id));
-        return array(
-            'page' => '/?r=match/playbyplay' . $ret . '&match=' . $_GET['match'] . '&comp=' . $_GET['comp']
-        );
+        if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 5)) {
+            $id = $_GET['event'];
+            $ret = $_GET['ret'] ? $_GET['ret'] : '';
+            common_query($dbConnect, 'DELETE FROM matchevent WHERE id = :id', array('id' => $id));
+            return array(
+                'page' => '/?r=match/playbyplay' . $ret . '&match=' . $_GET['match'] . '&comp=' . $_GET['comp']
+            );
+        }
+        else {
+            return 'ERROR-403';
+        }
     }
 
     function match_videoupdate($dbConnect) {
