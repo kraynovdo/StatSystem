@@ -430,6 +430,7 @@
    };
 
    CharSelector.prototype._showFumbleResult = function () {
+      var self = this;
       myRosterSelector.show(Team.curTeam, 1, function (team, id, number) {
          myCharSelector.data.person = {};
          myCharSelector.data.person[myCharSelector.off.fum] = id;
@@ -439,6 +440,11 @@
          markup += ' <span class="main-tile">' + number + '</span></div>';
          markup += '</div>';
 
+
+         var point = self.answer.point;
+         for (var i = 0; i < point.length; i++) {
+            markup += '<div><span class="main-tile stats-screen_pg stats-screen_success" data-id="' + point[i]['id'] + '">' + point[i].name + '</span></div>';
+         }
          markup += '<div><label class="main-label_top">Подобран</label>';
          markup += '<div class=""><span class="main-tile stats-screen_fum" >Своей командой</span></div>';
          markup += '<div class=""><span class="main-tile stats-screen_fumRec" >Соперником</span></div>';
