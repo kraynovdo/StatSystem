@@ -143,7 +143,22 @@
         LEFT JOIN team T ON stat.team = T.id
         ORDER BY sumr DESC, num ASC', array('match' => $match));
 
-
+        $result['answer']['int'] = common_getlist($dbConnect, 'SELECT stat.*, P.surname, P.name, T.logo FROM
+            (SELECT
+                count(SP.id) AS cnt, person, A.team2 AS team
+            FROM
+                statperson SP LEFT JOIN statpersontype SPT ON SPT.id = SP.persontype
+                    LEFT JOIN stataction A ON A.id = SP.action
+            WHERE
+                SPT.code = "intercept" AND A.`match` = :match
+            GROUP BY
+                person) stat
+            LEFT JOIN person P ON stat.person = P.id
+                        LEFT JOIN team T ON stat.team = T.id
+            ORDER BY
+                cnt DESC, P.surname ASC', array(
+            'match' => $match
+        ));
 
         return $result;
     }

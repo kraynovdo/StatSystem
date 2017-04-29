@@ -30,6 +30,17 @@
             array_push($arrQb2, $answer['qb'][$i]);
         }
     }
+
+    $arrInt1 = array();
+    $arrInt2 = array();
+    for ($i = 0; $i < count($answer['int']); $i++) {
+        if ($answer['int'][$i]['team'] == $answer['match']['team1']) {
+            array_push($arrInt1, $answer['int'][$i]);
+        }
+        else {
+            array_push($arrInt2, $answer['int'][$i]);
+        }
+    }
 ?>
 <h2>Статистика матча</h2>
 <table class="match_maintable">
@@ -73,6 +84,18 @@
                 <h3 class="stats-header">Пас</h3>
                 <?$arr = $arrQb2;?>
                 <? include '_qb.php'?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3 class="stats-header">Перехваты</h3>
+                <?$arr = $arrInt1;?>
+                <? include '_int.php'?>
+            </td>
+            <td>
+                <h3 class="stats-header">Перехваты</h3>
+                <?$arr = $arrInt2;?>
+                <? include '_int.php'?>
             </td>
         </tr>
     </tbody>
