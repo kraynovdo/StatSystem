@@ -30,10 +30,13 @@
         );
 
         $result['answer']['match'] = match_mainInfo($dbConnect, $CONSTPath);
+
+
+
         $result['answer']['rush'] = common_getlist($dbConnect, '
         SELECT stat.*, P.surname, P.name, T.logo FROM (
             SELECT
-              count(A.id) AS num, sum(value) AS sumr, team, person
+              count(A.id) AS num, sum(value) AS sumr, team, person, SUM(CASE WHEN (PG.id AND PG.type > 0) THEN 1 ELSE 0 END) AS td
             FROM
               `stataction` A
                   LEFT JOIN (
@@ -54,6 +57,7 @@
                   ) AS SC_INFO ON SC_INFO.action = A.id
 
                   LEFT JOIN statactiontype AT ON A.actiontype = AT.id
+                  LEFT JOIN pointsget PG ON PG.id = A.pointsget
             WHERE
               `match` = :match AND AT.code = "rush"
             GROUP BY
@@ -65,7 +69,7 @@
 
         $result['answer']['pass'] = common_getlist($dbConnect, '
         SELECT stat.*, P.surname, P.name, T.logo FROM (
-            SELECT count(A.id) AS num, sum(value) AS sumr, team, person
+            SELECT count(A.id) AS num, sum(value) AS sumr, team, person, SUM(CASE WHEN (PG.id AND PG.type > 0) THEN 1 ELSE 0 END) AS td
             FROM `stataction` A
                 LEFT JOIN (
                       SELECT
@@ -84,6 +88,7 @@
                           SCT.code = "passyds"
                   ) AS SC_INFO ON SC_INFO.action = A.id
             LEFT JOIN statactiontype AT ON A.actiontype = AT.id
+            LEFT JOIN pointsget PG ON PG.id = A.pointsget
             WHERE `match` = :match AND AT.code = "pass" AND SP_INFO.person
             GROUP BY person, team
         ) AS stat

@@ -839,6 +839,13 @@ textarea {
     top: -10000px;
     left: -10000px;
 }
+.match-pointsTable {
+    border-collapse: collapse;
+}
+.match-pointsTable td{
+    border: 1px solid;
+    padding: 5px;
+}
 .match-teamLogo {
     width: 80px;
     height: 80px;

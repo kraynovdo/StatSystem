@@ -35,8 +35,8 @@
             'logo' => $data[0]['logo'],
             'theme' => $data[0]['theme']
         );
-        if (($_SESSION['userType'] == 3) || ($id == 41)) {
-            $res['menu']['Статистика'] = '/?r=stats/compAF&comp=' . $id;
+        if (($_SESSION['userType'] == 3)) {
+            /*$res['menu']['Статистика'] = '/?r=stats/compAF&comp=' . $id;*/
         }
         if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {
             $res['menu']['* Управление'] = '/?r=competition/admin&comp=' . $id;

@@ -286,7 +286,7 @@
         }
         return common_getlist($dbConnect, '
             SELECT
-                M.id, M.comment, PG.name AS pg, PG.type as pgtype, AT.name AS action, T.logo AS team, AT.code,
+                M.id, M.comment, M.period, PG.name AS pg, PG.type as pgtype, AT.name AS action, T.logo AS team, AT.code,
                 SP_INFO.surname, SP_INFO.code AS spcode, SP_INFO.spname AS spname,
                 SC_INFO.code AS sccode, SC_INFO.scname AS scname, SC_INFO.value AS scvalue
             FROM
@@ -474,7 +474,55 @@
 
     function match_playbyplayAF($dbConnect, $CONSTPath, $limit='') {
         $answer = array();
-        $answer['match'] = match_mainInfo($dbConnect, $CONSTPath);
+        $mainInfo = match_mainInfo($dbConnect, $CONSTPath);
+        $answer['match'] = $mainInfo;
+
+        $pointsTableSRC = common_getList($dbConnect, 'SELECT point,
+            type, team, team2, period
+            FROM stataction S
+            LEFT JOIN pointsget P ON P.id = S.pointsget
+            LEFT JOIN matchevent M ON S.matchevent = M.id
+            WHERE S.`match` = :match
+            AND P.id ORDER BY period', array(
+            'match' => $_GET['match']
+        ));
+
+        $pointsTable = array(
+            array(0, 0),
+            array(0, 0),
+            array(0, 0),
+            array(0, 0)
+        );
+
+        for ($i = 0; $i < count($pointsTableSRC); $i++) {
+            $per = $pointsTableSRC[$i]['period'];
+            if (($per > 4)) {
+                if (count($pointsTable) < 5) {
+                    array_push($pointsTable, array(0, 0));
+                }
+            }
+
+            if ($pointsTableSRC[$i]['type'] > 0) {
+                if ($mainInfo['team1'] == $pointsTableSRC[$i]['team']) {
+                    $pointsTable[$per-1][0] = $pointsTable[$per-1][0] + $pointsTableSRC[$i]['point'];
+                }
+                else {
+                    $pointsTable[$per-1][1] = $pointsTable[$per-1][1] + $pointsTableSRC[$i]['point'];
+                }
+            }
+            else {
+                if ($mainInfo['team1'] == $pointsTableSRC[$i]['team2']) {
+                    $pointsTable[$per-1][0] = $pointsTable[$per-1][0] + $pointsTableSRC[$i]['point'];
+                }
+                else {
+                    $pointsTable[$per-1][1] = $pointsTable[$per-1][1] + $pointsTableSRC[$i]['point'];
+                }
+            }
+
+
+        }
+
+        $answer['pointsTable'] = $pointsTable;
 
         $event = match_actionList($dbConnect, $CONSTPath, $_GET['match'], $limit);
         $eventResult = array();
@@ -519,6 +567,7 @@
                 'secStr' => $secStr,
                 'team' => $event[$i]['team'],
                 'comment' => $event[$i]['comment'],
+                'period' => $event[$i]['period'],
                 'pg' => $pg,
                 'id' => $event[$i]['id']
             ));

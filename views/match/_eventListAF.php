@@ -4,6 +4,7 @@
         <a class="main-delLink match-eventDelLink"
            href="/?r=match/deleteEvent&event=<?=$event[$i]['id']?>&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&ret=AF">[X]</a>
         <?}?>
+        <div class="match-eventComment"><?if ($event[$i]['period'] < 5){?>Q<?=$event[$i]['period']?><?} else {?>OT<?}?></div>
         <?if ($event[$i]['firstStr']) {?>
             <div class="match-eventImgContainer">
                 <?if ($event[$i]['team']){?>

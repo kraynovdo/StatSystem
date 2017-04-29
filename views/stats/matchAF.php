@@ -41,25 +41,25 @@
         <tr>
             <td>
                 <h3 class="stats-header">Вынос</h3>
-                <?$arr = $arrRush1; $head1 = 'ярдов'; $head2 = 'Попыток';?>
+                <?$arr = $arrRush1; $head1 = 'ярдов'; $head2 = 'Попыток'; $head3='ТД'?>
                 <? include '_simpleAF.php'?>
 
             </td>
             <td>
                 <h3 class="stats-header">Вынос</h3>
-                <?$arr = $arrRush2; $head1 = 'ярдов'; $head2 = 'Попыток';?>
+                <?$arr = $arrRush2;?>
                 <? include '_simpleAF.php'?>
             </td>
         </tr>
         <tr>
             <td>
                 <h3 class="stats-header">Прием</h3>
-                <?$arr = $arrPass1; $head1 = 'ярдов'; $head2 = 'приемов';?>
+                <?$arr = $arrPass1; $head2 = 'приемов';?>
                 <? include '_simpleAF.php'?>
             </td>
             <td>
                 <h3 class="stats-header">Прием</h3>
-                <?$arr = $arrPass2; $head2 = 'приемов';?>
+                <?$arr = $arrPass2;?>
                 <? include '_simpleAF.php'?>
             </td>
         </tr>

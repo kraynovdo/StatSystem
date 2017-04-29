@@ -9,6 +9,7 @@
         <th>&nbsp;</th>
         <th class="main-rightAlign"><?=$head1?></th>
         <th class="main-rightAlign"><?=$head2?></th>
+        <th class="main-rightAlign"><?=$head3?></th>
     </tr>
     </thead>
     <tbody class="datagrid_tbody">
@@ -22,6 +23,9 @@
             </td>
             <td class="stats-counter main-rightAlign">
                 <?=$arr[$i]['num']?>
+            </td>
+            <td class="stats-counter main-rightAlign">
+                <?=$arr[$i]['td']?>
             </td>
         </tr>
     <?}?>
