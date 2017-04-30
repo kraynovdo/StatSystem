@@ -10,9 +10,9 @@
     <tr>
         <th>&nbsp;</th>
         <th class="main-rightAlign">%</th>
-        <th class="main-rightAlign">ТД</th>
-        <th class="main-rightAlign">Пер</th>
-        <th class="main-rightAlign">Ярды</th>
+        <th class="main-rightAlign">тд</th>
+        <th class="main-rightAlign">пер</th>
+        <th class="main-rightAlign">яр</th>
     </tr>
     </thead>
     <tbody class="datagrid_tbody">

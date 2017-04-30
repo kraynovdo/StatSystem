@@ -6,7 +6,7 @@
     <thead class="datagrid_thead">
     <tr>
         <th>&nbsp;</th>
-        <th class="main-rightAlign">Кол-во</th>
+        <th class="main-rightAlign">Кол</th>
     </tr>
     </thead>
     <tbody class="datagrid_tbody">

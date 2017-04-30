@@ -1376,6 +1376,9 @@ textarea {
     font-size: 14px;
     margin: 0 5px;
 }
+.stats-table_wrapper {
+    overflow-y: auto;
+}
 .stats-table .datagrid_tbody td {
     padding: 5px 5px;
 }

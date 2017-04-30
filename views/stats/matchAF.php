@@ -52,50 +52,67 @@
         <tr>
             <td>
                 <h3 class="stats-header">Вынос</h3>
-                <?$arr = $arrRush1; $head1 = 'ярдов'; $head2 = 'Попыток'; $head3='ТД'?>
-                <? include '_simpleAF.php'?>
+                <div class="stats-table_wrapper">
+                    <?$arr = $arrRush1; $head1 = 'яр'; $head2 = 'поп'; $head3='тд'?>
+                    <? include '_simpleAF.php'?>
+                </div>
 
             </td>
             <td>
                 <h3 class="stats-header">Вынос</h3>
-                <?$arr = $arrRush2;?>
-                <? include '_simpleAF.php'?>
+                <div class="stats-table_wrapper">
+                    <?$arr = $arrRush2;?>
+                    <? include '_simpleAF.php'?>
+                </div>
             </td>
         </tr>
         <tr>
             <td>
                 <h3 class="stats-header">Прием</h3>
-                <?$arr = $arrPass1; $head2 = 'приемов';?>
-                <? include '_simpleAF.php'?>
+                <div class="stats-table_wrapper">
+                    <?$arr = $arrPass1; $head2 = 'пр';?>
+                    <? include '_simpleAF.php'?>
+                </div>
             </td>
             <td>
                 <h3 class="stats-header">Прием</h3>
-                <?$arr = $arrPass2;?>
-                <? include '_simpleAF.php'?>
+                <div class="stats-table_wrapper">
+                    <?$arr = $arrPass2;?>
+                    <? include '_simpleAF.php'?>
+                </div>
             </td>
         </tr>
         <tr>
             <td>
                 <h3 class="stats-header">Пас</h3>
-                <?$arr = $arrQb1;?>
-                <? include '_qb.php'?>
+                <div class="stats-table_wrapper">
+                    <?$arr = $arrQb1;?>
+                    <? include '_qb.php'?>
+                </div>
             </td>
             <td>
                 <h3 class="stats-header">Пас</h3>
-                <?$arr = $arrQb2;?>
-                <? include '_qb.php'?>
+                <div class="stats-table_wrapper">
+                    <?$arr = $arrQb2;?>
+                    <? include '_qb.php'?>
+                </div>
             </td>
         </tr>
         <tr>
             <td>
+
                 <h3 class="stats-header">Перехваты</h3>
-                <?$arr = $arrInt1;?>
-                <? include '_int.php'?>
+                <div class="stats-table_wrapper">
+                    <?$arr = $arrInt1;?>
+                    <? include '_int.php'?>
+                </div>
             </td>
             <td>
                 <h3 class="stats-header">Перехваты</h3>
-                <?$arr = $arrInt2;?>
-                <? include '_int.php'?>
+                <div class="stats-table_wrapper">
+                    <?$arr = $arrInt2;?>
+                    <? include '_int.php'?>
+                </div>
             </td>
         </tr>
     </tbody>
