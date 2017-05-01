@@ -51,6 +51,22 @@
     <tbody>
         <tr>
             <td>
+                <h3 class="stats-header">Пас</h3>
+                <div class="stats-table_wrapper">
+                    <?$arr = $arrQb1;?>
+                    <? include '_qb.php'?>
+                </div>
+            </td>
+            <td>
+                <h3 class="stats-header">Пас</h3>
+                <div class="stats-table_wrapper">
+                    <?$arr = $arrQb2;?>
+                    <? include '_qb.php'?>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <h3 class="stats-header">Вынос</h3>
                 <div class="stats-table_wrapper">
                     <?$arr = $arrRush1; $head1 = 'яр'; $head2 = 'поп'; $head3='тд'?>
@@ -82,22 +98,7 @@
                 </div>
             </td>
         </tr>
-        <tr>
-            <td>
-                <h3 class="stats-header">Пас</h3>
-                <div class="stats-table_wrapper">
-                    <?$arr = $arrQb1;?>
-                    <? include '_qb.php'?>
-                </div>
-            </td>
-            <td>
-                <h3 class="stats-header">Пас</h3>
-                <div class="stats-table_wrapper">
-                    <?$arr = $arrQb2;?>
-                    <? include '_qb.php'?>
-                </div>
-            </td>
-        </tr>
+
         <tr>
             <td>
 

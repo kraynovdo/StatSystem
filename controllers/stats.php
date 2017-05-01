@@ -31,72 +31,89 @@
 
         $result['answer']['match'] = match_mainInfo($dbConnect, $CONSTPath);
 
+        if (function_exists('memcache_connect')) {
+            $mc = memcache_connect('localhost', 11211);
+            $stats = memcache_get($mc, 'stats_match_' . $match);
+        }
 
+        if ($stats['rush']) {
+            $result['answer']['rush'] = $stats['rush'];
+        }
+        else {
+            $result['answer']['rush'] = common_getlist($dbConnect, '
+            SELECT stat.*, P.surname, P.name, T.logo FROM (
+                SELECT
+                  count(A.id) AS num, sum(value) AS sumr, team, person, SUM(CASE WHEN (PG.id AND PG.type > 0) THEN 1 ELSE 0 END) AS td
+                FROM
+                  `stataction` A
+                      LEFT JOIN (
+                          SELECT
+                              SP.person, SP.action
+                          FROM
+                              statperson SP LEFT JOIN statpersontype SPT ON SP.persontype = SPT.id
+                          WHERE
+                              SPT.code = "runner"
+                      ) AS SP_INFO ON SP_INFO.action = A.id
+                      LEFT JOIN (
+                          SELECT
+                              SC.value, SC.action
+                          FROM
+                              statchar SC LEFT JOIN statchartype SCT ON SC.chartype = SCT.id
+                          WHERE
+                              SCT.code = "runyds"
+                      ) AS SC_INFO ON SC_INFO.action = A.id
 
-        $result['answer']['rush'] = common_getlist($dbConnect, '
-        SELECT stat.*, P.surname, P.name, T.logo FROM (
-            SELECT
-              count(A.id) AS num, sum(value) AS sumr, team, person, SUM(CASE WHEN (PG.id AND PG.type > 0) THEN 1 ELSE 0 END) AS td
-            FROM
-              `stataction` A
-                  LEFT JOIN (
-                      SELECT
-                          SP.person, SP.action
-                      FROM
-                          statperson SP LEFT JOIN statpersontype SPT ON SP.persontype = SPT.id
-                      WHERE
-                          SPT.code = "runner"
-                  ) AS SP_INFO ON SP_INFO.action = A.id
-                  LEFT JOIN (
-                      SELECT
-                          SC.value, SC.action
-                      FROM
-                          statchar SC LEFT JOIN statchartype SCT ON SC.chartype = SCT.id
-                      WHERE
-                          SCT.code = "runyds"
-                  ) AS SC_INFO ON SC_INFO.action = A.id
-
-                  LEFT JOIN statactiontype AT ON A.actiontype = AT.id
-                  LEFT JOIN pointsget PG ON PG.id = A.pointsget
-            WHERE
-              `match` = :match AND AT.code = "rush"
-            GROUP BY
-            person, team
-        ) AS stat
-        LEFT JOIN person P ON stat.person = P.id
-        LEFT JOIN team T ON stat.team = T.id
-        ORDER BY sumr DESC, num ASC', array('match' => $match));
-
-        $result['answer']['pass'] = common_getlist($dbConnect, '
-        SELECT stat.*, P.surname, P.name, T.logo FROM (
-            SELECT count(A.id) AS num, sum(value) AS sumr, team, person, SUM(CASE WHEN (PG.id AND PG.type > 0) THEN 1 ELSE 0 END) AS td
-            FROM `stataction` A
-                LEFT JOIN (
-                      SELECT
-                          SP.person, SP.action
-                      FROM
-                          statperson SP LEFT JOIN statpersontype SPT ON SP.persontype = SPT.id
-                      WHERE
-                          SPT.code = "receiver"
-                  ) AS SP_INFO ON SP_INFO.action = A.id
-                LEFT JOIN (
-                      SELECT
-                          SC.value, SC.action
-                      FROM
-                          statchar SC LEFT JOIN statchartype SCT ON SC.chartype = SCT.id
-                      WHERE
-                          SCT.code = "passyds"
-                  ) AS SC_INFO ON SC_INFO.action = A.id
-            LEFT JOIN statactiontype AT ON A.actiontype = AT.id
-            LEFT JOIN pointsget PG ON PG.id = A.pointsget
-            WHERE `match` = :match AND AT.code = "pass" AND SP_INFO.person
-            GROUP BY person, team
-        ) AS stat
-        LEFT JOIN person P ON stat.person = P.id
-        LEFT JOIN team T ON stat.team = T.id
-        ORDER BY sumr DESC, num ASC', array('match' => $match));
-
-        $result['answer']['qb'] = common_getlist($dbConnect, '
+                      LEFT JOIN statactiontype AT ON A.actiontype = AT.id
+                      LEFT JOIN pointsget PG ON PG.id = A.pointsget
+                WHERE
+                  `match` = :match AND AT.code = "rush"
+                GROUP BY
+                person, team
+            ) AS stat
+            LEFT JOIN person P ON stat.person = P.id
+            LEFT JOIN team T ON stat.team = T.id
+            ORDER BY sumr DESC, num ASC', array('match' => $match));
+            $stats['rush'] = $result['answer']['rush'];
+        }
+        if ($stats['pass']) {
+            $result['answer']['pass'] = $stats['pass'];
+        }
+        else {
+            $result['answer']['pass'] = common_getlist($dbConnect, '
+            SELECT stat.*, P.surname, P.name, T.logo FROM (
+                SELECT count(A.id) AS num, sum(value) AS sumr, team, person, SUM(CASE WHEN (PG.id AND PG.type > 0) THEN 1 ELSE 0 END) AS td
+                FROM `stataction` A
+                    LEFT JOIN (
+                          SELECT
+                              SP.person, SP.action
+                          FROM
+                              statperson SP LEFT JOIN statpersontype SPT ON SP.persontype = SPT.id
+                          WHERE
+                              SPT.code = "receiver"
+                      ) AS SP_INFO ON SP_INFO.action = A.id
+                    LEFT JOIN (
+                          SELECT
+                              SC.value, SC.action
+                          FROM
+                              statchar SC LEFT JOIN statchartype SCT ON SC.chartype = SCT.id
+                          WHERE
+                              SCT.code = "passyds"
+                      ) AS SC_INFO ON SC_INFO.action = A.id
+                LEFT JOIN statactiontype AT ON A.actiontype = AT.id
+                LEFT JOIN pointsget PG ON PG.id = A.pointsget
+                WHERE `match` = :match AND AT.code = "pass" AND SP_INFO.person
+                GROUP BY person, team
+            ) AS stat
+            LEFT JOIN person P ON stat.person = P.id
+            LEFT JOIN team T ON stat.team = T.id
+            ORDER BY sumr DESC, num ASC', array('match' => $match));
+            $stats['pass'] = $result['answer']['pass'];
+        }
+        if ($stats['qb']) {
+            $result['answer']['qb'] = $stats['qb'];
+        }
+        else {
+            $result['answer']['qb'] = common_getlist($dbConnect, '
             SELECT stat.*, P.surname, P.name, T.logo FROM (
                             SELECT count(A.id) AS num, sum(value) AS sumr, team, SP_INFO.person,
                 sum(case WHEN REC_INFO.person IS NULL THEN 0 ELSE 1 END) AS rec,
@@ -138,27 +155,37 @@
                   LEFT JOIN statactiontype AT ON A.actiontype = AT.id
                 WHERE `match` = :match AND AT.code = "pass" AND SP_INFO.person
                 GROUP BY person, team
-        ) AS stat
-        LEFT JOIN person P ON stat.person = P.id
-        LEFT JOIN team T ON stat.team = T.id
-        ORDER BY sumr DESC, num ASC', array('match' => $match));
-
-        $result['answer']['int'] = common_getlist($dbConnect, 'SELECT stat.*, P.surname, P.name, T.logo FROM
-            (SELECT
-                count(SP.id) AS cnt, person, A.team2 AS team
-            FROM
-                statperson SP LEFT JOIN statpersontype SPT ON SPT.id = SP.persontype
-                    LEFT JOIN stataction A ON A.id = SP.action
-            WHERE
-                SPT.code = "intercept" AND A.`match` = :match
-            GROUP BY
-                person) stat
+            ) AS stat
             LEFT JOIN person P ON stat.person = P.id
-                        LEFT JOIN team T ON stat.team = T.id
-            ORDER BY
-                cnt DESC, P.surname ASC', array(
-            'match' => $match
-        ));
+            LEFT JOIN team T ON stat.team = T.id
+            ORDER BY sumr DESC, num ASC', array('match' => $match));
+            $stats['qb'] = $result['answer']['qb'];
+        }
+        if ($stats['int']) {
+            $result['answer']['int'] = $stats['int'];
+        }
+        else {
+            $result['answer']['int'] = common_getlist($dbConnect, 'SELECT stat.*, P.surname, P.name, T.logo FROM
+                (SELECT
+                    count(SP.id) AS cnt, person, A.team2 AS team
+                FROM
+                    statperson SP LEFT JOIN statpersontype SPT ON SPT.id = SP.persontype
+                        LEFT JOIN stataction A ON A.id = SP.action
+                WHERE
+                    SPT.code = "intercept" AND A.`match` = :match
+                GROUP BY
+                    person) stat
+                LEFT JOIN person P ON stat.person = P.id
+                            LEFT JOIN team T ON stat.team = T.id
+                ORDER BY
+                    cnt DESC, P.surname ASC', array(
+                    'match' => $match
+            ));
+            $stats['int'] = $result['answer']['int'];
+        }
+        if (function_exists('memcache_set')) {
+            memcache_set($mc, 'stats_match_'.$match, $stats, 0, 60);
+        }
 
         return $result;
     }
