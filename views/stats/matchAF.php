@@ -89,7 +89,20 @@
             <td>
                 <h3 class="stats-header">Вынос</h3>
                 <div class="stats-table_wrapper">
-                    <?$arr = $arrRush1; $head1 = 'яр'; $head2 = 'поп'; $head3='тд'?>
+                    <?$arr = $arrRush1; $columns = array(
+                        array(
+                            'title' => 'яр',
+                            'field' => 'sumr'
+                        ),
+                        array(
+                            'title' => 'поп',
+                            'field' => 'num'
+                        ),
+                        array(
+                            'title' => 'тд',
+                            'field' => 'td'
+                        ),
+                    )?>
                     <? include '_simpleAF.php'?>
                 </div>
 
@@ -106,7 +119,20 @@
             <td>
                 <h3 class="stats-header">Прием</h3>
                 <div class="stats-table_wrapper">
-                    <?$arr = $arrPass1; $head2 = 'пр';?>
+                    <?$arr = $arrPass1; $columns = array(
+                        array(
+                            'title' => 'яр',
+                            'field' => 'sumr'
+                        ),
+                        array(
+                            'title' => 'пр',
+                            'field' => 'num'
+                        ),
+                        array(
+                            'title' => 'тд',
+                            'field' => 'td'
+                        ),
+                    )?>
                     <? include '_simpleAF.php'?>
                 </div>
             </td>
@@ -122,7 +148,20 @@
             <td>
                 <h3 class="stats-header">Возврат</h3>
                 <div class="stats-table_wrapper">
-                    <?$arr = $arrRet1; $head1 = 'яр'; $head2 = 'поп'; $head3='тд'?>
+                    <?$arr = $arrRet1; $columns = array(
+                        array(
+                            'title' => 'яр',
+                            'field' => 'sumr'
+                        ),
+                        array(
+                            'title' => 'поп',
+                            'field' => 'num'
+                        ),
+                        array(
+                            'title' => 'тд',
+                            'field' => 'td'
+                        ),
+                    )?>
                     <? include '_simpleAF.php'?>
                 </div>
 
@@ -140,15 +179,20 @@
 
                 <h3 class="stats-header">Перехваты</h3>
                 <div class="stats-table_wrapper">
-                    <?$arr = $arrInt1;?>
-                    <? include '_int.php'?>
+                    <?$arr = $arrInt1; $columns = array(
+                        array(
+                            'title' => 'кол',
+                            'field' => 'cnt'
+                        )
+                    )?>
+                    <? include '_simpleAF.php'?>
                 </div>
             </td>
             <td>
                 <h3 class="stats-header">Перехваты</h3>
                 <div class="stats-table_wrapper">
                     <?$arr = $arrInt2;?>
-                    <? include '_int.php'?>
+                    <? include '_simpleAF.php'?>
                 </div>
             </td>
         </tr>
@@ -157,15 +201,24 @@
 
                 <h3 class="stats-header">Захваты</h3>
                 <div class="stats-table_wrapper">
-                    <?$arr = $arrTac1; $head1 = 'соло'; $head2 = 'ассист'; $field1='solo'; $field2='assist';?>
-                    <? include '_tac.php'?>
+                    <?$arr = $arrTac1; $columns = array(
+                        array(
+                            'title' => 'сол',
+                            'field' => 'solo'
+                        ),
+                        array(
+                            'title' => 'асс',
+                            'field' => 'assist'
+                        )
+                    )?>
+                    <? include '_simpleAF.php'?>
                 </div>
             </td>
             <td>
                 <h3 class="stats-header">Захваты</h3>
                 <div class="stats-table_wrapper">
-                    <?$arr = $arrTac2; $head1 = 'соло'; $head2 = 'ассист'; $field1='solo'; $field2='assist';?>
-                    <? include '_tac.php'?>
+                    <?$arr = $arrTac2;?>
+                    <? include '_simpleAF.php'?>
                 </div>
             </td>
         </tr>
