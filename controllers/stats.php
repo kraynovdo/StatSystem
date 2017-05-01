@@ -36,6 +36,46 @@
             $stats = memcache_get($mc, 'stats_match_' . $match);
         }
 
+        if ($stats['return']) {
+            $result['answer']['return'] = $stats['return'];
+        }
+        else {
+            $result['answer']['return'] = common_getlist($dbConnect, '
+            SELECT stat.*, P.surname, P.name, T.logo FROM (
+                SELECT
+                  count(A.id) AS num, sum(value) AS sumr, team, person, SUM(CASE WHEN (PG.id AND PG.type > 0) THEN 1 ELSE 0 END) AS td
+                FROM
+                  `stataction` A
+                      LEFT JOIN (
+                          SELECT
+                              SP.person, SP.action
+                          FROM
+                              statperson SP LEFT JOIN statpersontype SPT ON SP.persontype = SPT.id
+                          WHERE
+                              SPT.code = "returner"
+                      ) AS SP_INFO ON SP_INFO.action = A.id
+                      LEFT JOIN (
+                          SELECT
+                              SC.value, SC.action
+                          FROM
+                              statchar SC LEFT JOIN statchartype SCT ON SC.chartype = SCT.id
+                          WHERE
+                              SCT.code = "retyds"
+                      ) AS SC_INFO ON SC_INFO.action = A.id
+
+                      LEFT JOIN statactiontype AT ON A.actiontype = AT.id
+                      LEFT JOIN pointsget PG ON PG.id = A.pointsget
+                WHERE
+                  `match` = :match AND AT.code = "return"
+                GROUP BY
+                person, team
+            ) AS stat
+            LEFT JOIN person P ON stat.person = P.id
+            LEFT JOIN team T ON stat.team = T.id
+            ORDER BY sumr DESC, num ASC', array('match' => $match));
+            $stats['return'] = $result['answer']['return'];
+        }
+
         if ($stats['rush']) {
             $result['answer']['rush'] = $stats['rush'];
         }
@@ -183,6 +223,42 @@
             ));
             $stats['int'] = $result['answer']['int'];
         }
+        if ($stats['tac']) {
+            $result['answer']['tac'] = $stats['tac'];
+        }
+        else {
+            $result['answer']['tac'] = common_getlist($dbConnect, 'SELECT
+              TT.logo, stat.solo, stat.assist, P.name, P.surname, TT.id AS team
+            FROM
+              (SELECT
+                person, team2, SUM(case WHEN tcount = 1 THEN 1 ELSE 0 END) AS solo,
+                      SUM(case WHEN tcount = 1 THEN 0 ELSE 1 END) AS assist
+              FROM (
+
+                  SELECT
+                          A.id, count(A.id) AS tcount
+                  FROM
+                          stataction A LEFT JOIN statperson SP ON SP.action = A.id
+                          LEFT JOIN statpersontype SPT ON SP.persontype = SPT.id
+                  WHERE
+                          `match` = :match AND SPT.code = "tackle"
+                  GROUP BY
+                           A.id
+              ) T JOIN stataction A2 ON A2.id = T.id
+               JOIN statperson SP2 ON SP2.action = A2.id
+                          JOIN statpersontype SPT2 ON SP2.persontype = SPT2.id
+               WHERE SPT2.code = "tackle"
+               GROUP BY person, team2) stat
+            LEFT JOIN
+               team TT ON stat.team2 = TT.id
+            LEFT JOIN
+               person P ON P.id = stat.person
+            ORDER BY
+               solo DESC, assist DESC', array(
+                'match' => $match
+            ));
+            $stats['tac'] = $result['answer']['tac'];
+        }
         if (function_exists('memcache_set')) {
             memcache_set($mc, 'stats_match_'.$match, $stats, 0, 60);
         }
@@ -309,33 +385,33 @@
             ORDER BY sumr DESC, num ASC', array('comp' => $comp));
 
             $result['answer']['tackle'] = common_getlist($dbConnect, 'SELECT
-  TT.logo, stat.solo, stat.assist, P.name, P.surname
-FROM
-  (SELECT
-    person, team2, SUM(case WHEN tcount = 1 THEN 1 ELSE 0 END) AS solo,
-          SUM(case WHEN tcount = 1 THEN 0 ELSE 1 END) AS assist
-  FROM (
+              TT.logo, stat.solo, stat.assist, P.name, P.surname
+            FROM
+              (SELECT
+                person, team2, SUM(case WHEN tcount = 1 THEN 1 ELSE 0 END) AS solo,
+                      SUM(case WHEN tcount = 1 THEN 0 ELSE 1 END) AS assist
+              FROM (
 
-      SELECT
-              A.id, count(A.id) AS tcount
-      FROM
-              stataction A LEFT JOIN statperson SP ON SP.action = A.id
-              LEFT JOIN statpersontype SPT ON SP.persontype = SPT.id
-      WHERE
-              competition = :comp AND SPT.code = "tackle"
-      GROUP BY
-               A.id
-  ) T JOIN stataction A2 ON A2.id = T.id
-   JOIN statperson SP2 ON SP2.action = A2.id
-              JOIN statpersontype SPT2 ON SP2.persontype = SPT2.id
-   WHERE SPT2.code = "tackle"
-   GROUP BY person, team2) stat
-LEFT JOIN
-   team TT ON stat.team2 = TT.id
-LEFT JOIN
-   person P ON P.id = stat.person
-ORDER BY
-   solo DESC, assist DESC', array('comp' => $comp));
+                  SELECT
+                          A.id, count(A.id) AS tcount
+                  FROM
+                          stataction A LEFT JOIN statperson SP ON SP.action = A.id
+                          LEFT JOIN statpersontype SPT ON SP.persontype = SPT.id
+                  WHERE
+                          competition = :comp AND SPT.code = "tackle"
+                  GROUP BY
+                           A.id
+              ) T JOIN stataction A2 ON A2.id = T.id
+               JOIN statperson SP2 ON SP2.action = A2.id
+                          JOIN statpersontype SPT2 ON SP2.persontype = SPT2.id
+               WHERE SPT2.code = "tackle"
+               GROUP BY person, team2) stat
+            LEFT JOIN
+               team TT ON stat.team2 = TT.id
+            LEFT JOIN
+               person P ON P.id = stat.person
+            ORDER BY
+               solo DESC, assist DESC', array('comp' => $comp));
 
         return $result;
     }

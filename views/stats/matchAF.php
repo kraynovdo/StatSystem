@@ -10,6 +10,16 @@
             array_push($arrRush2, $answer['rush'][$i]);
         }
     }
+    $arrRet1 = array();
+    $arrRet2 = array();
+    for ($i = 0; $i < count($answer['return']); $i++) {
+        if ($answer['return'][$i]['team'] == $answer['match']['team1']) {
+            array_push($arrRet1, $answer['return'][$i]);
+        }
+        else {
+            array_push($arrRet2, $answer['return'][$i]);
+        }
+    }
     $arrPass1 = array();
     $arrPass2 = array();
     for ($i = 0; $i < count($answer['pass']); $i++) {
@@ -39,6 +49,16 @@
         }
         else {
             array_push($arrInt2, $answer['int'][$i]);
+        }
+    }
+    $arrTac1 = array();
+    $arrTac2 = array();
+    for ($i = 0; $i < count($answer['tac']); $i++) {
+        if ($answer['tac'][$i]['team'] == $answer['match']['team1']) {
+            array_push($arrTac1, $answer['tac'][$i]);
+        }
+        else {
+            array_push($arrTac2, $answer['tac'][$i]);
         }
     }
 ?>
@@ -98,7 +118,23 @@
                 </div>
             </td>
         </tr>
+        <tr>
+            <td>
+                <h3 class="stats-header">Возврат</h3>
+                <div class="stats-table_wrapper">
+                    <?$arr = $arrRet1; $head1 = 'яр'; $head2 = 'поп'; $head3='тд'?>
+                    <? include '_simpleAF.php'?>
+                </div>
 
+            </td>
+            <td>
+                <h3 class="stats-header">Возврат</h3>
+                <div class="stats-table_wrapper">
+                    <?$arr = $arrRet2;?>
+                    <? include '_simpleAF.php'?>
+                </div>
+            </td>
+        </tr>
         <tr>
             <td>
 
@@ -113,6 +149,23 @@
                 <div class="stats-table_wrapper">
                     <?$arr = $arrInt2;?>
                     <? include '_int.php'?>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+                <h3 class="stats-header">Захваты</h3>
+                <div class="stats-table_wrapper">
+                    <?$arr = $arrTac1; $head1 = 'соло'; $head2 = 'ассист'; $field1='solo'; $field2='assist';?>
+                    <? include '_tac.php'?>
+                </div>
+            </td>
+            <td>
+                <h3 class="stats-header">Захваты</h3>
+                <div class="stats-table_wrapper">
+                    <?$arr = $arrTac2; $head1 = 'соло'; $head2 = 'ассист'; $field1='solo'; $field2='assist';?>
+                    <? include '_tac.php'?>
                 </div>
             </td>
         </tr>
