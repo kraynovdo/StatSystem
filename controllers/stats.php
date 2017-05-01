@@ -259,6 +259,31 @@
             ));
             $stats['tac'] = $result['answer']['tac'];
         }
+        if ($stats['fg']) {
+            $result['answer']['fg'] = $stats['fg'];
+        }
+        else {
+            $result['answer']['fg'] = common_getlist($dbConnect, 'SELECT stat.*, P.surname, P.name, T.logo FROM (
+            SELECT
+                person, team,
+                    SUM(1) AS numr,
+                    SUM(CASE 1 WHEN PG.point = 3 THEN 1 ELSE 0 END) AS fg,
+                    SUM(CASE 1 WHEN PG.point = 1 THEN 1 ELSE 0 END) AS pt
+            FROM
+                statperson SP LEFT JOIN statpersontype SPT ON SPT.id = SP.persontype
+                    LEFT JOIN stataction A ON A.id = SP.action
+                    LEFT JOIN pointsget PG ON PG.id = A.pointsget
+            WHERE
+                A.`match` = :match AND SPT.code = "fgkicker"
+            GROUP BY
+                person
+            ) AS stat LEFT JOIN person P ON stat.person = P.id
+            LEFT JOIN team T ON stat.team = T.id
+            ORDER BY fg DESC, pt DESC, surname ASC', array(
+                'match' => $match
+            ));
+            $stats['fg'] = $result['answer']['fg'];
+        }
         if (function_exists('memcache_set')) {
             memcache_set($mc, 'stats_match_'.$match, $stats, 0, 60);
         }

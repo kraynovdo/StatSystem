@@ -61,6 +61,16 @@
             array_push($arrTac2, $answer['tac'][$i]);
         }
     }
+    $arrFg1 = array();
+    $arrFg2 = array();
+    for ($i = 0; $i < count($answer['fg']); $i++) {
+        if ($answer['fg'][$i]['team'] == $answer['match']['team1']) {
+            array_push($arrFg1, $answer['fg'][$i]);
+        }
+        else {
+            array_push($arrFg2, $answer['fg'][$i]);
+        }
+    }
 ?>
 <h2>Статистика матча</h2>
 <table class="match_maintable">
@@ -170,6 +180,36 @@
                 <h3 class="stats-header">Возврат</h3>
                 <div class="stats-table_wrapper">
                     <?$arr = $arrRet2;?>
+                    <? include '_simpleAF.php'?>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3 class="stats-header">Удары по воротам</h3>
+                <div class="stats-table_wrapper">
+                    <?$arr = $arrFg1; $columns = array(
+                        array(
+                            'title' => 'поп',
+                            'field' => 'numr'
+                        ),
+                        array(
+                            'title' => 'ФГ',
+                            'field' => 'fg'
+                        ),
+                        array(
+                            'title' => '1оч',
+                            'field' => 'pt'
+                        ),
+                    )?>
+                    <? include '_simpleAF.php'?>
+                </div>
+
+            </td>
+            <td>
+                <h3 class="stats-header">Удары по воротам</h3>
+                <div class="stats-table_wrapper">
+                    <?$arr = $arrFg2;?>
                     <? include '_simpleAF.php'?>
                 </div>
             </td>

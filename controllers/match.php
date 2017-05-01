@@ -461,7 +461,7 @@
             $actionStr = $value;
         }
         else {
-            $actionStr = 'Неудачный ' . $event['action'];
+            $actionStr = 'Неудачный удар по воротам';
         }
         $man = common_twins($event['surname'], $event['spcode'], 'fgkicker');
 
