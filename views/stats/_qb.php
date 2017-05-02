@@ -10,9 +10,10 @@
     <tr>
         <th>&nbsp;</th>
         <th class="main-rightAlign">%</th>
+        <th class="main-rightAlign">яр</th>
         <th class="main-rightAlign">тд</th>
         <th class="main-rightAlign">пер</th>
-        <th class="main-rightAlign">яр</th>
+
     </tr>
     </thead>
     <tbody class="datagrid_tbody">
@@ -25,14 +26,15 @@
                 <?=$arr[$i]['rec']?>/<?=$arr[$i]['num']?>
             </td>
             <td class="stats-counter main-rightAlign">
+                <?=$arr[$i]['sumr']?>
+            </td>
+            <td class="stats-counter main-rightAlign">
                 <?=$arr[$i]['td']?>
             </td>
             <td class="stats-counter main-rightAlign">
                 <?=$arr[$i]['inter']?>
             </td>
-            <td class="stats-counter main-rightAlign">
-                <?=$arr[$i]['sumr']?>
-            </td>
+
         </tr>
     <?}?>
     </tbody>
