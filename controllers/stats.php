@@ -43,7 +43,7 @@
             $result['answer']['return'] = common_getlist($dbConnect, '
             SELECT stat.*, P.surname, P.name, T.logo FROM (
                 SELECT
-                  count(A.id) AS num, sum(value) AS sumr, team, person, SUM(CASE WHEN (PG.id AND PG.type > 0) THEN 1 ELSE 0 END) AS td
+                  count(A.id) AS num, sum(value) AS sumr, team, person, SUM(CASE WHEN (PG.id AND PG.point = 6) THEN 1 ELSE 0 END) AS td
                 FROM
                   `stataction` A
                       LEFT JOIN (
@@ -83,7 +83,7 @@
             $result['answer']['rush'] = common_getlist($dbConnect, '
             SELECT stat.*, P.surname, P.name, T.logo FROM (
                 SELECT
-                  count(A.id) AS num, sum(value) AS sumr, team, person, SUM(CASE WHEN (PG.id AND PG.type > 0) THEN 1 ELSE 0 END) AS td
+                  count(A.id) AS num, sum(value) AS sumr, team, person, SUM(CASE WHEN (PG.id AND PG.point = 6) THEN 1 ELSE 0 END) AS td
                 FROM
                   `stataction` A
                       LEFT JOIN (
@@ -121,7 +121,7 @@
         else {
             $result['answer']['pass'] = common_getlist($dbConnect, '
             SELECT stat.*, P.surname, P.name, T.logo FROM (
-                SELECT count(A.id) AS num, sum(value) AS sumr, team, person, SUM(CASE WHEN (PG.id AND PG.type > 0) THEN 1 ELSE 0 END) AS td
+                SELECT count(A.id) AS num, sum(value) AS sumr, team, person, SUM(CASE WHEN (PG.id AND PG.point = 6) THEN 1 ELSE 0 END) AS td
                 FROM `stataction` A
                     LEFT JOIN (
                           SELECT
