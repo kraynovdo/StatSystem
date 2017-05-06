@@ -1112,7 +1112,8 @@ textarea {
     width: 100%;
     overflow: hidden;
     float: left;
-    padding-left: 50px;
+    padding-left: 65px;
+    padding-right: 30px;
     box-sizing: border-box;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -1138,6 +1139,8 @@ textarea {
     line-height: 50px;
     display: inline-block;
     width: 30px;
+    float: right;
+    margin-left: -30px;
 }
 .top10-item_fio {
     line-height: 50px;
