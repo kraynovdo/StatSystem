@@ -1309,6 +1309,10 @@ textarea {
     padding-left: 20px;
     margin-bottom: 20px;
 }
+.match_shareStat {
+    margin: 10px 0;
+    display: inline-block;
+}
 .match-eventDelLink {
     float: right;
 }

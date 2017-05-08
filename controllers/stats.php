@@ -66,7 +66,7 @@
                       LEFT JOIN statactiontype AT ON A.actiontype = AT.id
                       LEFT JOIN pointsget PG ON PG.id = A.pointsget
                 WHERE
-                  `match` = :match AND AT.code = "return"
+                  A.share AND `match` = :match AND AT.code = "return"
                 GROUP BY
                 person, team
             ) AS stat
@@ -106,7 +106,7 @@
                       LEFT JOIN statactiontype AT ON A.actiontype = AT.id
                       LEFT JOIN pointsget PG ON PG.id = A.pointsget
                 WHERE
-                  `match` = :match AND AT.code = "rush"
+                  A.share AND `match` = :match AND AT.code = "rush"
                 GROUP BY
                 person, team
             ) AS stat
@@ -141,7 +141,7 @@
                       ) AS SC_INFO ON SC_INFO.action = A.id
                 LEFT JOIN statactiontype AT ON A.actiontype = AT.id
                 LEFT JOIN pointsget PG ON PG.id = A.pointsget
-                WHERE `match` = :match AND AT.code = "pass" AND SP_INFO.person
+                WHERE A.share AND `match` = :match AND AT.code = "pass" AND SP_INFO.person
                 GROUP BY person, team
             ) AS stat
             LEFT JOIN person P ON stat.person = P.id
@@ -193,7 +193,7 @@
                           SCT.code = "passyds"
                   ) AS SC_INFO ON SC_INFO.action = A.id
                   LEFT JOIN statactiontype AT ON A.actiontype = AT.id
-                WHERE `match` = :match AND AT.code = "pass" AND SP_INFO.person
+                WHERE A.share AND `match` = :match AND AT.code = "pass" AND SP_INFO.person
                 GROUP BY person, team
             ) AS stat
             LEFT JOIN person P ON stat.person = P.id
@@ -212,7 +212,7 @@
                     statperson SP LEFT JOIN statpersontype SPT ON SPT.id = SP.persontype
                         LEFT JOIN stataction A ON A.id = SP.action
                 WHERE
-                    SPT.code = "intercept" AND A.`match` = :match
+                    A.share AND SPT.code = "intercept" AND A.`match` = :match
                 GROUP BY
                     person) stat
                 LEFT JOIN person P ON stat.person = P.id
@@ -241,7 +241,7 @@
                           stataction A LEFT JOIN statperson SP ON SP.action = A.id
                           LEFT JOIN statpersontype SPT ON SP.persontype = SPT.id
                   WHERE
-                          `match` = :match AND SPT.code = "tackle"
+                          A.share AND `match` = :match AND SPT.code = "tackle"
                   GROUP BY
                            A.id
               ) T JOIN stataction A2 ON A2.id = T.id
@@ -274,7 +274,7 @@
                     LEFT JOIN stataction A ON A.id = SP.action
                     LEFT JOIN pointsget PG ON PG.id = A.pointsget
             WHERE
-                A.`match` = :match AND SPT.code = "fgkicker"
+                A.share AND A.`match` = :match AND SPT.code = "fgkicker"
             GROUP BY
                 person
             ) AS stat LEFT JOIN person P ON stat.person = P.id
@@ -326,7 +326,7 @@
 
                       LEFT JOIN statactiontype AT ON A.actiontype = AT.id
                 WHERE
-                  competition = :comp AND AT.code = "rush"
+                  A.share AND competition = :comp AND AT.code = "rush"
                 GROUP BY
                 person, team
             ) AS stat
@@ -355,7 +355,7 @@
                               SCT.code = "passyds"
                       ) AS SC_INFO ON SC_INFO.action = A.id
                     LEFT JOIN statactiontype AT ON A.actiontype = AT.id
-                WHERE competition = :comp AND AT.code = "pass" AND SP_INFO.person
+                WHERE A.share AND competition = :comp AND AT.code = "pass" AND SP_INFO.person
                 GROUP BY person, team
             ) AS stat
             LEFT JOIN person P ON stat.person = P.id
@@ -402,7 +402,7 @@
                               SCT.code = "passyds"
                       ) AS SC_INFO ON SC_INFO.action = A.id
                       LEFT JOIN statactiontype AT ON A.actiontype = AT.id
-                    WHERE competition = :comp AND AT.code = "pass" AND SP_INFO.person
+                    WHERE A.share AND competition = :comp AND AT.code = "pass" AND SP_INFO.person
                     GROUP BY person, team
             ) AS stat
             LEFT JOIN person P ON stat.person = P.id
@@ -423,7 +423,7 @@
                           stataction A LEFT JOIN statperson SP ON SP.action = A.id
                           LEFT JOIN statpersontype SPT ON SP.persontype = SPT.id
                   WHERE
-                          competition = :comp AND SPT.code = "tackle"
+                          A.share AND competition = :comp AND SPT.code = "tackle"
                   GROUP BY
                            A.id
               ) T JOIN stataction A2 ON A2.id = T.id
@@ -489,6 +489,33 @@
         }
         else {
             return 'ERROR-403';
+        }
+    }
+
+    function stats_share($dbConnect) {
+        $data = common_getrecord($dbConnect, '
+                    SELECT
+                      share
+                    FROM
+                      stataction AS A
+                    WHERE
+                      `match` = :id
+                    LIMIT 1', array(
+            'id' => $_POST['match']
+        ));
+        if (count($data)) {
+            $oldShare = $data['share'];
+            $share = 1 - $oldShare;
+
+            $match = $_POST['match'];
+            common_query($dbConnect, '
+                    UPDATE
+                      stataction
+                    SET share = :share WHERE `match` = :id', array(
+                'id' => $match,
+                'share' => $share
+            ));
+            return $share."";
         }
     }
 

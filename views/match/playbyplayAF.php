@@ -20,5 +20,15 @@
         <?}?>
     </tr>
 </table>
+
+<?if (($_SESSION['userType'] == 3) && (count($event))) {?>
+    <a class="match_shareStat" href="javascript: void(0)" data-id="<?=$_GET['match']?>">
+        <?if ($answer['share']) {?>
+            Снять с публикации статистику
+        <?} else {?>
+            Опубликовать статистику
+        <?}?>
+    </a>
+<?}?>
 <?include '_eventListAF.php'?>
 

@@ -193,5 +193,18 @@
         if (groupContainer.length) {
             $('.match-groupField').val(groupContainer.text())
         }
+    });
+
+    $('.match_shareStat').click(function(){
+        var id = $(this).attr('data-id');
+        $.post('/?r=stats/share', {match : id}, function(res){
+            var code = parseInt(res, 10);
+            if (code == 1) {
+                $('.match_shareStat').text('Снять с публикации статистику');
+            }
+            else if (code == 0) {
+                $('.match_shareStat').text('Опубликовать статистику');
+            }
+        })
     })
 })();
