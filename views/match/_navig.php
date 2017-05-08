@@ -16,9 +16,9 @@
     <?if ($_SESSION['userType'] == 3 || $_SESSION['userType'] == 4 || $_SESSION['userType'] == 5) {?>
         <a class="main-navig2_link" href="/?r=match/playbyplayAF&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">Ход игры</a>
     <?}?>
-    <?if (($_GET['match'] != 443) && ($_GET['match'] != 421) && ($_GET['match'] != 432) || $_SESSION['userType'] == 3 || $_SESSION['userType'] == 4 || $_SESSION['userType'] == 5) {?>
-        <a class="main-navig2_link" href="/?r=stats/matchAF&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">Статистика</a>
-    <?}?>
+
+    <a class="main-navig2_link" href="/?r=stats/matchAF&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">Статистика</a>
+
     <?if ($_SESSION['userType'] == 3 || $_SESSION['userType'] == 4 || $_SESSION['userType'] == 5) {?>
         <a class="main-navig2_link" href="/?r=stats/screenAF&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">Экран статиста</a>
     <?}?>
