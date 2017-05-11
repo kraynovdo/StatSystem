@@ -17,7 +17,7 @@
     <?for ($i = 0; $i < count($arr); $i++) {?>
         <tr class="stats-item">
             <td>
-                <?=$arr[$i]['surname']. ' '.$arr[$i]['name']?>
+                <?=$arr[$i]['name']. ' '.$arr[$i]['surname']?>
             </td>
             <?for ($j = 0; $j < count($columns); $j++ ){?>
                 <td class="stats-counter main-rightAlign">

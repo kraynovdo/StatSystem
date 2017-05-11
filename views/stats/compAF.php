@@ -5,7 +5,7 @@ $arrPass1 =$answer['pass'];
 
 $arrQb1 = $answer['qb'];
 
-$arrTackle = $answer['tackle'];
+$arrTac1 = $answer['tackle'];
 ?>
 <h2>Статистика турнира</h2>
 <table class="match_maintable">
