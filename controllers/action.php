@@ -114,25 +114,20 @@
         return $result;
     }
 
-    function action_personstats($dbConnect, $CONSTPath, $person=null) {
+    function action_personstats($dbConnect, $CONSTPath, $person=null, $comp) {
         if (!$person) {
             $person = $_GET['person'];
         }
         $stats = common_getlist($dbConnect, '
-          SELECT
-            P.*, C.name AS compname, S.yearB, S.yearE
-          FROM (
+
                 SELECT
                   COUNT(A.pointsget) AS count, PG.name AS pointname, A.competition
                 FROM
                   action A
                     LEFT JOIN pointsget PG ON PG.id = A.pointsget
-                WHERE person = :person
+                WHERE person = :person AND competition = :comp
                 GROUP BY A.pointsget, PG.name, A.competition
-            ) AS P
-            LEFT JOIN competition C ON C.id = P.competition
-            LEFT JOIN season S ON S.id = C.season
-          ORDER BY yearB, competition',
-        array('person' => $person));
+            ',
+        array('person' => $person, 'comp' => $comp));
         return $stats;
     }

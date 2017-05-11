@@ -538,8 +538,21 @@ textarea {
 .person-edit_phone {
     width: 100px;
 }
-
-
+.person_careerElem {
+    font-size: 18px;
+    vertical-align: middle;
+}
+.person_careerTeam {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+}
+.person_careerTeam .main-noPhoto {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 50px;
+}
 .user-email {
     width: 250px;
 }

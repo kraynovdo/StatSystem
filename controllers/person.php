@@ -13,6 +13,24 @@
         );
         return $navig;
     }
+
+    function person_comps($dbConnect, $person) {
+        if (!$person) {
+            $person = $_GET['person'];
+        }
+        return common_getlist($dbConnect, '
+                SELECT
+                  C.id, C.name, S.yearB, C.link, C.stats_type
+                FROM
+                  roster R LEFT JOIN competition C ON C.id = R.competition
+                  LEFT JOIN season S ON S.id = C.season
+                WHERE
+                  R.person = :id AND C.type IS NULL AND C.stats_type >= 2
+                ORDER BY C.id DESC', array(
+            'id' => $person
+        ));
+    }
+
     function person_view($dbConnect, $CONSTPath) {
         $queryresult = $dbConnect->prepare('
         SELECT
@@ -31,12 +49,51 @@
         } else {
             $result['answer']['person'] = array();
         }
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/action.php');
-        $result['answer']['stats'] = action_personstats($dbConnect, $CONSTPath, $_GET['person']);
 
+        $comps = person_comps($dbConnect, $_GET['team']);
+        if ($_GET['comp']) {
+            $compId = $_GET['comp'];
+        }
+        else {
+            $compId = $comps[0]['id'];
+        }
+
+        $stats_type = 1;
+        for ($i = 0; $i < count($comps); $i++) {
+            if ($comps[$i]['id'] == $compId) {
+                $stats_type = $comps[$i]['stats_type'];
+            }
+        }
+
+        $result['answer']['comps'] = $comps;
+        $result['answer']['compId'] = $compId;
+        $result['answer']['statstype'] = $stats_type;
+        if ($compId) {
+            $result['answer']['teamRoster'] = person_teamRoster($dbConnect, $CONSTPath, $_GET['person'], $compId);
+            if ($stats_type == 2) {
+                require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/action.php');
+                $result['answer']['stats'] = action_personstats($dbConnect, $CONSTPath, $_GET['person'], $compId);
+            }
+        }
         $result['navigation'] = person_navig();
 
         return $result;
+    }
+
+    function person_teamRoster($dbConnect, $CONSTPath, $person, $comp) {
+        return common_getrecord($dbConnect, '
+            SELECT
+                T.rus_name, T.logo, POS.abbr, R.number
+            FROM
+                roster R LEFT JOIN team T ON T.id = R.team
+                LEFT JOIN position POS ON POS.id = R.position
+            WHERE
+                R.competition = :comp AND person = :person
+            LIMIT 1
+        ', array(
+            'person' => $person,
+            'comp' => $comp
+        ));
     }
 
     function person_stat($dbConnect) {

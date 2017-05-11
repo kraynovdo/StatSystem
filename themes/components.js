@@ -245,17 +245,26 @@ $(function () {
     });
 
     $('.team-compSelector').change(function(){
-        var id, location, newComp, newLocation;
+        var id, host, search, location, newComp, newSearch, newHost;
         id = $(this).val();
         newComp = 'comp=' + id;
-        location = document.location.toString();
-        if (location.indexOf('comp=') < 0) {
-            newLocation = location + '&' + newComp;
+        host = document.location.host;
+        if (host.indexOf('amfoot.ru') >= 0) {
+            newHost = 'amfoot.ru';
+        }
+
+        if (host.indexOf('amfoot.net') >= 0) {
+            newHost = 'amfoot.net';
+        }
+
+        search = document.location.search;
+        if (search.indexOf('comp=') < 0) {
+            newSearch = search + '&' + newComp;
         }
         else {
-            newLocation = location.replace(/comp=[0-9]+/g,newComp);
+            newSearch = search.replace(/comp=[0-9]+/g,newComp);
         }
-        document.location = newLocation;
+        document.location = document.location.protocol + '//' + newHost + '/' + newSearch;
 
     });
 
