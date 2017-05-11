@@ -93,10 +93,10 @@
 
         $result['answer']['match'] = match_mainInfo($dbConnect, $CONSTPath);
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statsAF.php');
-        $result['answer']['rush'] = statsAF_rushTop($dbConnect, 'comp', $_GET['comp']);
-        $result['answer']['pass'] = statsAF_passTop($dbConnect, 'comp', $_GET['comp']);
-        $result['answer']['qb'] = statsAF_qbTop($dbConnect, 'comp', $_GET['comp']);
-        $result['answer']['tackle'] = statsAF_tacTop($dbConnect, 'comp', $_GET['comp']);
+        $result['answer']['rush'] = statsAF_rushTop($dbConnect, 'comp', $_GET['comp'], 5);
+        $result['answer']['pass'] = statsAF_passTop($dbConnect, 'comp', $_GET['comp'], 5);
+        $result['answer']['qb'] = statsAF_qbTop($dbConnect, 'comp', $_GET['comp'], 5);
+        $result['answer']['tackle'] = statsAF_tacTop($dbConnect, 'comp', $_GET['comp'], 5);
 
         return $result;
     }

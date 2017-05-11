@@ -9,7 +9,15 @@
             $filter['comp'] = $typeValue;
             $filterStr = 'AND `competition` = :comp';
         }
+
         $modifiedQuery = str_replace('FILTER_PLACE', $filterStr, $query);
+
+        if ($limit) {
+            $modifiedQuery = str_replace('LIMIT_PLACE', ' LIMIT 0, '.$limit, $modifiedQuery);
+        }
+        else {
+            $modifiedQuery = str_replace('LIMIT_PLACE', ''.$limit, $modifiedQuery);
+        }
         return common_getlist($dbConnect, $modifiedQuery, $filter);
     }
     function statsAF_rushTop($dbConnect, $type, $typeValue, $limit = null) {
@@ -42,10 +50,12 @@
                   A.share FILTER_PLACE AND AT.code = "rush"
                 GROUP BY
                 person, team
+                ORDER BY sumr DESC, num ASC
+                LIMIT_PLACE
             ) AS stat
             LEFT JOIN person P ON stat.person = P.id
             LEFT JOIN team T ON stat.team = T.id
-            ORDER BY sumr DESC, num ASC');
+            ');
     }
     function statsAF_retTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, '
@@ -77,10 +87,12 @@
                   A.share FILTER_PLACE AND AT.code = "return"
                 GROUP BY
                 person, team
+                ORDER BY sumr DESC, num ASC
+                LIMIT_PLACE
             ) AS stat
             LEFT JOIN person P ON stat.person = P.id
             LEFT JOIN team T ON stat.team = T.id
-            ORDER BY sumr DESC, num ASC');
+            ');
     }
 
     function statsAF_passTop($dbConnect, $type, $typeValue, $limit = null) {
@@ -108,10 +120,12 @@
                 LEFT JOIN pointsget PG ON PG.id = A.pointsget
                 WHERE A.share FILTER_PLACE AND AT.code = "pass" AND SP_INFO.person
                 GROUP BY person, team
+                ORDER BY sumr DESC, num ASC
+                LIMIT_PLACE
             ) AS stat
             LEFT JOIN person P ON stat.person = P.id
             LEFT JOIN team T ON stat.team = T.id
-            ORDER BY sumr DESC, num ASC');
+            ');
     }
 
     function statsAF_qbTop($dbConnect, $type, $typeValue, $limit = null) {
@@ -157,10 +171,12 @@
                   LEFT JOIN statactiontype AT ON A.actiontype = AT.id
                 WHERE A.share FILTER_PLACE AND AT.code = "pass" AND SP_INFO.person
                 GROUP BY person, team
+                ORDER BY sumr DESC, num ASC
+                LIMIT_PLACE
             ) AS stat
             LEFT JOIN person P ON stat.person = P.id
             LEFT JOIN team T ON stat.team = T.id
-            ORDER BY sumr DESC, num ASC');
+            ');
     }
 
     function statsAF_intTop($dbConnect, $type, $typeValue, $limit = null) {
@@ -173,11 +189,13 @@
                 WHERE
                     A.share AND SPT.code = "intercept" FILTER_PLACE
                 GROUP BY
-                    person) stat
+                    person
+                ORDER BY
+                    cnt DESC
+                LIMIT_PLACE) stat
                 LEFT JOIN person P ON stat.person = P.id
                             LEFT JOIN team T ON stat.team = T.id
-                ORDER BY
-                    cnt DESC, P.surname ASC');
+                ');
     }
 
     function statsAF_tacTop($dbConnect, $type, $typeValue, $limit = null) {
@@ -202,13 +220,14 @@
                JOIN statperson SP2 ON SP2.action = A2.id
                           JOIN statpersontype SPT2 ON SP2.persontype = SPT2.id
                WHERE SPT2.code = "tackle"
-               GROUP BY person, team2) stat
+               GROUP BY person, team2
+               ORDER BY solo DESC, assist DESC
+               LIMIT_PLACE) stat
             LEFT JOIN
                team TT ON stat.team2 = TT.id
             LEFT JOIN
                person P ON P.id = stat.person
-            ORDER BY
-               solo DESC, assist DESC');
+               ');
     }
 
     function statsAF_fgTop($dbConnect, $type, $typeValue, $limit = null) {
@@ -226,7 +245,9 @@
                 A.share FILTER_PLACE AND SPT.code = "fgkicker"
             GROUP BY
                 person
+            ORDER BY fg DESC, pt DESC
+            LIMIT_PLACE
             ) AS stat LEFT JOIN person P ON stat.person = P.id
             LEFT JOIN team T ON stat.team = T.id
-            ORDER BY fg DESC, pt DESC, surname ASC');
+            ');
     }
