@@ -22,7 +22,7 @@
     }
     function statsAF_rushTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, '
-            SELECT stat.*, P.surname, P.name, T.logo FROM (
+            SELECT stat.*, P.surname, P.name, T.logo, P.avatar FROM (
                 SELECT
                   count(A.id) AS num, sum(value) AS sumr, team, person, SUM(CASE WHEN (PG.id AND PG.point = 6) THEN 1 ELSE 0 END) AS td
                 FROM
@@ -59,7 +59,7 @@
     }
     function statsAF_retTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, '
-            SELECT stat.*, P.surname, P.name, T.logo FROM (
+            SELECT stat.*, P.surname, P.name, T.logo, P.avatar FROM (
                 SELECT
                   count(A.id) AS num, sum(value) AS sumr, team, person, SUM(CASE WHEN (PG.id AND PG.point = 6) THEN 1 ELSE 0 END) AS td
                 FROM
@@ -97,7 +97,7 @@
 
     function statsAF_passTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, '
-            SELECT stat.*, P.surname, P.name, T.logo FROM (
+            SELECT stat.*, P.surname, P.name, T.logo, P.avatar FROM (
                 SELECT count(A.id) AS num, sum(value) AS sumr, team, person, SUM(CASE WHEN (PG.id AND PG.point = 6) THEN 1 ELSE 0 END) AS td
                 FROM `stataction` A
                     LEFT JOIN (
@@ -130,7 +130,7 @@
 
     function statsAF_qbTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, '
-            SELECT stat.*, concat(stat.rec, "/", stat.num) AS percent, P.surname, P.name, T.logo FROM (
+            SELECT stat.*, concat(stat.rec, "/", stat.num) AS percent, P.surname, P.name, T.logo, P.avatar FROM (
                             SELECT count(A.id) AS num, sum(value) AS sumr, team, SP_INFO.person,
                 sum(case WHEN REC_INFO.person IS NULL THEN 0 ELSE 1 END) AS rec,
                 sum(case WHEN INT_INFO.person IS NULL THEN 0 ELSE 1 END) AS inter,
@@ -180,7 +180,7 @@
     }
 
     function statsAF_intTop($dbConnect, $type, $typeValue, $limit = null) {
-        return statsAF_report($dbConnect, $type, $typeValue, $limit, 'SELECT stat.*, P.surname, P.name, T.logo FROM
+        return statsAF_report($dbConnect, $type, $typeValue, $limit, 'SELECT stat.*, P.surname, P.name, T.logo, P.avatar FROM
                 (SELECT
                     count(SP.id) AS cnt, person, A.team2 AS team
                 FROM
@@ -200,7 +200,7 @@
 
     function statsAF_tacTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, 'SELECT
-              TT.logo, stat.solo, stat.assist, P.name, P.surname, TT.id AS team
+              TT.logo, stat.solo, stat.assist, P.name, P.surname, TT.id AS team, P.avatar
             FROM
               (SELECT
                 person, team2, SUM(case WHEN tcount = 1 THEN 1 ELSE 0 END) AS solo,
@@ -231,7 +231,7 @@
     }
 
     function statsAF_fgTop($dbConnect, $type, $typeValue, $limit = null) {
-        return statsAF_report($dbConnect, $type, $typeValue, $limit, 'SELECT stat.*, P.surname, P.name, T.logo FROM (
+        return statsAF_report($dbConnect, $type, $typeValue, $limit, 'SELECT stat.*, P.surname, P.name, T.logo, P.avatar FROM (
             SELECT
                 person, team,
                     SUM(1) AS numr,

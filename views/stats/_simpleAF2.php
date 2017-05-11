@@ -2,15 +2,17 @@
     <colgroup>
         <col width="35px"/>
         <col/>
-        <col width="60px"/>
-        <col width="80px"/>
+        <?for ($i = 0; $i < count($columns); $i++ ){?>
+            <col width="60px"/>
+        <?}?>
     </colgroup>
     <thead class="datagrid_thead">
     <tr>
         <th>&nbsp;</th>
         <th>&nbsp;</th>
-        <th class="main-rightAlign"><?=$head1?></th>
-        <th class="main-rightAlign"><?=$head2?></th>
+        <?for ($i = 0; $i < count($columns); $i++ ){?>
+            <th class="main-rightAlign"><?=$columns[$i]['title']?></th>
+        <?}?>
     </tr>
     </thead>
     <tbody class="datagrid_tbody">
@@ -18,8 +20,8 @@
         <tr class="stats-item">
             <td>
                 <div class="stats-teamLogo">
-                    <?if ($arr[$i]['logo']) {?>
-                        <img style="width: 35px;" src="//<?=$HOST?>/upload/<?=$arr[$i]['logo']?>">
+                    <?if ($arr[$i]['avatar']) {?>
+                        <img style="width: 35px;" src="//<?=$HOST?>/upload/<?=$arr[$i]['avatar']?>">
                     <?} else {?>
                         <div class="main-noPhoto">?</div>
                     <?}?>
@@ -28,12 +30,11 @@
             <td>
                 <?=$arr[$i]['surname']. ' '.$arr[$i]['name']?>
             </td>
-            <td class="stats-counter main-rightAlign">
-                <?=$arr[$i][$field1]?>
-            </td>
-            <td class="stats-counter main-rightAlign">
-                <?=$arr[$i][$field2]?>
-            </td>
+            <?for ($j = 0; $j < count($columns); $j++ ){?>
+                <td class="stats-counter main-rightAlign">
+                    <?=$arr[$i][$columns[$j]['field']]?>
+                </td>
+            <?}?>
         </tr>
     <?}?>
     </tbody>

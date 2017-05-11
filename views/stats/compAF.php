@@ -12,8 +12,45 @@ $arrTackle = $answer['tackle'];
     <tbody>
     <tr>
         <td>
+            <h3 class="stats-header">Пас</h3>
+            <?$arr = $arrQb1; $columns = array(
+                array(
+                    'title' => '%',
+                    'field' => 'percent'
+                ),
+                array(
+                    'title' => 'яр',
+                    'field' => 'sumr'
+                ),
+                array(
+                    'title' => 'тд',
+                    'field' => 'td'
+                ),
+                array(
+                    'title' => 'пер',
+                    'field' => 'inter'
+                ),
+            )?>
+            <? include '_simpleAF2.php'?>
+        </td>
+    </tr>
+    <tr>
+        <td>
             <h3 class="stats-header">Вынос</h3>
-            <?$arr = $arrRush1; $head1 = 'ярдов'; $head2 = 'Попыток'; $field1='sumr'; $field2='num';?>
+            <?$arr = $arrRush1; $columns = array(
+                array(
+                    'title' => 'яр',
+                    'field' => 'sumr'
+                ),
+                array(
+                    'title' => 'поп',
+                    'field' => 'num'
+                ),
+                array(
+                    'title' => 'тд',
+                    'field' => 'td'
+                ),
+            )?>
             <? include '_simpleAF2.php'?>
 
         </td>
@@ -21,21 +58,36 @@ $arrTackle = $answer['tackle'];
     <tr>
         <td>
             <h3 class="stats-header">Прием</h3>
-            <?$arr = $arrPass1; $head1 = 'ярдов'; $head2 = 'приемов'; $field1='sumr'; $field2='num';?>
+            <?$arr = $arrPass1; $columns = array(
+                array(
+                    'title' => 'яр',
+                    'field' => 'sumr'
+                ),
+                array(
+                    'title' => 'пр',
+                    'field' => 'num'
+                ),
+                array(
+                    'title' => 'тд',
+                    'field' => 'td'
+                ),
+            )?>
             <? include '_simpleAF2.php'?>
         </td>
     </tr>
     <tr>
         <td>
-            <h3 class="stats-header">Пас</h3>
-            <?$arr = $arrQb1;?>
-            <? include '_qb2.php'?>
-        </td>
-    </tr>
-    <tr>
-        <td>
             <h3 class="stats-header">Захваты</h3>
-            <?$arr = $arrTackle; $head1 = 'соло'; $head2 = 'ассист'; $field1='solo'; $field2='assist';?>
+            <?$arr = $arrTac1; $columns = array(
+                array(
+                    'title' => 'сол',
+                    'field' => 'solo'
+                ),
+                array(
+                    'title' => 'асс',
+                    'field' => 'assist'
+                )
+            )?>
             <? include '_simpleAF2.php'?>
         </td>
     </tr>
