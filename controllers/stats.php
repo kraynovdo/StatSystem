@@ -35,64 +35,47 @@
             $mc = memcache_connect('localhost', 11211);
             $stats = memcache_get($mc, 'stats_match_' . $match);
         }
-
-        if ($stats['return']) {
-            $result['answer']['return'] = $stats['return'];
-        }
         else {
-            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statsAF.php');
-            $result['answer']['return'] = statsAF_retTop($dbConnect, 'match', $_GET['match']);
-            $stats['return'] = $result['answer']['return'];
+            $stats = array();
         }
 
-        if ($stats['rush']) {
-            $result['answer']['rush'] = $stats['rush'];
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statsAF.php');
+
+        if (!$stats['return']) {
+            $stats['return'] = statsAF_retTop($dbConnect, 'match', $_GET['match']);
         }
-        else {
-            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statsAF.php');
-            $result['answer']['rush'] = statsAF_rushTop($dbConnect, 'match', $_GET['match']);
-            $stats['rush'] = $result['answer']['rush'];
+        $result['answer']['return'] = $stats['return'];
+
+        if (!$stats['rush']) {
+            $stats['rush'] = statsAF_rushTop($dbConnect, 'match', $_GET['match']);
         }
-        if ($stats['pass']) {
-            $result['answer']['pass'] = $stats['pass'];
+        $result['answer']['rush'] = $stats['rush'];
+
+        if (!$stats['pass']) {
+            $stats['pass'] = statsAF_passTop($dbConnect, 'match', $_GET['match']);
         }
-        else {
-            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statsAF.php');
-            $result['answer']['pass'] = statsAF_passTop($dbConnect, 'match', $_GET['match']);
-            $stats['pass'] = $result['answer']['pass'];
+        $result['answer']['pass'] = $stats['pass'];
+
+        if (!$stats['qb']) {
+            $stats['qb'] = statsAF_qbTop($dbConnect, 'match', $_GET['match']);
         }
-        if ($stats['qb']) {
-            $result['answer']['qb'] = $stats['qb'];
+        $result['answer']['qb'] = $stats['qb'];
+
+        if (!$stats['int']) {
+            $stats['int'] = statsAF_intTop($dbConnect, 'match', $_GET['match']);
         }
-        else {
-            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statsAF.php');
-            $result['answer']['qb'] = statsAF_qbTop($dbConnect, 'match', $_GET['match']);
-            $stats['qb'] = $result['answer']['qb'];
+        $result['answer']['int'] = $stats['int'];
+
+        if (!$stats['tac']) {
+            $stats['tac'] = statsAF_tacTop($dbConnect, 'match', $_GET['match']);
         }
-        if ($stats['int']) {
-            $result['answer']['int'] = $stats['int'];
+        $result['answer']['tac'] = $stats['tac'];
+
+        if (!$stats['fg']) {
+            $stats['fg'] = statsAF_fgTop($dbConnect, 'match', $_GET['match']);
         }
-        else {
-            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statsAF.php');
-            $result['answer']['int'] = statsAF_intTop($dbConnect, 'match', $_GET['match']);
-            $stats['int'] = $result['answer']['int'];
-        }
-        if ($stats['tac']) {
-            $result['answer']['tac'] = $stats['tac'];
-        }
-        else {
-            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statsAF.php');
-            $result['answer']['tac'] = statsAF_tacTop($dbConnect, 'match', $_GET['match']);
-            $stats['tac'] = $result['answer']['tac'];
-        }
-        if ($stats['fg']) {
-            $result['answer']['fg'] = $stats['fg'];
-        }
-        else {
-            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statsAF.php');
-            $result['answer']['fg'] = statsAF_fgTop($dbConnect, 'match', $_GET['match']);
-            $stats['fg'] = $result['answer']['fg'];
-        }
+        $result['answer']['fg'] = $stats['fg'];
+
         if (function_exists('memcache_set')) {
             memcache_set($mc, 'stats_match_'.$match, $stats, 0, 60);
         }

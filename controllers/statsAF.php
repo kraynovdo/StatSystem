@@ -116,7 +116,7 @@
 
     function statsAF_qbTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, '
-            SELECT stat.*, P.surname, P.name, T.logo FROM (
+            SELECT stat.*, concat(stat.rec, "/", stat.num) AS percent, P.surname, P.name, T.logo FROM (
                             SELECT count(A.id) AS num, sum(value) AS sumr, team, SP_INFO.person,
                 sum(case WHEN REC_INFO.person IS NULL THEN 0 ELSE 1 END) AS rec,
                 sum(case WHEN INT_INFO.person IS NULL THEN 0 ELSE 1 END) AS inter,

@@ -83,15 +83,32 @@
             <td>
                 <h3 class="stats-header">Пас</h3>
                 <div class="stats-table_wrapper">
-                    <?$arr = $arrQb1;?>
-                    <? include '_qb.php'?>
+                    <?$arr = $arrQb1; $columns = array(
+                        array(
+                            'title' => '%',
+                            'field' => 'percent'
+                        ),
+                        array(
+                            'title' => 'яр',
+                            'field' => 'sumr'
+                        ),
+                        array(
+                            'title' => 'тд',
+                            'field' => 'td'
+                        ),
+                        array(
+                            'title' => 'пер',
+                            'field' => 'inter'
+                        ),
+                    )?>
+                    <? include '_simpleAF.php'?>
                 </div>
             </td>
             <td>
                 <h3 class="stats-header">Пас</h3>
                 <div class="stats-table_wrapper">
                     <?$arr = $arrQb2;?>
-                    <? include '_qb.php'?>
+                    <? include '_simpleAF.php'?>
                 </div>
             </td>
         </tr>
