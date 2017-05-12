@@ -18,17 +18,17 @@
             <div class="team-clItemContent">
                 <div class="team-clLogo">
                     <?if ($answer[$i]['logo']) {?>
-                        <a class="team-clLogoLink" target="_blank" href="//<?=$HOST?>/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>">
+                        <a class="team-clLogoLink" target="_blank" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>">
                             <img style="width:80px" src="//<?=$HOST?>/upload/<?=$answer[$i]['logo']?>">
                         </a>
                     <?} else {?>
-                        <a class="team-clLogoLink" target="_blank" href="//<?=$HOST?>/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>">
+                        <a class="team-clLogoLink" target="_blank" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>">
                             <div class="main-noPhoto">?</div>
                         </a>
                     <?}?>
                 </div>
                 <div class="team-clInfo">
-                    <a class="team-clName" target="_blank" href="//<?=$HOST?>/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>"><?=$answer[$i]['rus_name']?></a>
+                    <a class="team-clName" target="_blank" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>"><?=$answer[$i]['rus_name']?></a>
 
                     <br/>
                     <span class="team-clCity"><?=$answer[$i]['city']?></span>
