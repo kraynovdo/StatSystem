@@ -5,7 +5,11 @@
             $filter['match'] = $typeValue;
             $filterStr = 'AND `match` = :match';
         }
-        else {
+        else if ($type == 'person'){
+            $filter['person'] = $typeValue['person'];
+            $filter['comp'] = $typeValue['comp'];
+            $filterStr = 'AND `competition` = :comp AND `person` = :person';
+        } else {
             $filter['comp'] = $typeValue;
             $filterStr = 'AND `competition` = :comp';
         }
@@ -18,7 +22,12 @@
         else {
             $modifiedQuery = str_replace('LIMIT_PLACE', ''.$limit, $modifiedQuery);
         }
-        return common_getlist($dbConnect, $modifiedQuery, $filter);
+        if ($type == 'person') {
+            return common_getrecord($dbConnect, $modifiedQuery, $filter);
+        }
+        else {
+            return common_getlist($dbConnect, $modifiedQuery, $filter);
+        }
     }
     function statsAF_rushTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, '

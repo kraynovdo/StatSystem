@@ -74,6 +74,11 @@
                 require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/action.php');
                 $result['answer']['stats'] = action_personstats($dbConnect, $CONSTPath, $_GET['person'], $compId);
             }
+            if ($stats_type == 3) {
+                require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/stats.php');
+                $stats = stats_personAF($dbConnect, $CONSTPath, $_GET['person'], $compId);
+                $result['answer']['stats'] = $stats['answer']['stats'];
+            }
         }
         $result['navigation'] = person_navig();
 

@@ -57,16 +57,21 @@
         <span class="person_careerElem">№ <?=$answer['teamRoster']['number']?></span>
         <span class="person_careerElem"><?=$answer['teamRoster']['abbr']?></span>
     <?}?>
-        <?$stats = $answer['stats']; if (count($stats)){?>
+        <?$stats = $answer['stats'];{?>
         <h3>Персональная статистика</h3>
 
-
-        <?for ($i = 0; $i < count($stats); $i++) {?>
-            <div class="listview-item">
-                <span class="action-pgName"><?=$stats[$i]['name']?></span> -
-                <span class="action-pgCount"><?=$stats[$i]['value']?></span>
-            </div>
+        <?if ($answer['statstype'] == 2) {?>
+            <?for ($i = 0; $i < count($stats); $i++) {?>
+                <div class="listview-item">
+                    <span class="action-pgName"><?=$stats[$i]['name']?></span> -
+                    <span class="action-pgCount"><?=$stats[$i]['value']?></span>
+                </div>
+            <?}?>
         <?}?>
+        <?if ($answer['statstype'] == 3) {
+            $stats = $answer['stats'];
+            include($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/stats/personAF.php');
+        }?>
     <?}?>
 <?}?>
 

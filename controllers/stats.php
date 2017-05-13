@@ -140,6 +140,24 @@
         return $result;
     }
 
+    function stats_personAF ($dbConnect, $CONSTPath, $person, $comp) {
+        $result = array(
+            'answer' => array()
+        );
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statsAF.php');
+        $arg = array('person' => $_GET['person'], 'comp' => $comp);
+        $result['answer']['stats'] = array(
+            'rush' => statsAF_rushTop($dbConnect, 'person', $arg, 1),
+            'pass' => statsAF_passTop($dbConnect, 'person', $arg, 1),
+            'ret' => statsAF_retTop($dbConnect, 'person', $arg, 1),
+            'qb' => statsAF_qbTop($dbConnect, 'person', $arg, 1),
+            'int' => statsAF_intTop($dbConnect, 'person', $arg, 1),
+            'tac' => statsAF_tacTop($dbConnect, 'person', $arg, 1),
+            'fg' => statsAF_fgTop($dbConnect, 'person', $arg, 1)
+        );
+
+        return $result;
+    }
 
     function stats_screenAF ($dbConnect, $CONSTPath, $IS_MOBILE) {
         if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 4) || ($_SESSION['userType'] == 5)) {
