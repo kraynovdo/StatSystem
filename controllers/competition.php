@@ -23,11 +23,12 @@
             'header' => $data[0]['name'] . ' ' . $year,
             'menu' => array(
                 'О турнире' => '/?r=competition/view&comp=' . $id,
-                'Новости' => '/?r=news/index&comp=' . $id,
+                /*'Новости' => '/?r=news/index&comp=' . $id,*/
                 'Команды' => '/?r=team/complist&comp=' . $id,
                 'Судьи' => '/?r=refereecomp&comp=' . $id,
                 /*'Таблица' => '/?r=competition/standings&id='.$id,*/
-                'Календарь' => '/?r=match&comp=' . $id
+                'Календарь' => '/?r=match&comp=' . $id,
+                'Статистика' => '/?r=stats/compAF&comp=' . $id
             ),
             'title' => $data[0]['name'],
             'description' => $data[0]['name'] . ' официальный сайт. Здесь вы можете найти свежие новости, информацию о матчах и командах',
@@ -35,9 +36,6 @@
             'logo' => $data[0]['logo'],
             'theme' => $data[0]['theme']
         );
-        if (($_SESSION['userType'] == 3)) {
-            /*$res['menu']['Статистика'] = '/?r=stats/compAF&comp=' . $id;*/
-        }
         if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {
             $res['menu']['* Управление'] = '/?r=competition/admin&comp=' . $id;
         }

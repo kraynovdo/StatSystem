@@ -3,16 +3,19 @@ $arrRush1 = $answer['rush'];
 $arrPass1 =$answer['pass'];
 $arrQb1 = $answer['qb'];
 $arrRet1 = $answer['ret'];
-$arrTac1 = $answer['tackle'];
+$arrTac1 = $answer['tac'];
 $arrInt1 = $answer['int'];
 $arrFg1 = $answer['fg'];
 ?>
-<h2>Статистика турнира - топ 5</h2>
-<table class="match_maintable">
+<h2 class="stats-navHeader">Статистика турнира<?if (!$_GET['type']){?> - топ 5<?}?></h2>
+<?if ($_GET['type']) {?><a href="/?r=stats/compAF&comp=<?=$_GET['comp']?>">Вернуться к топ 5</a><?}?>
+<table class="stats_maintable">
     <tbody>
+    <?if (count($arrQb1)) {?>
     <tr>
         <td>
-            <h3 class="stats-header">Пас</h3>
+            <h3 class="stats-header stats-navHeader">Пас</h3>
+            <?if (!$_GET['type']) {?><a href="/?r=stats/compAF&comp=<?=$_GET['comp']?>&type=qb">Полный список</a><?}?>
             <?$arr = $arrQb1; $columns = array(
                 array(
                     'title' => '%',
@@ -34,9 +37,12 @@ $arrFg1 = $answer['fg'];
             <? include '_simpleAF2.php'?>
         </td>
     </tr>
+    <?}?>
+    <?if (count($arrRush1)) {?>
     <tr>
         <td>
-            <h3 class="stats-header">Вынос</h3>
+            <h3 class="stats-header stats-navHeader">Вынос</h3>
+            <?if (!$_GET['type']) {?><a href="/?r=stats/compAF&comp=<?=$_GET['comp']?>&type=rush">Полный список</a><?}?>
             <?$arr = $arrRush1; $columns = array(
                 array(
                     'title' => 'яр',
@@ -55,9 +61,12 @@ $arrFg1 = $answer['fg'];
 
         </td>
     </tr>
+    <?}?>
+    <?if (count($arrPass1)) {?>
     <tr>
         <td>
-            <h3 class="stats-header">Прием</h3>
+            <h3 class="stats-header stats-navHeader">Прием</h3>
+            <?if (!$_GET['type']) {?><a href="/?r=stats/compAF&comp=<?=$_GET['comp']?>&type=pass">Полный список</a><?}?>
             <?$arr = $arrPass1; $columns = array(
                 array(
                     'title' => 'яр',
@@ -75,9 +84,12 @@ $arrFg1 = $answer['fg'];
             <? include '_simpleAF2.php'?>
         </td>
     </tr>
+    <?}?>
+    <?if (count($arrInt1)) {?>
     <tr>
         <td>
-            <h3 class="stats-header">Перехваты</h3>
+            <h3 class="stats-header stats-navHeader">Перехваты</h3>
+            <?if (!$_GET['type']) {?><a href="/?r=stats/compAF&comp=<?=$_GET['comp']?>&type=int">Полный список</a><?}?>
             <?$arr = $arrInt1; $columns = array(
                 array(
                     'title' => 'кол',
@@ -87,9 +99,12 @@ $arrFg1 = $answer['fg'];
             <? include '_simpleAF2.php'?>
         </td>
     </tr>
+    <?}?>
+    <?if (count($arrTac1)) {?>
     <tr>
         <td>
-            <h3 class="stats-header">Захваты</h3>
+            <h3 class="stats-header stats-navHeader">Захваты</h3>
+            <?if (!$_GET['type']) {?><a href="/?r=stats/compAF&comp=<?=$_GET['comp']?>&type=tac">Полный список</a><?}?>
             <?$arr = $arrTac1; $columns = array(
                 array(
                     'title' => 'сол',
@@ -103,9 +118,12 @@ $arrFg1 = $answer['fg'];
             <? include '_simpleAF2.php'?>
         </td>
     </tr>
+    <?}?>
+    <?if (count($arrRet1)) {?>
     <tr>
         <td>
-            <h3 class="stats-header">Возврат</h3>
+            <h3 class="stats-header stats-navHeader">Возврат</h3>
+            <?if (!$_GET['type']) {?><a href="/?r=stats/compAF&comp=<?=$_GET['comp']?>&type=ret">Полный список</a><?}?>
             <?$arr = $arrRet1; $columns = array(
                 array(
                     'title' => 'яр',
@@ -123,9 +141,12 @@ $arrFg1 = $answer['fg'];
             <? include '_simpleAF2.php'?>
         </td>
     </tr>
+    <?}?>
+    <?if (count($arrFg1)) {?>
     <tr>
         <td>
-            <h3 class="stats-header">Удары по воротам</h3>
+            <h3 class="stats-header stats-navHeader">Удары по воротам</h3>
+            <?if (!$_GET['type']) {?><a href="/?r=stats/compAF&comp=<?=$_GET['comp']?>&type=fg">Полный список</a><?}?>
             <?$arr = $arrFg1; $columns = array(
                 array(
                     'title' => 'поп',
@@ -143,6 +164,7 @@ $arrFg1 = $answer['fg'];
             <? include '_simpleAF2.php'?>
         </td>
     </tr>
+    <?}?>
     </tbody>
 </table>
 

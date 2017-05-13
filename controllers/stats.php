@@ -93,14 +93,50 @@
 
         $result['answer']['match'] = match_mainInfo($dbConnect, $CONSTPath);
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statsAF.php');
-        $result['answer']['rush'] = statsAF_rushTop($dbConnect, 'comp', $_GET['comp'], 5);
-        $result['answer']['pass'] = statsAF_passTop($dbConnect, 'comp', $_GET['comp'], 5);
-        $result['answer']['ret'] = statsAF_retTop($dbConnect, 'comp', $_GET['comp'], 5);
-        $result['answer']['qb'] = statsAF_qbTop($dbConnect, 'comp', $_GET['comp'], 5);
-        $result['answer']['tackle'] = statsAF_tacTop($dbConnect, 'comp', $_GET['comp'], 5);
-        $result['answer']['int'] = statsAF_intTop($dbConnect, 'comp', $_GET['comp'], 5);
-        $result['answer']['fg'] = statsAF_fgTop($dbConnect, 'comp', $_GET['comp'], 5);
+        switch ($_GET['type']) {
+            case 'rush' : $result['answer']['rush'] = statsAF_rushTop($dbConnect, 'comp', $_GET['comp']); break;
+            case 'pass' : $result['answer']['pass'] = statsAF_passTop($dbConnect, 'comp', $_GET['comp']); break;
+            case 'qb' : $result['answer']['qb'] = statsAF_qbTop($dbConnect, 'comp', $_GET['comp']); break;
+            case 'ret' : $result['answer']['ret'] = statsAF_retTop($dbConnect, 'comp', $_GET['comp']); break;
+            case 'int' : $result['answer']['int'] = statsAF_intTop($dbConnect, 'comp', $_GET['comp']); break;
+            case 'tac' : $result['answer']['tac'] = statsAF_tacTop($dbConnect, 'comp', $_GET['comp']); break;
+            case 'fg' : $result['answer']['fg'] = statsAF_fgTop($dbConnect, 'comp', $_GET['comp']); break;
+            default:
 
+
+            $fromCache = true;
+            if (function_exists('memcache_connect')) {
+                $mc = memcache_connect('localhost', 11211);
+                $stats = memcache_get($mc, 'stats_comp_' . $_GET['comp']);
+            }
+            else {
+                $stats = array();
+            }
+
+            if (!$stats || !count($stats)) {
+                $fromCache = false;
+                $stats = array (
+                    'rush' => statsAF_rushTop($dbConnect, 'comp', $_GET['comp'], 5),
+                    'pass' => statsAF_passTop($dbConnect, 'comp', $_GET['comp'], 5),
+                    'ret' => statsAF_retTop($dbConnect, 'comp', $_GET['comp'], 5),
+                    'qb' => statsAF_qbTop($dbConnect, 'comp', $_GET['comp'], 5),
+                    'tac' => statsAF_tacTop($dbConnect, 'comp', $_GET['comp'], 5),
+                    'int' => statsAF_intTop($dbConnect, 'comp', $_GET['comp'], 5),
+                    'fg' => statsAF_fgTop($dbConnect, 'comp', $_GET['comp'], 5)
+                );
+            }
+
+            $result['answer']['rush'] = $stats['rush'];
+            $result['answer']['pass'] = $stats['pass'];;
+            $result['answer']['ret'] = $stats['ret'];
+            $result['answer']['qb'] = $stats['qb'];
+            $result['answer']['tac'] = $stats['tac'];
+            $result['answer']['int'] = $stats['int'];
+            $result['answer']['fg'] = $stats['fg'];
+            if (function_exists('memcache_set') && !$fromCache) {
+                memcache_set($mc, 'stats_comp_'.$_GET['comp'], $stats, 0, 60);
+            }
+        }
         return $result;
     }
 

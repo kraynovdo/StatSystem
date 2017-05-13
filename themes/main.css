@@ -1391,7 +1391,15 @@ textarea {
     margin: 50px 0 0 50px;
 }
 
-
+.stats_maintable {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+.stats-navHeader {
+    display: inline-block;
+    margin-right: 5px;
+}
 .stats-table {
     font-size: 14px;
 }
@@ -1405,7 +1413,7 @@ textarea {
     font-size: 15px;
 }
 .stats-header {
-
+    margin-top: 10px;
 }
 .stats-separaror {
     height: 20px;

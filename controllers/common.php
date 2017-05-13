@@ -26,7 +26,7 @@
     //OK
     function common_getlist($dbConnect, $query, $queryParams = array()) {
         $queryresult = common_query($dbConnect, $query, $queryParams);
-        $dataset = $queryresult->fetchAll();
+        $dataset = $queryresult->fetchAll(PDO::FETCH_ASSOC);
         return $dataset;
     }
 
