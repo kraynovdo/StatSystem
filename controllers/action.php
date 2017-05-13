@@ -121,12 +121,12 @@
         $stats = common_getlist($dbConnect, '
 
                 SELECT
-                  COUNT(A.pointsget) AS count, PG.name AS pointname, A.competition
+                  COUNT(A.pointsget) AS value, PG.name AS name
                 FROM
                   action A
                     LEFT JOIN pointsget PG ON PG.id = A.pointsget
                 WHERE person = :person AND competition = :comp
-                GROUP BY A.pointsget, PG.name, A.competition
+                GROUP BY A.pointsget, PG.name
             ',
         array('person' => $person, 'comp' => $comp));
         return $stats;

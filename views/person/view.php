@@ -63,8 +63,8 @@
 
         <?for ($i = 0; $i < count($stats); $i++) {?>
             <div class="listview-item">
-                <span class="action-pgName"><?=$stats[$i]['pointname']?></span> -
-                <span class="action-pgCount"><?=$stats[$i]['count']?></span>
+                <span class="action-pgName"><?=$stats[$i]['name']?></span> -
+                <span class="action-pgCount"><?=$stats[$i]['value']?></span>
             </div>
         <?}?>
     <?}?>

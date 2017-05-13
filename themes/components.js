@@ -249,6 +249,7 @@ $(function () {
         id = $(this).val();
         newComp = 'comp=' + id;
         host = document.location.host;
+        newHost = host;
         if (host.indexOf('amfoot.ru') >= 0) {
             newHost = 'amfoot.ru';
         }
