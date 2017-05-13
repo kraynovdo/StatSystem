@@ -173,6 +173,54 @@
         </tr>
         <tr>
             <td>
+
+                <h3 class="stats-header">Перехваты</h3>
+                <div class="stats-table_wrapper">
+                    <?$arr = $arrInt1; $columns = array(
+                        array(
+                            'title' => 'кол',
+                            'field' => 'cnt'
+                        )
+                    )?>
+                    <? include '_simpleAF.php'?>
+                </div>
+            </td>
+            <td>
+                <h3 class="stats-header">Перехваты</h3>
+                <div class="stats-table_wrapper">
+                    <?$arr = $arrInt2;?>
+                    <? include '_simpleAF.php'?>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+                <h3 class="stats-header">Захваты</h3>
+                <div class="stats-table_wrapper">
+                    <?$arr = $arrTac1; $columns = array(
+                        array(
+                            'title' => 'сол',
+                            'field' => 'solo'
+                        ),
+                        array(
+                            'title' => 'асс',
+                            'field' => 'assist'
+                        )
+                    )?>
+                    <? include '_simpleAF.php'?>
+                </div>
+            </td>
+            <td>
+                <h3 class="stats-header">Захваты</h3>
+                <div class="stats-table_wrapper">
+                    <?$arr = $arrTac2;?>
+                    <? include '_simpleAF.php'?>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <h3 class="stats-header">Возврат</h3>
                 <div class="stats-table_wrapper">
                     <?$arr = $arrRet1; $columns = array(
@@ -227,54 +275,6 @@
                 <h3 class="stats-header">Удары по воротам</h3>
                 <div class="stats-table_wrapper">
                     <?$arr = $arrFg2;?>
-                    <? include '_simpleAF.php'?>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-
-                <h3 class="stats-header">Перехваты</h3>
-                <div class="stats-table_wrapper">
-                    <?$arr = $arrInt1; $columns = array(
-                        array(
-                            'title' => 'кол',
-                            'field' => 'cnt'
-                        )
-                    )?>
-                    <? include '_simpleAF.php'?>
-                </div>
-            </td>
-            <td>
-                <h3 class="stats-header">Перехваты</h3>
-                <div class="stats-table_wrapper">
-                    <?$arr = $arrInt2;?>
-                    <? include '_simpleAF.php'?>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-
-                <h3 class="stats-header">Захваты</h3>
-                <div class="stats-table_wrapper">
-                    <?$arr = $arrTac1; $columns = array(
-                        array(
-                            'title' => 'сол',
-                            'field' => 'solo'
-                        ),
-                        array(
-                            'title' => 'асс',
-                            'field' => 'assist'
-                        )
-                    )?>
-                    <? include '_simpleAF.php'?>
-                </div>
-            </td>
-            <td>
-                <h3 class="stats-header">Захваты</h3>
-                <div class="stats-table_wrapper">
-                    <?$arr = $arrTac2;?>
                     <? include '_simpleAF.php'?>
                 </div>
             </td>

@@ -95,8 +95,11 @@
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statsAF.php');
         $result['answer']['rush'] = statsAF_rushTop($dbConnect, 'comp', $_GET['comp'], 5);
         $result['answer']['pass'] = statsAF_passTop($dbConnect, 'comp', $_GET['comp'], 5);
+        $result['answer']['ret'] = statsAF_retTop($dbConnect, 'comp', $_GET['comp'], 5);
         $result['answer']['qb'] = statsAF_qbTop($dbConnect, 'comp', $_GET['comp'], 5);
         $result['answer']['tackle'] = statsAF_tacTop($dbConnect, 'comp', $_GET['comp'], 5);
+        $result['answer']['int'] = statsAF_intTop($dbConnect, 'comp', $_GET['comp'], 5);
+        $result['answer']['fg'] = statsAF_fgTop($dbConnect, 'comp', $_GET['comp'], 5);
 
         return $result;
     }
