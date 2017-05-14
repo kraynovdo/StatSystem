@@ -13,7 +13,6 @@ $arrFg1 = $stats['fg'];
     <?if (count($arrQb1)) {?>
         <tr>
             <td>
-                <h3 class="stats-header stats-navHeader">Пас</h3>
                 <?$statName = 'Пас'; $arr = array( 0 => $arrQb1); $columns = array(
                     array(
                         'title' => '%',

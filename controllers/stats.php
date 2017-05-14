@@ -147,13 +147,13 @@
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statsAF.php');
         $arg = array('person' => $_GET['person'], 'comp' => $comp);
         $result['answer']['stats'] = array(
-            'rush' => statsAF_rushTop($dbConnect, 'person', $arg, 1),
-            'pass' => statsAF_passTop($dbConnect, 'person', $arg, 1),
-            'ret' => statsAF_retTop($dbConnect, 'person', $arg, 1),
-            'qb' => statsAF_qbTop($dbConnect, 'person', $arg, 1),
-            'int' => statsAF_intTop($dbConnect, 'person', $arg, 1),
-            'tac' => statsAF_tacTop($dbConnect, 'person', $arg, 1),
-            'fg' => statsAF_fgTop($dbConnect, 'person', $arg, 1)
+            'rush' => statsAF_rushTop($dbConnect, 'person', $arg),
+            'pass' => statsAF_passTop($dbConnect, 'person', $arg),
+            'ret' => statsAF_retTop($dbConnect, 'person', $arg),
+            'qb' => statsAF_qbTop($dbConnect, 'person', $arg),
+            'int' => statsAF_intTop($dbConnect, 'person', $arg),
+            'tac' => statsAF_tacTop($dbConnect, 'person', $arg),
+            'fg' => statsAF_fgTop($dbConnect, 'person', $arg)
         );
 
         return $result;

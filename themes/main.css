@@ -567,11 +567,9 @@ textarea {
     border-collapse: collapse;
 }
 .datagrid_thead th{
-    background-color: #20232C;
-    text-transform: uppercase;
     font-weight: normal;
-    color: #ffffff;
     padding: 2px 5px;
+    background: #eee;
 }
 .datagrid td{
     padding: 1px 5px;
@@ -1402,7 +1400,9 @@ textarea {
 }
 .stats-table {
     font-size: 14px;
+    margin-bottom: 15px;
 }
+
 .stats-table_wrapper {
     overflow-y: auto;
 }

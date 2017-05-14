@@ -1,4 +1,4 @@
-<table class="stats-table datagrid datagrid_zebra">
+<table class="stats-table stats-table_person datagrid datagrid_zebra">
     <colgroup>
         <col/>
         <?for ($i = 0; $i < count($columns); $i++ ){?>

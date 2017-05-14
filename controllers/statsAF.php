@@ -1,6 +1,7 @@
 <?php
     function statsAF_report($dbConnect, $type, $typeValue, $limit, $query) {
         $filter = array();
+        $personFilterStr = '';
         if ($type == 'match') {
             $filter['match'] = $typeValue;
             $filterStr = 'AND `match` = :match';
@@ -8,13 +9,15 @@
         else if ($type == 'person'){
             $filter['person'] = $typeValue['person'];
             $filter['comp'] = $typeValue['comp'];
-            $filterStr = 'AND `competition` = :comp AND `person` = :person';
+            $filterStr = 'AND `competition` = :comp';
+            $personFilterStr = ' AND stat.`person` = :person';
         } else {
             $filter['comp'] = $typeValue;
             $filterStr = 'AND `competition` = :comp';
         }
 
-        $modifiedQuery = str_replace('FILTER_PLACE', $filterStr, $query);
+        $modifiedQuery = str_replace('PERSON-FILTER_PLACE', $personFilterStr, $query);
+        $modifiedQuery = str_replace('FILTER_PLACE', $filterStr, $modifiedQuery);
 
         if ($limit) {
             $modifiedQuery = str_replace('LIMIT_PLACE', ' LIMIT 0, '.$limit, $modifiedQuery);
@@ -64,6 +67,7 @@
             ) AS stat
             LEFT JOIN person P ON stat.person = P.id
             LEFT JOIN team T ON stat.team = T.id
+            WHERE true PERSON-FILTER_PLACE
             ');
     }
     function statsAF_retTop($dbConnect, $type, $typeValue, $limit = null) {
@@ -101,6 +105,7 @@
             ) AS stat
             LEFT JOIN person P ON stat.person = P.id
             LEFT JOIN team T ON stat.team = T.id
+            WHERE true PERSON-FILTER_PLACE
             ');
     }
 
@@ -134,6 +139,7 @@
             ) AS stat
             LEFT JOIN person P ON stat.person = P.id
             LEFT JOIN team T ON stat.team = T.id
+            WHERE true PERSON-FILTER_PLACE
             ');
     }
 
@@ -185,11 +191,13 @@
             ) AS stat
             LEFT JOIN person P ON stat.person = P.id
             LEFT JOIN team T ON stat.team = T.id
+            WHERE true PERSON-FILTER_PLACE
             ');
     }
 
     function statsAF_intTop($dbConnect, $type, $typeValue, $limit = null) {
-        return statsAF_report($dbConnect, $type, $typeValue, $limit, 'SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar FROM
+        return statsAF_report($dbConnect, $type, $typeValue, $limit, '
+            SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar FROM
                 (SELECT
                     count(SP.id) AS cnt, person, A.team2 AS team
                 FROM
@@ -202,9 +210,10 @@
                 ORDER BY
                     cnt DESC
                 LIMIT_PLACE) stat
-                LEFT JOIN person P ON stat.person = P.id
-                            LEFT JOIN team T ON stat.team = T.id
-                ');
+            LEFT JOIN person P ON stat.person = P.id
+            LEFT JOIN team T ON stat.team = T.id
+            WHERE true PERSON-FILTER_PLACE
+            ');
     }
 
     function statsAF_tacTop($dbConnect, $type, $typeValue, $limit = null) {
@@ -236,6 +245,7 @@
                team TT ON stat.team2 = TT.id
             LEFT JOIN
                person P ON P.id = stat.person
+            WHERE true PERSON-FILTER_PLACE
                ');
     }
 
@@ -258,5 +268,6 @@
             LIMIT_PLACE
             ) AS stat LEFT JOIN person P ON stat.person = P.id
             LEFT JOIN team T ON stat.team = T.id
+            WHERE true PERSON-FILTER_PLACE
             ');
     }
