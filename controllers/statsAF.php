@@ -36,7 +36,9 @@
         return statsAF_report($dbConnect, $type, $typeValue, $limit, '
             SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar FROM (
                 SELECT
-                  count(A.id) AS num, sum(value) AS sumr, team, person, SUM(CASE WHEN (PG.id AND PG.point = 6) THEN 1 ELSE 0 END) AS td
+                  count(A.id) AS num, sum(value) AS sumr, team, person,
+                  SUM(CASE WHEN (PG.id AND PG.code = "td") THEN 1 ELSE 0 END) AS td,
+                  SUM(CASE WHEN (PG.id AND PG.code = "2pt") THEN 1 ELSE 0 END) AS 2pt
                 FROM
                   `stataction` A
                       LEFT JOIN (
@@ -74,7 +76,9 @@
         return statsAF_report($dbConnect, $type, $typeValue, $limit, '
             SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar FROM (
                 SELECT
-                  count(A.id) AS num, sum(value) AS sumr, team, person, SUM(CASE WHEN (PG.id AND PG.point = 6) THEN 1 ELSE 0 END) AS td
+                  count(A.id) AS num, sum(value) AS sumr, team, person,
+                  SUM(CASE WHEN (PG.id AND PG.code = "td") THEN 1 ELSE 0 END) AS td,
+                  SUM(CASE WHEN (PG.id AND PG.code = "2pt") THEN 1 ELSE 0 END) AS 2pt
                 FROM
                   `stataction` A
                       LEFT JOIN (
@@ -112,7 +116,9 @@
     function statsAF_passTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, '
             SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar FROM (
-                SELECT count(A.id) AS num, sum(value) AS sumr, team, person, SUM(CASE WHEN (PG.id AND PG.point = 6) THEN 1 ELSE 0 END) AS td
+                SELECT count(A.id) AS num, sum(value) AS sumr, team, person,
+                SUM(CASE WHEN (PG.id AND PG.code = "td") THEN 1 ELSE 0 END) AS td,
+                SUM(CASE WHEN (PG.id AND PG.code = "2pt") THEN 1 ELSE 0 END) AS 2pt
                 FROM `stataction` A
                     LEFT JOIN (
                           SELECT
@@ -296,8 +302,8 @@
             SELECT
                 person, team,
                     SUM(1) AS numr,
-                    SUM(CASE 1 WHEN PG.point = 3 THEN 1 ELSE 0 END) AS fg,
-                    SUM(CASE 1 WHEN PG.point = 1 THEN 1 ELSE 0 END) AS pt
+                    SUM(CASE 1 WHEN PG.code = "fg" THEN 1 ELSE 0 END) AS fg,
+                    SUM(CASE 1 WHEN PG.code = "1pt" THEN 1 ELSE 0 END) AS pt
             FROM
                 statperson SP LEFT JOIN statpersontype SPT ON SPT.id = SP.persontype
                     LEFT JOIN stataction A ON A.id = SP.action

@@ -30,7 +30,7 @@ $arrFg1 = $stats['fg'];
                     array(
                         'title' => 'пер',
                         'field' => 'inter'
-                    ),
+                    )
                 )?>
                 <? include '_simpleAF3.php'?>
             </td>
@@ -52,6 +52,10 @@ $arrFg1 = $stats['fg'];
                         'title' => 'тд',
                         'field' => 'td'
                     ),
+                    array(
+                        'title' => '2оч',
+                        'field' => '2pt'
+                    )
                 )?>
                 <? include '_simpleAF3.php'?>
 
@@ -74,6 +78,10 @@ $arrFg1 = $stats['fg'];
                         'title' => 'тд',
                         'field' => 'td'
                     ),
+                    array(
+                        'title' => '2оч',
+                        'field' => '2pt'
+                    )
                 )?>
                 <? include '_simpleAF3.php'?>
             </td>
@@ -142,6 +150,10 @@ $arrFg1 = $stats['fg'];
                         'title' => 'тд',
                         'field' => 'td'
                     ),
+                    array(
+                        'title' => '2оч',
+                        'field' => '2pt'
+                    )
                 )?>
                 <? include '_simpleAF3.php'?>
             </td>

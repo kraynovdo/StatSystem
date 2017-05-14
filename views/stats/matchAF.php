@@ -111,7 +111,7 @@
                             array(
                                 'title' => 'пер',
                                 'field' => 'inter'
-                            ),
+                            )
                         )?>
                         <? include '_simpleAF.php'?>
                     </div>
@@ -137,7 +137,7 @@
                             array(
                                 'title' => 'пер',
                                 'field' => 'inter'
-                            ),
+                            )
                         )?>
                         <? include '_simpleAF.php'?>
                     </div>
@@ -161,6 +161,10 @@
                             array(
                                 'title' => 'тд',
                                 'field' => 'td'
+                            ),
+                            array(
+                                'title' => '2оч',
+                                'field' => '2pt'
                             )
                         )?>
                         <? include '_simpleAF.php'?>
@@ -183,6 +187,10 @@
                             array(
                                 'title' => 'тд',
                                 'field' => 'td'
+                            ),
+                            array(
+                                'title' => '2оч',
+                                'field' => '2pt'
                             )
                         )?>
                         <? include '_simpleAF.php'?>
@@ -207,6 +215,10 @@
                             array(
                                 'title' => 'тд',
                                 'field' => 'td'
+                            ),
+                            array(
+                                'title' => '2оч',
+                                'field' => '2pt'
                             )
                         )?>
                         <? include '_simpleAF.php'?>
@@ -229,6 +241,10 @@
                             array(
                                 'title' => 'тд',
                                 'field' => 'td'
+                            ),
+                            array(
+                                'title' => '2оч',
+                                'field' => '2pt'
                             )
                         )?>
                         <? include '_simpleAF.php'?>
@@ -360,6 +376,10 @@
                                 'title' => 'тд',
                                 'field' => 'td'
                             ),
+                            array(
+                                'title' => '2оч',
+                                'field' => '2pt'
+                            )
                         )?>
                         <? include '_simpleAF.php'?>
                     </div>
@@ -383,6 +403,10 @@
                                 'title' => 'тд',
                                 'field' => 'td'
                             ),
+                            array(
+                                'title' => '2оч',
+                                'field' => '2pt'
+                            )
                         )?>
                         <? include '_simpleAF.php'?>
                     </div>

@@ -33,7 +33,7 @@ $arrFg1 = $answer['fg'];
                 array(
                     'title' => 'пер',
                     'field' => 'inter'
-                ),
+                )
             )?>
             <? include '_simpleAF2.php'?>
         </td>
@@ -57,6 +57,10 @@ $arrFg1 = $answer['fg'];
                     'title' => 'тд',
                     'field' => 'td'
                 ),
+                array(
+                    'title' => '2оч',
+                    'field' => '2pt'
+                )
             )?>
             <? include '_simpleAF2.php'?>
 
@@ -81,6 +85,10 @@ $arrFg1 = $answer['fg'];
                     'title' => 'тд',
                     'field' => 'td'
                 ),
+                array(
+                    'title' => '2оч',
+                    'field' => '2pt'
+                )
             )?>
             <? include '_simpleAF2.php'?>
         </td>
@@ -157,6 +165,10 @@ $arrFg1 = $answer['fg'];
                     'title' => 'тд',
                     'field' => 'td'
                 ),
+                array(
+                    'title' => '2оч',
+                    'field' => '2pt'
+                )
             )?>
             <? include '_simpleAF2.php'?>
         </td>
