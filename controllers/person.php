@@ -78,9 +78,23 @@
                 $result['answer']['stats'] = action_personstats($dbConnect, $CONSTPath, $_GET['person'], $compId);
             }
             if ($stats_type == 3) {
-                require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/stats.php');
-                $stats = stats_personAF($dbConnect, $CONSTPath, $_GET['person'], $compId);
+                $fromCache = true;
+                if (function_exists('memcache_connect')) {
+                    $mc = memcache_connect('localhost', 11211);
+                    $stats = memcache_get($mc, 'stats_person_' . $_GET['person']);
+                }
+                else {
+                    $stats = array();
+                }
+                if (!$stats || !count($stats)) {
+                    $fromCache = false;
+                    require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/stats.php');
+                    $stats = stats_personAF($dbConnect, $CONSTPath, $_GET['person'], $compId);
+                }
                 $result['answer']['stats'] = $stats['answer']['stats'];
+                if (function_exists('memcache_set') && !$fromCache) {
+                    memcache_set($mc, 'stats_person_'.$_GET['person'], $stats, 0, 60);
+                }
             }
         }
         $result['navigation'] = person_navig();
