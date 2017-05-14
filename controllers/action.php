@@ -70,13 +70,12 @@
                     FROM
                       action A LEFT JOIN pointsget P ON P.id = A.pointsget LEFT JOIN person Pers ON Pers.id = A.person
                     WHERE
-                      A.competition = :comp
+                      A.competition = :comp AND A.person
                     GROUP BY person ORDER BY points DESC, Pers.surname LIMIT 10
                 ) PP
             LEFT JOIN person on PP.person = person.id
 			LEFT JOIN roster R on R.person = person.id AND R.competition = :comp
 			LEFT JOIN team T ON T.id = R.team
-			WHERE person.id
 			ORDER BY points DESC, surname
         ');
         $queryresult->execute(array(
