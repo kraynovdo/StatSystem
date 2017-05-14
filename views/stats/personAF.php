@@ -4,6 +4,7 @@ $arrPass1 =$stats['pass'];
 $arrQb1 = $stats['qb'];
 $arrRet1 = $stats['ret'];
 $arrTac1 = $stats['tac'];
+$arrSack1 = $stats['sack'];
 $arrInt1 = $stats['int'];
 $arrFg1 = $stats['fg'];
 ?>
@@ -85,6 +86,23 @@ $arrFg1 = $stats['fg'];
                     array(
                         'title' => 'кол',
                         'field' => 'cnt'
+                    )
+                )?>
+                <? include '_simpleAF3.php'?>
+            </td>
+        </tr>
+    <?}?>
+    <?if (count($arrSack1)) {?>
+        <tr>
+            <td>
+                <?$statName = 'Сэки'; $arr = array( 0 => $arrSack1); $columns = array(
+                    array(
+                        'title' => 'сол',
+                        'field' => 'solo'
+                    ),
+                    array(
+                        'title' => 'асс',
+                        'field' => 'assist'
                     )
                 )?>
                 <? include '_simpleAF3.php'?>

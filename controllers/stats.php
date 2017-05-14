@@ -71,6 +71,11 @@
         }
         $result['answer']['tac'] = $stats['tac'];
 
+        if (!$stats['sack']) {
+            $stats['sack'] = statsAF_sackTop($dbConnect, 'match', $_GET['match']);
+        }
+        $result['answer']['sack'] = $stats['sack'];
+
         if (!$stats['fg']) {
             $stats['fg'] = statsAF_fgTop($dbConnect, 'match', $_GET['match']);
         }
@@ -100,6 +105,7 @@
             case 'ret' : $result['answer']['ret'] = statsAF_retTop($dbConnect, 'comp', $_GET['comp']); break;
             case 'int' : $result['answer']['int'] = statsAF_intTop($dbConnect, 'comp', $_GET['comp']); break;
             case 'tac' : $result['answer']['tac'] = statsAF_tacTop($dbConnect, 'comp', $_GET['comp']); break;
+            case 'sack' : $result['answer']['sack'] = statsAF_sackTop($dbConnect, 'comp', $_GET['comp']); break;
             case 'fg' : $result['answer']['fg'] = statsAF_fgTop($dbConnect, 'comp', $_GET['comp']); break;
             default:
 
@@ -121,6 +127,7 @@
                     'ret' => statsAF_retTop($dbConnect, 'comp', $_GET['comp'], 5),
                     'qb' => statsAF_qbTop($dbConnect, 'comp', $_GET['comp'], 5),
                     'tac' => statsAF_tacTop($dbConnect, 'comp', $_GET['comp'], 5),
+                    'sack' => statsAF_sackTop($dbConnect, 'comp', $_GET['comp'], 5),
                     'int' => statsAF_intTop($dbConnect, 'comp', $_GET['comp'], 5),
                     'fg' => statsAF_fgTop($dbConnect, 'comp', $_GET['comp'], 5)
                 );
@@ -131,6 +138,7 @@
             $result['answer']['ret'] = $stats['ret'];
             $result['answer']['qb'] = $stats['qb'];
             $result['answer']['tac'] = $stats['tac'];
+            $result['answer']['sack'] = $stats['sack'];
             $result['answer']['int'] = $stats['int'];
             $result['answer']['fg'] = $stats['fg'];
             if (function_exists('memcache_set') && !$fromCache) {
@@ -153,6 +161,7 @@
             'qb' => statsAF_qbTop($dbConnect, 'person', $arg),
             'int' => statsAF_intTop($dbConnect, 'person', $arg),
             'tac' => statsAF_tacTop($dbConnect, 'person', $arg),
+            'sack' => statsAF_sackTop($dbConnect, 'person', $arg),
             'fg' => statsAF_fgTop($dbConnect, 'person', $arg)
         );
 

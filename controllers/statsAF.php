@@ -249,6 +249,48 @@
                ');
     }
 
+    function statsAF_sackTop($dbConnect, $type, $typeValue, $limit = null) {
+        return statsAF_report($dbConnect, $type, $typeValue, $limit, 'SELECT
+              TT.rus_abbr, stat.solo, stat.assist, P.name, P.surname, TT.id AS team, P.avatar
+            FROM
+              (SELECT
+                person, team2, SUM(case WHEN tcount = 1 THEN 1 ELSE 0 END) AS solo,
+                      SUM(case WHEN tcount = 1 THEN 0 ELSE 1 END) AS assist
+              FROM (
+
+                  SELECT id, count(id) AS tcount
+                  FROM (
+               		SELECT
+                          A.id,
+                          (SELECT person FROM statperson sp1 LEFT JOIN statpersontype spt1 ON spt1.id = sp1.persontype WHERE spt1.code = "rpasser" AND sp1.action = A.id) AS passer,
+                           (SELECT person FROM statperson sp2 LEFT JOIN statpersontype spt2 ON spt2.id = sp2.persontype WHERE spt2.code = "runner" AND sp2.action = A.id) AS runner
+                      FROM
+                              stataction A LEFT JOIN statperson SP ON SP.action = A.id
+                              LEFT JOIN statpersontype SPT ON SP.persontype = SPT.id
+                              LEFT JOIN statactiontype AT ON AT.id = A.actiontype
+                              LEFT JOIN statchar SC ON SC.action = A.id
+                              LEFT JOIN statchartype SCT ON SCT.id = SC.chartype
+                      WHERE
+                              A.share FILTER_PLACE AND AT.code = "rush" AND SPT.code = "tackle" AND SCT.code = "runyds" AND SC.value < 0
+                      ) T
+                  WHERE T.passer = T.runner
+                  GROUP BY
+                           id
+              ) T JOIN stataction A2 ON A2.id = T.id
+               JOIN statperson SP2 ON SP2.action = A2.id
+                          JOIN statpersontype SPT2 ON SP2.persontype = SPT2.id
+               WHERE SPT2.code = "tackle"
+               GROUP BY person, team2
+               ORDER BY solo DESC, assist DESC
+               LIMIT_PLACE) stat
+            LEFT JOIN
+               team TT ON stat.team2 = TT.id
+            LEFT JOIN
+               person P ON P.id = stat.person
+            WHERE true PERSON-FILTER_PLACE
+               ');
+    }
+
     function statsAF_fgTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, 'SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar FROM (
             SELECT

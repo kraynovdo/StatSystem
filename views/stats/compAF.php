@@ -4,6 +4,7 @@ $arrPass1 =$answer['pass'];
 $arrQb1 = $answer['qb'];
 $arrRet1 = $answer['ret'];
 $arrTac1 = $answer['tac'];
+$arrSack1 = $answer['sack'];
 $arrInt1 = $answer['int'];
 $arrFg1 = $answer['fg'];
 ?>
@@ -99,6 +100,25 @@ $arrFg1 = $answer['fg'];
             <? include '_simpleAF2.php'?>
         </td>
     </tr>
+    <?}?>
+    <?if (count($arrSack1)) {?>
+        <tr>
+            <td>
+                <h3 class="stats-header stats-navHeader">Сэки</h3>
+                <?if (!$_GET['type']) {?><a href="/?r=stats/compAF&comp=<?=$_GET['comp']?>&type=sack">Полный список</a><?}?>
+                <?$arr = $arrSack1; $columns = array(
+                    array(
+                        'title' => 'сол',
+                        'field' => 'solo'
+                    ),
+                    array(
+                        'title' => 'асс',
+                        'field' => 'assist'
+                    )
+                )?>
+                <? include '_simpleAF2.php'?>
+            </td>
+        </tr>
     <?}?>
     <?if (count($arrTac1)) {?>
     <tr>
