@@ -319,3 +319,97 @@
             WHERE true PERSON-FILTER_PLACE
             ');
     }
+
+    function statsAF_top10Point($dbConnect, $CONSTPath, $comp) {
+        return common_getlist($dbConnect, 'SELECT P.surname, P.name, P.avatar, point AS points, P.id AS person
+            FROM
+            (
+              SELECT SUM(point) AS point, person FROM (
+                  SELECT
+                    SUM(point) AS point, person
+                  FROM
+                    stataction A
+                  LEFT JOIN
+                    pointsget PG ON A.pointsget = PG.id
+                  LEFT JOIN
+                    statperson SP ON SP.action = A.id
+                  LEFT JOIN
+                    statpersontype SPT ON SPT.id = SP.persontype
+                  WHERE
+                    A.share AND A.competition = :comp AND (PG.code = "td" OR (PG.code = "2pt")) AND SPT.code = "runner"
+                  GROUP BY
+                    person
+                  UNION
+                  SELECT
+                    SUM(point), person
+                  FROM
+                    stataction A
+                  LEFT JOIN
+                    pointsget PG ON A.pointsget = PG.id
+                  LEFT JOIN
+                    statperson SP ON SP.action = A.id
+                  LEFT JOIN
+                    statpersontype SPT ON SPT.id = SP.persontype
+                  WHERE
+                    A.share AND A.competition = :comp AND (PG.code = "td" OR (PG.code = "2pt")) AND SPT.code = "receiver"
+                  GROUP BY
+                    person
+                  UNION
+                  SELECT
+                    SUM(point), person
+                  FROM
+                    stataction A
+                  LEFT JOIN
+                    pointsget PG ON A.pointsget = PG.id
+                  LEFT JOIN
+                    statperson SP ON SP.action = A.id
+                  LEFT JOIN
+                    statpersontype SPT ON SPT.id = SP.persontype
+                  WHERE
+                    A.share AND A.competition = :comp AND (PG.code = "td" OR (PG.code = "2pt")) AND SPT.code = "returner"
+                  GROUP BY
+                    person
+                  UNION
+                  SELECT
+                    SUM(point), person
+                  FROM
+                    stataction A
+                  LEFT JOIN
+                    pointsget PG ON A.pointsget = PG.id
+                  LEFT JOIN
+                    statperson SP ON SP.action = A.id
+                  LEFT JOIN
+                    statpersontype SPT ON SPT.id = SP.persontype
+                  WHERE
+                    A.share AND A.competition = :comp AND (PG.code = "fg" OR (PG.code = "1pt")) AND SPT.code = "fgkicker"
+                  GROUP BY
+                    person
+              ) st1
+              GROUP BY
+                person
+            ) stat LEFT JOIN person P ON P.id = stat.person
+            ORDER BY point DESC
+            LIMIT 0, 10', array('comp' => $comp));
+    }
+
+    function statsAF_top10PointFG($dbConnect, $CONSTPath, $comp) {
+        return common_getlist($dbConnect, 'SELECT P.surname, P.name, P.avatar, point AS points, P.id AS person
+            FROM (
+            SELECT
+                SUM(point) AS point, person
+            FROM
+                stataction A
+            LEFT JOIN
+                pointsget PG ON A.pointsget = PG.id
+            LEFT JOIN
+                statperson SP ON SP.action = A.id
+            LEFT JOIN
+                statpersontype SPT ON SPT.id = SP.persontype
+            WHERE
+                A.share AND A.competition = :comp AND (PG.code = "fg" OR (PG.code = "1pt")) AND SPT.code = "fgkicker"
+            GROUP BY
+                person
+            ) stat LEFT JOIN person P ON P.id = stat.person
+            ORDER BY point DESC
+            LIMIT 0, 10', array('comp' => $comp));
+    }

@@ -63,7 +63,7 @@
         $queryresult = $dbConnect->prepare('
             SELECT
               PP.points,
-              person.surname, person.name, person.patronymic, person.avatar, person.id AS person
+              person.surname, person.name, person.avatar, person.id AS person
             FROM (
                 SELECT
                     SUM(point) as points, person

@@ -70,6 +70,9 @@
         $result['answer']['statstype'] = $stats_type;
         if ($compId) {
             $result['answer']['teamRoster'] = person_teamRoster($dbConnect, $CONSTPath, $_GET['person'], $compId);
+            if ($stats_type == 1) {
+                $result['answer']['stats'] = array();
+            }
             if ($stats_type == 2) {
                 require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/action.php');
                 $result['answer']['stats'] = action_personstats($dbConnect, $CONSTPath, $_GET['person'], $compId);

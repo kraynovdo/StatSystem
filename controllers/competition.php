@@ -126,16 +126,55 @@
 
         $result['answer']['results'] = $dataset;
 
-        $compRec = common_getrecord($dbConnect, 'SELECT sport FROM competition WHERE id = :comp', array('comp' => $_GET['comp']));
+        $compRec = common_getrecord($dbConnect, 'SELECT sport, stats_type FROM competition WHERE id = :comp', array('comp' => $_GET['comp']));
 
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/action.php');
-        $top10 = action_top10($dbConnect, $CONSTPath);
-        $result['answer']['top10'] = $top10['answer'];
-
-        if ($compRec['sport'] == 1) {
-            $top10kick = action_top10kickers($dbConnect, $CONSTPath);
-            $result['answer']['top10kick'] = $top10kick['answer'];
+        $fromCache = true;
+        if (function_exists('memcache_connect')) {
+            $mc = memcache_connect('localhost', 11211);
+            $stats = memcache_get($mc, 'stats_top_' . $_GET['comp']);
         }
+        else {
+            $stats = array();
+        }
+
+        if (!$stats || !count($stats)) {
+            $fromCache = false;
+            if ($compRec['stats_type'] == 1) {
+                $stats['top10'] = array();
+            }
+            if ($compRec['stats_type'] == 2) {
+                require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/action.php');
+                $top10 = action_top10($dbConnect, $CONSTPath);
+                $stats['top10'] = $top10['answer'];
+            }
+            if ($compRec['stats_type'] == 3) {
+                require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statsAF.php');
+                $top10 = statsAF_top10Point($dbConnect, $CONSTPath, $_GET['comp']);
+                $stats['top10'] = $top10;
+            }
+            if ($compRec['sport'] == 1) {
+                if ($compRec['stats_type'] == 1) {
+                    $stats['top10kick'] = array();
+                }
+                if ($compRec['stats_type'] == 2) {
+                    $top10kick = action_top10kickers($dbConnect, $CONSTPath);
+                    $stats['top10kick'] = $top10kick['answer'];
+                }
+                if ($compRec['stats_type'] == 3) {
+                    $top10 = statsAF_top10PointFG($dbConnect, $CONSTPath, $_GET['comp']);
+                    $stats['top10kick'] = $top10;
+                }
+
+            }
+        }
+
+        $result['answer']['top10'] = $stats['top10'];
+        $result['answer']['top10kick'] = $stats['top10kick'];
+        if (function_exists('memcache_set') && !$fromCache) {
+            memcache_set($mc, 'stats_top_'.$_GET['comp'], $stats, 0, 60);
+        }
+
+
 
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/translation.php');
         $result['answer']['trans'] = translation_mainpage($dbConnect, $CONSTPath);
