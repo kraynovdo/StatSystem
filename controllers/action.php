@@ -63,7 +63,7 @@
         $queryresult = $dbConnect->prepare('
             SELECT
               PP.points,
-              person.surname, person.name, person.patronymic, person.avatar, T.logo, person.id AS person, T.id as team
+              person.surname, person.name, person.patronymic, person.avatar, person.id AS person
             FROM (
                 SELECT
                     SUM(point) as points, person
@@ -74,8 +74,6 @@
                     GROUP BY person ORDER BY points DESC, Pers.surname LIMIT 10
                 ) PP
             LEFT JOIN person on PP.person = person.id
-			LEFT JOIN roster R on R.person = person.id AND R.competition = :comp
-			LEFT JOIN team T ON T.id = R.team
 			ORDER BY points DESC, surname
         ');
         $queryresult->execute(array(
