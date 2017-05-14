@@ -121,7 +121,24 @@
                 <?if (count($arrQb2)) {?>
                     <h3 class="stats-header">Пас</h3>
                     <div class="stats-table_wrapper">
-                        <?$arr = $arrQb2;?>
+                        <?$arr = $arrQb2; $columns = array(
+                            array(
+                                'title' => '%',
+                                'field' => 'percent'
+                            ),
+                            array(
+                                'title' => 'яр',
+                                'field' => 'sumr'
+                            ),
+                            array(
+                                'title' => 'тд',
+                                'field' => 'td'
+                            ),
+                            array(
+                                'title' => 'пер',
+                                'field' => 'inter'
+                            ),
+                        )?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -144,7 +161,7 @@
                             array(
                                 'title' => 'тд',
                                 'field' => 'td'
-                            ),
+                            )
                         )?>
                         <? include '_simpleAF.php'?>
                     </div>
@@ -154,7 +171,20 @@
                 <?if (count($arrRush2)) {?>
                     <h3 class="stats-header">Вынос</h3>
                     <div class="stats-table_wrapper">
-                        <?$arr = $arrRush2;?>
+                        <?$arr = $arrRush2;$columns = array(
+                            array(
+                                'title' => 'яр',
+                                'field' => 'sumr'
+                            ),
+                            array(
+                                'title' => 'поп',
+                                'field' => 'num'
+                            ),
+                            array(
+                                'title' => 'тд',
+                                'field' => 'td'
+                            )
+                        )?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -177,7 +207,7 @@
                             array(
                                 'title' => 'тд',
                                 'field' => 'td'
-                            ),
+                            )
                         )?>
                         <? include '_simpleAF.php'?>
                     </div>
@@ -187,7 +217,20 @@
                 <?if (count($arrPass2)) {?>
                     <h3 class="stats-header">Прием</h3>
                     <div class="stats-table_wrapper">
-                        <?$arr = $arrPass2;?>
+                        <?$arr = $arrPass2; $columns = array(
+                            array(
+                                'title' => 'яр',
+                                'field' => 'sumr'
+                            ),
+                            array(
+                                'title' => 'пр',
+                                'field' => 'num'
+                            ),
+                            array(
+                                'title' => 'тд',
+                                'field' => 'td'
+                            )
+                        )?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -212,7 +255,12 @@
                 <?if (count($arrInt2)) {?>
                     <h3 class="stats-header">Перехваты</h3>
                     <div class="stats-table_wrapper">
-                        <?$arr = $arrInt2;?>
+                        <?$arr = $arrInt2;$columns = array(
+                            array(
+                                'title' => 'кол',
+                                'field' => 'cnt'
+                            )
+                        )?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -241,7 +289,16 @@
                 <?if (count($arrSack2)) {?>
                     <h3 class="stats-header">Сэки</h3>
                     <div class="stats-table_wrapper">
-                        <?$arr = $arrSack2;?>
+                        <?$arr = $arrSack2;$columns = array(
+                            array(
+                                'title' => 'сол',
+                                'field' => 'solo'
+                            ),
+                            array(
+                                'title' => 'асс',
+                                'field' => 'assist'
+                            )
+                        )?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -270,7 +327,16 @@
                 <?if (count($arrTac2)) {?>
                     <h3 class="stats-header">Захваты</h3>
                     <div class="stats-table_wrapper">
-                        <?$arr = $arrTac2;?>
+                        <?$arr = $arrTac2; $columns = array(
+                            array(
+                                'title' => 'сол',
+                                'field' => 'solo'
+                            ),
+                            array(
+                                'title' => 'асс',
+                                'field' => 'assist'
+                            )
+                        )?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -304,7 +370,20 @@
                 <?if (count($arrRet2)) {?>
                     <h3 class="stats-header">Возврат</h3>
                     <div class="stats-table_wrapper">
-                        <?$arr = $arrRet2;?>
+                        <?$arr = $arrRet2; $columns = array(
+                            array(
+                                'title' => 'яр',
+                                'field' => 'sumr'
+                            ),
+                            array(
+                                'title' => 'поп',
+                                'field' => 'num'
+                            ),
+                            array(
+                                'title' => 'тд',
+                                'field' => 'td'
+                            ),
+                        )?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -327,7 +406,7 @@
                             array(
                                 'title' => '1оч',
                                 'field' => 'pt'
-                            ),
+                            )
                         )?>
                         <? include '_simpleAF.php'?>
                     </div>
@@ -337,7 +416,20 @@
                 <?if (count($arrFg2)) {?>
                     <h3 class="stats-header">Удары по воротам</h3>
                     <div class="stats-table_wrapper">
-                        <?$arr = $arrFg2;?>
+                        <?$arr = $arrFg2; $columns = array(
+                            array(
+                                'title' => 'поп',
+                                'field' => 'numr'
+                            ),
+                            array(
+                                'title' => 'ФГ',
+                                'field' => 'fg'
+                            ),
+                            array(
+                                'title' => '1оч',
+                                'field' => 'pt'
+                            )
+                        )?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
