@@ -34,7 +34,7 @@
     }
     function statsAF_rushTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, '
-            SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar FROM (
+            SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM (
                 SELECT
                   count(A.id) AS num, sum(value) AS sumr, team, person,
                   SUM(CASE WHEN (PG.id AND PG.code = "td") THEN 1 ELSE 0 END) AS td,
@@ -74,7 +74,7 @@
     }
     function statsAF_retTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, '
-            SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar FROM (
+            SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM (
                 SELECT
                   count(A.id) AS num, sum(value) AS sumr, team, person,
                   SUM(CASE WHEN (PG.id AND PG.code = "td") THEN 1 ELSE 0 END) AS td,
@@ -115,7 +115,7 @@
 
     function statsAF_passTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, '
-            SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar FROM (
+            SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM (
                 SELECT count(A.id) AS num, sum(value) AS sumr, team, person,
                 SUM(CASE WHEN (PG.id AND PG.code = "td") THEN 1 ELSE 0 END) AS td,
                 SUM(CASE WHEN (PG.id AND PG.code = "2pt") THEN 1 ELSE 0 END) AS 2pt
@@ -151,7 +151,7 @@
 
     function statsAF_qbTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, '
-            SELECT stat.*, concat(stat.rec, "/", stat.num) AS percent, P.surname, P.name, T.rus_abbr, P.avatar FROM (
+            SELECT stat.*, concat(stat.rec, "/", stat.num) AS percent, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM (
                             SELECT count(A.id) AS num, sum(value) AS sumr, team, SP_INFO.person,
                 sum(case WHEN REC_INFO.person IS NULL THEN 0 ELSE 1 END) AS rec,
                 sum(case WHEN INT_INFO.person IS NULL THEN 0 ELSE 1 END) AS inter,
@@ -203,7 +203,7 @@
 
     function statsAF_intTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, '
-            SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar FROM
+            SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM
                 (SELECT
                     count(SP.id) AS cnt, person, A.team2 AS team
                 FROM
@@ -224,7 +224,7 @@
 
     function statsAF_tacTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, 'SELECT
-              TT.rus_abbr, stat.solo, stat.assist, P.name, P.surname, TT.id AS team, P.avatar
+              TT.rus_abbr, stat.solo, stat.assist, P.name, P.surname, TT.id AS team, P.avatar, P.id
             FROM
               (SELECT
                 person, team2, SUM(case WHEN tcount = 1 THEN 1 ELSE 0 END) AS solo,
@@ -257,7 +257,7 @@
 
     function statsAF_sackTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, 'SELECT
-              TT.rus_abbr, stat.solo, stat.assist, P.name, P.surname, TT.id AS team, P.avatar
+              TT.rus_abbr, stat.solo, stat.assist, P.name, P.surname, TT.id AS team, P.avatar, P.id
             FROM
               (SELECT
                 person, team2, SUM(case WHEN tcount = 1 THEN 1 ELSE 0 END) AS solo,
@@ -298,7 +298,7 @@
     }
 
     function statsAF_fgTop($dbConnect, $type, $typeValue, $limit = null) {
-        return statsAF_report($dbConnect, $type, $typeValue, $limit, 'SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar FROM (
+        return statsAF_report($dbConnect, $type, $typeValue, $limit, 'SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM (
             SELECT
                 person, team,
                     SUM(1) AS numr,
@@ -388,7 +388,7 @@
               GROUP BY
                 person
             ) stat LEFT JOIN person P ON P.id = stat.person
-            ORDER BY point DESC
+            ORDER BY point DESC, P.surname ASC
             LIMIT 0, 10', array('comp' => $comp));
     }
 
@@ -410,6 +410,6 @@
             GROUP BY
                 person
             ) stat LEFT JOIN person P ON P.id = stat.person
-            ORDER BY point DESC
+            ORDER BY point DESC, P.surname ASC
             LIMIT 0, 10', array('comp' => $comp));
     }

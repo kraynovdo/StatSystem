@@ -8,7 +8,7 @@
             <?}?>
         </a>
         <div class="top10-item_content">
-            <a class="top10-item_fio"  target="_blank" href="/?r=person/view&person=<?=$top[$i]['person']?>"><?=$top[$i]['surname'] . ' ' . $top[$i]['name']?></a>
+            <a class="top10-item_fio"  target="_blank" href="/?r=person/view&person=<?=$top[$i]['person']?>&comp=<?=$_GET['comp']?>"><?=$top[$i]['surname'] . ' ' . $top[$i]['name']?></a>
         </div>
         <span class="top10-item_point main-rightAlign"><?=$top[$i]['points']?></span>
     </div>

@@ -28,7 +28,7 @@
                 </div>
             </td>
             <td>
-                <?=$arr[$i]['name']. ' '.$arr[$i]['surname']?>
+                <a class="stats-personLink" href="/?r=person/view&person=<?=$arr[$i]['id']?>&comp=<?=$_GET['comp']?>"><?=$arr[$i]['name']. ' '.$arr[$i]['surname']?></a>
             </td>
             <?for ($j = 0; $j < count($columns); $j++ ){?>
                 <td class="stats-counter main-rightAlign">

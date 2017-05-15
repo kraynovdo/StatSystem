@@ -31,6 +31,7 @@
 
         $result['answer']['match'] = match_mainInfo($dbConnect, $CONSTPath);
 
+        $fromCache = true;
         if (function_exists('memcache_connect')) {
             $mc = memcache_connect('localhost', 11211);
             $stats = memcache_get($mc, 'stats_match_' . $match);
@@ -42,6 +43,7 @@
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statsAF.php');
 
         if (!$stats['return']) {
+            $fromCache = false;
             $stats['return'] = statsAF_retTop($dbConnect, 'match', $_GET['match']);
         }
         $result['answer']['return'] = $stats['return'];
@@ -81,7 +83,7 @@
         }
         $result['answer']['fg'] = $stats['fg'];
 
-        if (function_exists('memcache_set')) {
+        if (!$fromCache && function_exists('memcache_set')) {
             memcache_set($mc, 'stats_match_'.$match, $stats, 0, 60);
         }
 
