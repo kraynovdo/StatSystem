@@ -1419,7 +1419,7 @@ textarea {
     height: 20px;
 }
 .stats-teamLogo {
-    width:35px;
+    width: 35px;
     height: 35px;
     overflow: hidden;
 }
@@ -1428,6 +1428,9 @@ textarea {
     height: 35px;
     font-size: 35px;
     line-height: 35px;
+}
+.stats-team_switcher {
+    display: none;
 }
 
 .referee-clAvatar {

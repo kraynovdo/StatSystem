@@ -506,4 +506,13 @@
          }
       });
    });
+
+
+   $('.stats-team_switcherPart').click(function(){
+      if (!$(this).hasClass('stats-team_switcherPart_active')) {
+         $('.stats-team_switcherPart_active').removeClass('stats-team_switcherPart_active');
+         $(this).addClass('stats-team_switcherPart_active');
+         $('.stats-match_maintable').toggleClass('match_maintable_revert');
+      }
+   })
 })();

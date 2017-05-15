@@ -2,7 +2,7 @@
     <colgroup>
         <col/>
         <?for ($i = 0; $i < count($columns); $i++ ){?>
-        <col width="40px"/>
+        <col class="stats-counterCol" width="40px"/>
         <?}?>
     </colgroup>
     <thead class="datagrid_thead">

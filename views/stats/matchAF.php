@@ -84,14 +84,18 @@
     }
 ?>
 <h2>Статистика матча</h2>
-<table class="match_maintable">
+<div class="stats-team_switcher">
+    <div class="stats-team_switcherPart stats-team_switcherPart_active stats-team_switcherLeft"><?=$answer['match']['t1name']?></div>
+    <div class="stats-team_switcherPart stats-team_switcherRight"><?=$answer['match']['t2name']?></div>
+</div>
+<table class="match_maintable stats-match_maintable">
     <colgroup>
-        <col width="50%"/>
-        <col width="50%"/>
+        <col class="stats-match_leftColg" width="50%"/>
+        <col class="stats-match_rightColg" width="50%"/>
     </colgroup>
     <tbody>
         <tr>
-            <td>
+            <td class="stats-match_leftCol">
                 <?if (count($arrQb1)) {?>
                     <h3 class="stats-header">Пас</h3>
                     <div class="stats-table_wrapper">
@@ -117,7 +121,7 @@
                     </div>
                 <?}?>
             </td>
-            <td>
+            <td class="stats-match_rightCol">
                 <?if (count($arrQb2)) {?>
                     <h3 class="stats-header">Пас</h3>
                     <div class="stats-table_wrapper">
@@ -145,7 +149,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td class="stats-match_leftCol">
                 <?if (count($arrRush1)) {?>
                     <h3 class="stats-header">Вынос</h3>
                     <div class="stats-table_wrapper">
@@ -171,7 +175,7 @@
                     </div>
                 <?}?>
             </td>
-            <td>
+            <td class="stats-match_rightCol">
                 <?if (count($arrRush2)) {?>
                     <h3 class="stats-header">Вынос</h3>
                     <div class="stats-table_wrapper">
@@ -199,7 +203,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td class="stats-match_leftCol">
                 <?if (count($arrPass1)) {?>
                     <h3 class="stats-header">Прием</h3>
                     <div class="stats-table_wrapper">
@@ -225,7 +229,7 @@
                     </div>
                 <?}?>
             </td>
-            <td>
+            <td class="stats-match_rightCol">
                 <?if (count($arrPass2)) {?>
                     <h3 class="stats-header">Прием</h3>
                     <div class="stats-table_wrapper">
@@ -253,7 +257,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td class="stats-match_leftCol">
                 <?if (count($arrInt1)) {?>
                     <h3 class="stats-header">Перехваты</h3>
                     <div class="stats-table_wrapper">
@@ -267,7 +271,7 @@
                     </div>
                 <?}?>
             </td>
-            <td>
+            <td class="stats-match_rightCol">
                 <?if (count($arrInt2)) {?>
                     <h3 class="stats-header">Перехваты</h3>
                     <div class="stats-table_wrapper">
@@ -283,7 +287,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td class="stats-match_leftCol">
                 <?if (count($arrSack1)) {?>
                     <h3 class="stats-header">Сэки</h3>
                     <div class="stats-table_wrapper">
@@ -301,7 +305,7 @@
                     </div>
                 <?}?>
             </td>
-            <td>
+            <td class="stats-match_rightCol">
                 <?if (count($arrSack2)) {?>
                     <h3 class="stats-header">Сэки</h3>
                     <div class="stats-table_wrapper">
@@ -321,7 +325,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td class="stats-match_leftCol">
                 <?if (count($arrTac1)) {?>
                     <h3 class="stats-header">Захваты</h3>
                     <div class="stats-table_wrapper">
@@ -339,7 +343,7 @@
                     </div>
                 <?}?>
             </td>
-            <td>
+            <td class="stats-match_rightCol">
                 <?if (count($arrTac2)) {?>
                     <h3 class="stats-header">Захваты</h3>
                     <div class="stats-table_wrapper">
@@ -359,7 +363,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td class="stats-match_leftCol">
                 <?if (count($arrRet1)) {?>
                     <h3 class="stats-header">Возврат</h3>
                     <div class="stats-table_wrapper">
@@ -386,7 +390,7 @@
                 <?}?>
 
             </td>
-            <td>
+            <td class="stats-match_rightCol">
                 <?if (count($arrRet2)) {?>
                     <h3 class="stats-header">Возврат</h3>
                     <div class="stats-table_wrapper">
@@ -414,7 +418,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td class="stats-match_leftCol">
                 <?if (count($arrFg1)) {?>
                     <h3 class="stats-header">Удары по воротам</h3>
                     <div class="stats-table_wrapper">
@@ -436,7 +440,7 @@
                     </div>
                 <?}?>
             </td>
-            <td>
+            <td class="stats-match_rightCol">
                 <?if (count($arrFg2)) {?>
                     <h3 class="stats-header">Удары по воротам</h3>
                     <div class="stats-table_wrapper">

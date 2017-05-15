@@ -298,3 +298,53 @@ table {
 .main-tile {
    margin-bottom: 5px;
 }
+
+.stats-table {
+   font-size: 12px;
+}
+.stats-counter {
+   font-size: 13px;
+}
+.stats-counterCol {
+   width: 30px
+}
+.stats-match_leftCol {
+   display: table-cell;
+}
+.stats-match_rightCol {
+   display: none
+}
+
+.stats-match_leftColg {
+   width: 100%;
+}
+.stats-match_rightColg {
+   width: 0;
+}
+
+.match_maintable_revert .stats-match_leftCol {
+   display: none;
+}
+.match_maintable_revert .stats-match_rightCol {
+   display: table-cell;
+}
+.stats-team_switcher {
+   overflow: hidden;
+   display: block;
+}
+.stats-team_switcherPart {
+   float: left;
+   width: 50%;
+   height: 30px;
+   line-height: 30px;
+   text-align: center;
+   background: #ccc;
+   border: 1px solid #ccc;
+   box-sizing: border-box;
+   color: #999;
+}
+.stats-team_switcherPart_active {
+   background: #fff;
+   color: #000;
+   border-color: #000;
+}
