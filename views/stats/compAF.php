@@ -54,6 +54,10 @@ $arrFg1 = $answer['fg'];
                     'field' => 'num'
                 ),
                 array(
+                    'title' => 'сред',
+                    'field' => 'avg'
+                ),
+                array(
                     'title' => 'тд',
                     'field' => 'td'
                 ),
@@ -80,6 +84,10 @@ $arrFg1 = $answer['fg'];
                 array(
                     'title' => 'пр',
                     'field' => 'num'
+                ),
+                array(
+                    'title' => 'сред',
+                    'field' => 'avg'
                 ),
                 array(
                     'title' => 'тд',

@@ -34,9 +34,10 @@
     }
     function statsAF_rushTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, '
-            SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM (
+            SELECT stat.*, ROUND(stat.sumr/stat.num,1) AS avg, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM (
                 SELECT
-                  count(A.id) AS num, sum(value) AS sumr, team, person,
+                  count(A.id) AS num, sum(value) AS sumr,
+                  team, person,
                   SUM(CASE WHEN (PG.id AND PG.code = "td") THEN 1 ELSE 0 END) AS td,
                   SUM(CASE WHEN (PG.id AND PG.code = "2pt") THEN 1 ELSE 0 END) AS 2pt
                 FROM
@@ -115,7 +116,7 @@
 
     function statsAF_passTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, '
-            SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM (
+            SELECT stat.*, ROUND(stat.sumr/stat.num,1) AS avg, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM (
                 SELECT count(A.id) AS num, sum(value) AS sumr, team, person,
                 SUM(CASE WHEN (PG.id AND PG.code = "td") THEN 1 ELSE 0 END) AS td,
                 SUM(CASE WHEN (PG.id AND PG.code = "2pt") THEN 1 ELSE 0 END) AS 2pt

@@ -163,6 +163,10 @@
                                 'field' => 'num'
                             ),
                             array(
+                                'title' => 'сред',
+                                'field' => 'avg'
+                            ),
+                            array(
                                 'title' => 'тд',
                                 'field' => 'td'
                             ),
@@ -187,6 +191,10 @@
                             array(
                                 'title' => 'поп',
                                 'field' => 'num'
+                            ),
+                            array(
+                                'title' => 'сред',
+                                'field' => 'avg'
                             ),
                             array(
                                 'title' => 'тд',
@@ -217,6 +225,10 @@
                                 'field' => 'num'
                             ),
                             array(
+                                'title' => 'сред',
+                                'field' => 'avg'
+                            ),
+                            array(
                                 'title' => 'тд',
                                 'field' => 'td'
                             ),
@@ -241,6 +253,10 @@
                             array(
                                 'title' => 'пр',
                                 'field' => 'num'
+                            ),
+                            array(
+                                'title' => 'сред',
+                                'field' => 'avg'
                             ),
                             array(
                                 'title' => 'тд',

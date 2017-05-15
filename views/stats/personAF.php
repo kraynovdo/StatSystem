@@ -49,6 +49,10 @@ $arrFg1 = $stats['fg'];
                         'field' => 'num'
                     ),
                     array(
+                        'title' => 'сред',
+                        'field' => 'avg'
+                    ),
+                    array(
                         'title' => 'тд',
                         'field' => 'td'
                     ),
@@ -73,6 +77,10 @@ $arrFg1 = $stats['fg'];
                     array(
                         'title' => 'пр',
                         'field' => 'num'
+                    ),
+                    array(
+                        'title' => 'сред',
+                        'field' => 'avg'
                     ),
                     array(
                         'title' => 'тд',
