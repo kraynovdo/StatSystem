@@ -288,7 +288,7 @@
             SELECT
                 M.id, M.comment, M.period, PG.name AS pg, PG.type as pgtype, AT.name AS action, T.logo AS team, AT.code,
                 SP_INFO.surname, SP_INFO.code AS spcode, SP_INFO.spname AS spname,
-                SC_INFO.code AS sccode, SC_INFO.scname AS scname, SC_INFO.value AS scvalue, S.share
+                SC_INFO.code AS sccode, SC_INFO.scname AS scname, SC_INFO.value AS scvalue, S.share, S.id AS aid
             FROM
         	    matchevent M LEFT JOIN stataction S ON M.id = S.matchevent
                             LEFT JOIN pointsget PG ON PG.id = S.pointsget
@@ -572,6 +572,7 @@
                 'period' => $event[$i]['period'],
                 'pg' => $pg,
                 'id' => $event[$i]['id'],
+                'aid' => $event[$i]['aid'],
                 'share' => $event[$i]['share']
             ));
         }
