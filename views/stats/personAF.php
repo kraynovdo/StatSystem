@@ -113,6 +113,10 @@ $arrFg1 = $stats['fg'];
             <td>
                 <?$statName = 'Сэки'; $arr = array( 0 => $arrSack1); $columns = array(
                     array(
+                        'title' => 'общ',
+                        'field' => 'common'
+                    ),
+                    array(
                         'title' => 'сол',
                         'field' => 'solo'
                     ),
@@ -129,6 +133,10 @@ $arrFg1 = $stats['fg'];
         <tr>
             <td>
                 <?$statName = 'Захваты'; $arr = array( 0 => $arrTac1); $columns = array(
+                    array(
+                        'title' => 'общ',
+                        'field' => 'common'
+                    ),
                     array(
                         'title' => 'сол',
                         'field' => 'solo'

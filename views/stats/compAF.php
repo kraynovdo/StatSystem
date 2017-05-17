@@ -124,6 +124,10 @@ $arrFg1 = $answer['fg'];
                 <?if (!$_GET['type']) {?><a href="/?r=stats/compAF&comp=<?=$_GET['comp']?>&type=sack">Полный список</a><?}?>
                 <?$arr = $arrSack1; $columns = array(
                     array(
+                        'title' => 'общ',
+                        'field' => 'common'
+                    ),
+                    array(
                         'title' => 'сол',
                         'field' => 'solo'
                     ),
@@ -142,6 +146,10 @@ $arrFg1 = $answer['fg'];
             <h3 class="stats-header stats-navHeader">Захваты</h3>
             <?if (!$_GET['type']) {?><a href="/?r=stats/compAF&comp=<?=$_GET['comp']?>&type=tac">Полный список</a><?}?>
             <?$arr = $arrTac1; $columns = array(
+                array(
+                    'title' => 'общ',
+                    'field' => 'common'
+                ),
                 array(
                     'title' => 'сол',
                     'field' => 'solo'

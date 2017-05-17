@@ -309,6 +309,10 @@
                     <div class="stats-table_wrapper">
                         <?$arr = $arrSack1; $columns = array(
                             array(
+                                'title' => 'общ',
+                                'field' => 'common'
+                            ),
+                            array(
                                 'title' => 'сол',
                                 'field' => 'solo'
                             ),
@@ -326,6 +330,10 @@
                     <h3 class="stats-header">Сэки</h3>
                     <div class="stats-table_wrapper">
                         <?$arr = $arrSack2;$columns = array(
+                            array(
+                                'title' => 'общ',
+                                'field' => 'common'
+                            ),
                             array(
                                 'title' => 'сол',
                                 'field' => 'solo'
@@ -347,6 +355,10 @@
                     <div class="stats-table_wrapper">
                         <?$arr = $arrTac1; $columns = array(
                             array(
+                                'title' => 'общ',
+                                'field' => 'common'
+                            ),
+                            array(
                                 'title' => 'сол',
                                 'field' => 'solo'
                             ),
@@ -364,6 +376,10 @@
                     <h3 class="stats-header">Захваты</h3>
                     <div class="stats-table_wrapper">
                         <?$arr = $arrTac2; $columns = array(
+                            array(
+                                'title' => 'общ',
+                                'field' => 'common'
+                            ),
                             array(
                                 'title' => 'сол',
                                 'field' => 'solo'
