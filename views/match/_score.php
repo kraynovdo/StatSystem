@@ -1,7 +1,7 @@
 <div class="match-dateinfo main-centerAlign">
     <?=common_dateFromSQL($answer['match']['date'])?>
     <?if (strlen($answer['match']['timeh']) && strlen($answer['match']['timeh'])) {?>
-        <?=$answer['match']['timeh']?>:<?=$answer['match']['timem']?> (мск.)
+        <?=$answer['match']['timeh']?>:<?=$answer['match']['timem']?> (мск)
     <?}?>
     <?if ($answer['match']['city']) {?>
         <?=$answer['match']['city']?>

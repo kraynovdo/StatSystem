@@ -38,7 +38,7 @@
                 <div class="match-list_footerItemLeft main-centerAlign">
                     <?if ($match[$i]['g']){?><span class="match-list_itemDivName"><?=$match[$i]['gname']?></span><?}?>
                     <?if ($match[$i]['city']){?><?=$match[$i]['city']?><?}?>
-                    <?if ($match[$i]['timeh']){?><?=$match[$i]['timeh']?>:<?=$match[$i]['timem']?><?}?>
+                    <?if ($match[$i]['timeh']){?><?=$match[$i]['timeh']?>:<?=$match[$i]['timem']?> (мск)<?}?>
                 </div>
                 <div class="match-list_footerItemRight main-rightAlign">
                     <?if ((($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1))  && ($ctrlMode)) {?>
