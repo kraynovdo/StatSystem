@@ -728,3 +728,105 @@
 
         }
     }
+
+    function match_editEvent($dbConnect, $CONSTPath) {
+        $answer['match'] = match_mainInfo($dbConnect, $CONSTPath);
+
+
+
+
+        $event = common_getrecord($dbConnect, '
+            SELECT
+                S.id AS action, S.actiontype AS atype, ST.name AS aname, pointsget, team, team2, comment, period
+            FROM
+                matchevent E LEFT JOIN stataction S ON S.matchevent = E.id
+                LEFT JOIN statactiontype ST ON ST.id = S.actiontype
+            WHERE
+                E.id = :id
+        ', array('id' => $_GET['event']));
+        $answer['event'] = $event;
+
+        $atype = $event['atype'];
+        $action = $event['action'];
+        $statperson = common_getlist($dbConnect, '
+            SELECT
+                SPT.id AS ptid, SP.person, SPT.name, SPT.offdef
+            FROM
+                statpersontype SPT LEFT JOIN statperson SP ON SP.persontype = SPT.id AND SP.action = :action
+            WHERE
+                SPT.actiontype = :actiontype
+        ', array('actiontype' => $atype, 'action' => $action));
+        $statchar = common_getlist($dbConnect, '
+            SELECT
+                SCT.id AS ctid, SC.value, SCT.name
+            FROM
+                statchartype SCT LEFT JOIN statchar SC ON SC.chartype = SCT.id AND SC.action = :action
+            WHERE
+                SCT.actiontype = :actiontype
+        ', array('actiontype' => $atype, 'action' => $action));
+        $point = common_getlist($dbConnect,
+            'SELECT
+                    P.id, S.pointsget, P.name
+                 FROM
+                    statpoint S LEFT JOIN pointsget P ON P.id = S.pointsget
+                 WHERE actiontype = :actiontype ORDER BY id', array('actiontype' => $atype));
+
+        $answer['statperson'] = $statperson;
+        $answer['statchar'] = $statchar;
+        $answer['point'] = $point;
+
+
+        $team1 = $event['team'];
+        $team2 = $event['team2'];
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/matchroster.php');
+        $team1roster = matchroster_index($dbConnect, $CONSTPath, $team1);
+        $team2roster = matchroster_index($dbConnect, $CONSTPath, $team2);
+        $answer['team1roster'] = $team1roster['answer'];
+        $answer['team2roster'] = $team2roster['answer'];
+
+        require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
+        $result = array(
+            'answer' => $answer,
+            'navigation' => competition_NAVIG($dbConnect, $_GET['comp'])
+        );
+        return $result;
+    }
+
+    function match_updateEvent($dbConnect, $CONSTPath) {
+        common_query($dbConnect, 'UPDATE matchevent SET period = :period, comment = :comment WHERE id = :event',
+            array('event' => $_POST['event'], 'period' => $_POST['period'], 'comment' => $_POST['comment']));
+
+        $point = NULL;
+        if ($_POST['point']) {
+            $point = $_POST['point'];
+        }
+        common_query($dbConnect, 'UPDATE stataction SET pointsget = :point WHERE id = :action',
+            array('action' => $_POST['action'], 'point' => $point));
+
+        if ($_POST['char']) {
+            foreach ($_POST['char'] as $key => $value) {
+                common_query($dbConnect, 'DELETE FROM statchar WHERE chartype = :cid AND action = :action',
+                    array('action' => $_POST['action'], 'cid' => $key));
+                if (strlen($value)) {
+                    common_query($dbConnect, 'INSERT INTO statchar (value, chartype, action) VALUES (:value, :cid, :action)',
+                        array('action' => $_POST['action'], 'cid' => $key, 'value' => $value));
+                }
+            }
+        }
+
+        if ($_POST['person']) {
+            foreach ($_POST['person'] as $key => $value) {
+                common_query($dbConnect, 'DELETE FROM statperson WHERE persontype = :pid AND action = :action',
+                    array('action' => $_POST['action'], 'pid' => $key));
+                if (strlen($value)) {
+                    common_query($dbConnect, 'INSERT INTO statperson (person, persontype, action) VALUES (:person, :pid, :action)',
+                        array('action' => $_POST['action'], 'pid' => $key, 'person' => $value));
+                }
+            }
+        }
+
+        $ret = $_POST['ret'] ? $_POST['ret'] : '';
+        return array(
+            'page' => '/?r=match/playbyplay' . $ret . '&match=' . $_POST['match'] . '&comp=' . $_POST['comp']
+        );
+    }

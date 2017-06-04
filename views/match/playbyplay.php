@@ -43,8 +43,11 @@
 ?>
 <?for ($i = 0; $i < count($event); $i++) {?>
         <div class="listview-item">
+
             <a class="main-delLink match-eventDelLink"
                 href="/?r=match/deleteEvent&event=<?=$event[$i]['id']?>&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">[X]</a>
+            <a class="match-eventDelLink"
+               href="/?r=match/editEvent&event=<?=$event[$i]['id']?>&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">[Ред]</a>
             <div class="match-eventImgContainer">
                 <?if ($event[$i]['team']){?>
                     <img class="match-eventImg" src="//<?=$HOST?>/upload/<?=$event[$i]['team']?>"/>
