@@ -3,9 +3,10 @@
 <script type="text/javascript">
     var $amf = $amf || {};
     $amf.teamroster = {};
-    $amf.team = {};
-    $amf.team[<?=$answer['match']['team1']?>] = '<?=$answer['match']['t1name']?>';
-    $amf.team[<?=$answer['match']['team2']?>] = '<?=$answer['match']['t2name']?>';
+    $amf.team = {
+        '1' : <?=$answer['match']['team1']?>,
+        '2' : <?=$answer['match']['team2']?>
+    };
     $amf.teamroster[<?=$answer['match']['team1']?>] = <?print_r(json_encode($answer['team1roster']))?>;
     $amf.teamroster[<?=$answer['match']['team2']?>] = <?print_r(json_encode($answer['team2roster']))?>;
 </script>
@@ -15,6 +16,9 @@
     </div>
     <div class="match-eventWrapper main-hidden">
         <form method="post" action="/?r=match/createEvent">
+            <input type="hidden" name="period" value="1"/>
+            <input type="hidden" name="teamSt[]" value="<?=$answer['match']['team1']?>"/>
+            <input type="hidden" name="team2" value="<?=$answer['match']['team2']?>"/>
             <input type="hidden" name="match" value="<?=$_GET['match']?>"/>
             <input type="hidden" name="competition" value="<?=$_GET['comp']?>"/>
             <div class="main-fieldWrapper">

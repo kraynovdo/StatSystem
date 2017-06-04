@@ -9,12 +9,7 @@
         <div class="stats-teamBlock">
             <div class="main-fieldWrapper">
                 <div><?=$answer['persontype'][$i]['name']?></div>
-                <select name="teamSt[]" class="stats-team">
-                    <option value="">Команда</option>
-                </select>
-            </div>
-            <div class="main-fieldWrapper">
-                <select name="person[<?=$answer['persontype'][$i]['id']?>]" class="stats-persontype">
+                <select name="person[<?=$answer['persontype'][$i]['id']?>]" class="stats-persontype" data-type="<?=$answer['persontype'][$i]['offdef']?>">
                     <option value="">Игрок</option>
                 </select>
             </div>

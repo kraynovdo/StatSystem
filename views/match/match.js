@@ -32,26 +32,16 @@
                 xhrView : true
             }, function(htmlRes){
                 $('.match-statsContainer').html(htmlRes);
-                $('.stats-team').each(function(i, item){
-                    for (var j in $amf.team) {
-                        if ($amf.team.hasOwnProperty(j)) {
-                            $(item).append('<option value="' + j + '">' + $amf.team[j] + '</option>')
+                $('.stats-persontype').each(function(i, item){
+                    var type = $(item).data('type');
+                    var team = $amf.team[type];
+                    for (var l in $amf.teamroster[team]) {
+                        if ($amf.teamroster[team].hasOwnProperty(l)) {
+                            var fio = $amf.teamroster[team][l]['number'] + ' - ' +
+                                $amf.teamroster[team][l]['surname'] + ' ' + $amf.teamroster[team][l]['name'];
+                            $(item).append('<option value="' + $amf.teamroster[team][l]['personID'] + '">' + fio + '</option>')
                         }
                     }
-                    $(item).change(function (k, itemInt) {
-                        var
-                            team = $(this).val(),
-                            cont = this.closest('.stats-teamBlock'),
-                            select = $('.stats-persontype', cont);
-                        select.html('<option value="">Игрок</option>');
-                        for (var l in $amf.teamroster[team]) {
-                            if ($amf.teamroster[team].hasOwnProperty(l)) {
-                                var fio = $amf.teamroster[team][l]['number'] + ' - ' +
-                                    $amf.teamroster[team][l]['surname'] + ' ' + $amf.teamroster[team][l]['name'];
-                                $(select).append('<option value="' + $amf.teamroster[team][l]['personID'] + '">' + fio + '</option>')
-                            }
-                        }
-                    });
                 });
             });
         }
