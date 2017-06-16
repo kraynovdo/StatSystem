@@ -19,6 +19,10 @@ $arrFg1 = $answer['fg'];
             <?if (!$_GET['type']) {?><a href="/?r=stats/compAF&comp=<?=$_GET['comp']?>&type=qb">Полный список</a><?}?>
             <?$arr = $arrQb1; $columns = array(
                 array(
+                    'title' => 'рей',
+                    'field' => 'rate'
+                ),
+                array(
                     'title' => '%',
                     'field' => 'percent'
                 ),

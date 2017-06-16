@@ -16,6 +16,10 @@ $arrFg1 = $stats['fg'];
             <td>
                 <?$statName = 'Пас'; $arr = array( 0 => $arrQb1); $columns = array(
                     array(
+                        'title' => 'рей',
+                        'field' => 'rate'
+                    ),
+                    array(
                         'title' => '%',
                         'field' => 'percent'
                     ),

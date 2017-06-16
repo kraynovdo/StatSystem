@@ -157,53 +157,60 @@
 
     function statsAF_qbTop($dbConnect, $type, $typeValue, $limit = null, $page=null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, $page, '
-            SELECT stat.*, concat(stat.rec, "/", stat.num) AS percent, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM (
-                            SELECT count(A.id) AS num, sum(value) AS sumr, team, SP_INFO.person,
-                sum(case WHEN REC_INFO.person IS NULL THEN 0 ELSE 1 END) AS rec,
-                sum(case WHEN INT_INFO.person IS NULL THEN 0 ELSE 1 END) AS inter,
-                sum(case WHEN A.pointsget = 1 THEN 1 ELSE 0 END) AS td
-                FROM `stataction` A
-                  LEFT JOIN (
-                      SELECT
-                          SP.person, SP.action
-                      FROM
-                          statperson SP LEFT JOIN statpersontype SPT ON SP.persontype = SPT.id
-                      WHERE
-                          SPT.code = "passer"
-                  ) AS SP_INFO ON SP_INFO.action = A.id
-                  LEFT JOIN (
-                      SELECT
-                          SP.person, SP.action
-                      FROM
-                          statperson SP LEFT JOIN statpersontype SPT ON SP.persontype = SPT.id
-                      WHERE
-                          SPT.code = "receiver"
-                  ) AS REC_INFO ON REC_INFO.action = A.id
-                  LEFT JOIN (
-                      SELECT
-                          SP.person, SP.action
-                      FROM
-                          statperson SP LEFT JOIN statpersontype SPT ON SP.persontype = SPT.id
-                      WHERE
-                          SPT.code = "intercept"
-                  ) AS INT_INFO ON INT_INFO.action = A.id
-                LEFT JOIN (
-                      SELECT
-                          SC.value, SC.action
-                      FROM
-                          statchar SC LEFT JOIN statchartype SCT ON SC.chartype = SCT.id
-                      WHERE
-                          SCT.code = "passyds"
-                  ) AS SC_INFO ON SC_INFO.action = A.id
-                  LEFT JOIN statactiontype AT ON A.actiontype = AT.id
-                WHERE A.share FILTER_PLACE AND AT.code = "pass" AND SP_INFO.person
-                GROUP BY person, team
-                ORDER BY sumr DESC, num ASC
-                LIMIT_PLACE
+            SELECT stat.*,
+                (CASE WHEN stat.num >= 10 THEN
+                ROUND(((8.4 * stat.sumr) + (330 * stat.td) + (100 * stat.rec) - (200 * stat.inter)) / stat.num, 1)
+                ELSE NULL END) AS rate,
+                P.surname, P.name, T.rus_abbr, P.avatar, P.id
+            FROM (
+                SELECT statInner.*, concat(statInner.rec, "/", statInner.num) AS percent FROM (
+                                SELECT count(A.id) AS num, sum(value) AS sumr, team, SP_INFO.person,
+                    sum(case WHEN REC_INFO.person IS NULL THEN 0 ELSE 1 END) AS rec,
+                    sum(case WHEN INT_INFO.person IS NULL THEN 0 ELSE 1 END) AS inter,
+                    sum(case WHEN A.pointsget = 1 THEN 1 ELSE 0 END) AS td
+                    FROM `stataction` A
+                      LEFT JOIN (
+                          SELECT
+                              SP.person, SP.action
+                          FROM
+                              statperson SP LEFT JOIN statpersontype SPT ON SP.persontype = SPT.id
+                          WHERE
+                              SPT.code = "passer"
+                      ) AS SP_INFO ON SP_INFO.action = A.id
+                      LEFT JOIN (
+                          SELECT
+                              SP.person, SP.action
+                          FROM
+                              statperson SP LEFT JOIN statpersontype SPT ON SP.persontype = SPT.id
+                          WHERE
+                              SPT.code = "receiver"
+                      ) AS REC_INFO ON REC_INFO.action = A.id
+                      LEFT JOIN (
+                          SELECT
+                              SP.person, SP.action
+                          FROM
+                              statperson SP LEFT JOIN statpersontype SPT ON SP.persontype = SPT.id
+                          WHERE
+                              SPT.code = "intercept"
+                      ) AS INT_INFO ON INT_INFO.action = A.id
+                    LEFT JOIN (
+                          SELECT
+                              SC.value, SC.action
+                          FROM
+                              statchar SC LEFT JOIN statchartype SCT ON SC.chartype = SCT.id
+                          WHERE
+                              SCT.code = "passyds"
+                      ) AS SC_INFO ON SC_INFO.action = A.id
+                      LEFT JOIN statactiontype AT ON A.actiontype = AT.id
+                    WHERE A.share FILTER_PLACE AND AT.code = "pass" AND SP_INFO.person
+                    GROUP BY person, team
+                ) AS statInner
             ) AS stat
             LEFT JOIN person P ON stat.person = P.id
             LEFT JOIN team T ON stat.team = T.id
             WHERE true PERSON-FILTER_PLACE
+            ORDER BY rate DESC, sumr DESC
+            LIMIT_PLACE
             ');
     }
 
