@@ -12,7 +12,7 @@ if ($_GET['type']) {
     if (!$p_page) {
         $p_page = 1;
     }
-    $p_limit = 25;
+    $p_limit = 40;
 }
 ?>
 <h2 class="stats-navHeader">Статистика турнира<?if (!$_GET['type']){?> - топ 5<?}?></h2>

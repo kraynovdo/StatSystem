@@ -1388,7 +1388,26 @@ textarea {
     position: relative;
     margin: 50px 0 0 50px;
 }
-
+.main-paging {
+    margin: 5px 0;
+    font-size: 0;
+}
+.main-paging_item {
+    display: inline-block;
+    padding: 0 5px;
+    line-height: 25px;
+    height: 25px;
+    text-align: center;
+    font-size: 13px;
+}
+.main-paging_item:hover {
+    background: #eaebff;
+    text-decoration: none;
+}
+.main-paging_item_active {
+    background: #7f7f8c;
+    color: #fff;
+}
 .stats_maintable {
     width: 100%;
     border-collapse: collapse;

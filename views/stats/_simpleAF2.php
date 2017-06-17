@@ -1,3 +1,17 @@
+<?
+$startPos = 0;
+$p_count = count($arr);
+$endPos = $p_count;
+if ($p_page) {
+    $startPos = ($p_page - 1) * $p_limit;
+    if ($endPos > $startPos + $p_limit) {
+        $endPos = $startPos + $p_limit;
+    }
+}
+
+?>
+<?$p_href='/?r=stats/compAF&comp='.$_GET['comp'].'&type='.$_GET['type']?>
+<? include '_paging.php';?>
 <table class="stats-table datagrid datagrid_zebra">
     <colgroup>
         <col width="35px"/>
@@ -16,18 +30,6 @@
     </tr>
     </thead>
     <tbody class="datagrid_tbody">
-    <?
-        $startPos = 0;
-        $p_count = count($arr);
-        $endPos = $p_count;
-        if ($p_page) {
-            $startPos = ($p_page - 1) * $p_limit;
-            if ($endPos > $startPos + $p_limit) {
-                $endPos = $startPos + $p_limit;
-            }
-        }
-
-    ?>
     <?for ($i = $startPos; $i < $endPos; $i++) {?>
         <tr class="stats-item">
             <td>

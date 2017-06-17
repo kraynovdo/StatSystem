@@ -1,9 +1,12 @@
+<div class="main-paging">
 <?
-    echo $p_page.' - '.$p_limit . ' - '.$p_count;
-    $numPages = ceil($p_count / $p_limit);
+    if ($p_limit && $p_count > $p_limit) {
+        $numPages = ceil($p_count / $p_limit);
 
-    $cifers = [];
-
-    array_push($cifers, 0);
-
+        for ($i = 1; $i <= $numPages; $i++) {?>
+            <a class="main-paging_item<?if ($i == $p_page){?> main-paging_item_active<?}?>"
+               href="<?=$p_href.'&page='.$i?>"><?=$i?></a>
+        <?}
+    }
 ?>
+</div>
