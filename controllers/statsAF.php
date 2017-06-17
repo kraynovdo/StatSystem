@@ -1,5 +1,5 @@
 <?php
-    function statsAF_report($dbConnect, $type, $typeValue, $limit, $page, $query) {
+    function statsAF_report($dbConnect, $type, $typeValue, $limit, $query) {
         $filter = array();
         $personFilterStr = '';
         if ($type == 'match') {
@@ -20,12 +20,7 @@
         $modifiedQuery = str_replace('FILTER_PLACE', $filterStr, $modifiedQuery);
 
         if ($limit) {
-            if ($page) {
-                $modifiedQuery = str_replace('LIMIT_PLACE', ' LIMIT ' . $page * $limit . ', '.$limit, $modifiedQuery);
-            }
-            else {
-                $modifiedQuery = str_replace('LIMIT_PLACE', ' LIMIT 0, '.$limit, $modifiedQuery);
-            }
+            $modifiedQuery = str_replace('LIMIT_PLACE', ' LIMIT 0, '.$limit, $modifiedQuery);
         }
         else {
             $modifiedQuery = str_replace('LIMIT_PLACE', ''.$limit, $modifiedQuery);
@@ -37,8 +32,8 @@
             return common_getlist($dbConnect, $modifiedQuery, $filter);
         }
     }
-    function statsAF_rushTop($dbConnect, $type, $typeValue, $limit = null, $page=null) {
-        return statsAF_report($dbConnect, $type, $typeValue, $limit, $page, '
+    function statsAF_rushTop($dbConnect, $type, $typeValue, $limit = null) {
+        return statsAF_report($dbConnect, $type, $typeValue, $limit, '
             SELECT stat.*, ROUND(stat.sumr/stat.num,1) AS avg, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM (
                 SELECT
                   count(A.id) AS num, sum(value) AS sumr,
@@ -78,8 +73,8 @@
             WHERE true PERSON-FILTER_PLACE
             ');
     }
-    function statsAF_retTop($dbConnect, $type, $typeValue, $limit = null, $page=null) {
-        return statsAF_report($dbConnect, $type, $typeValue, $limit, $page=null,  '
+    function statsAF_retTop($dbConnect, $type, $typeValue, $limit = null) {
+        return statsAF_report($dbConnect, $type, $typeValue, $limit,  '
             SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM (
                 SELECT
                   count(A.id) AS num, sum(value) AS sumr, team, person,
@@ -119,8 +114,8 @@
             ');
     }
 
-    function statsAF_passTop($dbConnect, $type, $typeValue, $limit = null, $page=null) {
-        return statsAF_report($dbConnect, $type, $typeValue, $limit, $page, '
+    function statsAF_passTop($dbConnect, $type, $typeValue, $limit = null) {
+        return statsAF_report($dbConnect, $type, $typeValue, $limit, '
             SELECT stat.*, ROUND(stat.sumr/stat.num,1) AS avg, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM (
                 SELECT count(A.id) AS num, sum(value) AS sumr, team, person,
                 SUM(CASE WHEN (PG.id AND PG.code = "td") THEN 1 ELSE 0 END) AS td,
@@ -155,8 +150,8 @@
             ');
     }
 
-    function statsAF_qbTop($dbConnect, $type, $typeValue, $limit = null, $page=null) {
-        return statsAF_report($dbConnect, $type, $typeValue, $limit, $page, '
+    function statsAF_qbTop($dbConnect, $type, $typeValue, $limit = null) {
+        return statsAF_report($dbConnect, $type, $typeValue, $limit, '
             SELECT stat.*,
                 (CASE WHEN stat.num >= 10 THEN
                 ROUND(((8.4 * stat.sumr) + (330 * stat.td) + (100 * stat.rec) - (200 * stat.inter)) / stat.num, 1)
@@ -214,8 +209,8 @@
             ');
     }
 
-    function statsAF_intTop($dbConnect, $type, $typeValue, $limit = null, $page=null) {
-        return statsAF_report($dbConnect, $type, $typeValue, $limit, $page,'
+    function statsAF_intTop($dbConnect, $type, $typeValue, $limit = null) {
+        return statsAF_report($dbConnect, $type, $typeValue, $limit,'
             SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM
                 (SELECT
                     count(SP.id) AS cnt, person, A.team2 AS team
@@ -235,8 +230,8 @@
             ');
     }
 
-    function statsAF_tacTop($dbConnect, $type, $typeValue, $limit = null , $page=null) {
-        return statsAF_report($dbConnect, $type, $typeValue, $limit, $page, 'SELECT
+    function statsAF_tacTop($dbConnect, $type, $typeValue, $limit = null) {
+        return statsAF_report($dbConnect, $type, $typeValue, $limit, 'SELECT
               TT.rus_abbr, stat.solo, stat.assist, stat.common, P.name, P.surname, TT.id AS team, P.avatar, P.id
             FROM
               (SELECT stat_inner.*, solo+assist AS common
@@ -274,8 +269,8 @@
                ');
     }
 
-    function statsAF_sackTop($dbConnect, $type, $typeValue, $limit = null, $page = null) {
-        return statsAF_report($dbConnect, $type, $typeValue, $limit, $page, 'SELECT
+    function statsAF_sackTop($dbConnect, $type, $typeValue, $limit = null) {
+        return statsAF_report($dbConnect, $type, $typeValue, $limit, 'SELECT
               TT.rus_abbr, stat.solo, stat.assist,
               CASE WHEN assist % 2 = 0 THEN ROUND(stat.common) ELSE stat.common END AS common,
               P.name, P.surname, TT.id AS team, P.avatar, P.id
@@ -322,8 +317,8 @@
                ');
     }
 
-    function statsAF_fgTop($dbConnect, $type, $typeValue, $limit = null, $page=null) {
-        return statsAF_report($dbConnect, $type, $typeValue, $limit, $page, 'SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM (
+    function statsAF_fgTop($dbConnect, $type, $typeValue, $limit = null) {
+        return statsAF_report($dbConnect, $type, $typeValue, $limit, 'SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM (
             SELECT
                 person, team,
                     SUM(1) AS numr,

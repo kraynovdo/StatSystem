@@ -7,6 +7,13 @@ $arrTac1 = $answer['tac'];
 $arrSack1 = $answer['sack'];
 $arrInt1 = $answer['int'];
 $arrFg1 = $answer['fg'];
+if ($_GET['type']) {
+    $p_page = $_GET['page'];
+    if (!$p_page) {
+        $p_page = 1;
+    }
+    $p_limit = 25;
+}
 ?>
 <h2 class="stats-navHeader">Статистика турнира<?if (!$_GET['type']){?> - топ 5<?}?></h2>
 <?if ($_GET['type']) {?><a href="/?r=stats/compAF&comp=<?=$_GET['comp']?>">Вернуться к топ 5</a><?}?>
@@ -149,7 +156,8 @@ $arrFg1 = $answer['fg'];
         <td>
             <h3 class="stats-header stats-navHeader">Захваты</h3>
             <?if (!$_GET['type']) {?><a href="/?r=stats/compAF&comp=<?=$_GET['comp']?>&type=tac">Полный список</a><?}?>
-            <?$arr = $arrTac1; $columns = array(
+            <?$arr = $arrTac1;
+            $columns = array(
                 array(
                     'title' => 'общ',
                     'field' => 'common'

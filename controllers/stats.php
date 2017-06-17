@@ -100,19 +100,15 @@
 
         $result['answer']['match'] = match_mainInfo($dbConnect, $CONSTPath);
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statsAF.php');
-        $page = 0;
-        if ($_GET['page']) {
-            $page = $_GET['page'];
-        }
         switch ($_GET['type']) {
-            case 'rush' : $result['answer']['rush'] = statsAF_rushTop($dbConnect, 'comp', $_GET['comp'], null, $page); break;
-            case 'pass' : $result['answer']['pass'] = statsAF_passTop($dbConnect, 'comp', $_GET['comp'], null, $page); break;
-            case 'qb' : $result['answer']['qb'] = statsAF_qbTop($dbConnect, 'comp', $_GET['comp'], null, $page); break;
-            case 'ret' : $result['answer']['ret'] = statsAF_retTop($dbConnect, 'comp', $_GET['comp'], null, $page); break;
-            case 'int' : $result['answer']['int'] = statsAF_intTop($dbConnect, 'comp', $_GET['comp'], null, $page); break;
-            case 'tac' : $result['answer']['tac'] = statsAF_tacTop($dbConnect, 'comp', $_GET['comp'], null, $page); break;
-            case 'sack' : $result['answer']['sack'] = statsAF_sackTop($dbConnect, 'comp', $_GET['comp'], null, $page); break;
-            case 'fg' : $result['answer']['fg'] = statsAF_fgTop($dbConnect, 'comp', $_GET['comp'], null, $page); break;
+            case 'rush' : $result['answer']['rush'] = statsAF_rushTop($dbConnect, 'comp', $_GET['comp'], null); break;
+            case 'pass' : $result['answer']['pass'] = statsAF_passTop($dbConnect, 'comp', $_GET['comp'], null); break;
+            case 'qb' : $result['answer']['qb'] = statsAF_qbTop($dbConnect, 'comp', $_GET['comp'], null); break;
+            case 'ret' : $result['answer']['ret'] = statsAF_retTop($dbConnect, 'comp', $_GET['comp'], null); break;
+            case 'int' : $result['answer']['int'] = statsAF_intTop($dbConnect, 'comp', $_GET['comp'], null); break;
+            case 'tac' : $result['answer']['tac'] = statsAF_tacTop($dbConnect, 'comp', $_GET['comp'], null); break;
+            case 'sack' : $result['answer']['sack'] = statsAF_sackTop($dbConnect, 'comp', $_GET['comp'], null); break;
+            case 'fg' : $result['answer']['fg'] = statsAF_fgTop($dbConnect, 'comp', $_GET['comp'], null); break;
             default:
 
 

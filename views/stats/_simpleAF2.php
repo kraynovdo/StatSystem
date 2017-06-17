@@ -16,7 +16,19 @@
     </tr>
     </thead>
     <tbody class="datagrid_tbody">
-    <?for ($i = 0; $i < count($arr); $i++) {?>
+    <?
+        $startPos = 0;
+        $p_count = count($arr);
+        $endPos = $p_count;
+        if ($p_page) {
+            $startPos = ($p_page - 1) * $p_limit;
+            if ($endPos > $startPos + $p_limit) {
+                $endPos = $startPos + $p_limit;
+            }
+        }
+
+    ?>
+    <?for ($i = $startPos; $i < $endPos; $i++) {?>
         <tr class="stats-item">
             <td>
                 <div class="stats-teamLogo">
@@ -28,7 +40,9 @@
                 </div>
             </td>
             <td>
-                <a class="stats-personLink" href="/?r=person/view&person=<?=$arr[$i]['id']?>&comp=<?=$_GET['comp']?>"><?=$arr[$i]['name']. ' '.$arr[$i]['surname']?></a>
+                <a class="stats-personLink" href="/?r=person/view&person=<?=$arr[$i]['id']?>&comp=<?=$_GET['comp']?>">
+                    <?=$arr[$i]['name']. ' '.$arr[$i]['surname'] . ' (' . ($i+1) . ')'?>
+                </a>
             </td>
             <?for ($j = 0; $j < count($columns); $j++ ){?>
                 <td class="stats-counter main-rightAlign">
@@ -39,3 +53,4 @@
     <?}?>
     </tbody>
 </table>
+<? include '_paging.php';?>
