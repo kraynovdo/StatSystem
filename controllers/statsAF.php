@@ -204,7 +204,7 @@
             LEFT JOIN person P ON stat.person = P.id
             LEFT JOIN team T ON stat.team = T.id
             WHERE true PERSON-FILTER_PLACE
-            ORDER BY rate DESC, sumr DESC
+            ORDER BY rate DESC, sumr DESC, P.surname DESC
             LIMIT_PLACE
             ');
     }
