@@ -257,7 +257,7 @@
                    GROUP BY person, team2
 
                    ) stat_inner
-                   ORDER BY common DESC
+                   ORDER BY common DESC, solo DESC
                    LIMIT_PLACE
                ) stat
 
@@ -306,7 +306,7 @@
                    WHERE SPT2.code = "tackle"
                    GROUP BY person, team2
                    ) stat_inner
-                   ORDER BY common DESC
+                   ORDER BY common DESC, solo DESC
                    LIMIT_PLACE
               ) stat
             LEFT JOIN
