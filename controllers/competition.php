@@ -3,7 +3,7 @@
     function competition_NAVIG($dbConnect, $id) {
         $queryresult = $dbConnect->prepare('
                 SELECT
-                  C.id, C.name AS name, S.yearB AS yearB, S.yearE AS yearE, logo, theme
+                  C.id, C.name AS name, S.yearB AS yearB, S.yearE AS yearE, logo, theme, stats_type
                 FROM
                   competition AS C LEFT JOIN season AS S ON S.id = C.season
                 WHERE
@@ -27,8 +27,7 @@
                 'Команды' => '/?r=team/complist&comp=' . $id,
                 'Судьи' => '/?r=refereecomp&comp=' . $id,
                 /*'Таблица' => '/?r=competition/standings&id='.$id,*/
-                'Календарь' => '/?r=match&comp=' . $id,
-                'Статистика' => '/?r=stats/compAF&comp=' . $id
+                'Календарь' => '/?r=match&comp=' . $id
             ),
             'title' => $data[0]['name'],
             'description' => $data[0]['name'] . ' официальный сайт. Здесь вы можете найти свежие новости, информацию о матчах и командах',
@@ -36,6 +35,9 @@
             'logo' => $data[0]['logo'],
             'theme' => $data[0]['theme']
         );
+        if ($data[0]['stats_type'] == 3) {
+            $res['menu']['Статистика'] = '/?r=stats/compAF&comp=' . $id;
+        }
         if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {
             $res['menu']['* Управление'] = '/?r=competition/admin&comp=' . $id;
         }
