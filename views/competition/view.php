@@ -61,7 +61,7 @@
 <?
     $trans = $answer['trans'];
     if (count($trans)) {?>
-        <div class="main-centerAlign">
+        <div class="main-centerAlign comp-translationFeed">
             <h1>Трансляции online</h1>
             <?
                 for ($i = 0; $i < count($trans); $i++) {?>

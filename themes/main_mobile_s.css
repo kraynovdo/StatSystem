@@ -107,6 +107,10 @@ table {
 .main-navShowPanel:active {
    background-color: #2c4d7f;
 }
+.comp-translationFeed iframe{
+    width: 100%;
+    height: auto;
+}
 .comp-resultsTable {
    display: block;
 }

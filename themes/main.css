@@ -134,6 +134,7 @@ textarea {
 @media (max-width: 1016px) {
     .main-top-fixed {
         position: static;
+        width: 1000px;
     }
     .main-content {
         padding-top: 15px;
