@@ -79,6 +79,9 @@ textarea {
 .main-rightAlign {
     text-align: right;
 }
+.main-middleValign {
+    vertical-align: middle;
+}
 .datagrid .datagrid_datatr:hover{
     background-color: #eeeeee;
 }
@@ -1451,6 +1454,9 @@ textarea {
 }
 .stats-personTeamLogo {
     display: none;
+}
+.stats-personTeamLogoDesk {
+    display: inline-block;
 }
 .stats-personTeamLogo  .main-noPhoto {
     width:15px;

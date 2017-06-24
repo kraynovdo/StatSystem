@@ -49,7 +49,15 @@ if ($p_page) {
                 </div>
             </td>
             <td>
-                <a class="stats-personLink" href="/?r=person/view&person=<?=$arr[$i]['id']?>&comp=<?=$_GET['comp']?>">
+                <div class="stats-personTeamLogoDesk main-middleValign">
+                    <?if ($arr[$i]['logo']) {?>
+                        <img style="width: 20px;" src="//<?=$HOST?>/upload/<?=$arr[$i]['logo']?>">
+                    <?} else {?>
+                        <div class="main-noPhoto">?</div>
+                    <?}?>
+                </div>
+
+                <a class="stats-personLink main-middleValign" href="/?r=person/view&person=<?=$arr[$i]['id']?>&comp=<?=$_GET['comp']?>">
                     <?=$arr[$i]['name']. ' '.$arr[$i]['surname'] . ' (' . ($i+1) . ')'?>
                 </a>
             </td>

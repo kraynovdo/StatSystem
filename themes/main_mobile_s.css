@@ -331,6 +331,9 @@ table {
     right: 0;
     bottom: 0;
 }
+.stats-personTeamLogoDesk {
+    display: none;
+}
 .match_maintable_revert .stats-match_leftCol {
    display: none;
 }
