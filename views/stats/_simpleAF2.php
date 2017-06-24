@@ -32,10 +32,17 @@ if ($p_page) {
     <tbody class="datagrid_tbody">
     <?for ($i = $startPos; $i < $endPos; $i++) {?>
         <tr class="stats-item">
-            <td>
+            <td style="position: relative">
                 <div class="stats-teamLogo">
                     <?if ($arr[$i]['avatar']) {?>
                         <img style="width: 35px;" src="//<?=$HOST?>/upload/<?=$arr[$i]['avatar']?>">
+                    <?} else {?>
+                        <div class="main-noPhoto">?</div>
+                    <?}?>
+                </div>
+                <div class="stats-personTeamLogo">
+                    <?if ($arr[$i]['logo']) {?>
+                        <img style="width: 20px;" src="//<?=$HOST?>/upload/<?=$arr[$i]['logo']?>">
                     <?} else {?>
                         <div class="main-noPhoto">?</div>
                     <?}?>

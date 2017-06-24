@@ -1449,6 +1449,15 @@ textarea {
     font-size: 35px;
     line-height: 35px;
 }
+.stats-personTeamLogo {
+    display: none;
+}
+.stats-personTeamLogo  .main-noPhoto {
+    width:15px;
+    height: 15px;
+    font-size: 15px;
+    line-height: 15px;
+}
 .stats-team_switcher {
     display: none;
 }

@@ -34,7 +34,7 @@
     }
     function statsAF_rushTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, '
-            SELECT stat.*, ROUND(stat.sumr/stat.num,1) AS avg, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM (
+            SELECT stat.*, ROUND(stat.sumr/stat.num,1) AS avg, P.surname, P.name, T.logo, P.avatar, P.id FROM (
                 SELECT
                   count(A.id) AS num, sum(value) AS sumr,
                   team, person,
@@ -75,7 +75,7 @@
     }
     function statsAF_retTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit,  '
-            SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM (
+            SELECT stat.*, P.surname, P.name, T.logo, P.avatar, P.id FROM (
                 SELECT
                   count(A.id) AS num, sum(value) AS sumr, team, person,
                   SUM(CASE WHEN (PG.id AND PG.code = "td") THEN 1 ELSE 0 END) AS td,
@@ -116,7 +116,7 @@
 
     function statsAF_passTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, '
-            SELECT stat.*, ROUND(stat.sumr/stat.num,1) AS avg, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM (
+            SELECT stat.*, ROUND(stat.sumr/stat.num,1) AS avg, P.surname, P.name, T.logo, P.avatar, P.id FROM (
                 SELECT count(A.id) AS num, sum(value) AS sumr, team, person,
                 SUM(CASE WHEN (PG.id AND PG.code = "td") THEN 1 ELSE 0 END) AS td,
                 SUM(CASE WHEN (PG.id AND PG.code = "2pt") THEN 1 ELSE 0 END) AS 2pt
@@ -156,7 +156,7 @@
                 (CASE WHEN stat.num >= 10 THEN
                 ROUND(((8.4 * stat.sumr) + (330 * stat.td) + (100 * stat.rec) - (200 * stat.inter)) / stat.num, 1)
                 ELSE NULL END) AS rate,
-                P.surname, P.name, T.rus_abbr, P.avatar, P.id
+                P.surname, P.name, T.logo, P.avatar, P.id
             FROM (
                 SELECT statInner.*, concat(statInner.rec, "/", statInner.num) AS percent FROM (
                                 SELECT count(A.id) AS num, sum(value) AS sumr, team, SP_INFO.person,
@@ -211,7 +211,7 @@
 
     function statsAF_intTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit,'
-            SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM
+            SELECT stat.*, P.surname, P.name, T.logo, P.avatar, P.id FROM
                 (SELECT
                     count(SP.id) AS cnt, person, A.team2 AS team
                 FROM
@@ -232,7 +232,7 @@
 
     function statsAF_tacTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, 'SELECT
-              TT.rus_abbr, stat.solo, stat.assist, stat.common, P.name, P.surname, TT.id AS team, P.avatar, P.id
+              TT.rus_abbr, stat.solo, stat.assist, stat.common, P.name, P.surname, TT.id AS team, TT.logo, P.avatar, P.id
             FROM
               (SELECT stat_inner.*, solo+assist AS common
                   FROM
@@ -271,7 +271,7 @@
 
     function statsAF_sackTop($dbConnect, $type, $typeValue, $limit = null) {
         return statsAF_report($dbConnect, $type, $typeValue, $limit, 'SELECT
-              TT.rus_abbr, stat.solo, stat.assist,
+              TT.logo, stat.solo, stat.assist,
               CASE WHEN assist % 2 = 0 THEN ROUND(stat.common) ELSE stat.common END AS common,
               P.name, P.surname, TT.id AS team, P.avatar, P.id
             FROM
@@ -318,7 +318,7 @@
     }
 
     function statsAF_fgTop($dbConnect, $type, $typeValue, $limit = null) {
-        return statsAF_report($dbConnect, $type, $typeValue, $limit, 'SELECT stat.*, P.surname, P.name, T.rus_abbr, P.avatar, P.id FROM (
+        return statsAF_report($dbConnect, $type, $typeValue, $limit, 'SELECT stat.*, P.surname, P.name, T.logo, P.avatar, P.id FROM (
             SELECT
                 person, team,
                     SUM(1) AS numr,

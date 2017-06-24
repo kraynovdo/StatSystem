@@ -325,7 +325,12 @@ table {
 .stats-match_rightColg {
    width: 0;
 }
-
+.stats-personTeamLogo {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
 .match_maintable_revert .stats-match_leftCol {
    display: none;
 }
