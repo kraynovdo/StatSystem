@@ -81,7 +81,7 @@
                 $fromCache = true;
                 if (function_exists('memcache_connect')) {
                     $mc = memcache_connect('localhost', 11211);
-                    $stats = memcache_get($mc, 'stats_person_' . $_GET['person']);
+                    $stats = memcache_get($mc, 'stats_person_' . $_GET['person'] . '_' . $_GET['comp']);
                 }
                 else {
                     $stats = array();
@@ -93,7 +93,7 @@
                 }
                 $result['answer']['stats'] = $stats['answer']['stats'];
                 if (function_exists('memcache_set') && !$fromCache) {
-                    memcache_set($mc, 'stats_person_'.$_GET['person'], $stats, 0, 60);
+                    memcache_set($mc, 'stats_person_'.$_GET['person'] . '_' . $_GET['comp'], $stats, 0, 60);
                 }
             }
         }
