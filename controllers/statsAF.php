@@ -359,9 +359,9 @@
                     A.share AND A.competition = :comp AND (PG.code = "td" OR (PG.code = "2pt")) AND SPT.code = "runner"
                   GROUP BY
                     person
-                  UNION
+                  UNION ALL
                   SELECT
-                    SUM(point), person
+                    SUM(point) AS point, person
                   FROM
                     stataction A
                   LEFT JOIN
@@ -374,9 +374,9 @@
                     A.share AND A.competition = :comp AND (PG.code = "td" OR (PG.code = "2pt")) AND SPT.code = "receiver"
                   GROUP BY
                     person
-                  UNION
+                  UNION ALL
                   SELECT
-                    SUM(point), person
+                    SUM(point) AS point, person
                   FROM
                     stataction A
                   LEFT JOIN
@@ -389,9 +389,9 @@
                     A.share AND A.competition = :comp AND (PG.code = "td" OR (PG.code = "2pt")) AND SPT.code = "returner"
                   GROUP BY
                     person
-                  UNION
+                  UNION ALL
                   SELECT
-                    SUM(point), person
+                    SUM(point) AS point, person
                   FROM
                     stataction A
                   LEFT JOIN
