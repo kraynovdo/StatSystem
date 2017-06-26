@@ -116,7 +116,7 @@
                                 'title' => 'пер',
                                 'field' => 'inter'
                             )
-                        )?>
+                        ); $sum = array('sumr', 'td', 'inter');?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -142,7 +142,7 @@
                                 'title' => 'пер',
                                 'field' => 'inter'
                             )
-                        )?>
+                        ); $sum = array('sumr', 'td', 'inter');?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -174,7 +174,7 @@
                                 'title' => '2оч',
                                 'field' => '2pt'
                             )
-                        )?>
+                        );  $sum = array('sumr', 'num', 'td', '2pt');?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -204,7 +204,7 @@
                                 'title' => '2оч',
                                 'field' => '2pt'
                             )
-                        )?>
+                        );  $sum = array('sumr', 'num', 'td', '2pt');?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -236,7 +236,7 @@
                                 'title' => '2оч',
                                 'field' => '2pt'
                             )
-                        )?>
+                        ); $sum = array('sumr', 'num', 'td', '2pt');?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -266,7 +266,7 @@
                                 'title' => '2оч',
                                 'field' => '2pt'
                             )
-                        )?>
+                        );   $sum = array('sumr', 'num', 'td', '2pt');?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -282,7 +282,7 @@
                                 'title' => 'кол',
                                 'field' => 'cnt'
                             )
-                        )?>
+                        ); $sum = array('cnt');?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -296,7 +296,7 @@
                                 'title' => 'кол',
                                 'field' => 'cnt'
                             )
-                        )?>
+                        ); $sum = array('cnt');?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -320,7 +320,7 @@
                                 'title' => 'асс',
                                 'field' => 'assist'
                             )
-                        )?>
+                        ); $sum = array();?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -342,7 +342,7 @@
                                 'title' => 'асс',
                                 'field' => 'assist'
                             )
-                        )?>
+                        ); $sum = array();?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -366,7 +366,7 @@
                                 'title' => 'асс',
                                 'field' => 'assist'
                             )
-                        )?>
+                        ); $sum = array('common');?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -388,7 +388,7 @@
                                 'title' => 'асс',
                                 'field' => 'assist'
                             )
-                        )?>
+                        ); $sum = array('common');?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -416,7 +416,7 @@
                                 'title' => '2оч',
                                 'field' => '2pt'
                             )
-                        )?>
+                        );    $sum = array('sumr', 'num', 'td', '2pt');?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -443,7 +443,7 @@
                                 'title' => '2оч',
                                 'field' => '2pt'
                             )
-                        )?>
+                        );    $sum = array('sumr', 'num', 'td', '2pt');?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -467,7 +467,7 @@
                                 'title' => '1оч',
                                 'field' => 'pt'
                             )
-                        )?>
+                        ); $sum = array();?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>
@@ -489,7 +489,7 @@
                                 'title' => '1оч',
                                 'field' => 'pt'
                             )
-                        )?>
+                        ); $sum = array();?>
                         <? include '_simpleAF.php'?>
                     </div>
                 <?}?>

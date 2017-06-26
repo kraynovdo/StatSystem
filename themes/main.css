@@ -1425,7 +1425,9 @@ textarea {
     font-size: 14px;
     margin-bottom: 15px;
 }
-
+.stats-item_total {
+    font-weight: 900;
+}
 .stats-table_wrapper {
     overflow-y: auto;
 }

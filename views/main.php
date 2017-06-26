@@ -11,7 +11,7 @@
         <script type="text/javascript">window.mobile = true;</script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <?}?>
-    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main.css?134"/>
+    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main.css?135"/>
     <?if ($theme) {?>
         <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?9"/>
     <?}?>
