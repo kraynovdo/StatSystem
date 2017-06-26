@@ -341,12 +341,12 @@
     }
 
     function statsAF_top10Point($dbConnect, $CONSTPath, $comp) {
-        return common_getlist($dbConnect, 'SELECT P.surname, P.name, P.avatar, point AS points, P.id AS person
+        return common_getlist($dbConnect, 'SELECT P.surname, P.name, P.avatar, point AS points, P.id AS person, T.logo
             FROM
             (
-              SELECT SUM(point) AS point, person FROM (
+              SELECT SUM(point) AS point, person, team FROM (
                   SELECT
-                    SUM(point) AS point, person
+                    SUM(point) AS point, person, team
                   FROM
                     stataction A
                   LEFT JOIN
@@ -361,7 +361,7 @@
                     person
                   UNION ALL
                   SELECT
-                    SUM(point) AS point, person
+                    SUM(point) AS point, person, team
                   FROM
                     stataction A
                   LEFT JOIN
@@ -376,7 +376,7 @@
                     person
                   UNION ALL
                   SELECT
-                    SUM(point) AS point, person
+                    SUM(point) AS point, person, team
                   FROM
                     stataction A
                   LEFT JOIN
@@ -391,7 +391,7 @@
                     person
                   UNION ALL
                   SELECT
-                    SUM(point) AS point, person
+                    SUM(point) AS point, person, team
                   FROM
                     stataction A
                   LEFT JOIN
@@ -403,20 +403,21 @@
                   WHERE
                     A.share AND A.competition = :comp AND (PG.code = "fg" OR (PG.code = "1pt")) AND SPT.code = "fgkicker"
                   GROUP BY
-                    person
+                    person, team
               ) st1
               GROUP BY
-                person
+                person, team
             ) stat LEFT JOIN person P ON P.id = stat.person
+            LEFT JOIN team T ON T.id = stat.team
             ORDER BY point DESC, P.surname ASC
             LIMIT 0, 10', array('comp' => $comp));
     }
 
     function statsAF_top10PointFG($dbConnect, $CONSTPath, $comp) {
-        return common_getlist($dbConnect, 'SELECT P.surname, P.name, P.avatar, point AS points, P.id AS person
+        return common_getlist($dbConnect, 'SELECT P.surname, P.name, P.avatar, point AS points, P.id AS person, T.logo
             FROM (
             SELECT
-                SUM(point) AS point, person
+                SUM(point) AS point, person, team
             FROM
                 stataction A
             LEFT JOIN
@@ -430,6 +431,7 @@
             GROUP BY
                 person
             ) stat LEFT JOIN person P ON P.id = stat.person
+            LEFT JOIN team T ON T.id = stat.team
             ORDER BY point DESC, P.surname ASC
             LIMIT 0, 10', array('comp' => $comp));
     }
