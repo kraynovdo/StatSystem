@@ -1112,10 +1112,13 @@ textarea {
 .top10_column {
     padding: 4px;
     box-sizing: border-box;
+    width: 60%;
+    margin: 0 auto;
 }
 .top10_column_2 {
     width: 50%;
     float: left;
+    margin: auto;
 }
 .top10-item {
     overflow: hidden;
