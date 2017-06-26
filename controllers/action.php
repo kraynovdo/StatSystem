@@ -63,17 +63,18 @@
         $queryresult = $dbConnect->prepare('
             SELECT
               PP.points,
-              person.surname, person.name, person.avatar, person.id AS person
+              person.surname, person.name, person.avatar, person.id AS person, T.logo
             FROM (
                 SELECT
-                    SUM(point) as points, person
+                    SUM(point) as points, person, team
                     FROM
                       action A LEFT JOIN pointsget P ON P.id = A.pointsget LEFT JOIN person Pers ON Pers.id = A.person
                     WHERE
                       A.competition = :comp AND A.person
-                    GROUP BY person ORDER BY points DESC, Pers.surname LIMIT 10
+                    GROUP BY person, team ORDER BY points DESC, Pers.surname LIMIT 10
                 ) PP
             LEFT JOIN person on PP.person = person.id
+            LEFT JOIN team T ON T.id = PP.team
 			ORDER BY points DESC, surname
         ');
         $queryresult->execute(array(
@@ -91,12 +92,12 @@
               person.surname, person.name, person.patronymic, person.avatar, T.logo, person.id AS person, T.id as team
             FROM (
                 SELECT
-                    SUM(point) as points, person
+                    SUM(point) as points, person, team
                     FROM
                       action A LEFT JOIN pointsget P ON P.id = A.pointsget LEFT JOIN person Pers ON Pers.id = A.person
                     WHERE
                       A.competition = :comp AND (point = 1 OR point = 3)
-                    GROUP BY person ORDER BY points DESC, Pers.surname LIMIT 10
+                    GROUP BY person, team ORDER BY points DESC, Pers.surname LIMIT 10
                 ) PP
             LEFT JOIN person on PP.person = person.id
 			LEFT JOIN roster R on R.person = person.id AND R.competition = :comp
