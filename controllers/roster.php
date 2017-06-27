@@ -58,10 +58,15 @@ function rosterface_list($dbConnect, $CONSTPath, $team = NULL, $comp = NULL) {
 function roster_index($dbConnect, $CONSTPath) {
     require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/team.php');
     $comps = team_comps($dbConnect, $_GET['team']);
-    if ($_GET['comp']) {
-        $compId = $_GET['comp'];
+
+    $compId = null;
+    for ($i = 0; $i < count($comps); $i++) {
+        if ($comps[$i]['id'] == $_GET['comp']) {
+            $compId = $_GET['comp'];
+        }
     }
-    else {
+
+    if (!$compId && count($comps)) {
         $compId = $comps[0]['id'];
     }
 

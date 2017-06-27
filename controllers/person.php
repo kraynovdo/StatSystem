@@ -26,7 +26,7 @@
                   LEFT JOIN season S ON S.id = C.season
                 WHERE
                   R.person = :id AND C.type IS NULL AND C.stats_type >= 2
-                ORDER BY C.id DESC', array(
+                ORDER BY S.yearB DESC, C.id DESC', array(
             'id' => $person
         ));
     }
@@ -51,18 +51,18 @@
         }
 
         $comps = person_comps($dbConnect, $_GET['team']);
-        if ($_GET['comp']) {
-            $compId = $_GET['comp'];
-        }
-        else {
-            $compId = $comps[0]['id'];
-        }
+        $compId = null;
 
         $stats_type = 1;
         for ($i = 0; $i < count($comps); $i++) {
-            if ($comps[$i]['id'] == $compId) {
+            if ($comps[$i]['id'] == $_GET['comp']) {
                 $stats_type = $comps[$i]['stats_type'];
+                $compId = $_GET['comp'];
             }
+        }
+        if (!$compId && count($comps)) {
+            $compId = $comps[0]['id'];
+            $stats_type = $comps[0]['stats_type'];
         }
 
         $result['answer']['comps'] = $comps;
@@ -81,7 +81,7 @@
                 $fromCache = true;
                 if (function_exists('memcache_connect')) {
                     $mc = memcache_connect('localhost', 11211);
-                    $stats = memcache_get($mc, 'stats_person_' . $_GET['person'] . '_' . $_GET['comp']);
+                    $stats = memcache_get($mc, 'stats_person_' . $_GET['person'] . '_' . $compId);
                 }
                 else {
                     $stats = array();

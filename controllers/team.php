@@ -113,10 +113,15 @@
     function team_view($dbConnect, $CONSTPath) {
         $result = team_info($dbConnect, $CONSTPath);
         $comps = team_comps($dbConnect, $_GET['team']);
-        if ($_GET['comp']) {
-            $compId = $_GET['comp'];
+
+        $compId = null;
+        for ($i = 0; $i < count($comps); $i++) {
+            if ($comps[$i]['id'] == $_GET['comp']) {
+                $compId = $_GET['comp'];
+            }
         }
-        else {
+
+        if (!$compId && count($comps)) {
             $compId = $comps[0]['id'];
         }
 
@@ -155,7 +160,7 @@
                   LEFT JOIN season S ON S.id = C.season
                 WHERE
                   CT.team = :id AND C.type IS NULL
-                ORDER BY C.id DESC');
+                ORDER BY S.yearB DESC, C.id DESC');
         $queryresult->execute(array(
             'id' => $team
         ));
