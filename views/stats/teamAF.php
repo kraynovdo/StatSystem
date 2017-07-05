@@ -1,5 +1,7 @@
+
+<h2>Статистика</h2>
 <?
-if ($answer['stats'] && count($answer['stats'])) {
+if ($answer['stats_type'] == 3 && $answer['stats'] && count($answer['stats'])) {
     $arrRush1 = $answer['stats']['rush'];
     $arrPass1 =$answer['stats']['pass'];
     $arrQb1 = $answer['stats']['qb'];
@@ -9,18 +11,7 @@ if ($answer['stats'] && count($answer['stats'])) {
     $arrInt1 = $answer['stats']['int'];
     $arrFg1 = $answer['stats']['fg'];
 }
-else {
-    $arrRush1 = array();
-    $arrPass1 = array();
-    $arrQb1 = array();
-    $arrRet1 = array();
-    $arrTac1 = array();
-    $arrSack1 = array();
-    $arrInt1 = array();
-    $arrFg1 = array();
-}
 ?>
-<h2>Статистика</h2>
 <?if (count($answer['comps'])) {?>
 <div class="main-fieldWrapper">
     <label>Турнир</label>
@@ -230,3 +221,15 @@ else {
     <?}?>
 </tbody>
 </table>
+<?if ($answer['stats_type'] == 2){$points = $answer['points'];$pg=null;?>
+    <?for ($i = 0; $i < count($points); $i++) {?>
+        <?if ($pg !== $points[$i]['pgid']) {$pg = $points[$i]['pgid']?>
+            <h3><?=$points[$i]['pgname']?></h3>
+        <?}?>
+        <div class="listview-item">
+            <a class="action-pgName" href="/?r=person/view&person=<?=$points[$i]['person']?>&comp=<?=$_GET['comp']?>"><?=$points[$i]['surname'] . ' ' .$points[$i]['name']?></a> -
+            <span class="action-pgCount"><?=$points[$i]['value']?></span>
+        </div>
+    <?}?>
+
+<?} ?>

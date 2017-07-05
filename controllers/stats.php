@@ -225,12 +225,13 @@
             if (function_exists('memcache_set') && !$fromCache) {
                 memcache_set($mc, 'stats_team_'.$_GET['team'] . '_' . $_GET['comp'], $stats, 0, 60);
             }
-
-            $stats = array(1, 2, 3);
+        }
+        if ($compId && $stats_type == 2) {
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/action.php');
+            $result['answer']['points'] = action_teamstats($dbConnect, $CONSTPath, $_GET['team'], $compId);
         }
 
-
-
+        $result['answer']['stats_type'] = $stats_type;
 
         return $result;
     }

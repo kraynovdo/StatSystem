@@ -129,3 +129,23 @@
         array('person' => $person, 'comp' => $comp));
         return $stats;
     }
+
+    function action_teamstats($dbConnect, $CONSTPath, $team=null, $comp) {
+        if (!$team) {
+            $team = $_GET['team'];
+        }
+        $stats = common_getlist($dbConnect, '
+
+        SELECT stat.*, P.surname, P.name FROM (
+            SELECT
+                      COUNT(A.pointsget) AS value, PG.name AS pgname, PG.id AS pgid, person
+                    FROM
+                      action A
+                        LEFT JOIN pointsget PG ON PG.id = A.pointsget
+                    WHERE team = :team AND competition = :comp
+                    GROUP BY A.pointsget, PG.name, person
+    				ORDER BY PG.id, value DESC
+            ) stat LEFT JOIN person P ON P.id = stat.person
+        ', array('team' => $team, 'comp' => $comp));;
+        return $stats;
+    }
