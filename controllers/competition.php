@@ -173,7 +173,7 @@
         $result['answer']['top10'] = $stats['top10'];
         $result['answer']['top10kick'] = $stats['top10kick'];
         if (function_exists('memcache_set') && !$fromCache) {
-            memcache_set($mc, 'stats_top_'.$_GET['comp'], $stats, 0, 60);
+            memcache_set($mc, 'stats_top_'.$_GET['comp'], $stats, 0, 300);
         }
 
 

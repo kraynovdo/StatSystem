@@ -144,7 +144,7 @@
             $result['answer']['int'] = $stats['int'];
             $result['answer']['fg'] = $stats['fg'];
             if (function_exists('memcache_set') && !$fromCache) {
-                memcache_set($mc, 'stats_comp_'.$_GET['comp'], $stats, 0, 60);
+                memcache_set($mc, 'stats_comp_'.$_GET['comp'], $stats, 0, 300);
             }
         }
         return $result;
