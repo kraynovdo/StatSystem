@@ -24,7 +24,7 @@
                 <td class="stats-counter main-rightAlign">
                     <?=$arr[$i][$columns[$j]['field']]?>
                 </td>
-                <?if (in_array($columns[$j]['field'], $sum)) {?>
+                <?if ($sum && (in_array($columns[$j]['field'], $sum))) {?>
                     <?if (!($sumArr[$columns[$j]['field']])) $sumArr[$columns[$j]['field']] = 0;?>
                     <?$sumArr[$columns[$j]['field']] += $arr[$i][$columns[$j]['field']]?>
                 <?}?>
@@ -37,7 +37,7 @@
     <tr class="stats-item_total">
         <td>ВСЕГО</td>
         <?for ($j = 0; $j < count($columns); $j++ ){?>
-            <?if (in_array($columns[$j]['field'], $sum)) {?>
+            <?if ($sum && (in_array($columns[$j]['field'], $sum))) {?>
                 <td class="stats-counter main-rightAlign">
                     <?=$sumArr[$columns[$j]['field']]?>
                 </td>

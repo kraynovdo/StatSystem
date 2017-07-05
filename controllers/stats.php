@@ -170,6 +170,71 @@
         return $result;
     }
 
+    function stats_teamAF($dbConnect, $CONSTPath) {
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/team.php');
+        $comps = team_comps($dbConnect, $_GET['team']);
+
+        $stats_type = 1;
+        $compId = null;
+        for ($i = 0; $i < count($comps); $i++) {
+            if ($comps[$i]['id'] == $_GET['comp']) {
+                $stats_type = $comps[$i]['stats_type'];
+                $compId = $_GET['comp'];
+            }
+        }
+
+        if (!$compId && count($comps)) {
+            $compId = $comps[0]['id'];
+            $stats_type = $comps[0]['stats_type'];
+        }
+
+        $result = array(
+            'answer' => array(
+                'comps' => $comps,
+                'compId' => $compId
+            )
+        );
+        $result['navigation'] = team_NAVIG($dbConnect, $_GET['team'], count($comps));
+
+        if ($compId && $stats_type == 3) {
+
+
+            if (function_exists('memcache_connect')) {
+                $mc = memcache_connect('localhost', 11211);
+                $stats = memcache_get($mc, 'stats_team_' . $_GET['team'] . '_' . $compId);
+            }
+            else {
+                $stats = array();
+            }
+            if (!$stats || !count($stats)) {
+                $fromCache = false;
+                require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statsAF.php');
+                $arg = array('team' => $_GET['team'], 'comp' => $compId);
+                $stats = array(
+                    'rush' => statsAF_rushTop($dbConnect, 'team', $arg),
+                    'pass' => statsAF_passTop($dbConnect, 'team', $arg),
+                    'ret' => statsAF_retTop($dbConnect, 'team', $arg),
+                    'qb' => statsAF_qbTop($dbConnect, 'team', $arg),
+                    'int' => statsAF_intTop($dbConnect, 'team', $arg),
+                    'tac' => statsAF_tacTop($dbConnect, 'team', $arg),
+                    'sack' => statsAF_sackTop($dbConnect, 'team', $arg),
+                    'fg' => statsAF_fgTop($dbConnect, 'team', $arg)
+                );
+            }
+            $result['answer']['stats'] = $stats;
+            if (function_exists('memcache_set') && !$fromCache) {
+                memcache_set($mc, 'stats_team_'.$_GET['team'] . '_' . $_GET['comp'], $stats, 0, 60);
+            }
+
+            $stats = array(1, 2, 3);
+        }
+
+
+
+
+        return $result;
+    }
+
     function stats_screenAF ($dbConnect, $CONSTPath, $IS_MOBILE) {
         if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 4) || ($_SESSION['userType'] == 5)) {
             $answer = array();

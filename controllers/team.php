@@ -36,6 +36,7 @@
         }
         if ($withRoster) {
 		    $navig['menu']['Состав'] = '/?r=roster&team='.$id.$compFilter;
+            $navig['menu']['Статистика'] = '/?r=stats/teamAF&team='.$id.$compFilter;
             if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$_GET['team']])) {
                 $navig['menu']['* Заявки'] = '/?r=team/request&team='.$id.$compFilter;
             }
@@ -154,7 +155,7 @@
         }
         $queryresult = $dbConnect->prepare('
                 SELECT
-                  C.id, C.name, S.yearB, C.link, CT.confirm
+                  C.id, C.name, S.yearB, C.link, CT.confirm, C.stats_type
                 FROM
                   compteam CT LEFT JOIN competition C ON C.id = CT.competition
                   LEFT JOIN season S ON S.id = C.season

@@ -11,6 +11,11 @@
             $filter['comp'] = $typeValue['comp'];
             $filterStr = 'AND `competition` = :comp';
             $personFilterStr = ' AND stat.`person` = :person';
+        } else if ($type == 'team') {
+            $filter['team'] = $typeValue['team'];
+            $filter['comp'] = $typeValue['comp'];
+            $filterStr = 'AND `competition` = :comp';
+            $personFilterStr = ' AND stat.`team` = :team';
         } else {
             $filter['comp'] = $typeValue;
             $filterStr = 'AND `competition` = :comp';
