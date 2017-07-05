@@ -223,7 +223,7 @@ else {
             'title' => '1оч',
             'field' => 'pt'
         )
-    );  $sum = array('numr', 'fg', '1pt');?>
+    );  $sum = array('numr', 'fg', 'pt');?>
         <? include '_simpleAF.php'?>
     </td>
 </tr>

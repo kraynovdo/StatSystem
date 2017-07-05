@@ -1,5 +1,5 @@
 <?php
-    function statsAF_report($dbConnect, $type, $typeValue, $limit, $query) {
+    function statsAF_report($dbConnect, $type, $typeValue, $limit, $query, $debug = 0) {
         $filter = array();
         $personFilterStr = '';
         if ($type == 'match') {
@@ -34,6 +34,9 @@
             return common_getrecord($dbConnect, $modifiedQuery, $filter);
         }
         else {
+            if ($debug) {
+                print_r($modifiedQuery);
+            }
             return common_getlist($dbConnect, $modifiedQuery, $filter);
         }
     }
@@ -242,7 +245,7 @@
               (SELECT stat_inner.*, solo+assist AS common
                   FROM
                   (SELECT
-                    person, team2, SUM(case WHEN tcount = 1 THEN 1 ELSE 0 END) AS solo,
+                    person, team2 AS team, SUM(case WHEN tcount = 1 THEN 1 ELSE 0 END) AS solo,
                           SUM(case WHEN tcount = 1 THEN 0 ELSE 1 END) AS assist
                   FROM (
 
@@ -267,7 +270,7 @@
                ) stat
 
             LEFT JOIN
-               team TT ON stat.team2 = TT.id
+               team TT ON stat.team = TT.id
             LEFT JOIN
                person P ON P.id = stat.person
             WHERE true PERSON-FILTER_PLACE
@@ -283,7 +286,7 @@
               (SELECT stat_inner.*, solo+(assist*0.5) AS common
               FROM
                   (SELECT
-                    person, team2, SUM(case WHEN tcount = 1 THEN 1 ELSE 0 END) AS solo,
+                    person, team2 AS team, SUM(case WHEN tcount = 1 THEN 1 ELSE 0 END) AS solo,
                           SUM(case WHEN tcount = 1 THEN 0 ELSE 1 END) AS assist
                   FROM (
 
@@ -315,7 +318,7 @@
                    LIMIT_PLACE
               ) stat
             LEFT JOIN
-               team TT ON stat.team2 = TT.id
+               team TT ON stat.team = TT.id
             LEFT JOIN
                person P ON P.id = stat.person
             WHERE true PERSON-FILTER_PLACE
