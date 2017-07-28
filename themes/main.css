@@ -17,7 +17,7 @@ table {
     font-size: inherit;
 }
 a {
-    color: #1346B3;
+    color: #2d5588;
     text-decoration: none;
 }
 a:hover {
@@ -294,6 +294,9 @@ textarea {
 .material-content {
     margin-bottom: 10px;
     overflow: hidden;
+}
+.material-content a {
+    color: #4386cf;
 }
 .material-date {
     color: #aaaaaa;
