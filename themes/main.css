@@ -1744,3 +1744,22 @@ input.stats-screenCharValue {
 .stats-screen_period {
     margin-bottom: 15px;
 }
+.laf-final {
+    background-color: #295b82;
+    margin: 15px 0;
+}
+.laf-final > div {
+    vertical-align: bottom
+}
+.laf-final_header {
+    color: #fff;
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
+    margin: 0 10px 0 0;
+}
+.main-infoBlock_results17 {
+    padding-bottom: 0;
+    border-bottom: 0;
+}

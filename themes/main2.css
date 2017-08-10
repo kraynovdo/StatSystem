@@ -273,7 +273,6 @@ textarea {
     bottom: 0;
     white-space: nowrap;
     border-bottom: 3px solid #025b97;
-    margin-bottom: 42px;
 }
 .main-topNavigation__list {
     overflow: hidden;
@@ -1724,4 +1723,19 @@ textarea {
 }
 .material-img {
     width: 400px;
+}
+.laf-final {
+    background-color: #931919;
+    margin: 15px 0;
+}
+.laf-final > div {
+    vertical-align: bottom
+}
+.laf-final_header {
+    color: #fff;
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
+    margin: 0 10px 0 0;
 }

@@ -1,4 +1,4 @@
-<div class="main-infoBlock main-infoBlock_results main-centerAlign">
+<div class="main-infoBlock main-infoBlock_results main-centerAlign<?if ($_GET['comp'] == 64) {?>  main-infoBlock_results17<?}?>">
 
     <br/><h2 style="text-align: center">Результаты матчей</h2>
     <div class="comp-resultsTable">
@@ -49,9 +49,14 @@
 <?}?>
 
         </div>
-        <?if($_GET['comp'] == 18){?><h2><a href="/?r=standings">Сетка плей-офф</a></h2><?}?>
+
     </div>
-    <br/>
+    <?if ($_GET['comp'] == 64) {?>
+        <div class="laf-final">
+            <h2 class=laf-final_header>Финал Лиги Американского Футбола</h2>
+            <script data-event-id="187781"  data-custom-name="Купить билет" data-class="radarioButtonScript" src="https://radario.ru/scripts/widget/buy-button-widget.js"></script>
+        </div>
+    <?}?>
     <div>
         <?if ($_SESSION['userType'] == 3) {?>
             <div class="main-centerAlign">
