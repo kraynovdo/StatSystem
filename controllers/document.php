@@ -9,6 +9,15 @@
         ));
         return $res;
     }
+
+    function document_antidoping($dbConnect, $CONSTPath) {
+        $res = array();
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/start.php');
+        $res['navigation'] = start_navig();
+        $res['answer'] = array();
+        return $res;
+    }
+
     function document_add($dbConnect, $CONSTPath) {
         if (($_SESSION['userType'] == 3)  || ($_SESSION['userFederations'][$_GET['federation']] == 1)) {
             $res = array();
