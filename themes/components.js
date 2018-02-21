@@ -37,7 +37,7 @@ $(function () {
         changeMonth: true,
         changeYear: true,
         dateFormat: 'dd.mm.yy',
-        yearRange: "1940:2017"
+        yearRange: "1940:2030"
     });
 
     /*Автодополнение*/
