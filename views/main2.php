@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery.Jcrop.min.css?1">
     <link href='http://fonts.googleapis.com/css?family=Roboto&subset=latin,cyrillic,cyrillic-ext' rel='stylesheet' type='text/css'>
 </head>
-<body>
+<body class="fafr-body fafr-bg_light">
 <? if ($_SESSION['error']){?>
     <div class="main-error">
         <?=$_SESSION['error']?>
@@ -36,7 +36,10 @@
 
 <div class="fafr-width">
     <div class="fafr-wrapper">
-
+        <div class="fafr-header fafr-bg_dark">
+            <h2 class="fafr-header_title fafr-h2"><?= $header ?></h2>
+        </div>
+        <div class="fafr-navigation fafr-bg_accent"></div>
         <div class="fafr-footerplace"></div>
     </div>
 

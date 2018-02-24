@@ -5,13 +5,23 @@
 html {
     height: 100%;
 }
-body {
+.fafr-bg_light {
+    background-color: #E6E6E6;
+    color: #15222b;
+}
+.fafr-bg_dark {
+    background: #15222b;
+    color: #fff;
+}
+.fafr-bg_accent {
+    background: #D0202D;
+    color: #fff;
+}
+.fafr-body {
     font-size: 14px;
     font-family : Roboto, sans-serif;
     overflow-y: scroll;
     height: 100%;
-    color: #15222b;
-    background-color: #E6E6E6;
 }
 .fafr-width {
     min-width: 1000px;
@@ -24,7 +34,13 @@ body {
     background: #fff;
 }
 .fafr-header {
-
+    height: 80px;
+}
+.fafr-header_title {
+    text-transform: uppercase;
+}
+.fafr-navigation {
+    height: 40px;
 }
 .fafr-footerplace {
     height: 240px;
@@ -40,5 +56,10 @@ body {
 
 .fafr-h1 {
     font-size: 28px;
+    font-weight: bold;
+}
+
+.fafr-h2 {
+    font-size: 18px;
     font-weight: bold;
 }

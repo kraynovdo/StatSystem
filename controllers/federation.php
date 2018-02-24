@@ -3,7 +3,7 @@
         if (!$federation) $federation = $_GET['federation'];
         $fedInfo = common_getrecord($dbConnect, '
             SELECT
-                name, fullname, logo
+                name, fullname, logo, eng_fullname
             FROM
                 federation
             WHERE
