@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    height: 100%;
+}
+body {
+    font-size: 14px;
+    font-family : Roboto, sans-serif;
+    overflow-y: scroll;
+    height: 100%;
+    color: #15222b;
+    background-color: #E6E6E6;
+}
+.fafr-width {
+    min-width: 1000px;
+    max-width: 1180px;
+    height: 100%;
+    margin: 0 auto;
+}
+.fafr-wrapper {
+    min-height: 100%;
+    background: #fff;
+}
+.fafr-header {
+
+}
+.fafr-footerplace {
+    height: 240px;
+}
+.fafr-footer {
+    margin-top: -240px;
+    height: 240px;
+}
+
+
+
+
+
+.fafr-h1 {
+    font-size: 28px;
+    font-weight: bold;
+}

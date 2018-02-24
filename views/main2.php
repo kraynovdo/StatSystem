@@ -11,11 +11,11 @@
         <script type="text/javascript">window.mobile = true;</script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <?}?>
-    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main2.css?7"/>
+    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/fafr.css?1"/>
     <link rel="shortcut icon" href="//<?=$HOST?>/themes/img/fafr_logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery-ui.css">
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery.Jcrop.min.css?1">
+    <link href='http://fonts.googleapis.com/css?family=Roboto&subset=latin,cyrillic,cyrillic-ext' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <? if ($_SESSION['error']){?>
@@ -32,11 +32,22 @@
     <?
     $_SESSION['message'] = '';
 }?>
+
+
+<div class="fafr-width">
+    <div class="fafr-wrapper">
+
+        <div class="fafr-footerplace"></div>
+    </div>
+
+    <div class="fafr-footer"></div>
+</div>
+
 <div class="main-wrapper">
     <div class="main-min-width">
         <div class="main-header">
             <a class="main-logo" href="/">
-                <img alt="Логотип" class="main-logo_img" src="//<?= $HOST ?>/<?= $logo ?>?1">
+                <img alt="Логотип" class="main-logo_img" src="//<?= $HOST ?>/1<?= $logo ?>?1">
             </a>
 
             <h1 class="main-header_title"><?= $header ?></h1>
