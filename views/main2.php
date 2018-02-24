@@ -39,7 +39,26 @@
         <div class="fafr-header fafr-bg_dark">
             <h2 class="fafr-header_title fafr-h2"><?= $header ?></h2>
         </div>
-        <div class="fafr-navigation fafr-bg_accent"></div>
+        <div class="fafr-navigation fafr-bg_accent">
+            <ul class="fafr-navigation__list">
+                <? foreach ($NAVIGATION as $point => $href) { ?>
+                    <li class="fafr-navigation__point">
+                        <a class="fafr-navigation__link<?if ($point == $NAVCURRENT){?> fafr-bg_light<?}else{?> fafr-bg_accent<?}?>"
+                           href="<?= $href ?>"><?= $point ?></a>
+                    </li>
+                <? } ?>
+            </ul>
+        </div>
+        <div class="fafr-navigation fafr-bg_light">
+            <ul class="fafr-navigation__list">
+                <? foreach ($NAVIGATION2 as $point => $href) { ?>
+                <li class="fafr-navigation__point">
+                    <a class="fafr-navigation__link__second fafr-bg_light<?if ($point == $NAVCURRENT2){?> <?}?>"
+                       href="<?= $href ?>"><?= $point ?></a>
+                </li>
+                <? } ?>
+            </ul>
+        </div>
         <div class="fafr-footerplace"></div>
     </div>
 

@@ -42,6 +42,34 @@ html {
 .fafr-navigation {
     height: 40px;
 }
+.fafr-navigation__list {
+    margin-left: 160px;
+}
+.fafr-navigation__point {
+    list-style: none;
+    float: left;
+}
+.fafr-navigation__link {
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    width: 140px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+}
+.fafr-navigation__link__second {
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    width: 140px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+}
 .fafr-footerplace {
     height: 240px;
 }
