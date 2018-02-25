@@ -19,8 +19,16 @@
         if ($_GET['federation']) {
             $filter .= ' WHERE new.federation = :federation ';
             $queryparams['federation'] = $_GET['federation'];
-            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/federation.php');
-            $result['navigation'] = federation_navig($dbConnect, $_GET['federation']);
+
+            if ($_GET['federation'] == 11) {
+                require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/start.php');
+                $result['navigation'] = start_NAVIG();
+                $result['navigation']['pageId'] = 32;
+            }
+            else {
+                require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/federation.php');
+                $result['navigation'] = federation_navig($dbConnect, $_GET['federation']);
+            }
         }
         if ($ismain) {
             $filter .= ' AND M.ismain = 1';

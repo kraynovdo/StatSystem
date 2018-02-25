@@ -33,7 +33,6 @@
     $_SESSION['message'] = '';
 }?>
 
-
 <div class="fafr-width">
     <div class="fafr-wrapper">
         <div class="fafr-header fafr-bg_dark">
@@ -41,119 +40,38 @@
         </div>
         <div class="fafr-navigation fafr-bg_accent">
             <ul class="fafr-navigation__list">
-                <? foreach ($NAVIGATION as $point => $href) { ?>
+                <? foreach ($NAVIGATION as $point) { ?>
                     <li class="fafr-navigation__point">
-                        <a class="fafr-navigation__link<?if ($point == $NAVCURRENT){?> fafr-bg_light<?}else{?> fafr-bg_accent<?}?>"
-                           href="<?= $href ?>"><?= $point ?></a>
+                        <a class="fafr-navigation__link<?if ($point['id'] == $NAVCURRENT){?> fafr-bg_light<?}else{?> fafr-bg_accent<?}?>"
+                           href="<?= $point['href'] ?>"><?= $point['title'] ?></a>
                     </li>
                 <? } ?>
             </ul>
         </div>
-        <div class="fafr-navigation fafr-bg_light">
-            <ul class="fafr-navigation__list">
-                <? foreach ($NAVIGATION2 as $point => $href) { ?>
-                <li class="fafr-navigation__point">
-                    <a class="fafr-navigation__link__second fafr-bg_light<?if ($point == $NAVCURRENT2){?> <?}?>"
-                       href="<?= $href ?>"><?= $point ?></a>
-                </li>
-                <? } ?>
-            </ul>
+        <?if (count($NAVIGATION2)) {?>
+            <div class="fafr-navigation fafr-bg_light">
+                <ul class="fafr-navigation__list">
+                    <? foreach ($NAVIGATION2 as $point) { ?>
+                    <li class="fafr-navigation__point">
+                        <a class="fafr-navigation__link__second fafr-bg_light<?if ($point['id'] == $NAVCURRENT2){?> <?}?>"
+                           href="<?= $point['href'] ?>"><?= $point['title'] ?></a>
+                    </li>
+                    <? } ?>
+                </ul>
+            </div>
+        <?}?>
+        <div class="fafr-content">
+            <?php
+            if (file_exists($content)) {
+                require $content;
+            }
+            ?>
         </div>
         <div class="fafr-footerplace"></div>
     </div>
 
-    <div class="fafr-footer"></div>
-</div>
-
-<div class="main-wrapper">
-    <div class="main-min-width">
-        <div class="main-header">
-            <a class="main-logo" href="/">
-                <img alt="Логотип" class="main-logo_img" src="//<?= $HOST ?>/1<?= $logo ?>?1">
-            </a>
-
-            <h1 class="main-header_title"><?= $header ?></h1>
-
-            <div class="main-auth_form"><?php require ($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/user/login.php');?></div>
-        </div>
-        <div class="main-topNavigation">
-            <ul class="main-topNavigation__list">
-                <? foreach ($NAVIGATION as $point => $href) { ?>
-                    <li class="main-topNavigation__point list-unstyled">
-                        <a class="main-topNavigation__link<?if ($point == $NAVCURRENT){?> main-topNavigation__link__selected<?}?>"
-                           href="<?= $href ?>"><?= $point ?></a>
-                    </li>
-                <? } ?>
-            </ul>
-        </div>
-
-        <div class="main-lvl4Navigation">
-            <?if (count($NAVIGATION4)) {?>
-                <ul class="main-lvl4Navigation__list">
-                    <? foreach ($NAVIGATION4 as $point => $href) { ?>
-                        <li class="main-lvl4Navigation__point list-unstyled">
-                            <a class="main-lvl4Navigation__link<?if ($point == $NAVCURRENT4){?> main-lvl4Navigation__link__selected<?}?>"
-                               href="<?= $href ?>"><?= $point ?></a></li>
-                    <? } ?>
-                </ul>
-            <?}?>
-        </div>
-
-        <div class="main-middle row">
-            <div class="col-lg-9 col-md-9">
-                <div class="main-content">
-                    <?php
-                    if (file_exists($content)) {
-                        require $content;
-                    }
-                    ?>
-                </div>
-            </div>
-            <div class="main-aside col-lg-3 col-md-3">
-                <?if ($NAVIGATION2 && count($NAVIGATION2)) {?>
-                    <div class="main-lvl2Navigation">
-                        <ul class="main-lvl2NavigationList">
-                            <? foreach ($NAVIGATION2 as $point => $href) { ?>
-                                <li class="main-lvl2Navigation__point list-unstyled">
-                                    <a class="main-lvl2Navigation__link<?if ($point == $NAVCURRENT2){?> main-lvl2Navigation__link__selected<?}?>"
-                                       href="<?= $href ?>"><?= $point ?></a>
-                                    <?if (($point == $NAVCURRENT2) && count($NAVIGATION3)){?>
-                                        <ul class="main-lvl3Navigation__list">
-                                            <? foreach ($NAVIGATION3 as $point => $href) { ?>
-                                                <li class="main-lvl3Navigation__point list-unstyled">
-                                                    <a class="main-lvl3Navigation__link<?if ($point == $NAVCURRENT3){?> main-lvl3Navigation__link__selected<?}?>"
-                                                       href="<?= $href ?>"><?= $point ?></a></li>
-                                            <? } ?>
-                                        </ul>
-                                    <?}?>
-                                </li>
-                            <? } ?>
-                        </ul>
-                    </div>
-                <?}?>
-                <div class="main-banner main-documentsBanner">
-                    <div class="main-banner_header">Официальные документы</div>
-                    <a href="/?r=document&federation=11" class="main-banner_btn main-documentsBannerBtn">Просмотреть</a>
-                </div>
-                <?if (false && ($_SESSION['userTeams']) && (count($_SESSION['userTeams']) >= 1)){?>
-                    <div class="main-banner">
-                        <div class="main-banner_header">Заявка на участие в ЛАФ 2017</div>
-                        <a href="/?r=request/choose&comp=64" class="main-banner_btn main-documentsBannerBtn">Подать заявку</a>
-                    </div>
-                <?}?>
-            </div>
-        </div>
-        <div class="main-content-space"></div>
-    </div>
-</div>
-<div class="main-footer">
-    <div class="main-footerHelmet"></div>
-    <div class="main-min-width">
-        <a class="main-logo" href="/">
-            <img class="main-logo_img" src="//<?= $HOST ?>/<?= $logo ?>?1">
-        </a>
-
-        <h1 class="main-header_title"><?= $header ?></h1>
+    <div class="fafr-footer">
+        <div class="main-auth_form"><?php require ($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/user/login.php');?></div>
     </div>
 </div>
 

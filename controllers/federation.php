@@ -453,6 +453,7 @@
         if ($_GET['federation'] == 11) {
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
             $result['navigation'] = start_NAVIG();
+            $result['navigation']['pageId'] = 35;
         }
 
         return $result;
