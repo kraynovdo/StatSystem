@@ -32,18 +32,25 @@ html {
 .fafr-wrapper {
     min-height: 100%;
     background: #fff;
+    position: relative;
+}
+.fafr-logo {
+    position: absolute;
+    top: 25px;
+    left: 50px;
 }
 .fafr-header {
     height: 80px;
 }
 .fafr-header_title {
+    padding: 23px 0 0 190px;
     text-transform: uppercase;
 }
 .fafr-navigation {
     height: 40px;
 }
 .fafr-navigation__list {
-    margin-left: 160px;
+    margin-left: 230px;
 }
 .fafr-navigation__point {
     list-style: none;
@@ -69,13 +76,24 @@ html {
     text-align: center;
     font-weight: bold;
     font-size: 12px;
+    border-bottom: 3px solid transparent;
+    box-sizing: border-box;
 }
+.fafr-navigation__link__second__selected {
+    border-color: #15222b;
+}
+.fafr-content {
+    box-sizing: border-box;
+    padding: 55px 50px 0 50px
+}
+
 .fafr-footerplace {
     height: 240px;
 }
 .fafr-footer {
     margin-top: -240px;
     height: 240px;
+    position: relative;
 }
 
 

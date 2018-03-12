@@ -41,6 +41,7 @@
     function federation_regions($dbConnect, $CONSTPath) {
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
         $result['navigation'] = start_NAVIG();
+        $result['navigation']['pageId'] = 41;
         $result['answer'] = common_getlist($dbConnect, '
           SELECT
               F.id, F.name, fullname, logo, R.name AS reg,
@@ -515,30 +516,25 @@
         if ($_GET['federation'] == 11) {
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
             $result['navigation'] = start_NAVIG();
+            $result['navigation']['pageId'] = 35;
         }
 
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/userfederation.php');
         $userfed = userfederation_index($dbConnect, $CONSTPath, $_GET['federation'], NULL, $group);
         $result['answer']['userfederation'] = $userfed['answer'];
 
+        $result['answer']['types'] = array(
+            1 => 'Генеральное руководство',
+            2 => 'Исполком',
+            3 => 'Департаменты сборных команд',
+            4 => 'Судейский комитет',
+            5 => 'Контрольно-дисциплинарный комитет',
+            6 => 'Контрольно-ревизионная комиссия',
+        );
+
         return $result;
     }
 
-    function federation_genstaff($dbConnect, $CONSTPath) {
-        return federation_face($dbConnect, $CONSTPath, 1);
-    }
-    function federation_execstaff($dbConnect, $CONSTPath) {
-        return federation_face($dbConnect, $CONSTPath, 2);
-    }
-    function federation_teamstaff($dbConnect, $CONSTPath) {
-        return federation_face($dbConnect, $CONSTPath, 3);
-    }
-    function federation_refstaff($dbConnect, $CONSTPath) {
-        return federation_face($dbConnect, $CONSTPath, 4);
-    }
-    function federation_discstaff($dbConnect, $CONSTPath) {
-        return federation_face($dbConnect, $CONSTPath, 5);
-    }
-    function federation_revstaff($dbConnect, $CONSTPath) {
-        return federation_face($dbConnect, $CONSTPath, 6);
+    function federation_staff($dbConnect, $CONSTPath) {
+        return federation_face($dbConnect, $CONSTPath, NULL);
     }

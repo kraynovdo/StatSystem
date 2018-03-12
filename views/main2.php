@@ -12,6 +12,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <?}?>
     <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/fafr.css?1"/>
+    <?if ($theme) {?>
+        <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?9"/>
+    <?}?>
     <link rel="shortcut icon" href="//<?=$HOST?>/themes/img/fafr_logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery-ui.css">
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery.Jcrop.min.css?1">
@@ -35,8 +38,10 @@
 
 <div class="fafr-width">
     <div class="fafr-wrapper">
+        <a class="fafr-logo" href="/"></a>
         <div class="fafr-header fafr-bg_dark">
             <h2 class="fafr-header_title fafr-h2"><?= $header ?></h2>
+            <div class="main-auth_form"><?php require ($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/user/login.php');?></div>
         </div>
         <div class="fafr-navigation fafr-bg_accent">
             <ul class="fafr-navigation__list">
@@ -53,7 +58,7 @@
                 <ul class="fafr-navigation__list">
                     <? foreach ($NAVIGATION2 as $point) { ?>
                     <li class="fafr-navigation__point">
-                        <a class="fafr-navigation__link__second fafr-bg_light<?if ($point['id'] == $NAVCURRENT2){?> <?}?>"
+                        <a class="fafr-navigation__link__second fafr-bg_light<?if ($point['id'] == $NAVCURRENT2){?> fafr-navigation__link__second__selected<?}?>"
                            href="<?= $point['href'] ?>"><?= $point['title'] ?></a>
                     </li>
                     <? } ?>
@@ -71,7 +76,7 @@
     </div>
 
     <div class="fafr-footer">
-        <div class="main-auth_form"><?php require ($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/user/login.php');?></div>
+
     </div>
 </div>
 

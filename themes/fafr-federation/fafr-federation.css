@@ -1,0 +1,201 @@
+.fafr-logo {
+    background-image: url('img/helmet.png');
+    width: 140px;
+    height: 107px;
+}
+.news-title {
+    font-size: 16px;
+}
+.news-main {
+    display: block;
+    position: relative;
+    margin: -22px -22px 22px -22px;
+}
+.news-main_img {
+    width: 100%;
+}
+.news-main_title {
+    font-size: 26px;
+    text-decoration: none;
+    color: #ffffff;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 80px;
+    left: 22px;
+    font-weight: bold;
+}
+.main-addLink {
+    margin-bottom: 15px;
+    display: inline-block;
+}
+.material-content {
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.material-date {
+    color: #aaaaaa;
+    font-style: italic;
+}
+.material-editTitle {
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: 500px;
+}
+.material-editPreview {
+    height: 60px;
+    margin-bottom: 10px;
+}
+.material-editContent {
+    margin-bottom: 10px;
+    height: 400px;
+}
+.listview-item {
+    padding: 5px 0;
+    border-top: 1px solid #cccccc;
+    margin-bottom: 2px;
+}
+.datagrid {
+    font-size: inherit;
+    width: 100%;
+    border-collapse: collapse;
+}
+.datagrid_zebra .datagrid_tbody td {
+    border-top: 1px solid #cccccc;
+    padding: 5px 0;
+}
+.federation-faceItem {
+    overflow: hidden;
+    margin-bottom: 33px;
+}
+.federation-faceAvatar {
+    width: 110px;
+    height: 110px;
+    box-sizing: border-box;
+    float: left;
+    border-radius: 55px;
+    overflow: hidden;
+    border: 8px solid #0071bc;
+}
+
+.federation-faceAvatar .main-noPhoto {
+    width: 110px;
+    height: 110px;
+    line-height: 110px;
+    font-size: 110px;
+    margin: -8px;
+}
+.federation-faceAvatar img{
+    margin: -8px;
+}
+
+.federation-faceInfo {
+    margin: 26px 0 0 147px;
+}
+.federation-faceFio {
+    font-size: 15px;
+    text-transform: uppercase;
+}
+.federation-workField {
+    display: none;
+}
+.federation-itemUser {
+    color: #999999
+}
+.federation-itemUser .federation-itemWork{
+    display: none;
+}
+.federation_contactsTable {
+    border-collapse: collapse;
+    width: 620px;
+}
+.federation-contactField {
+    width: 190px;
+    margin-right: 10px;
+}
+.federation-partAddForm {
+    display: none;
+}
+.main-noPhoto {
+    background: #cccccc;
+    font-size: 150px;
+    width: 200px;
+    height: 200px;
+    color: #aaaaaa;
+    text-align: center;
+    line-height: 200px;
+}
+a {
+    color: #000083;
+}
+.federation-regions-item {
+    overflow: hidden;
+    margin-bottom: 2px;
+    font-size: 13px;
+}
+.federation-regions-logo {
+    float: left;
+    width: 95px;
+    height: 95px;
+    padding: 5px;
+    overflow: hidden;
+    background-color: #e0e0e0;
+    box-sizing: border-box;
+}
+.federation-regions-logo .main-noPhoto {
+    width: 85px;
+    height: 85px;
+    line-height: 85px;
+    font-size: 85px;
+}
+.federation-regions-name {
+    margin-left: 97px;
+    margin-right: 292px;
+    background-color: #e0e0e0;
+    height: 95px;
+    padding: 0 13px;
+    box-sizing: border-box;
+}
+.federation-regions-count {
+    width: 290px;
+    float: right;
+    background-color: #e0e0e0;
+    height: 95px;
+}
+.federation-regions-fullname {
+    font-size: 11px;
+    padding: 20px 0 5px 0;
+    box-sizing: border-box;
+}
+.federation-regions-abbr {
+    font-weight: bold;
+}
+.federation-regions-count {
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+.federation-regions-cell {
+    display: inline-block;
+}
+.federation-regions-cellTitle {
+    width: 83px;
+    padding-left: 13px;
+    box-sizing: border-box;
+}
+.federation-regions-cellCountTitle {
+    width: 65px;
+    text-align: center;
+}
+.federation-regions-cellCount {
+    font-weight: bold;
+    width: 65px;
+    text-align: center;
+}
+.main-auth_form {
+    float: right;
+    width: 245px;
+    margin-top: -43px;
+
+}
+.main-auth_form a {
+    color: #fff;
+}

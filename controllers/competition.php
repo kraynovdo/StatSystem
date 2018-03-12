@@ -52,6 +52,7 @@
         if ($_GET['federation']) {
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/start.php');
             $result['navigation'] = start_NAVIG();
+            $result['navigation']['pageId'] = 36;
 
             if ($_GET['federation'] != 11) {
                 $filter .= ' AND competition.federation = :federation';

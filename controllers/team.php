@@ -70,6 +70,7 @@
         if ($_GET['federation']) {
             require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/start.php');
             $result['navigation'] = start_navig();
+            $result['navigation']['pageId'] = 40;
         }
         $query = '
           SELECT

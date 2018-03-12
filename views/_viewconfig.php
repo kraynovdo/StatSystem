@@ -8,6 +8,12 @@
         $logo = 'themes/img/fafr_logo.png';
         /*Обработка меню навигации*/
         if ($result['navigation']['code']) {
+
+            //отдельная тема для ФАФР
+            if ($result['navigation']['code'] == 'main') {
+                $theme = 'fafr-federation';
+            }
+
             $code = $result['navigation']['code'];
             $pageId = $result['navigation']['pageId'];
 

@@ -3,6 +3,7 @@
     	$res = array();
     	require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/start.php');
     	$res['navigation'] = start_navig();
+        $res['navigation']['pageId'] = 37;
         $res['answer'] = common_getlist($dbConnect, '
           SELECT id, title, link, date FROM document WHERE federation = :federation ORDER BY date DESC', array(
             'federation' => $_GET['federation']
