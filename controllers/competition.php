@@ -276,3 +276,23 @@
             'page' => '/?r=friendlymatch'
         );
     }
+
+    function competition_lafNavig () {
+        $navig_arr = array(
+            'code' => 'laf',
+            'theme' => 'laf',
+            'header' => 'Лига Американского Футбола',
+            'subheader' => 'Открытый чемпионат России',
+            'title' => 'Открытый Чемпионат России по Американскому Футболу',
+            'description' => 'Открытый чемпионат России по Американскому футболу: Официальный сайт. Здесь вы можете найти свежие новости, информацию о командах и статистику',
+            'keywords' => array('Лига Американского Футбола', 'ЛАФ', 'Чемпионат России по американскому футболу', 'Россия', 'Американский футбол')
+        );
+        return $navig_arr;
+    }
+
+    function competition_start ($dbConnect, $CONSTPath) {
+        return array (
+            'navigation' => competition_lafNavig(),
+            'answer' => array()
+        );
+    }

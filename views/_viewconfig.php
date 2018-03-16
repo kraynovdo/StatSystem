@@ -63,6 +63,7 @@
 
 
         $header = $result['navigation']['header'] ? $result['navigation']['header'] : 'Федерация американского футбола России';
+        $subheader = $result['navigation']['subheader'] ? $result['navigation']['subheader'] : '';
         $title = $result['navigation']['title'] ? $result['navigation']['title'] : '';
         $description = $result['navigation']['description'] ? $result['navigation']['description'] : '';
 

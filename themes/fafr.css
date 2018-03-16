@@ -10,7 +10,7 @@ html {
     color: #15222b;
 }
 .fafr-bg_dark {
-    background: #15222b;
+    background: #252F4E;
     color: #fff;
 }
 .fafr-bg_accent {
@@ -23,13 +23,8 @@ html {
     overflow-y: scroll;
     height: 100%;
 }
-.fafr-width {
-    min-width: 1000px;
-    max-width: 1180px;
-    height: 100%;
-    margin: 0 auto;
-}
 .fafr-wrapper {
+    min-width: 1000px;
     min-height: 100%;
     background: #fff;
     position: relative;
@@ -45,6 +40,13 @@ html {
 .fafr-header_title {
     padding: 23px 0 0 190px;
     text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.fafr-header_title_sub {
+    font-size: 12px;
+    color: #A9ACB5;
+    font-weight: normal;
+    padding-top: 4px;
 }
 .fafr-navigation {
     height: 40px;

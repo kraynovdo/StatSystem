@@ -1,0 +1,15 @@
+.fafr-logo {
+    background-image: url('img/logo.png');
+    width: 120px;
+    height: 124px;
+}
+
+.main-auth_form {
+    float: right;
+    width: 245px;
+    margin-top: -43px;
+
+}
+.main-auth_form a {
+    color: #fff;
+}
