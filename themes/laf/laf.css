@@ -4,6 +4,8 @@
     height: 124px;
 }
 
+
+/*TODO old*/
 .main-auth_form {
     float: right;
     width: 245px;
@@ -13,6 +15,10 @@
 .main-auth_form a {
     color: #fff;
 }
+/*TODO*/
+
+
+
 .comp-teamList {
     margin: -40px 0 60px 215px;
     display: flex;
@@ -90,3 +96,61 @@
 .comp-resultsTable_team_big {
     text-transform: uppercase;
 }
+
+/*TODO old*/
+.main-columnItem {
+    float: left;
+    width: 50%;
+    padding: 10px 20px 10px 0;
+    box-sizing: border-box;
+
+}
+.main-columnItem_odd {
+    padding: 10px 0 10px 0;
+}
+.main-h3_columns {
+    clear: left;
+    padding: 20px 0 0 0;
+}
+
+.team-clItemContent {
+    height: 100px;
+    overflow: hidden;
+    background: #f4f2f2;
+}
+.team-clItemContent .main-noPhoto{
+    width: 80px;
+    height: 80px;
+    font-size: 80px;
+    line-height: 80px;
+}
+.team-clLogo {
+    float: left;
+    width: 100px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.team-clInfo {
+    margin-left: 100px;
+    padding-top: 12px;
+}
+.team-clName {
+    font-size: 20px;
+}
+.team-clName:hover {
+    text-decoration: none;
+    color: #363636;
+}
+.team-clLogoLink:hover {
+    text-decoration: none;
+}
+.team-clCity {
+    display: inline-block;
+    margin-top: 10px;
+}
+.team-clLinks {
+    margin-top: 10px;
+    text-align: right;
+    padding-right: 20px;
+}
+/*TODO*/

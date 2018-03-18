@@ -44,23 +44,8 @@
         return $navig;
     }
     function team_complist($dbConnect, $CONSTPath, $confirm=1) {
-        $confQuery = '';
-        if ($confirm) {
-            $confQuery = ' AND C.confirm = 1 ';
-        }
-        $result = array();
-        $query = '
-            SELECT
-            T.id, T.rus_name, T.city, T.logo, C.group, G.name AS groupname, C.id AS ctid, C.confirm
-            FROM compteam C LEFT JOIN team T ON T.id = C.team LEFT JOIN `group` G ON G.id = C.group
-            WHERE C.competition = :competition'. $confQuery .'
-            ORDER BY C.group, T.rus_name
-        ';
-        $params = array(
-            'competition' => $_GET['comp']
-        );
-        $result['answer'] = common_getlist($dbConnect, $query, $params);
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/competition.php');
+        $result['answer'] = competition_teamList($dbConnect, $confirm);
         $result['navigation'] = competition_NAVIG($dbConnect, $_GET['comp']);
         return $result;
     }

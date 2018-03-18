@@ -297,9 +297,8 @@
             'answer' => array()
         );
 
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/team.php');
-        $teamlist = team_complist($dbConnect, $CONSTPath, 1);
-        $result['answer']['teamlist'] = $teamlist['answer'];
+        $teamlist = competition_teamList($dbConnect, $CONSTPath, 1);
+        $result['answer']['teamlist'] = $teamlist;
 
         $result['answer']['results'] = competition_actualMatches($dbConnect);
 
@@ -309,8 +308,38 @@
 
     function competition_about ($dbConnect, $CONSTPath) {
         $result = array();
+
+        $navigation = competition_lafNavig();
+        $navigation['pageId'] = 46;
         return array (
-            'navigation' => competition_lafNavig(),
+            'navigation' => $navigation,
             'answer' => array()
+        );
+    }
+
+    function competition_teamList($dbConnect, $confirm=1) {
+        $confQuery = '';
+        if ($confirm) {
+            $confQuery = ' AND C.confirm = 1 ';
+        }
+        $query = '
+            SELECT
+            T.id, T.rus_name, T.city, T.logo, C.group, G.name AS groupname, C.id AS ctid, C.confirm
+            FROM compteam C LEFT JOIN team T ON T.id = C.team LEFT JOIN `group` G ON G.id = C.group
+            WHERE C.competition = :competition'. $confQuery .'
+            ORDER BY C.group, T.rus_name
+        ';
+        $params = array(
+            'competition' => $_GET['comp']
+        );
+        return common_getlist($dbConnect, $query, $params);
+    }
+
+    function competition_team ($dbConnect, $CONSTPath) {
+        $navigation = competition_lafNavig();
+        $navigation['pageId'] = 47;
+        return array (
+            'navigation' => $navigation,
+            'answer' => competition_teamList($dbConnect, $confirm=1)
         );
     }
