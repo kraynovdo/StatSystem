@@ -77,11 +77,17 @@
         return $date;
     }
 
-    function common_dateFromSQL($dateSrc) {
+    function common_dateFromSQL($dateSrc, $short=false) {
         $date = '';
         if ($dateSrc) {
             $date_arr = explode('-', $dateSrc);
-            $date = $date_arr[2] . '.' . $date_arr[1] . '.' . $date_arr[0];
+            if ($short) {
+                $date = $date_arr[2] . '.' . $date_arr[1];
+            }
+            else {
+                $date = $date_arr[2] . '.' . $date_arr[1] . '.' . $date_arr[0];
+            }
+
         }
         return $date;
     }

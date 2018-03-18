@@ -79,55 +79,8 @@
         $result = array(
             'answer' => array()
         );
-        $today = strftime('%Y-%m-%d');
 
-        $query = '
-            SELECT
-              M.id, M.competition, M.team1, M.team2, M.score1, M.score2, M.city, M.timeh, M.timem, date,
-              T1.rus_name AS t1name, T1.rus_abbr AS t1abbr,
-              T2.rus_name AS t2name, T2.rus_abbr AS t2abbr
-            FROM
-              `match` M
-            LEFT JOIN team T1 ON T1.id = M.team1
-            LEFT JOIN team T2 ON T2.id = M.team2
-            WHERE M.competition = :comp AND date <= :date
-            ORDER BY M.date DESC, M.timeh DESC, M.timem DESC, M.id DESC
-            LIMIT 5
-        ';
-
-        $queryresult = $dbConnect->prepare($query);
-        $queryresult->execute(array(
-            'comp' => $_GET['comp'],
-            'date' => $today
-        ));
-        $dataset = $queryresult->fetchAll();
-        if (count($dataset) < 5) {
-            $query = '
-            SELECT * FROM (
-                SELECT
-                  M.id, M.competition, M.team1, M.team2, M.score1, M.score2, M.city, M.timeh, M.timem, date,
-                  T1.rus_name AS t1name, T1.rus_abbr AS t1abbr,
-                  T2.rus_name AS t2name, T2.rus_abbr AS t2abbr
-                FROM
-                  `match` M
-                LEFT JOIN team T1 ON T1.id = M.team1
-                LEFT JOIN team T2 ON T2.id = M.team2
-                WHERE M.competition = :comp
-                ORDER BY M.date ASC, M.timeh ASC, M.timem ASC, M.id ASC
-                LIMIT 5
-            ) MM
-            ORDER BY date DESC, timeh DESC, timem DESC, id DESC
-          ';
-
-            $queryresult = $dbConnect->prepare($query);
-            $queryresult->execute(array(
-                'comp' => $_GET['comp']
-            ));
-            $dataset = $queryresult->fetchAll();
-        }
-
-
-        $result['answer']['results'] = $dataset;
+        $result['answer']['results'] = competition_actualMatches($dbConnect);
 
         $compRec = common_getrecord($dbConnect, 'SELECT sport, stats_type FROM competition WHERE id = :comp', array('comp' => $_GET['comp']));
 
@@ -290,11 +243,68 @@
         return $navig_arr;
     }
 
+    function competition_actualMatches ($dbConnect) {
+        $today = strftime('%Y-%m-%d');
+
+        $query = '
+            SELECT
+              M.id, M.competition, M.team1, M.team2, M.score1, M.score2, M.city, M.timeh, M.timem, date,
+              T1.rus_name AS t1name, T1.rus_abbr AS t1abbr,
+              T2.rus_name AS t2name, T2.rus_abbr AS t2abbr,
+              T1.logo AS t1logo,
+              T2.logo AS t2logo
+            FROM
+              `match` M
+            LEFT JOIN team T1 ON T1.id = M.team1
+            LEFT JOIN team T2 ON T2.id = M.team2
+            WHERE M.competition = :comp AND date <= :date
+            ORDER BY M.date DESC, M.timeh DESC, M.timem DESC, M.id DESC
+            LIMIT 5
+        ';
+        $dataset = common_getlist($dbConnect, $query, array(
+            'comp' => $_GET['comp'],
+            'date' => $today
+        ));
+
+        if (count($dataset) < 5) {
+            $query = '
+                SELECT * FROM (
+                    SELECT
+                      M.id, M.competition, M.team1, M.team2, M.score1, M.score2, M.city, M.timeh, M.timem, date,
+                      T1.rus_name AS t1name, T1.rus_abbr AS t1abbr,
+                      T2.rus_name AS t2name, T2.rus_abbr AS t2abbr,
+                      T1.logo AS t1logo,
+                      T2.logo AS t2logo
+                    FROM
+                      `match` M
+                    LEFT JOIN team T1 ON T1.id = M.team1
+                    LEFT JOIN team T2 ON T2.id = M.team2
+                    WHERE M.competition = :comp
+                    ORDER BY M.date ASC, M.timeh ASC, M.timem ASC, M.id ASC
+                    LIMIT 5
+                ) MM
+                ORDER BY date DESC, timeh DESC, timem DESC, id DESC
+              ';
+            $dataset = common_getlist($dbConnect, $query, array(
+                'comp' => $_GET['comp']
+            ));
+        }
+        return $dataset;
+    }
+
     function competition_start ($dbConnect, $CONSTPath) {
-        return array (
-            'navigation' => competition_lafNavig(),
+        $result = array(
             'answer' => array()
         );
+
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/team.php');
+        $teamlist = team_complist($dbConnect, $CONSTPath, 1);
+        $result['answer']['teamlist'] = $teamlist['answer'];
+
+        $result['answer']['results'] = competition_actualMatches($dbConnect);
+
+        $result['navigation'] = competition_lafNavig();
+        return $result;
     }
 
     function competition_about ($dbConnect, $CONSTPath) {

@@ -60,7 +60,7 @@
             'competition' => $_GET['comp']
         );
         $result['answer'] = common_getlist($dbConnect, $query, $params);
-        require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/competition.php');
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/competition.php');
         $result['navigation'] = competition_NAVIG($dbConnect, $_GET['comp']);
         return $result;
     }

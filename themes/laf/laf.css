@@ -13,3 +13,80 @@
 .main-auth_form a {
     color: #fff;
 }
+.comp-teamList {
+    margin: -40px 0 60px 215px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.comp-teamList_item {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
+.comp-teamList_img {
+    width: 100%;
+    height: 100%;
+}
+
+.comp-resultsTable {
+    display: flex;
+    overflow: hidden;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+.comp-resultsTable_match {
+    width: 19%;
+    box-sizing: border-box;
+    display: block;
+    text-transform: none;
+    text-decoration: none;
+    text-align: left;
+}
+
+.comp-resultsTable_match:hover {
+    text-decoration: none;
+}
+.comp-resultsTable_header {
+    font-size: 12px;
+    min-height: 20px;
+    line-height: 20px;
+    padding: 0 10px;
+}
+.comp-resultsTable_datetime {
+    font-weight: bold;
+}
+.comp-resultsTable_content {
+    padding: 10px 10px 0 10px;
+    color: #15222b;
+    border: 1px solid #eaeaea;
+    border-top: none;
+}
+.comp-resultsTable_row {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+.comp-resultsTable_logo {
+    width: 30px;
+    height: 30px;
+    float: left;
+    margin-right: 10px;
+}
+.comp-resultsTable_score {
+    font-size: 18px;
+    text-align: right;
+}
+.comp-resultsTable_team {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 30px;
+    line-height: 30px;
+}
+.comp-resultsTable_team_big {
+    text-transform: uppercase;
+}

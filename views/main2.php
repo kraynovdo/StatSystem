@@ -11,9 +11,9 @@
         <script type="text/javascript">window.mobile = true;</script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <?}?>
-    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/fafr.css?1"/>
+    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/fafr.css?2"/>
     <?if ($theme) {?>
-        <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?9"/>
+        <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?11"/>
     <?}?>
     <link rel="shortcut icon" href="//<?=$HOST?>/themes/img/fafr_logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery-ui.css">
@@ -42,7 +42,7 @@
     <div class="fafr-header fafr-bg_dark">
         <h2 class="fafr-header_title fafr-h2"><?= $header ?></h2>
         <h4 class="fafr-header_title fafr-header_title_sub"><?= $subheader ?></h4>
-
+        <div class="main-auth_form"><?php require ($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/user/login.php');?></div>
         <div class="fafr-login" style="display: none"><?php require ($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/user/loginPanel.php');?></div>
     </div>
     <div class="fafr-navigation fafr-bg_accent">
