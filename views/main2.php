@@ -69,9 +69,9 @@
     <?}?>
     <div class="fafr-content">
         <?php
-        if (file_exists($content)) {
-            require $content;
-        }
+            if (file_exists($content)) {
+                require $content;
+            }
         ?>
     </div>
     <div class="fafr-footerplace"></div>
