@@ -42,7 +42,8 @@
     <div class="fafr-header fafr-bg_dark">
         <h2 class="fafr-header_title fafr-h2"><?= $header ?></h2>
         <h4 class="fafr-header_title fafr-header_title_sub"><?= $subheader ?></h4>
-        <div class="main-auth_form"><?php require ($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/user/login.php');?></div>
+
+        <div class="fafr-login" style="display: none"><?php require ($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/user/loginPanel.php');?></div>
     </div>
     <div class="fafr-navigation fafr-bg_accent">
         <ul class="fafr-navigation__list">

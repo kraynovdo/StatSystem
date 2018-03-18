@@ -98,9 +98,62 @@ html {
     position: relative;
 }
 
-
-
-
+.fafr-login {
+    position: absolute;
+    top: 25px;
+    right: 50px;
+}
+.fafr-login_btn {
+    display: inline-block;
+    width: 70px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #ffffff;
+    border-radius: 15px;
+    line-height: 30px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.fafr-login_form {
+    width: 400px;
+    height: 286px;
+    position: absolute;
+    z-index: 10;
+    top: 10px;
+    left: -500px;
+    background: #fff;
+}
+.fafr-login_header {
+    height: 60px;
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
+.fafr-login_title {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 1px;
+    float: left;
+    width: 100%;
+}
+.fafr-login_close {
+    float: left;
+    width: 22px;
+    height: 22px;
+    margin-top: -1px;
+    margin-left: -22px;
+    cursor: pointer;
+    background: url('img/close.png');
+}
+.fafr-login_content {
+    padding: 10px 40px;
+}
+.fafr-login_fieldWrapper {
+    margin-bottom: 10px;
+}
+.fafr-login_input {
+    width: 100%;
+}
 
 .fafr-h1 {
     font-size: 28px;
@@ -111,3 +164,21 @@ html {
     font-size: 18px;
     font-weight: bold;
 }
+
+.fafr-input {
+    height: 48px;
+    font-size: 14px;
+    border-style: none none solid none;
+    border-width: 1px;
+    border-color: #eaeaea;
+    outline: none;
+    line-height: 48px;
+}
+.fafr-input:focus {
+    border-width: 2px;
+    border-color: #252F4E;
+}
+.fafr-input::-webkit-input-placeholder {color:#A9ACB5}
+.fafr-input::-moz-placeholder          {color:#A9ACB5}/* Firefox 19+ */
+.fafr-input:-moz-placeholder           {color:#A9ACB5}/* Firefox 18- */
+.fafr-input:-ms-input-placeholder      {color:#A9ACB5}

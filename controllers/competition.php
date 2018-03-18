@@ -296,3 +296,11 @@
             'answer' => array()
         );
     }
+
+    function competition_about ($dbConnect, $CONSTPath) {
+        $result = array();
+        return array (
+            'navigation' => competition_lafNavig(),
+            'answer' => array()
+        );
+    }
