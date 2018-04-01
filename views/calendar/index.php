@@ -1,6 +1,6 @@
 <?if (count($answer['group'])) {?>
 
-    <div class="comp_groupSelector">
+<div class="comp_groupSelector" xmlns="http://www.w3.org/1999/html">
         <h2 class="fafr-h2 comp_groupSelector_label">Дивизион</h2>
 
         <select class="match-groupSelector comp_groupSelector_dropdown">
@@ -35,8 +35,9 @@
         <?}?>
 
 
-        <div href="/?r=<?=$viewHref?>&match=<?=$match[$i]['id']?>&comp=<?=$_GET['comp']?>" class="comp-columnItem <?if ($odd) {?>comp-columnItem_odd<?}?>">
+        <div class="comp-columnItem <?if ($odd) {?>comp-columnItem_odd<?}?>">
             <div class="comp-columnItem_content calendar-item_content">
+                <a class="comp-columnContentLink" href="/?r=<?=$viewHref?>&match=<?=$match[$i]['id']?>&comp=<?=$_GET['comp']?>"></a>
                 <div class="calendar-item_left">
                     <div class="calendar-item_logo">
                         <?if ($match[$i]['t1logo']) {?>
@@ -54,8 +55,8 @@
                 </div>
                 <div class="calendar-item_center">
                     <div class="calendar-item_count">
-                        <span class="calendar-item_digit"><?=strlen ($match[$i]['score1']) ? $match[$i]['score1'] : '-'?></span>
-                        <span class="calendar-item_digit"><?=strlen ($match[$i]['score2']) ? $match[$i]['score2'] : '-'?></span>
+                        <a class="calendar-item_digit"><?=strlen ($match[$i]['score1']) ? $match[$i]['score1'] : '-'?></a>
+                        <a class="calendar-item_digit"><?=strlen ($match[$i]['score2']) ? $match[$i]['score2'] : '-'?></a>
                     </div>
                     <div class="calendar-item_info">
                         <?if ($match[$i]['timeh']){?><div><?=$match[$i]['timeh']?>:<?=$match[$i]['timem']?> (мск)</div><?}?>
@@ -79,12 +80,10 @@
                     </div>
                 </div>
             </div>
-            <div class="match-list_footerItemRight main-rightAlign">
-                <?if ((($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1))  && ($ctrlMode)) {?>
-                <a href="/?r=match/edit&comp=<?=$_GET['comp']?>&match=<?=$match[$i]['id']?>">[Ред]</a>
-                <a class="main-delLink main-danger" href="/?r=match/delete&comp=<?=$_GET['comp']?>&match=<?=$match[$i]['id']?>">[X]</a>
-                <?}?>
-            </div>
+            <?if ((($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1))  && ($ctrlMode)) {?>
+            <a href="/?r=match/edit&comp=<?=$_GET['comp']?>&match=<?=$match[$i]['id']?>">[Ред]</a>
+            <a class="main-delLink main-danger" href="/?r=match/delete&comp=<?=$_GET['comp']?>&match=<?=$match[$i]['id']?>">[X]</a>
+            <?}?>
         </div>
     <?$odd = 1-$odd;}?>
     <div class="clearfix"></div>

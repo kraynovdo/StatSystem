@@ -116,6 +116,15 @@
 .comp-columnItem_content {
     border: 1px solid #eaeaea;
     overflow: hidden;
+    position: relative;
+}
+.comp-columnContentLink {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 .comp-columnItem_odd {
     padding: 0 0 40px 40px;
@@ -141,12 +150,15 @@
 .comp-teamTile_city {
     font-size: 18px;
     padding-top: 25px;
+    display: block;
 }
 .comp-teamTile_name {
     font-size: 26px;
+    display: block;
 }
 .comp-teamTile_label {
     padding-top: 15px;
+    display: block;
 }
 /*calendar*/
 .comp_groupSelector {

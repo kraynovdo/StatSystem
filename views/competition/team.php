@@ -15,24 +15,25 @@
         <?}?>
     <div class="comp-columnItem <?if ($odd) {?>comp-columnItem_odd<?}?>">
         <div class="comp-teamTile comp-columnItem_content">
+            <a  target="_blank" class="comp-columnContentLink" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>""></a>
             <div class="comp-teamTile_logo">
                 <?if ($answer[$i]['logo']) {?>
-                    <a class="comp-teamTile_logoLink" target="_blank" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>">
+                    <span class="comp-teamTile_logoLink">
                         <img style="width:140px" src="//<?=$HOST?>/upload/<?=$answer[$i]['logo']?>">
-                    </a>
+                    </span>
                 <?} else {?>
-                    <a class="comp-teamTile_logoLink" target="_blank" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>">
+                    <span class="comp-teamTile_logoLink">
                         <div class="fafr-noPhoto">?</div>
-                    </a>
+                    </span>
                 <?}?>
             </div>
             <div class="comp-teamTile_info">
-                <a class="comp-teamTile_logoLink fafr-text comp-teamTile_city" target="_blank" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>">
+                <span class="comp-teamTile_city">
                     <?=$answer[$i]['city_adj']?>
-                </a>
-                <a class="comp-teamTile_logoLink fafr-text comp-teamTile_name" target="_blank" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>">
+                </span>
+                <span class="comp-teamTile_name">
                     <?=$answer[$i]['rus_name']?>
-                </a>
+                </span>
                 <div class="comp-teamTile_label fafr-textAdd">
                     Главный тренер
                 </div>
@@ -41,6 +42,9 @@
                 </div>
             </div>
         </div>
+        <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
+            <a class="main-delLink main-danger" href="/?r=compteam/delete&id=<?=$answer[$i]['ctid']?>&comp=<?=$_GET['comp']?>">Удалить</a>
+        <?}?>
     </div>
     <?$odd = 1-$odd;}?>
     <div class="clearfix"></div>
