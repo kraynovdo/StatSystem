@@ -324,11 +324,28 @@
         }
         $query = '
             SELECT
-            T.id, T.rus_name, T.city, T.logo, C.group, G.name AS groupname, C.id AS ctid, C.confirm
-            FROM compteam C LEFT JOIN team T ON T.id = C.team LEFT JOIN `group` G ON G.id = C.group
-            WHERE C.competition = :competition'. $confQuery .'
-            ORDER BY C.group, T.rus_name
+                T.id,
+                T.rus_name,
+                T.city,
+                T.city_adj,
+                T.logo,
+                C.group,
+                G.name AS groupname,
+                C.id AS ctid,
+                C.confirm,
+                P.surname AS csname, P.name AS cname
+            FROM
+                compteam C
+                LEFT JOIN team T ON T.id = C.team
+                LEFT JOIN `group` G ON G.id = C.group
+                LEFT JOIN rosterface RF ON RF.team = T.id AND RF.competition = :competition AND facetype = 5
+                LEFT JOIN person P ON P.id = RF.person
+            WHERE
+                C.competition = :competition'. $confQuery .'
+            ORDER BY
+                C.group, T.rus_name
         ';
+        echo $query;
         $params = array(
             'competition' => $_GET['comp']
         );

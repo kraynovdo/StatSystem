@@ -5,6 +5,14 @@
 html {
     height: 100%;
 }
+.fafr-text {
+    color: #15222b;
+    font-size: 14px;
+    font-family : Roboto, sans-serif;
+}
+.fafr-textAdd {
+
+}
 .fafr-bg_light {
     background-color: #E6E6E6;
     color: #15222b;
@@ -17,9 +25,10 @@ html {
     background: #D0202D;
     color: #fff;
 }
+.fafr-centerAl {
+    text-align: center;
+}
 .fafr-body {
-    font-size: 14px;
-    font-family : Roboto, sans-serif;
     overflow-y: scroll;
     height: 100%;
 }
@@ -182,3 +191,11 @@ html {
 .fafr-input::-moz-placeholder          {color:#A9ACB5}/* Firefox 19+ */
 .fafr-input:-moz-placeholder           {color:#A9ACB5}/* Firefox 18- */
 .fafr-input:-ms-input-placeholder      {color:#A9ACB5}
+
+.clearfix:after {
+    content: '.';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}

@@ -1,4 +1,3 @@
-<h2>Страница в разработке</h2>
 <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
     <a href="/?r=compteam/add&comp=<?=$_GET['comp']?>">Добавить команду</a>
 <?}?>
@@ -12,31 +11,33 @@
         $prev_group = $answer[$i]['group'];
         $odd = 0;
         ?>
-        <h3 class="main-centerAlign main-h3_columns clearfix"><?=$answer[$i]['groupname']?></h3>
+        <h2 class="fafr-centerAl comp-columnsHeader clearfix fafr-h2"><?=$answer[$i]['groupname']?></h2>
         <?}?>
-    <div class="team-clItem main-columnItem <?if ($odd) {?>main-columnItem_odd<?}?>">
-        <div class="team-clItemContent">
-            <div class="team-clLogo">
+    <div class="comp-columnItem <?if ($odd) {?>comp-columnItem_odd<?}?>">
+        <div class="comp-teamTile">
+            <div class="comp-teamTile_logo">
                 <?if ($answer[$i]['logo']) {?>
-                <a class="team-clLogoLink" target="_blank" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>">
-                    <img style="width:80px" src="//<?=$HOST?>/upload/<?=$answer[$i]['logo']?>">
+                <a class="comp-teamTile_logoLink" target="_blank" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>">
+                    <img style="width:140px" src="//<?=$HOST?>/upload/<?=$answer[$i]['logo']?>">
                 </a>
                 <?} else {?>
-                <a class="team-clLogoLink" target="_blank" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>">
+                <a class="comp-teamTile_logoLink" target="_blank" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>">
                     <div class="main-noPhoto">?</div>
                 </a>
                 <?}?>
             </div>
-            <div class="team-clInfo">
-                <a class="team-clName" target="_blank" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>"><?=$answer[$i]['rus_name']?></a>
-
-                <br/>
-                <span class="team-clCity"><?=$answer[$i]['city']?></span>
-                <div class="team-clLinks">
-                    <a target="_blank" href="/?r=roster&team=<?=$answer[$i]['id']?><?=$filter?>">Состав</a>
-                    <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
-                    <a class="main-delLink main-danger" href="/?r=compteam/delete&id=<?=$answer[$i]['ctid']?>&comp=<?=$_GET['comp']?>">Удалить</a>
-                    <?}?>
+            <div class="comp-teamTile_info">
+                <a class="comp-teamTile_logoLink fafr-text comp-teamTile_city" target="_blank" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>">
+                    <?=$answer[$i]['city_adj']?>
+                </a>
+                <a class="comp-teamTile_logoLink fafr-text comp-teamTile_name" target="_blank" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>">
+                    <?=$answer[$i]['rus_name']?>
+                </a>
+                <div class="comp-teamTile_label">
+                    Главный тренер
+                </div>
+                <div class="comp-teamTile_coach">
+                    <?=$answer[$i]['csname'] . ' ' .  $answer[$i]['cname']?>
                 </div>
             </div>
         </div>

@@ -11,16 +11,16 @@
         <script type="text/javascript">window.mobile = true;</script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <?}?>
-    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/fafr.css?2"/>
+    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/fafr.css?3"/>
     <?if ($theme) {?>
-        <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?11"/>
+        <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?12"/>
     <?}?>
     <link rel="shortcut icon" href="//<?=$HOST?>/themes/img/fafr_logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery-ui.css">
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery.Jcrop.min.css?1">
     <link href='http://fonts.googleapis.com/css?family=Roboto&subset=latin,cyrillic,cyrillic-ext' rel='stylesheet' type='text/css'>
 </head>
-<body class="fafr-body">
+<body class="fafr-body fafr-text">
 <? if ($_SESSION['error']){?>
     <div class="main-error">
         <?=$_SESSION['error']?>

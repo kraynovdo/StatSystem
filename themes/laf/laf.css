@@ -97,60 +97,56 @@
     text-transform: uppercase;
 }
 
-/*TODO old*/
-.main-columnItem {
+
+/*team list*/
+.comp-columnsHeader {
+    clear: left;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #EAEAEA;
+    margin-bottom: 40px;
+}
+.comp-columnItem {
     float: left;
     width: 50%;
-    padding: 10px 20px 10px 0;
+    padding: 0 40px 40px 0;
     box-sizing: border-box;
 
 }
-.main-columnItem_odd {
-    padding: 10px 0 10px 0;
+.comp-columnItem_odd {
+    padding: 0 0 40px 40px;
 }
-.main-h3_columns {
-    clear: left;
-    padding: 20px 0 0 0;
-}
-
-.team-clItemContent {
-    height: 100px;
+.comp-teamTile {
+    border: 1px solid #eaeaea;
     overflow: hidden;
-    background: #f4f2f2;
 }
-.team-clItemContent .main-noPhoto{
-    width: 80px;
-    height: 80px;
-    font-size: 80px;
-    line-height: 80px;
-}
-.team-clLogo {
+.comp-teamTile_logo {
     float: left;
-    width: 100px;
-    padding: 10px;
-    box-sizing: border-box;
+    width: 140px;
+    padding: 20px;
 }
-.team-clInfo {
-    margin-left: 100px;
-    padding-top: 12px;
+.comp-teamTile_logo .main-noPhoto{
+    width: 140px;
+    height: 140px;
+    font-size: 140px;
+    line-height: 140px;
 }
-.team-clName {
-    font-size: 20px;
-}
-.team-clName:hover {
-    text-decoration: none;
-    color: #363636;
-}
-.team-clLogoLink:hover {
+.comp-teamTile_logoLink {
+    display: block;
     text-decoration: none;
 }
-.team-clCity {
-    display: inline-block;
-    margin-top: 10px;
+.comp-teamTile_info {
+    margin-left: 250px;
+    padding-top: 20px;
 }
-.team-clLinks {
-    margin-top: 10px;
-    text-align: right;
-    padding-right: 20px;
+.comp-teamTile_city {
+    font-size: 18px;
+    padding-top: 25px;
 }
-/*TODO*/
+.comp-teamTile_name {
+    font-size: 26px;
+}
+.comp-teamTile_label {
+    color: #a9acb5;
+    padding-top: 15px;
+}
