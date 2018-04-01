@@ -111,23 +111,22 @@
     width: 50%;
     padding: 0 40px 40px 0;
     box-sizing: border-box;
-
+    display: block;
+}
+.comp-columnItem_content {
+    border: 1px solid #eaeaea;
+    overflow: hidden;
 }
 .comp-columnItem_odd {
     padding: 0 0 40px 40px;
 }
-.comp-teamTile {
-    border: 1px solid #eaeaea;
-    overflow: hidden;
-}
+
 .comp-teamTile_logo {
     float: left;
     width: 140px;
     padding: 20px;
 }
-.comp-teamTile_logo .main-noPhoto{
-    width: 140px;
-    height: 140px;
+.comp-teamTile_logo .fafr-noPhoto{
     font-size: 140px;
     line-height: 140px;
 }
@@ -147,6 +146,78 @@
     font-size: 26px;
 }
 .comp-teamTile_label {
-    color: #a9acb5;
     padding-top: 15px;
+}
+/*calendar*/
+.comp_groupSelector {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    padding-bottom: 18px;
+}
+.comp_groupSelector_label {
+    height: 40px;
+    line-height: 40px;
+    padding-right: 90px;
+    float: left;
+}
+.comp_groupSelector_dropdown {
+    width: 140px;
+}
+.calendar-dateHeader {
+    display: inline-block;
+    box-sizing: border-box;
+    border-bottom: 1px solid #15222B;
+}
+.calendar-item_content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.calendar-item_logo {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+}
+.calendar-item_logo .fafr-noPhoto {
+    font-size: 50px;
+    line-height: 50px;
+}
+.calendar-item_left {
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+}
+.calendar-item_right {
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+}
+.calendar-item_team {
+    font-size: 18px;
+    padding-top: 10px;
+}
+.calendar-item_center {
+    width: 70%;
+    text-align: center;
+}
+.calendar-item_count {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.calendar-item_digit {
+    font-size: 28px;
+    width: 70px;
+    text-align: center;
+    font-weight: bold;
+    display: inline-block;
+    height: 40px;
+}
+.calendar-item_info {
+    height: 60px;
+    font-size: 12px;
+    padding-top: 10px;
+    box-sizing: border-box;
 }

@@ -14,16 +14,16 @@
         <h2 class="fafr-centerAl comp-columnsHeader clearfix fafr-h2"><?=$answer[$i]['groupname']?></h2>
         <?}?>
     <div class="comp-columnItem <?if ($odd) {?>comp-columnItem_odd<?}?>">
-        <div class="comp-teamTile">
+        <div class="comp-teamTile comp-columnItem_content">
             <div class="comp-teamTile_logo">
                 <?if ($answer[$i]['logo']) {?>
-                <a class="comp-teamTile_logoLink" target="_blank" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>">
-                    <img style="width:140px" src="//<?=$HOST?>/upload/<?=$answer[$i]['logo']?>">
-                </a>
+                    <a class="comp-teamTile_logoLink" target="_blank" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>">
+                        <img style="width:140px" src="//<?=$HOST?>/upload/<?=$answer[$i]['logo']?>">
+                    </a>
                 <?} else {?>
-                <a class="comp-teamTile_logoLink" target="_blank" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>">
-                    <div class="main-noPhoto">?</div>
-                </a>
+                    <a class="comp-teamTile_logoLink" target="_blank" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>">
+                        <div class="fafr-noPhoto">?</div>
+                    </a>
                 <?}?>
             </div>
             <div class="comp-teamTile_info">
@@ -33,7 +33,7 @@
                 <a class="comp-teamTile_logoLink fafr-text comp-teamTile_name" target="_blank" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>">
                     <?=$answer[$i]['rus_name']?>
                 </a>
-                <div class="comp-teamTile_label">
+                <div class="comp-teamTile_label fafr-textAdd">
                     Главный тренер
                 </div>
                 <div class="comp-teamTile_coach">
