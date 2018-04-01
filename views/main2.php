@@ -11,9 +11,9 @@
         <script type="text/javascript">window.mobile = true;</script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <?}?>
-    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/fafr.css?4"/>
+    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/fafr.css?5"/>
     <?if ($theme) {?>
-        <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?13"/>
+        <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?14"/>
     <?}?>
     <link rel="shortcut icon" href="//<?=$HOST?>/themes/img/fafr_logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery-ui.css">
@@ -36,38 +36,47 @@
     $_SESSION['message'] = '';
 }?>
 
-
-<div class="fafr-wrapper">
-    <a class="fafr-logo" href="/"></a>
-    <div class="fafr-header fafr-bg_dark">
-        <h2 class="fafr-header_title fafr-h2"><?= $header ?></h2>
-        <h4 class="fafr-header_title fafr-header_title_sub"><?= $subheader ?></h4>
-        <div class="main-auth_form"><?php require ($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/user/login.php');?></div>
-        <div class="fafr-login" style="display: none"><?php require ($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/user/loginPanel.php');?></div>
+<div class="fafr-wrapper fafr-minWidth">
+    <div class="fafr-bg_dark fafr-minWidth">
+        <div class="fafr-minWidth fafr-maxWidth">
+            <a class="fafr-logo" href="/"></a>
+            <div class="fafr-header">
+                <h2 class="fafr-header_title fafr-h2"><?= $header ?></h2>
+                <h4 class="fafr-header_title fafr-header_title_sub"><?= $subheader ?></h4>
+                <div class="main-auth_form"><?php require ($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/user/login.php');?></div>
+                <div class="fafr-login" style="display: none"><?php require ($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/user/loginPanel.php');?></div>
+            </div>
+        </div>
     </div>
-    <div class="fafr-navigation fafr-bg_accent">
-        <ul class="fafr-navigation__list">
-            <? foreach ($NAVIGATION as $point) { ?>
+
+    <div class="fafr-bg_accent fafr-minWidth">
+        <div class="fafr-navigation fafr-minWidth fafr-maxWidth">
+            <ul class="fafr-navigation__list">
+                <? foreach ($NAVIGATION as $point) { ?>
                 <li class="fafr-navigation__point">
                     <a class="fafr-navigation__link<?if ($point['id'] == $NAVCURRENT){?> fafr-bg_light<?}else{?> fafr-bg_accent<?}?>"
-                       href="<?= $point['href'] ?>"><?= $point['title'] ?></a>
-                </li>
-            <? } ?>
-        </ul>
-    </div>
-    <?if (count($NAVIGATION2)) {?>
-        <div class="fafr-navigation fafr-bg_light">
-            <ul class="fafr-navigation__list">
-                <? foreach ($NAVIGATION2 as $point) { ?>
-                <li class="fafr-navigation__point">
-                    <a class="fafr-navigation__link__second fafr-bg_light<?if ($point['id'] == $NAVCURRENT2){?> fafr-navigation__link__second__selected<?}?>"
                        href="<?= $point['href'] ?>"><?= $point['title'] ?></a>
                 </li>
                 <? } ?>
             </ul>
         </div>
+    </div>
+
+    <?if (count($NAVIGATION2)) {?>
+        <div class="fafr-bg_light fafr-minWidth">
+            <div class="fafr-navigation fafr-minWidth fafr-maxWidth">
+                <ul class="fafr-navigation__list">
+                    <? foreach ($NAVIGATION2 as $point) { ?>
+                    <li class="fafr-navigation__point">
+                        <a class="fafr-navigation__link__second fafr-bg_light<?if ($point['id'] == $NAVCURRENT2){?> fafr-navigation__link__second__selected<?}?>"
+                           href="<?= $point['href'] ?>"><?= $point['title'] ?></a>
+                    </li>
+                    <? } ?>
+                </ul>
+            </div>
+        </div>
     <?}?>
-    <div class="fafr-content">
+    <div class="fafr-content fafr-minWidth fafr-maxWidth">
         <?php
             if (file_exists($content)) {
                 require $content;

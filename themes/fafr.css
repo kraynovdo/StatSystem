@@ -32,8 +32,15 @@ html {
     overflow-y: scroll;
     height: 100%;
 }
-.fafr-wrapper {
+.fafr-minWidth {
     min-width: 1000px;
+}
+.fafr-maxWidth {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+.fafr-wrapper {
     min-height: 100%;
     background: #fff;
     position: relative;
@@ -95,7 +102,7 @@ html {
 }
 .fafr-content {
     box-sizing: border-box;
-    padding: 55px 50px 0 50px
+    padding: 55px 0 0 0;
 }
 
 .fafr-footerplace {
