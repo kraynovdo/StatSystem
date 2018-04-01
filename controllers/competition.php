@@ -345,7 +345,6 @@
             ORDER BY
                 C.group, T.rus_name
         ';
-        echo $query;
         $params = array(
             'competition' => $_GET['comp']
         );
