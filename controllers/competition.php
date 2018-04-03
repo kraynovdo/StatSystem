@@ -359,3 +359,21 @@
             'answer' => competition_teamList($dbConnect, $confirm=1)
         );
     }
+
+    function competition_referee ($dbConnect, $CONSTPath) {
+        $result = array(
+            'answer' => array()
+        );
+        $navigation = competition_lafNavig();
+        $navigation['pageId'] = 48;
+        $result['navigation'] = $navigation;
+
+        if ($_GET['comp']) {
+            require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/refereecomp.php');
+            $result['answer']['referee'] = refereecomp_list($dbConnect, $_GET['comp']);
+
+            require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/referee.php');
+            $result['answer']['all'] = referee_list($dbConnect, $CONSTPath);
+        }
+        return $result;
+    }

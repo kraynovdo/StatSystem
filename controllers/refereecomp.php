@@ -1,10 +1,7 @@
 <?php
-    function refereecomp_index($dbConnect, $CONSTPath) {
-        $result = array(
-            'answer' => array()
-        );
-        if ($_GET['comp']) {
-            $result['answer']['referee'] = common_getlist($dbConnect, '
+
+    function refereecomp_list($dbConnect, $comp) {
+        return common_getlist($dbConnect, '
                 SELECT
                     P.id, P.surname, P.name, P.patronymic, P.birthdate, P.avatar, R.id AS refid, RC.id AS rc, GC.name AS country
                 FROM
@@ -15,8 +12,18 @@
                     RC.competition = :competition
                 ORDER BY P.surname
             ', array(
-                'competition' => $_GET['comp']
-            ));
+            'competition' => $comp
+        ));
+    }
+
+
+    function refereecomp_index($dbConnect, $CONSTPath) {
+        $result = array(
+            'answer' => array()
+        );
+        if ($_GET['comp']) {
+            $result['answer']['referee'] = refereecomp_list($dbConnect, $_GET['comp']);
+
             require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/referee.php');
             $result['answer']['all'] = referee_list($dbConnect, $CONSTPath);
             require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/competition.php');

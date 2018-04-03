@@ -215,3 +215,6 @@ html {
     text-align: center;
     line-height: 20px;
 }
+.fafr-hidden {
+    display: none;
+}

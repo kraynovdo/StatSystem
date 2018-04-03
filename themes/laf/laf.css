@@ -235,3 +235,35 @@
     padding-top: 10px;
     box-sizing: border-box;
 }
+
+/*список судей*/
+.referee-list {
+    overflow: hidden;
+}
+.referee-item {
+    float: left;
+    width: 33%;
+    position: relative;
+    padding-bottom: 40px;
+}
+.referee-clAvatar {
+    width: 140px;
+    height: 140px;
+    float: left;
+}
+.referee-clAvatar .fafr-noPhoto {
+    font-size: 140px;
+    line-height: 140px;
+}
+
+.referee-item_info {
+    padding: 15px 0 0 40px;
+    margin-left: 140px;
+}
+.referee-addBlock {
+    padding-bottom: 15px;
+}
+.referee-fio {
+    font-size: 18px;
+    padding-bottom: 10px;
+}
