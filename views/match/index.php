@@ -12,7 +12,7 @@
 </div>
 <?}?>
 <?if(($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)){?>
-    <a class="main-addLink" href="/?r=match/add&comp=<?=$_GET['comp']?>">Добавить матч</a>
+    <a class="main-addLink" href="/?r=match/add&ret=match&comp=<?=$_GET['comp']?>">Добавить матч</a>
 <?}?>
-<?$match = $answer['match']; $ctrlMode = true;?>
+<?$match = $answer['match']; $ctrlMode = 'match';?>
 <? include '_schedule.php'?>

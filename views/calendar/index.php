@@ -14,7 +14,7 @@
 <?}?>
 
 <?if(($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)){?>
-    <a class="main-addLink" href="/?r=match/add&comp=<?=$_GET['comp']?>">Добавить матч</a>
+    <a class="main-addLink" href="/?r=match/add&ret=calendar&comp=<?=$_GET['comp']?>">Добавить матч</a>
 <?}?>
 
 <?$match = $answer['match']; $ctrlMode = true;?>
@@ -81,8 +81,8 @@
                 </div>
             </div>
             <?if ((($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1))  && ($ctrlMode)) {?>
-            <a href="/?r=match/edit&comp=<?=$_GET['comp']?>&match=<?=$match[$i]['id']?>">[Ред]</a>
-            <a class="main-delLink main-danger" href="/?r=match/delete&comp=<?=$_GET['comp']?>&match=<?=$match[$i]['id']?>">[X]</a>
+            <a href="/?r=match/edit&ret=calendar&comp=<?=$_GET['comp']?>&match=<?=$match[$i]['id']?>">[Ред]</a>
+            <a class="main-delLink main-danger" href="/?r=match/delete&ret=calendar&comp=<?=$_GET['comp']?>&match=<?=$match[$i]['id']?>">[X]</a>
             <?}?>
         </div>
     <?$odd = 1-$odd;}?>

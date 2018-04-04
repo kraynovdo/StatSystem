@@ -42,8 +42,8 @@
                 </div>
                 <div class="match-list_footerItemRight main-rightAlign">
                     <?if ((($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1))  && ($ctrlMode)) {?>
-                        <a href="/?r=match/edit&comp=<?=$_GET['comp']?>&match=<?=$match[$i]['id']?>">[Ред]</a>
-                        <a class="main-delLink main-danger" href="/?r=match/delete&comp=<?=$_GET['comp']?>&match=<?=$match[$i]['id']?>">[X]</a>
+                        <a href="/?r=match/edit&ret=<?=$ctrlMode?>&comp=<?=$_GET['comp']?>&match=<?=$match[$i]['id']?>">[Ред]</a>
+                        <a class="main-delLink main-danger" href="/?r=match/delete&ret=<?=$ctrlMode?>&comp=<?=$_GET['comp']?>&match=<?=$match[$i]['id']?>">[X]</a>
                     <?}?>
                 </div>
 

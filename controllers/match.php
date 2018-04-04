@@ -123,7 +123,7 @@
                 'group' => $group
             ));
             return array(
-                'page' => '/?r=match&comp='.$comp
+                'page' => '/?r=' . $_POST['ret'] . '&comp='.$comp
             );
         }
         else {
@@ -189,7 +189,7 @@
 
             $queryresult->execute($param);
             return array(
-                'page' => '/?r=match&comp='.$comp
+                'page' => '/?r=' . $_POST['ret'] . '&comp='.$comp
             );
         }
         else {
@@ -207,7 +207,7 @@
                 'match' => $match
             ));
             return array(
-                'page' => '/?r=match&comp='.$comp
+                'page' => '/?r=' . $_GET['ret'] . '&comp='.$comp
             );
         }
         else {

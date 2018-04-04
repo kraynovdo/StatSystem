@@ -1,5 +1,6 @@
 <h2>Добавление матча</h2>
 <form method="POST" action="/?r=match/create">
+    <input type="hidden" name="ret" value="<?=$_GET['ret']?>"/>
     <input type="hidden" name="comp" value="<?=$_GET['comp']?>"/>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Дата матча</label>

@@ -1,6 +1,7 @@
 <h2>Редактирование матча</h2>
 <form method="POST" action="/?r=match/update">
     <input type="hidden" name="comp" value="<?=$_GET['comp']?>"/>
+    <input type="hidden" name="ret" value="<?=$_GET['ret']?>"/>
     <input type="hidden" name="match" value="<?=$_GET['match']?>"/>
     <?
     if ($answer['match']['date'] != '0000-00-00') {
