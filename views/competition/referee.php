@@ -1,25 +1,25 @@
 <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
-<div class="referee-addBlock">
-    <button class="referee-compAddBtn main-btn roster-submit">Добавить</button>
+<div class="referee-addBlock fafr-standartPadding">
+    <button class="referee-compAddBtn fafr-btn fafr-btn_standart">Добавить</button>
 </div>
 <form class="referee-compAddForm fafr-hidden" action="/?r=refereecomp/create" method="post">
     <input name="competition" type="hidden" value="<?=$_GET['comp']?>"/>
     <input type="hidden" name="ret" value="competition/referee"/>
-    <div class="main-fieldWrapper">
+    <div class="fafr-standartPadding">
         <select class="referee-compAddField" name="referee">
             <?php for ($i = 0; $i < count($answer['all']); $i++) {?>
             <option value="<?=$answer['all'][$i]['refid']?>"><?=implode(' ', array($answer['all'][$i]['surname'], $answer['all'][$i]['name'], $answer['all'][$i]['patronymic']))?></option>
             <?}?>
         </select>
     </div>
-    <div class="main-fieldWrapper">
+    <div class="fafr-standartPadding">
         <label>
             <input type="checkbox" name="main"/>
             Главный судья соревнований
         </label>
     </div>
-    <div class="main-fieldWrapper">
-        <input type="button" class="main-btn main-submit" value="ок"/>
+    <div class="fafr-standartPadding">
+        <input type="button" class="fafr-btn fafr-btn_standart main-submit" value="ок"/>
     </div>
 </form>
 <?}?>

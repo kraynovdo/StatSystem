@@ -7,7 +7,7 @@
  */
 (function(){
     $('.referee-compAddBtn').click(function(){
-        $(this).addClass('fafr-hidden');
+        $('.referee-addBlock').addClass('fafr-hidden');
         $('.referee-compAddForm').removeClass('fafr-hidden');
     })
 })();
