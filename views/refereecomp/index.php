@@ -4,6 +4,7 @@
         <button class="referee-compAddBtn main-btn roster-submit">Добавить</button>
     </div>
     <form class="referee-compAddForm main-hidden" action="/?r=refereecomp/create" method="post">
+        <input type="hidden" name="ret" value="refereecomp"/>
         <input name="competition" type="hidden" value="<?=$_GET['comp']?>"/>
         <div class="main-fieldWrapper">
             <select class="referee-compAddField" name="referee">
@@ -63,7 +64,7 @@
                 </td>
                 <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
                     <td>
-                        <a class="main-dellink" href="/?r=refereecomp/delete&rc=<?=$answer['referee'][$i]['rc']?>&comp=<?=$_GET['comp']?>">[X]</a>
+                        <a class="main-dellink" href="/?r=refereecomp/delete&ret=refereecomp&rc=<?=$answer['referee'][$i]['rc']?>&comp=<?=$_GET['comp']?>">[X]</a>
                     </td>
                 <?}?>
             <?} else {?>
@@ -71,7 +72,7 @@
                     <div>
                         <a target="_blank" href="/?r=person/view&person=<?=$answer['referee'][$i]['id']?>"><?=implode(' ', array($answer['referee'][$i]['surname'], $answer['referee'][$i]['name'], $answer['referee'][$i]['patronymic']))?></a>
                         <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
-                            <a class="main-dellink refereecomp-dellink_m" href="/?r=refereecomp/delete&rc=<?=$answer['referee'][$i]['rc']?>&comp=<?=$_GET['comp']?>">[X]</a>
+                            <a class="main-dellink refereecomp-dellink_m" href="/?r=refereecomp/delete&ret=refereecomp&rc=<?=$answer['referee'][$i]['rc']?>&comp=<?=$_GET['comp']?>">[X]</a>
                         <?}?>
                     </div>
                     <?=common_dateFromSQL($answer['referee'][$i]['birthdate'])?>

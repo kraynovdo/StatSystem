@@ -1,6 +1,6 @@
 <h2>Команды</h2>
 <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
-    <a href="/?r=compteam/add&comp=<?=$_GET['comp']?>">Добавить команду</a>
+    <a href="/?r=compteam/add&ret=team/complist&comp=<?=$_GET['comp']?>">Добавить команду</a>
 <?}?>
 <div class="listview">
 	<?$prev_group=''; $odd=0;?>
@@ -35,7 +35,7 @@
                     <div class="team-clLinks">
                         <a target="_blank" href="/?r=roster&team=<?=$answer[$i]['id']?><?=$filter?>">Состав</a>
                         <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
-                            <a class="main-delLink main-danger" href="/?r=compteam/delete&id=<?=$answer[$i]['ctid']?>&comp=<?=$_GET['comp']?>">Удалить</a>
+                            <a class="main-delLink main-danger" href="/?r=compteam/delete&id=<?=$answer[$i]['ctid']?>&ret=team/complist&comp=<?=$_GET['comp']?>">Удалить</a>
                         <?}?>
                     </div>
                 </div>

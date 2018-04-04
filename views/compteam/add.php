@@ -1,6 +1,7 @@
 <h2>Добавление команды</h2>
 <form action="/?r=compteam/create" method="POST">
     <input type="hidden" value="<?=$_GET['comp']?>" name="comp"/>
+    <input type="hidden" value="<?=$_GET['ret']?>" name="ret"/>
     <div class="main-fieldWrapper">
         <label class="main-label_top">Команда</label>
         <select name="team" data-validate="req">

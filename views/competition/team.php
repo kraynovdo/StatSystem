@@ -1,5 +1,5 @@
 <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
-    <a href="/?r=compteam/add&comp=<?=$_GET['comp']?>">Добавить команду</a>
+    <a href="/?r=compteam/add&ret=competition/team&comp=<?=$_GET['comp']?>">Добавить команду</a>
 <?}?>
 <div class="listview">
     <?$prev_group=''; $odd=0;?>
@@ -43,7 +43,7 @@
             </div>
         </div>
         <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
-            <a class="main-delLink main-danger" href="/?r=compteam/delete&id=<?=$answer[$i]['ctid']?>&comp=<?=$_GET['comp']?>">Удалить</a>
+            <a class="main-delLink main-danger" href="/?r=compteam/delete&id=<?=$answer[$i]['ctid']?>&ret=competition/team&comp=<?=$_GET['comp']?>">Удалить</a>
         <?}?>
     </div>
     <?$odd = 1-$odd;}?>

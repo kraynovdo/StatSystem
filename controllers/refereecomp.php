@@ -48,7 +48,7 @@
                 'type' => $type
             ));
             return array(
-                'page' => '/?r=refereecomp&comp='.$_POST['competition']
+                'page' => '/?r=' . $_POST['ret'] . '&comp='.$_POST['competition']
             );
         }
         else {
@@ -65,7 +65,7 @@
                 'rc' => $_GET['rc']
             ));
             return array(
-                'page' => '/?r=refereecomp&comp='.$_GET['comp']
+                'page' => '/?r=' . $_GET['ret'] . '&comp='.$_GET['comp']
             );
         }
         else {

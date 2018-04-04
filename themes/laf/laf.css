@@ -135,6 +135,7 @@
 .comp-teamTile_logo {
     float: left;
     width: 140px;
+    height: 140px;
     padding: 20px;
 }
 .comp-teamTile_logo .fafr-noPhoto{
@@ -243,8 +244,11 @@
 .referee-item {
     float: left;
     width: 33%;
-    position: relative;
     padding-bottom: 40px;
+}
+.referee-item_content {
+    position: relative;
+    overflow: hidden;
 }
 .referee-clAvatar {
     width: 140px;

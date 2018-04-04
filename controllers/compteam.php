@@ -39,7 +39,7 @@
                 'group' => $group
             ));
             return array(
-                'page' => '/?r=team/complist&comp='.$_POST['comp']
+                'page' => '/?r=' . $_POST['ret'] . '&comp='.$_POST['comp']
             );
         }
         else {
@@ -59,7 +59,7 @@
                 'id' => $_GET['id']
             ));
             return array(
-                'page' => '/?r=team/complist&comp='.$_GET['comp']
+                'page' => '/?r=' . $_GET['ret'] . '&comp='.$_GET['comp']
             );
         }
         else {
