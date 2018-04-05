@@ -693,7 +693,9 @@ $(function () {
     });
 
     if (!window.mobile) {
-    	$('.main-textEditor').ckeditor();
+    	$('.main-textEditor').ckeditor({
+            language: 'zh-cn'
+        });
     }
     else {
         $('.main-textEditor').each(function(i, item){

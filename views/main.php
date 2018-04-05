@@ -47,12 +47,12 @@ else {
 <script src="//<?=$HOST?>/jquery/jquery.cookie.js"></script>
 <script src="//<?=$HOST?>/jquery/jquery-ui.js"></script>
 <?if ( !($IS_MOBILE) ) {?>
-    <script type="text/javascript" src="//<?=$HOST?>/jquery/ckeditor/ckeditor.js"></script>
-    <script type="text/javascript" src="//<?=$HOST?>/jquery/ckeditor/adapters/jquery.js"></script>
+    <script type="text/javascript" src="//<?=$HOST?>/jquery/ckeditor/ckeditor.js?2"></script>
+    <script type="text/javascript" src="//<?=$HOST?>/jquery/ckeditor/adapters/jquery.js?2"></script>
 <?}?>
 <script src="//<?=$HOST?>/jquery/jquery.Jcrop.min.js?1"></script>
 
-<script type="text/javascript" src="//<?=$HOST?>/themes/components.js?34"></script>
+<script type="text/javascript" src="//<?=$HOST?>/themes/components.js?35"></script>
 <?if (file_exists($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/' . $controller . '/' . $controller . '.js')) {?>
     <script type="text/javascript" src="//<?=$HOST?>/views/<?=$controller?>/<?=$controller?>.js?46"></script>
 <?}?>
