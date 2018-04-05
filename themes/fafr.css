@@ -199,6 +199,41 @@ html {
 .fafr-input:-moz-placeholder           {color:#A9ACB5}/* Firefox 18- */
 .fafr-input:-ms-input-placeholder      {color:#A9ACB5}
 
+.fafr-btn {
+    background: #fff;
+    border: 1px solid;
+    width: 140px;
+    height: 40px;
+    line-height: 40px;
+    outline: none;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 20px;
+}
+.fafr-btn:hover {
+    border-width: 2px;
+    line-height: 38px;
+}
+.fafr-btn:active {
+    color: #fff;
+}
+.fafr-btn_standart {
+    color: #252F4E;
+    border-color: #252F4E;
+}
+.fafr-btn_standart:active {
+    background-color: #252F4E;
+}
+
+.fafr-btn_primary {
+    color: #ED3237;
+    border-color: #ED3237;
+}
+.fafr-btn_primary:active {
+    background-color: #ED3237;
+}
+
 .clearfix:after {
     content: '.';
     display: block;
@@ -217,4 +252,7 @@ html {
 }
 .fafr-hidden {
     display: none;
+}
+.fafr-standartPadding {
+    padding-bottom: 15px;
 }
