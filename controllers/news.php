@@ -38,7 +38,7 @@
               new.id, M.title, M.preview, M.content, M.date, material, image
             FROM
               new LEFT JOIN material AS M ON M.id = new.material' . $filter . '
-            ORDER BY date DESC';
+            ORDER BY date DESC, id DESC';
 
         $result['answer'] = common_getlist($dbConnect, $query, $queryparams);
         return $result;

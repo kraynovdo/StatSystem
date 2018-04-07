@@ -10,6 +10,10 @@ html {
     font-size: 14px;
     font-family : Roboto, sans-serif;
 }
+.fafr-textColor {
+    color: #15222b;
+    text-decoration: none;
+}
 .fafr-textAdd {
     color: #a9acb5;
 }
@@ -23,6 +27,12 @@ html {
 }
 .fafr-bg_accent {
     background: #D0202D;
+    color: #fff;
+}
+.fafr-bg_accent {
+    color: #fff;
+}
+.fafr-lightColor {
     color: #fff;
 }
 .fafr-centerAl {
@@ -255,4 +265,102 @@ html {
 }
 .fafr-standartPadding {
     padding-bottom: 15px;
+}
+
+
+/*news*/
+.news-last {
+    padding: 60px 50px;
+    overflow: hidden;
+    margin-bottom: 60px;
+}
+.news-last_img {
+    width: 66%;
+    float: left;
+    position: relative;
+}
+.news-last_img .fafr-noPhoto {
+    font-size: 400px;
+    line-height: 400px;
+    max-height: 400px;
+}
+.news-last_text {
+    margin-left: 68%;
+}
+.news-last_title {
+    font-size: 28px;
+    line-height: 33px;
+    font-weight: bold;
+}
+.news-last_title a {
+    text-decoration: none;
+    color: #fff;
+}
+.news-last_desc {
+    padding-top: 40px;
+    font-size: 18px;
+    line-height: 30px;
+}
+.news-date {
+    padding: 5px 10px;
+    position: absolute;
+    box-sizing: border-box;
+    border-radius: 0 11px 11px 0;
+}
+.news-date_last {
+    top: 40px;
+}
+.news-tiles {
+    overflow: hidden;
+    margin-bottom: 60px;
+}
+.news-tile {
+    padding: 0 15px;
+    box-sizing: border-box;
+    width: 33%;
+    float: left;
+}
+.news-tile_center {
+    width: 34%;
+}
+.news-date_tile {
+    top: 20px;
+}
+.news-tile_img {
+    position: relative;
+}
+.news-tile_img .fafr-noPhoto {
+    line-height: 185px;
+    font-size: 185px;
+    max-height: 185px;
+}
+.news-tile_text {
+    padding-top: 23px;
+}
+.news-tile_title {
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: bold;
+}
+.news-tile_title a{
+    color: #15222b;
+    text-decoration: none;
+}
+.news-tile_desc {
+    padding-top: 9px;
+    line-height: 23px;
+}
+.news-list_item {
+    border-top: 1px solid #eaeaea;
+    padding: 8px 0 20px 0;
+}
+.news-list_title {
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.news-list_desc {
+    line-height: 23px;
+    margin-bottom: 3px;
 }

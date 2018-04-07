@@ -23,7 +23,7 @@
             'header' => $data[0]['name'] . ' ' . $year,
             'menu' => array(
                 'О турнире' => '/?r=competition/view&comp=' . $id,
-                /*'Новости' => '/?r=news/index&comp=' . $id,*/
+                'Новости' => '/?r=news/index&comp=' . $id,
                 'Команды' => '/?r=team/complist&comp=' . $id,
                 'Судьи' => '/?r=refereecomp&comp=' . $id,
                 /*'Таблица' => '/?r=competition/standings&id='.$id,*/
@@ -374,6 +374,23 @@
 
             require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/referee.php');
             $result['answer']['all'] = referee_list($dbConnect, $CONSTPath);
+        }
+        return $result;
+    }
+
+    function competition_news ($dbConnect, $CONSTPath) {
+        $result = array(
+            'answer' => array()
+        );
+        $navigation = competition_lafNavig();
+        $navigation['pageId'] = 51;
+        $result['navigation'] = $navigation;
+
+        if ($_GET['comp']) {
+            require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/news.php');
+
+            $newsPage = news_index($dbConnect, $CONSTPath);
+            $result['answer']['news'] = $newsPage['answer'];
         }
         return $result;
     }

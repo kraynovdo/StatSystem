@@ -1,5 +1,6 @@
 <h2>Добавление материала</h2>
 <form action="/?r=material/create" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="ret" value="<?=$_GET['ret']?>"/>
     <?if ($_GET['comp']){?>
         <input type="hidden" name="comp" value="<?=$_GET['comp']?>"/>
     <?}?>

@@ -17,7 +17,7 @@ if ($_GET['federation']) {
 }
 ?>
 <?if ($access) {?>
-    <a class="main-addLink" href="/?r=material/add<?=$filter?>">Добавить новость</a>
+    <a class="main-addLink" href="/?r=material/add<?=$filter?>&ret=news">Добавить новость</a>
 <?}?>
 
 <div class="listview">
@@ -33,7 +33,7 @@ if ($_GET['federation']) {
         <?}?>
         <div class="listview-item">
             <div>
-                <a class="news-title" href="/?r=material/view&mater=<?=$answer[$i]['material']?><?=$filter?>"><?=$answer[$i]['title']?></a>
+                <a class="news-title" href="/?r=material/view&mater=<?=$answer[$i]['material']?><?=$filter?>&ret=news"><?=$answer[$i]['title']?></a>
             </div>
             <div>
                 <?=nl2br($answer[$i]['preview']);?>
