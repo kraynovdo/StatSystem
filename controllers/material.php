@@ -197,7 +197,7 @@
             }
             if ($_POST['federation'] && $_POST['federation'] == 11) {
                 $ret = array(
-                    'page' => '/?r=start/index'
+                    'page' => '/?r=start/index&federation=11'
                 );
             }
             else {
@@ -319,7 +319,7 @@
 
             if ($_POST['federation'] && $_POST['federation'] == 11) {
                 $ret = array(
-                    'page' => '/?r=start/index'
+                    'page' => '/?r=start/index&federation=11'
                 );
             }
             else {
