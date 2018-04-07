@@ -110,7 +110,7 @@
             }
 
             return array(
-                'page' => '/?r=news'.$filter
+                'page' => '/?r='.$_POST['ret'].$filter
             );
         }
         else {
@@ -195,7 +195,7 @@
             }
             else {
                 $ret = array(
-                    'page' => '/?r=news'.$filter
+                    'page' => '/?r='.$_POST['ret'].$filter
                 );
             }
 

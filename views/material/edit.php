@@ -2,6 +2,7 @@
 <?php if (count($answer)) {?>
     <form action="/?r=material/update" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="mater" value="<?=$answer['id']?>">
+        <input type="hidden" name="ret" value="<?=$_GET['ret']?>"/>
         <?if ($_GET['comp']){?>
             <input type="hidden" name="comp" value="<?=$_GET['comp']?>"/>
         <?}?>
