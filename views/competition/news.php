@@ -17,7 +17,7 @@ if ($_GET['federation']) {
 }
 ?>
 <?if ($access) {?>
-    <a class="main-addLink" href="/?r=material/add<?=$filter?>&ret=competition/news">Добавить новость</a>
+    <a class="fafr-link main-addLink" href="/?r=material/add<?=$filter?>&ret=competition/news">Добавить новость</a>
 <?}?>
 
 <?php for ($i = 0; $i < 1 && $i < count($news); $i++) {?>

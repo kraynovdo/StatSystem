@@ -15,7 +15,7 @@ if ($_GET['federation']) {
     $access = ($_SESSION['userType'] == 3) || ($_SESSION['userFederations'][$_GET['federation']]);
 }
 ?>
-<a class="news-main" href="/?r=material/view&mater=<?=$newsmain[0]['material']?><?=$filter?>">
+<a class="news-main" href="/?r=material/view&mater=<?=$newsmain[0]['material']?><?=$filter?>&ret=start/index">
     <img alt="Картинка новости" class="news-main_img" src="//<?=$HOST?>/upload/<?=$newsmain[0]['image']?>"/>
     <div class="news-main_title"><?=$newsmain[0]['title']?></div>
 </a>

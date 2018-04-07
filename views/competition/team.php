@@ -15,7 +15,7 @@
         <?}?>
     <div class="comp-columnItem <?if ($odd) {?>comp-columnItem_odd<?}?>">
         <div class="comp-teamTile comp-columnItem_content">
-            <a  target="_blank" class="comp-columnContentLink" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>""></a>
+            <a  target="_blank" class="fafr-link comp-columnContentLink" href="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>""></a>
             <div class="comp-teamTile_logo">
                 <?if ($answer[$i]['logo']) {?>
                     <span class="comp-teamTile_logoLink">
@@ -43,7 +43,7 @@
             </div>
         </div>
         <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
-            <a class="main-delLink main-danger" href="/?r=compteam/delete&id=<?=$answer[$i]['ctid']?>&ret=competition/team&comp=<?=$_GET['comp']?>">Удалить</a>
+            <a class="main-delLink fafr-link" href="/?r=compteam/delete&id=<?=$answer[$i]['ctid']?>&ret=competition/team&comp=<?=$_GET['comp']?>">Удалить</a>
         <?}?>
     </div>
     <?$odd = 1-$odd;}?>

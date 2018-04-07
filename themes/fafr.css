@@ -243,7 +243,14 @@ html {
 .fafr-btn_primary:active {
     background-color: #ED3237;
 }
-
+.fafr-link {
+    color: #ED3237;
+    text-decoration: underline;
+}
+.fafr-backLink {
+    display: inline-block;
+    margin-top: -45px;
+}
 .clearfix:after {
     content: '.';
     display: block;
@@ -363,4 +370,11 @@ html {
 .news-list_desc {
     line-height: 23px;
     margin-bottom: 3px;
+}
+.material-content {
+    padding: 20px 0;
+    font-size: 16px;
+}
+.material-delForm {
+    display: inline-block;
 }

@@ -32,7 +32,7 @@ if ($_GET['federation']) {
         <?}?>
         <div class="listview-item">
             <div>
-                <a class="news-title" href="/?r=material/view&mater=<?=$news[$i]['material']?><?=$filter?>"><?=$news[$i]['title']?></a>
+                <a class="news-title" href="/?r=material/view&mater=<?=$news[$i]['material']?><?=$filter?>&ret=start/index"><?=$news[$i]['title']?></a>
             </div>
             <div>
                 <?=nl2br($news[$i]['preview']);?>

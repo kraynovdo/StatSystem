@@ -51,7 +51,7 @@
             </div>
             <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
 
-            <a class="main-dellink" href="/?r=refereecomp/delete&ret=competition/referee&rc=<?=$answer['referee'][$i]['rc']?>&comp=<?=$_GET['comp']?>">[X]</a>
+            <a class="fafr-link main-dellink" href="/?r=refereecomp/delete&ret=competition/referee&rc=<?=$answer['referee'][$i]['rc']?>&comp=<?=$_GET['comp']?>">[X]</a>
 
             <?}?>
         </div>

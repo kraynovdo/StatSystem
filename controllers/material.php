@@ -36,17 +36,24 @@
             }
 
             if ($_GET['comp']) {
-                require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/competition.php');
+                require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/competition.php');
                 $result['navigation'] = competition_NAVIG($dbConnect, $_GET['comp']);
             }
             if ($_GET['team']) {
-                require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/team.php');
+                require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/team.php');
                 $result['navigation'] = team_NAVIG($dbConnect, $_GET['team']);
             }
 
             if ($_GET['federation']) {
-                require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/federation.php');
+                require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/federation.php');
                 $result['navigation'] = federation_navig($dbConnect, $_GET['federation']);
+            }
+
+            if ($_GET['ret'] == 'competition/news') {
+                require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/competition.php');
+                $navigation = competition_lafNavig();
+                $navigation['pageId'] = 51;
+                $result['navigation'] = $navigation;
             }
             return $result;
         /*}
