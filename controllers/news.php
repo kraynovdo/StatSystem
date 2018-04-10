@@ -1,6 +1,6 @@
 <?php
     //OK
-    function news_index($dbConnect, $CONSTPath, $ismain = false) {
+    function news_index($dbConnect, $CONSTPath, $limit = null) {
         $filter = '';
         $result = array();
         $queryparams = array();
@@ -30,15 +30,16 @@
                 $result['navigation'] = federation_navig($dbConnect, $_GET['federation']);
             }
         }
-        if ($ismain) {
-            $filter .= ' AND M.ismain = 1';
+        $limitStr = '';
+        if ($limit) {
+            $limitStr = ' LIMIT 0, '.$limit;
         }
         $query = '
             SELECT
               new.id, M.title, M.preview, M.content, M.date, material, image
             FROM
               new LEFT JOIN material AS M ON M.id = new.material' . $filter . '
-            ORDER BY date DESC, id DESC';
+            ORDER BY date DESC, id DESC'.$limitStr;
 
         $result['answer'] = common_getlist($dbConnect, $query, $queryparams);
         return $result;

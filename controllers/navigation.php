@@ -7,7 +7,7 @@
               id, title, href, alias, parent
             FROM
               navigation
-            WHERE'. $queryFilter
+            WHERE visible AND'. $queryFilter
             , $queryArgs);
 
         return $result;

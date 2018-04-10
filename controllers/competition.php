@@ -302,6 +302,10 @@
 
         $result['answer']['results'] = competition_actualMatches($dbConnect);
 
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/news.php');
+        $newsPage = news_index($dbConnect, $CONSTPath, 4);
+        $result['answer']['news'] = $newsPage['answer'];
+
         $result['navigation'] = competition_lafNavig();
         return $result;
     }
@@ -369,10 +373,10 @@
         $result['navigation'] = $navigation;
 
         if ($_GET['comp']) {
-            require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/refereecomp.php');
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/refereecomp.php');
             $result['answer']['referee'] = refereecomp_list($dbConnect, $_GET['comp']);
 
-            require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/referee.php');
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/referee.php');
             $result['answer']['all'] = referee_list($dbConnect, $CONSTPath);
         }
         return $result;
@@ -387,7 +391,7 @@
         $result['navigation'] = $navigation;
 
         if ($_GET['comp']) {
-            require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/news.php');
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/news.php');
 
             $newsPage = news_index($dbConnect, $CONSTPath);
             $result['answer']['news'] = $newsPage['answer'];
