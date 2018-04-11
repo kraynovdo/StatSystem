@@ -15,7 +15,7 @@
         $data = $queryresult->fetchAll();
         return $data['user'];
     }
-    function material_view($dbConnect, $CONSTPath) {
+    function material_view($dbConnect, $CONSTPath, $edit = false) {
         /*if (isset($_SESSION['userID'])) {*/
             $queryresult = $dbConnect->prepare('
                 SELECT
@@ -49,7 +49,7 @@
                 $result['navigation'] = federation_navig($dbConnect, $_GET['federation']);
             }
 
-            if ($_GET['ret'] == 'competition/news') {
+            if (!$edit && $_GET['ret'] == 'competition/news') {
                 require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/competition.php');
                 $navigation = competition_lafNavig();
                 $navigation['pageId'] = 51;
@@ -75,7 +75,7 @@
             $access = ($_SESSION['userType'] == 3) || ($_SESSION['userFederations'][$_GET['federation']]);
         }
         if ($access) {
-            return material_view($dbConnect, $CONSTPath);
+            return material_view($dbConnect, $CONSTPath, true);
         }
         else {
             return 'ERROR-403';

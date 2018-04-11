@@ -66,13 +66,13 @@ html {
 .fafr-logo {
     position: absolute;
     top: 25px;
-    left: 50px;
+    left: 0;
 }
 .fafr-header {
     height: 80px;
 }
 .fafr-header_title {
-    padding: 23px 0 0 190px;
+    padding: 23px 0 0 140px;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
@@ -86,7 +86,8 @@ html {
     height: 40px;
 }
 .fafr-navigation__list {
-    margin-left: 230px;
+    overflow: hidden;
+    margin-left: 140px;
 }
 .fafr-navigation__point {
     list-style: none;
@@ -379,6 +380,83 @@ html {
     line-height: 23px;
     margin-bottom: 3px;
 }
+.feed-container {
+    overflow: hidden;
+    height: 402px;
+}
+.feed-main {
+    position: relative;
+}
+.feed-main_withCol {
+    margin-right: 33%;
+}
+.feed-column {
+    float: right;
+    width: 33%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.feed-column_item {
+    height: 33%;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 0 20px 10px;
+    position: relative;
+}
+.feed-column_gradient {
+    position: absolute;
+    bottom: 0;
+    height: 30px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 1) 50%);
+    z-index: 1;
+    left: 0;
+    right: 0;
+}
+.feed-link {
+    position: absolute;
+    right: 0;
+}
+.feed-column_item {
+    height: 34%;
+}
+.feed-main_img {
+    height: 100%;
+}
+.feed-main_img .fafr-noPhoto {
+    font-size: 400px;
+    line-height: 400px;
+}
+.feed-main_text {
+    background: rgba(21, 34, 43, 0.7);
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 15px 20px;
+}
+.feed-main_title {
+    font-size: 26px;
+    font-weight: bold;
+    text-decoration: none;
+}
+.feed-main_title a{
+    text-decoration: none;
+}
+.feed-main_desc {
+    padding-top: 5px;
+}
+.feed-column_title {
+    padding-top: 8px;
+    line-height: 21px;
+}
+.feed-column_desc {
+    padding-top: 4px;
+    line-height: 23px;
+}
+
 .material-content {
     padding: 20px 0;
     font-size: 16px;
@@ -398,7 +476,6 @@ html {
     text-align: center;
     font-size: 13px;
     text-decoration: none;
-    color:
 }
 .fafr-paging_item:hover {
     text-decoration: underline;
