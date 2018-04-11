@@ -10,9 +10,15 @@ if ($p_page) {
 }
 
 ?>
-<?$p_href='/?r=stats/compAF&comp='.$_GET['comp'].'&type='.$_GET['type']?>
+<?
+    $p_href='/?r=stats/compAF&comp='.$_GET['comp'].'&type='.$_GET['type'];
+    if ($p_ret) {
+        $p_href='/?r=' . $p_ret . '&comp='.$_GET['comp'].'&type='.$_GET['type'];
+    }
+
+?>
 <? include '_paging.php';?>
-<table class="stats-table datagrid datagrid_zebra">
+<table class="stats-table fafr-text datagrid datagrid_zebra">
     <colgroup>
         <col width="35px"/>
         <col/>
@@ -25,7 +31,7 @@ if ($p_page) {
         <th>&nbsp;</th>
         <th>&nbsp;</th>
         <?for ($i = 0; $i < count($columns); $i++ ){?>
-            <th class="main-rightAlign"><?=$columns[$i]['title']?></th>
+            <th class="fafr-rightAl main-rightAlign fafr-textAdd"><?=$columns[$i]['title']?></th>
         <?}?>
     </tr>
     </thead>
@@ -49,7 +55,7 @@ if ($p_page) {
                 </div>
             </td>
             <td>
-                <div class="stats-personTeamLogoDesk main-middleValign">
+                <div class="stats-personTeamLogoDesk fafr-middleValign main-middleValign">
                     <?if ($arr[$i]['logo']) {?>
                         <img style="width: 20px;" src="//<?=$HOST?>/upload/<?=$arr[$i]['logo']?>">
                     <?} else {?>
@@ -57,12 +63,12 @@ if ($p_page) {
                     <?}?>
                 </div>
 
-                <a class="stats-personLink main-middleValign" href="/?r=person/view&person=<?=$arr[$i]['id']?>&comp=<?=$_GET['comp']?>">
+                <a class="stats-personLink fafr-textColor fafr-middleValign main-middleValign" href="/?r=person/view&person=<?=$arr[$i]['id']?>&comp=<?=$_GET['comp']?>">
                     <?=$arr[$i]['name']. ' '.$arr[$i]['surname'] . ' (' . ($i+1) . ')'?>
                 </a>
             </td>
             <?for ($j = 0; $j < count($columns); $j++ ){?>
-                <td class="stats-counter main-rightAlign">
+                <td class="stats-counter fafr-rightAl main-rightAlign">
                     <?=$arr[$i][$columns[$j]['field']]?>
                 </td>
             <?}?>

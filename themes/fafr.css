@@ -6,6 +6,7 @@ html {
     height: 100%;
 }
 .fafr-text {
+    font-weight: normal;
     color: #15222b;
     font-size: 14px;
     font-family : Roboto, sans-serif;
@@ -15,6 +16,7 @@ html {
     text-decoration: none;
 }
 .fafr-textAdd {
+    font-weight: normal;
     color: #a9acb5;
 }
 .fafr-bg_light {
@@ -35,8 +37,14 @@ html {
 .fafr-lightColor {
     color: #fff;
 }
+.fafr-rightAl {
+    text-align: right;
+}
 .fafr-centerAl {
     text-align: center;
+}
+.fafr-middleValign {
+    vertical-align: middle;
 }
 .fafr-body {
     overflow-y: scroll;
@@ -377,4 +385,21 @@ html {
 }
 .material-delForm {
     display: inline-block;
+}
+
+.fafr-paging {
+    font-size: 0;
+}
+.fafr-paging_item {
+    display: inline-block;
+    padding: 0 5px;
+    line-height: 20px;
+    height: 20px;
+    text-align: center;
+    font-size: 13px;
+    text-decoration: none;
+    color:
+}
+.fafr-paging_item:hover {
+    text-decoration: underline;
 }

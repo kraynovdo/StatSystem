@@ -91,8 +91,8 @@
     }
 
     function stats_compAF($dbConnect, $CONSTPath) {
-        require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
-        require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/match.php');
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/match.php');
         $result = array(
             'answer' => array(),
             'navigation' => competition_NAVIG($dbConnect, $_GET['comp'])

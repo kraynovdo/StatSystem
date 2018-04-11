@@ -398,3 +398,14 @@
         }
         return $result;
     }
+
+    function competition_stats ($dbConnect, $CONSTPath) {
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/stats.php');
+        $stats_old = stats_compAF($dbConnect, $CONSTPath);
+
+        $navigation = competition_lafNavig();
+        $navigation['pageId'] = 45;
+        $stats_old['navigation'] = $navigation;
+
+        return $stats_old;
+    }

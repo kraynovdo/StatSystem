@@ -270,3 +270,31 @@
     font-size: 18px;
     padding-bottom: 10px;
 }
+
+/*stats*/
+.stats_maintable, .stats-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.stats-table {
+    margin-bottom: 60px;
+}
+.stats-table tr:hover td {
+    background-color: rgba(37, 47, 78, 0.1);
+}
+.stats-fullListLink {
+    float: right;
+}
+.stats-navHeader {
+    margin-right: 300px;
+}
+.stats-personTeamLogoDesk {
+    display: inline-block;
+}
+.stats-table .datagrid_tbody td {
+    padding: 5px 5px;
+}
+.stats-personTeamLogo {
+    display: none;
+}
+/**/

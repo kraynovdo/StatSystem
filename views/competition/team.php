@@ -1,5 +1,5 @@
 <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
-    <a href="/?r=compteam/add&ret=competition/team&comp=<?=$_GET['comp']?>">Добавить команду</a>
+    <a class="fafr-link" href="/?r=compteam/add&ret=competition/team&comp=<?=$_GET['comp']?>">Добавить команду</a>
 <?}?>
 <div class="listview">
     <?$prev_group=''; $odd=0;?>
