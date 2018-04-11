@@ -1,21 +1,24 @@
 <?
-$arrRush1 = $answer['rush'];
-$arrPass1 =$answer['pass'];
-$arrQb1 = $answer['qb'];
-$arrRet1 = $answer['ret'];
-$arrTac1 = $answer['tac'];
-$arrSack1 = $answer['sack'];
-$arrInt1 = $answer['int'];
-$arrFg1 = $answer['fg'];
-if ($_GET['type']) {
-    $p_page = $_GET['page'];
-    if (!$p_page) {
-        $p_page = 1;
+    $arrRush1 = $answer['rush'];
+    $arrPass1 =$answer['pass'];
+    $arrQb1 = $answer['qb'];
+    $arrRet1 = $answer['ret'];
+    $arrTac1 = $answer['tac'];
+    $arrSack1 = $answer['sack'];
+    $arrInt1 = $answer['int'];
+    $arrFg1 = $answer['fg'];
+    if ($_GET['type']) {
+        $p_page = $_GET['page'];
+        if (!$p_page) {
+            $p_page = 1;
+        }
+        $p_limit = 40;
     }
-    $p_limit = 40;
-}
-$p_ret = 'competition/stats';
+    $p_ret = 'competition/stats';
 ?>
+<?if ((!$_GET['type']) && (count($arrTac1) == 0) && (count($arrRush1) == 0)) {?>
+    <h2 class="fafr-centerAl">Данные статистики скоро появятся</h2>
+<?}?>
 <?if ($_GET['type']) {?><a class="fafr-link stats-fullListLink" href="/?r=competition/stats&comp=<?=$_GET['comp']?>">Вернуться к топ 5</a><?}?>
 <table class="stats_maintable fafr-text">
 <tbody>
