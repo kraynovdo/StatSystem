@@ -313,11 +313,26 @@
     function competition_about ($dbConnect, $CONSTPath) {
         $result = array();
 
+        $org_rec = common_getrecord($dbConnect, '
+            SELECT
+                organization
+            FROM
+                competition
+            WHERE
+                  id = :comp
+        ', array('comp' => $_GET['comp']));
+
+        $org_id = $org_rec['organization'];
+
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/organization.php');
+        $result['org'] = organization_info($dbConnect, $org_id);
+
+
         $navigation = competition_lafNavig();
         $navigation['pageId'] = 46;
         return array (
             'navigation' => $navigation,
-            'answer' => array()
+            'answer' => $result
         );
     }
 

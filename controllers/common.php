@@ -218,3 +218,11 @@
         return strtr($string, $converter);
     }
 
+
+    function common_phone($str) {
+        $re = "/(\\+\\d{1})(\\d{3})(\\d{3})(\\d{2})(\\d{2})/";
+        $subst = '$1 ($2) $3 $4 $5';
+
+        return preg_replace($re, $subst, $str);
+    }
+

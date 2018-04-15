@@ -1744,3 +1744,7 @@ input.stats-screenCharValue {
 .stats-screen_period {
     margin-bottom: 15px;
 }
+/*edit org*/
+.org-edit_name {
+    width: 700px;
+}

@@ -297,4 +297,35 @@
 .stats-personTeamLogo {
     display: none;
 }
-/**/
+/*about*/
+.comp-about_info {
+    overflow: hidden;
+}
+.comp-about_logo {
+    float: right;
+    width: 340px;
+    height: 340px;
+    margin: 0 80px 0 0;
+}
+
+.comp-about_logo .fafr-noPhoto{
+    font-size: 340px;
+    line-height: 340px;
+}
+.comp-about_text {
+    margin-right: 545px;
+}
+.comp-about_desc {
+    font-size: 18px;
+    line-height: 30px;
+}
+.comp-about_label {
+    font-weight: bold;
+}
+.comp-about_phone {
+    padding: 10px 200px 0 0;
+    display: inline-block;
+}
+.comp-about_address {
+    padding-top: 30px;
+}
