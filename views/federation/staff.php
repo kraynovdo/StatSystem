@@ -4,7 +4,7 @@
         <?if ($userfederation[$i]['fgroup'] != $group) {$group = $userfederation[$i]['fgroup'];?>
             <h1><?=$answer['types'][$group]?></h1>
             <?if (($_SESSION['userType'] == 3) || ($_SESSION['userFederations'][$_GET['federation']] == 1)) {?>
-                <a href="/?r=userfederation/add&federation=<?=$_GET['federation']?>&group=<?=$group?>" class="main-addLink">Добавить</a>
+                <a href="/?r=userfederation/add&ret=federation/staff&federation=<?=$_GET['federation']?>&group=<?=$group?>" class="main-addLink">Добавить</a>
             <?}?>
         <?}?>
         <div class="federation-faceItem">
@@ -26,7 +26,7 @@
                     <a href="mailto:<?=$userfederation[$i]['email']?>"><?=$userfederation[$i]['email']?></a>
                 </div>
                 <?if ((($_SESSION['userType'] == 3)) || (($_SESSION['userFederations'][$_GET['federation']] == 1)) && $userfederation[$i]['person'] != $_SESSION['userPerson']) {?>
-                <a class="main-delLink" href="/?r=userfederation/delete&uf=<?=$userfederation[$i]['uf']?>&federation=<?=$_GET['federation']?>&group=<?=$group?>">[X]</a>
+                <a class="main-delLink" href="/?r=userfederation/delete&ret=federation/staff&uf=<?=$userfederation[$i]['uf']?>&federation=<?=$_GET['federation']?>&group=<?=$group?>">[X]</a>
                 <?}?>
             </div>
 

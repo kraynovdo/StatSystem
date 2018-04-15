@@ -74,7 +74,7 @@
 <?$userfederation = $answer['userfederation'];?>
 <h2>Официальные лица</h2>
 <?if (($_SESSION['userType'] == 3) || ($_SESSION['userFederations'][$_GET['federation']] == 1)) {?>
-    <a href="/?r=userfederation/add&federation=<?=$_GET['federation']?>" class="main-addLink">Добавить</a>
+    <a href="/?r=userfederation/add&ret=federation/view&federation=<?=$_GET['federation']?>" class="main-addLink">Добавить</a>
 <?}?>
 <?for ($i = 0; $i < count($userfederation); $i++) {?>
     <?if (($userfederation[$i]['work']) || ($_SESSION['userType'] == 3) || ($_SESSION['userFederations'][$_GET['federation']])) {?>
@@ -94,7 +94,7 @@
             ?>
             (<?=implode($contArr, ', ')?>)
             <?if ((($_SESSION['userType'] == 3)) || (($_SESSION['userFederations'][$_GET['federation']] == 1)) && $userfederation[$i]['person'] != $_SESSION['userPerson']) {?>
-                <a class="main-delLink" href="/?r=userfederation/delete&uf=<?=$userfederation[$i]['uf']?>&federation=<?=$_GET['federation']?>">[X]</a>
+                <a class="main-delLink" href="/?r=userfederation/delete&ret=federation/view&uf=<?=$userfederation[$i]['uf']?>&federation=<?=$_GET['federation']?>">[X]</a>
             <?}?>
         </div>
     <?}?>

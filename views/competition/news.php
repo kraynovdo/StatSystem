@@ -22,20 +22,22 @@ if ($_GET['federation']) {
 
 <?php for ($i = 0; $i < 1 && $i < count($news); $i++) {?>
     <div class="news-last fafr-bg_dark">
-        <div class="news-last_img">
-            <?if ($news[$i]['image']) {?>
-                <img style="width:100%" src="//<?=$HOST?>/upload/<?=$news[$i]['image']?>">
-            <?} else {?>
-                <div class="fafr-noPhoto">?</div>
-            <?}?>
-            <div class="news-date news-date_last fafr-bg_accent"><?=common_dateFromSQL($news[$i]['date'])?></div>
-        </div>
-        <div class="news-last_text">
-            <div class="news-last_title">
-                <a class="fafr-lightColor" href="/?r=material/view&mater=<?=$news[$i]['material']?><?=$filter?>&ret=competition/news"><?=$news[$i]['title']?></a>
+        <div class="fafr-minWidth fafr-maxWidth">
+            <div class="news-last_img">
+                <?if ($news[$i]['image']) {?>
+                    <img style="width:100%" src="//<?=$HOST?>/upload/<?=$news[$i]['image']?>">
+                <?} else {?>
+                    <div class="fafr-noPhoto">?</div>
+                <?}?>
+                <div class="news-date news-date_last fafr-bg_accent"><?=common_dateFromSQL($news[$i]['date'])?></div>
             </div>
-            <div class="news-last_desc">
-                <?=nl2br($news[$i]['preview']);?>
+            <div class="news-last_text">
+                <div class="news-last_title">
+                    <a class="fafr-lightColor" href="/?r=material/view&mater=<?=$news[$i]['material']?><?=$filter?>&ret=competition/news"><?=$news[$i]['title']?></a>
+                </div>
+                <div class="news-last_desc">
+                    <?=nl2br($news[$i]['preview']);?>
+                </div>
             </div>
         </div>
     </div>

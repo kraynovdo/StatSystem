@@ -2,6 +2,7 @@
 <form method="post" action="/?r=userfederation/create" class="federation-formPerson" enctype="multipart/form-data">
     <input type="hidden" name="federation" value="<?=$_GET['federation']?>"/>
     <input type="hidden" name="group" value="<?=$_GET['group']?>"/>
+    <input type="hidden" name="ret" value="<?=$_GET['ret']?>"/>
     <div class="main-file roster-photo" data-validate>
         <div class="main-file_label">Добавить<br/>фотографию<br/>(формат jpeg)</div>
         <input class="main-file_input" type="file" name="avatar"/>
