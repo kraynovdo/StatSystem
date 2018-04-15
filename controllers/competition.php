@@ -327,6 +327,8 @@
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/organization.php');
         $result['org'] = organization_info($dbConnect, $org_id);
 
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/usercomp.php');
+        $result['usercomp'] = usercomp_list($dbConnect, $CONSTPath, $_GET['comp']);
 
         $navigation = competition_lafNavig();
         $navigation['pageId'] = 46;

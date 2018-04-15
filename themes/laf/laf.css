@@ -329,3 +329,43 @@
 .comp-about_address {
     padding-top: 30px;
 }
+.comp-persons {
+    margin: 50px 0;
+    padding: 0 50px 40px 50px;
+}
+.comp-persons_list {
+    overflow: hidden;
+}
+.comp-persons_item {
+    float: left;
+    width: 33%;
+    overflow: hidden;
+}
+.comp-persons_photo {
+    float: left;
+    width: 140px;
+    height: 140px;
+    background: #fff;
+}
+.comp-persons_photo .fafr-noPhoto {
+    font-size: 140px;
+    line-height: 140px;
+}
+.comp-persons_info {
+    margin-left: 140px;
+    padding: 0 30px;
+}
+.comp-persons_info {
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.comp-persons_fio {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 28px;
+}
+.comp-persons_work, .comp-persons_phone {
+    line-height: 26px;
+}
