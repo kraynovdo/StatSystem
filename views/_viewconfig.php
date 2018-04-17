@@ -10,7 +10,7 @@
         if ($result['navigation']['code']) {
 
             //отдельная тема для ФАФР
-            if ($result['navigation']['code'] == 'main') {
+            if ($result['navigation']['code'] == 'main' || $result['navigation']['code'] == 'reg') {
                 $theme = 'fafr-federation';
             }
 

@@ -1,6 +1,6 @@
 <?php
     //OK
-    function news_index($dbConnect, $CONSTPath, $limit = null) {
+    function news_index($dbConnect, $CONSTPath, $limit = null, $ismain = false) {
         $filter = '';
         $result = array();
         $queryparams = array();
@@ -30,10 +30,19 @@
                 $result['navigation'] = federation_navig($dbConnect, $_GET['federation']);
             }
         }
+        if ($ismain) {
+            $filter .= ' AND M.ismain = 1';
+        }
         $limitStr = '';
         if ($limit) {
             $limitStr = ' LIMIT 0, '.$limit;
         }
+
+        if ($_SESSION['userType'] != 3) {
+            $filter .= ' AND date <= :curdate';
+            $queryparams['curdate'] = date('Y-m-d');
+        }
+
         $query = '
             SELECT
               new.id, M.title, M.preview, M.content, M.date, material, image

@@ -172,7 +172,8 @@
               preview = :preview,
               content = :content,
               ismain = :ismain,
-              image = :image
+              image = :image,
+              date = :date
             WHERE
               id = :id');
 
@@ -183,7 +184,8 @@
                 'preview' => $_POST['preview'],
                 'content' => $_POST['content'],
                 'ismain' => $ismain,
-                'image' => $image
+                'image' => $image,
+                'date' => common_dateToSQL($_POST['date'])
             ));
             $filter = '';
             if($_POST['comp']) {
@@ -257,7 +259,12 @@
         }
         if ($access) {
             $user = $_SESSION['userID'];
-            $date = date('Y-m-d');
+            if ($_POST['date']) {
+                $date = common_dateToSQL($_POST['date']);
+            }
+            else {
+                $date = date('Y-m-d');
+            }
             $queryresult = $dbConnect->prepare('
             INSERT INTO
               material

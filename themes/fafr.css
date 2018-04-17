@@ -289,7 +289,7 @@ html {
 .news-last {
     padding: 60px 0 60px 0;
     overflow: hidden;
-    margin: 0 -2000px 60px -2000px;
+    margin: 0 0 60px 0;
 }
 .news-last_img {
     width: 66%;
@@ -325,7 +325,7 @@ html {
     border-radius: 0 11px 11px 0;
 }
 .news-date_last {
-    top: 40px;
+    bottom: 40px;
 }
 .news-tiles {
     overflow: hidden;
@@ -341,7 +341,7 @@ html {
     width: 34%;
 }
 .news-date_tile {
-    top: 20px;
+    bottom: 20px;
 }
 .news-tile_img {
     position: relative;
@@ -387,6 +387,10 @@ html {
 }
 .feed-main {
     position: relative;
+}
+.feed-date_main {
+    left: 0;
+    top: -40px;
 }
 .feed-main_withCol {
     margin-right: 33%;

@@ -198,3 +198,167 @@ a {
 .main-auth_form a {
     color: #fff;
 }
+/*Регистрация*/
+.main-file {
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    border: 1px solid #20232C;
+    overflow: hidden;
+    position: relative;
+}
+.main-file_label {
+    width: calc(100% - 2px);
+    height: 100%;
+    text-align: center;
+}
+.main-file_input {
+    display: none;
+}
+.main-file_miniature {
+    width: 100%;
+}
+.main-file_simple_loaded {
+    background-color: #cccccc;
+}
+.main-fileMiniature {
+    position: absolute;
+    display: block !important;
+    visibility: visible !important;
+}
+
+.reg-leftCol {
+    float: left;
+    width: 220px;
+}
+.reg-rightCol {
+    margin-left: 250px;
+}
+.reg-field {
+    width: 320px;
+    height: 36px;
+    line-height: 36px;
+    display: block;
+    margin-bottom: 5px;
+}
+.reg-block {
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.reg-firstList {
+    float: left;
+    width: 350px
+}
+.reg-secondList {
+    margin-left: 368px;
+}
+.reg-referree_link {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: inline-block;
+    cursor: pointer;
+}
+.reg-block_referree {
+    display: none;
+}
+
+.reg-autofio{
+    font-size: 15px;
+    font-style: italic;
+}
+.reg-teamlogo_v {
+    margin-top: 10px;
+    height: 36px;
+}
+.reg-teamOGRN {
+    width: 320px;
+    height: 36px;
+}
+.reg-humanCheckbox {
+    position: absolute;
+    top: -10000px;
+    left: -10000px;
+}
+.main-popup {
+    position: absolute;
+    width: 400px;
+    max-height: 300px;
+    overflow-y: auto;
+    background: #ffffff;
+    border: 2px solid #999999;
+    border-radius: 4px;
+    z-index: 100;
+}
+.main-window {
+    padding: 10px;
+    box-sizing: border-box;
+    position: fixed;
+    background: #dedede;
+    left: 50%;
+    top: 50%;
+    display: none;
+    box-shadow: 0 0 15px #000000;
+    z-index: 100;
+}
+.roster-playerWin {
+    width: 700px;
+    height: 500px;
+    margin-top: -250px;
+    margin-left: -350px;
+
+}
+.ac-item {
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0;
+}
+.ac-item:hover {
+    background-color: #cccccc;
+}
+.main-crop {
+    width: 750px;
+    max-height: 750px;
+    height: 750px;
+    left: 50%;
+    margin-left: -375px;
+    top: 50%;
+    margin-top: -375px;
+    text-align: center;
+}
+.main-crop_img {
+    top: 50px;
+    left: 50px;
+}
+.main-crop_cancel {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+}
+.main-crop_ok {
+    position: absolute;
+    right: 100px;
+    bottom: 30px;
+}
+.main-crop_imgWrapper {
+    position: relative;
+    margin: 50px 0 0 50px;
+}
+.main-valid_error {
+    border: 1px solid red !important;
+    background-color: #ffc9b8 !important;
+}
+.main-validWin {
+    position: absolute;
+    width: auto;
+    height: 20px;
+    border: 1px solid red;
+    background: #ffffff;
+    box-shadow: 0 0 12px 1px red;
+    color : red;
+    font-size :12px;
+    padding: 5px;
+    line-height: 20px;
+}
+/*конец стилей, нужных для регистрации*/

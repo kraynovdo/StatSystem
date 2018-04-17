@@ -1,22 +1,21 @@
 <?php
     function registration_index(){
-        $nav = array(
-            'navigation' => array(
-                'menu' => array(
-                    'Рег. персоны' => '/?r=registration/index'
-                ),
-                'header' => 'Регистрация'
-            ),
-
+        $result = array();
+        $navig_arr = array(
+            'code' => 'reg',
+            'title' => 'Федерация Американского Футбола России',
+            'description' => 'Официальный сайт Федерации Американского Футбола России (ФАФР). Здесь вы можете найти свежие новости, информацию о соревнованиях и командах',
+            'keywords' => array('Федерация Американского Футбола России', 'ФАФР'),
+            'pageId' => 53
         );
-        //if ($_SESSION['userID']) {
-            $nav['navigation']['menu']['Рег. команды'] = '/?r=registration/team';
-        //}
-        return $nav;
+        $result['navigation'] = $navig_arr;
+        return $result;
+
     }
 
     function registration_team($dbConnect, $CONSTPath) {
         $index = registration_index();
+        $index['navigation']['pageId'] = 54;
         require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/sport.php');
         $sport = sport_index($dbConnect, $CONSTPath);
         require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/opf.php');
@@ -62,9 +61,10 @@
 
     function registration_reg($dbConnect, $CONSTPath){
         if ($_POST['imnothuman'] || (!$_POST['person'] && !$_POST['birthdate'])) {
+            $index = registration_index();
             return array(
                 'answer' => 'У нас можно регистрироваться только реальным людям',
-                'navigation' => registration_index()
+                'navigation' => $index['navigation']
             );
         }
         /*Если автовыбрали человека*/
@@ -74,9 +74,10 @@
             if ($_POST['newEmail']) {
                 $email = $_POST['email'];
                 if (registration_checkEmail($dbConnect, $_POST['email'])) {
+                    $index = registration_index();
                     return array(
                         'answer' => 'Данный E-mail уже ипользуется',
-                        'navigation' => registration_index()
+                        'navigation' => $index['navigation']
                     );
                 }
                 else {
@@ -96,9 +97,10 @@
         else {
             $email = $_POST['email'];
             if (registration_checkEmail($dbConnect, $_POST['email'])) {
+                $index = registration_index();
                 return array(
                     'answer' => 'Данный E-mail уже ипользуется. Обратитесь к администратору krdcs@yandex.ru',
-                    'navigation' => registration_index()
+                    'navigation' => $index['navigation']
                 );
             }
             else {
@@ -159,9 +161,10 @@
             ));
             $dataset = $queryresult->fetchAll();
             if (count($dataset)) {
+                $index = registration_index();
                 return array(
                     'answer' => 'Вы уже зарегистрированы в системе. Обратитесь к администратору krdcs@yandex.ru',
-                    'navigation' => registration_index()
+                    'navigation' => $index['navigation']
                 );
             }
             else {
@@ -186,10 +189,11 @@
                     'answer' => 'На указанный электронный адрес отправлено письмо. Пройдите по ссылке из письма для завершения регистрации<br/>
                     При возникновении проблем напишите на почту krdcs@yandex.ru<br/>'
                 );*/
+                $index = registration_index();
                 return array(
                     'answer' => 'Регистрация прошла успешно<br/>
                     При возникновении проблем напишите на почту krdcs@yandex.ru<br/>',
-                    'navigation' => registration_index()
+                    'navigation' => $index['navigation']
                 );
             }
         }
@@ -208,9 +212,10 @@
         ));
         $dataset = $queryresult->fetchAll();
         if (count($dataset)) {
+            $index = registration_index();
             return array(
                 'answer' => 'Данная команда уже была создана ранее. Обратитесь к администратору krdcs@yandex.ru',
-                'navigation' => registration_index()
+                'navigation' => $index['navigation']
             );
         }
 
@@ -247,9 +252,10 @@
             'ogrn_doc' => $ogrn_doc,
             'geo_country' => $_POST['geo_country']
         ));
+        $index = registration_index();
         return array(
             'answer' => 'Ваша команда успешно создана',
-            'navigation' => registration_index()
+            'navigation' => $index['navigation']
         );
 
 

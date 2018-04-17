@@ -303,7 +303,7 @@
         $result['answer']['results'] = competition_actualMatches($dbConnect);
 
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/news.php');
-        $newsPage = news_index($dbConnect, $CONSTPath, 4);
+        $newsPage = news_index($dbConnect, $CONSTPath, 4, true);
         $result['answer']['news'] = $newsPage['answer'];
 
         $result['navigation'] = competition_lafNavig();

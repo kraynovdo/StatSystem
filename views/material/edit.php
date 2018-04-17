@@ -31,6 +31,10 @@
             <input type="checkbox" name="ismain" <?if ($answer['ismain']) {?>checked="checked"<?}?>/>
         </div>
         <div class="main-fieldWrapper">
+            <label class="main-labelTop">Дата публикации</label>
+            <input type="text" class="main-date" value="<?=common_dateFromSQL($answer['date'])?>" name="date"/>
+        </div>
+        <div class="main-fieldWrapper">
             <textarea name="content" class="material-editContent main-textEditor" placeholder="Содержание"><?=$answer['content']?></textarea>
         </div>
         <input class="main-btn main-submit" type="button" value="Сохранить"/>
