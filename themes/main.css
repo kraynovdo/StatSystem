@@ -287,6 +287,19 @@ textarea {
 .news-title {
     font-size: 16px;
 }
+.news-date_last {
+    color: #aaaaaa;
+    font-style: italic;
+}
+.news-last_title {
+    font-size: 28px;
+}
+.news-last_desc {
+    display: none;
+}
+.fafr-toTopLink {
+    display: none;
+}
 .main-addLink {
     margin-bottom: 15px;
     display: inline-block;
