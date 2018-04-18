@@ -426,3 +426,20 @@
 
         return $stats_old;
     }
+
+    function competition_video ($dbConnect, $CONSTPath) {
+        $result = array(
+            'answer' => array()
+        );
+        $navigation = competition_lafNavig();
+        $navigation['pageId'] = 52;
+        $result['navigation'] = $navigation;
+
+        if ($_GET['comp']) {
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/video.php');
+
+            $result['answer']['video'] = video_list($dbConnect);
+        }
+
+        return $result;
+    }
