@@ -21,7 +21,7 @@
             <?if ($answer['image']) {?>
                 <img style="width:100%" src="//<?=$HOST?>/upload/<?=$answer['image']?>">
             <?} else {?>
-                <div class="fafr-noPhoto">?</div>
+                <img style="width:100%" src="//<?=$HOST?>/themes/img/empty-new.png">
             <?}?>
             <div class="news-date news-date_last fafr-bg_accent"><?=common_dateFromSQL($answer['date'])?></div>
         </div>

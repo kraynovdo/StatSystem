@@ -12,7 +12,7 @@
     <?}?>
     <input data-validate="req" name="title" class="material-editTitle" type="text" value="" placeholder="Заголовок"/>
     <div class="main-fieldWrapper">
-        <div class="main-file material-img" data-ratio="2">
+        <div class="main-file material-img" data-ratio="1.77777777">
             <div class="main-file_label">Добавить<br/>миниатюру<br/>(формат jpeg)</div>
             <input class="main-file_input" type="file" name="image"/>
         </div>

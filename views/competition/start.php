@@ -46,7 +46,7 @@
             <div class="feed-column">
                 <?php for ($i = 0; $i < 3 && $i < count($news); $i++) {?>
                     <div class="feed-column_item <?if ($i == 3){?> feed-column_item_last<?}?>">
-                        <?if ($i == 1) {?><a class="fafr-link feed-link" href="/?r=competition/news&comp=<?=$_GET['comp']?>">Все новости</a><?}?>
+                        <?if ($i == 0) {?><a class="fafr-link feed-link" href="/?r=competition/news&comp=<?=$_GET['comp']?>">Все новости</a><?}?>
                         <div class="feed-column_date fafr-textAdd"><?=common_dateFromSQL($news[$i]['date'])?></div>
                         <h2 class="fafr-h2 feed-column_title">
                             <a class="fafr-textColor" href="/?r=material/view&mater=<?=$news[$i]['material']?><?=$filter?>&ret=competition/news"><?=$news[$i]['title']?></a>
@@ -64,9 +64,9 @@
             <div class="feed-main <? if (count($news)) {?> feed-main_withCol<?}?>">
                 <div class="feed-main_img">
                     <?if ($news[0]['image']) {?>
-                        <img style="height:100%" src="//<?=$HOST?>/upload/<?=$news[0]['image']?>">
+                        <img style="width:100%" src="//<?=$HOST?>/upload/<?=$news[0]['image']?>">
                     <?} else {?>
-                        <div class="fafr-noPhoto">?</div>
+                        <img style="width:100%" src="//<?=$HOST?>/themes/img/empty-new.png">
                     <?}?>
                 </div>
                 <div class="feed-main_text">

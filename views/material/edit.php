@@ -14,7 +14,7 @@
         <?}?>
         <input data-validate="req" name="title" class="material-editTitle" type="text" value='<?=$answer['title']?>' placeholder="Заголовок"/>
         <div class="main-fieldWrapper">
-            <div class="main-file material-img" data-ratio="2">
+            <div class="main-file material-img" data-ratio="1.77777777">
                 <?if ($answer['image']) {?>
                     <img src="//<?=$HOST?>/upload/<?=$answer['image']?>" class="main-file_miniature">
                 <?} else {?>
