@@ -3,6 +3,11 @@
     width: 140px;
     height: 107px;
 }
+.fafr-content {
+    min-width: 1000px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 .news-title {
     font-size: 16px;
 }

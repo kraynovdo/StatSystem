@@ -20,7 +20,7 @@
 
         $dataset = common_getlist($dbConnect, '
             SELECT
-                UR.id, C.name, C.id as comp, S.yearB, S.yearE, C.link, P.name, P.surname, P.patronymic, UR.work, P.phone, P.email, P.avatar
+                UR.id, C.name, C.id as comp, S.yearB, S.yearE, C.link, P.name AS pname, P.surname, P.patronymic, UR.work, P.phone, P.email, P.avatar
             FROM
                 usercomp UR
                 LEFT JOIN competition C ON C.id = UR.competition

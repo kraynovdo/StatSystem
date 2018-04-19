@@ -36,7 +36,7 @@
                     </div>
                     <div class="comp-persons_info">
                         <div class="comp-persons_fio">
-                            <?=$users[$i]['surname'] . ' ' . $users[$i]['name'] . ' ' . $users[$i]['patronymic']?>
+                            <?=$users[$i]['surname'] . ' ' . $users[$i]['pname'] . ' ' . $users[$i]['patronymic']?>
                         </div>
                         <div class="comp-persons_work"><?=$users[$i]['work']?></div>
                         <div class="comp-persons_phone"><?=common_phone($users[$i]['phone'])?></div>
