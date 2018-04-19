@@ -438,7 +438,7 @@
         if ($_GET['comp']) {
             require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/video.php');
 
-            $result['answer']['video'] = video_list($dbConnect);
+            $result['answer']['video'] = video_list($dbConnect, $_GET['cat']);
         }
 
         return $result;

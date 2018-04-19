@@ -7,7 +7,8 @@
                    -1 AS id,
                    CONCAT(T1.rus_name, \' - \', T2.rus_name, \' \', M.timeh, \':\', M.timem, \' (мск.)\') AS title,
                    M.video AS content,
-                   M.date
+                   M.date,
+                   M.id AS mid
                 FROM
                     `match` M
                     LEFT JOIN team T1 ON T1.id = M.team1
@@ -22,7 +23,7 @@
         else if ($category == 1 || $category == 2) {
             $videolist = common_getlist($dbConnect, '
                 SELECT
-                   V.id, V.title, V.content, V.date
+                   V.id, V.title, V.content, V.date, -1 as mid
                 FROM
                     video V
                 WHERE
@@ -35,7 +36,7 @@
             $videolist = common_getlist($dbConnect, '
                 SELECT * FROM (
                         SELECT
-                           V.id, V.title, V.content, V.date
+                           V.id, V.title, V.content, V.date, -1 as mid
                         FROM
                             video V
                         WHERE
@@ -45,7 +46,8 @@
                            -1 AS id,
                            CONCAT(T1.rus_name, \' - \', T2.rus_name, \' \', M.timeh, \':\', M.timem, \' (мск.)\') AS title,
                            M.video AS content,
-                           M.date
+                           M.date,
+                           M.id as mid
                         FROM
                             `match` M
                             LEFT JOIN team T1 ON T1.id = M.team1
@@ -135,7 +137,32 @@
                     ));
             }
 
-            //return $result;
+            return array(
+                'page' => '/?r=competition/video&comp='.$_POST['comp']
+            );
+        }
+        else {
+            return 'ERROR-403';
+        }
+    }
+
+    function video_delete ($dbConnect, $CONSTPath) {
+        if ($_SESSION['userType'] == 3) {
+            if ($_GET['video']) {
+                common_query ($dbConnect, '
+                        DELETE
+                            FROM
+                              video
+                        WHERE
+                          id = :id
+                    ', array(
+                    'id' => $_GET['video']
+                ));
+            }
+
+            return array(
+                'page' => '/?r=competition/video&comp='.$_GET['comp']
+            );
         }
         else {
             return 'ERROR-403';

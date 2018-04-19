@@ -496,3 +496,44 @@ html {
 .fafr-paging_item:hover {
     text-decoration: underline;
 }
+
+/*video*/
+.video-list {
+    overflow: hidden;
+}
+.video-list_item {
+    float: left;
+    width: 33%;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+}
+.video-list_itemContent {
+    width: 320px;
+    margin: 0 auto;
+    position: relative;
+}
+.video-date_list {
+    top: 20px;
+}
+.video-list_title {
+    padding-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    height: 44px;
+}
+.video-list_edit {
+    height: 0;
+}
+.video-list_link {
+    display: inline-block;
+    height: 40px;
+    padding: 0 20px;
+    line-height: 40px;
+    border-radius: 8px;
+}
+.video-list_navig {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 40px;
+}
