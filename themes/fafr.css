@@ -127,12 +127,39 @@ html {
 .fafr-footerplace {
     height: 240px;
 }
-.fafr-footer {
-    margin-top: -240px;
-    height: 240px;
+.fafr-footer_wrapper {
     position: relative;
 }
-
+.fafr-footer {
+    margin-top: -160px;
+    height: 160px;
+    position: relative;
+    box-sizing: border-box;
+    padding: 30px 0 0 0;
+}
+.fafr-footer_img {
+    background: url('img/footer_ball.png') no-repeat;
+    position: absolute;
+    height: 120px;
+    width: 140px;
+    bottom: 20px;
+    right: 0;
+}
+.fafr-footer_link {
+    display: block;
+    font-size: 12px;
+    color: #FFF;
+    text-decoration: none;
+    line-height: 12px;
+    margin-bottom: 10px;
+}
+.fafr-footer_link_main {
+    font-weight: bold;
+    line-height: 15px;
+}
+.fafr-footer_column {
+    float: left;
+}
 .fafr-login {
     position: absolute;
     top: 25px;

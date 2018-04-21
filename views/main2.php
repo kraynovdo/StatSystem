@@ -11,7 +11,7 @@
         <script type="text/javascript">window.mobile = true;</script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <?}?>
-    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/fafr.css?18"/>
+    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/fafr.css?19"/>
     <?if ($theme) {?>
         <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?23"/>
     <?}?>
@@ -86,8 +86,19 @@
     <div class="fafr-footerplace"></div>
 </div>
 
-<div class="fafr-footer">
-
+<div class="fafr-footer_wrapper fafr-bg_dark fafr-minWidth">
+    <div class="fafr-footer fafr-minWidth fafr-maxWidth">
+        <?$perc = round (100 / count($FOOTER_NAV))?>
+        <?for ($i = 0; $i < count($FOOTER_NAV); $i++) {?>
+            <div class="fafr-footer_column" style="width:<?=$perc?>%;">
+                <?for ($j = 0; $j < count($FOOTER_NAV[$i]); $j++) {?>
+                <a class="fafr-footer_link<?if ($FOOTER_NAV[$i][$j]['main']) {?> fafr-footer_link_main<?}?>"
+                   href="<?= $FOOTER_NAV[$i][$j]['href'] ?>"><?= $FOOTER_NAV[$i][$j]['title'] ?></a>
+                <?}?>
+            </div>
+        <?}?>
+        <div class="fafr-footer_img"></div>
+    </div>
 </div>
 
 <script src="//<?=$HOST?>/jquery/jquery-1.10.2.js"></script>
