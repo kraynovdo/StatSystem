@@ -9,7 +9,7 @@
     <?$res = $answer['results']; if (count($res)){?>
         <div class="comp-resultsTable">
             <?for ($i = count($res) - 1; $i >= 0 ; $i--) {?>
-                <a target="_blank" class="comp-resultsTable_match" href="/?r=match/view&match=<?=$res[$i]['id']?>&comp=<?=$_GET['comp']?>">
+                <a target="_blank" class="comp-resultsTable_match" href="/?r=matchcenter&match=<?=$res[$i]['id']?>&comp=<?=$_GET['comp']?>">
                     <div class="comp-resultsTable_header fafr-bg_dark">
                         <span class="comp-resultsTable_dateTime">
                             <?=common_dateFromSQL($res[$i]['date'], true)?>

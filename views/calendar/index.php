@@ -19,7 +19,7 @@
     <?}?>
 
     <?$match = $answer['match']; $ctrlMode = true;?>
-    <?if (!$viewHref) $viewHref='match/view';?>
+    <?if (!$viewHref) $viewHref='matchcenter';?>
 
 
     <div class="match-list">

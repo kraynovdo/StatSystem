@@ -67,6 +67,7 @@ html {
     position: absolute;
     top: 25px;
     left: 0;
+    z-index: 10;
 }
 .fafr-header {
     height: 80px;

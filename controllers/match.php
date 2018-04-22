@@ -220,15 +220,19 @@
               M.id, M.competition, M.team1, M.team2, M.score1, M.score2, date, M.video, M.city, M.timeh, M.timem,
               T1.rus_name AS t1name,
               T2.rus_name AS t2name,
+              T1.city_adj AS t1city_adj,
+              T2.city_adj AS t2city_adj,
               M.group,
               T1.logo AS t1logo,
               T2.logo AS t2logo,
               M.curperiod,
-              M.confirm
+              M.confirm,
+              G.name AS `group`
             FROM
               `match` M
             LEFT JOIN team T1 ON T1.id = M.team1
             LEFT JOIN team T2 ON T2.id = M.team2
+            LEFT JOIN `group` G ON G.id = M.group
             WHERE M.id = :m
         ';
         $queryresult = $dbConnect->prepare($query);
@@ -697,8 +701,12 @@
             'video' => $_POST['video'],
             'match' => $_POST['match']
         ));
+        $ret = 'match/view';
+        if ($_POST['ret']) {
+            $ret = $_POST['ret'];
+        }
         return array(
-            'page' => '/?r=match/view&match=' . $_POST['match'] . '&comp=' . $_POST['competition']
+            'page' => '/?r=' . $ret . '&match=' . $_POST['match'] . '&comp=' . $_POST['competition']
         );
     }
 

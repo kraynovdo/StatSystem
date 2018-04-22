@@ -369,3 +369,84 @@
 .comp-persons_work, .comp-persons_phone {
     line-height: 26px;
 }
+.match-header {
+    margin-top: -55px;
+    position: relative;
+}
+.match-bg {
+    background: linear-gradient(to top, rgba(37, 47, 78, 0.8), #252F4E);
+    position: relative;
+    z-index: 2;
+}
+.match-header_content {
+    padding-top: 50px;
+    position: relative;
+    box-sizing: border-box;
+    min-height: 480px;
+}
+.match-bg_image {
+    background-image: url('../img/match_bg.jpg');
+    background-position: center bottom;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 1;
+}
+.match-header_info {
+    width: 320px;
+    margin: 0 auto;
+    font-size: 18px;
+}
+.match-header_count {
+    font-size: 0;
+    padding: 30px 0 40px 0;
+}
+.match-header_digit {
+    display: inline-block;
+    font-size: 72px;
+    height: 80px;
+    width: 140px;
+    text-align: center;
+}
+.match-header_digitPadding {
+    display: inline-block;
+    width: 40px;
+}
+.match-header_logo {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 25px;
+}
+.match-header_logo .fafr-noPhoto {
+    line-height: 200px;
+    font-size: 200px;
+}
+.match-header_team {
+    position: absolute;
+    top: 60px;
+}
+.match-header_team_left {
+    left: 0;
+}
+.match-header_team_right {
+    right: 0;
+}
+.match-header_teamCity {
+    font-size: 16px;
+    line-height: 30px;
+}
+.match-header_teamName {
+    font-size: 28px;
+    line-height: 50px;
+}
+.match-header {
+    margin-bottom: 60px;
+}
+.match-video_admin {
+    width: 680px;
+    margin: 0 auto;
+}
+.match-videoField {
+    width: 520px;
+}
