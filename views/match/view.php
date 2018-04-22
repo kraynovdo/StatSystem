@@ -38,6 +38,16 @@ function initials($record) {
 
                         </select>
                     </div>
+                    <div class="main-fieldWrapper action-addColumn">
+                        <label class="main-label_top">Четверть</label>
+                        <select name="period" data-validate="req">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">ОТ</option>
+                        </select>
+                    </div>
 
                     <input type="button" class="main-submit main-btn" value="ОK"/>
                 </form>

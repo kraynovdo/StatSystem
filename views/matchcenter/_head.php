@@ -1,7 +1,8 @@
 <div class="match-header">
     <? if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 4)) {?>
     <div class="fafr-minWidth fafr-maxWidth fafr-centerAl match-refAdmin">
-        <a class="fafr-link" href="/?r=protocol/edit&match=<?=$_GET['match']?>&ret=matchcenter">Заполнить протокол</a>
+        <a class="fafr-link" href="/?r=protocol/edit&comp=<?=$_GET['comp']?>&match=<?=$_GET['match']?>&ret=matchcenter">Заполнить протокол</a>
+        <a class="fafr-link" href="/?r=action/edit&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&ret=matchcenter">Заполнить очки</a>
     </div>
     <?}?>
     <div class="fafr-minWidth fafr-bg_dark match-bg">
@@ -10,16 +11,16 @@
                 <div class="match-header_info">
                     <div class="match-header_date fafr-centerAl">
                         <?=common_dateFromSQL($answer['maininfo']['date'])?>
-                        <?if (strlen($answer['maininfo']['timeh']) && strlen($answer['maininfo']['timeh'])) {?>
+                            <?if (strlen($answer['maininfo']['timeh']) && strlen($answer['maininfo']['timeh'])) {?>
                         <?=$answer['maininfo']['timeh']?>:<?=$answer['maininfo']['timem']?> (мск)
                         <?}?>
                     </div>
                     <div class="match-header_place fafr-centerAl">
                         <?if ($answer['maininfo']['city']) {?>
-                        <?=$answer['maininfo']['city']?>
+                            <?=$answer['maininfo']['city']?>
                         <?}?>
                         <?if ($answer['maininfo']['group']) {?>
-                        <?=$answer['maininfo']['group']?>
+                            <?=$answer['maininfo']['group']?>
                         <?}?>
                     </div>
                     <div class="match-header_count">
@@ -84,9 +85,9 @@
     <?if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$answer['match']['team1']]) || ($_SESSION['userTeams'][$answer['match']['team2']]) || ($_SESSION['userComp'][$_GET['comp']] == 1)){?>
     <div class="match-video_admin fafr-centerAl">
         <?if ($video) {?>
-        <a class="fafr-link match-videoEdit" href="javascript: void(0);">(Редактировать ссылку)</a>
+            <a class="fafr-link match-videoEdit" href="javascript: void(0);">(Редактировать ссылку)</a>
         <?} else {?>
-        <a class="fafr-link match-videoEdit" href="javascript: void(0);">Добавить ссылку на видео</a>
+            <a class="fafr-link match-videoEdit" href="javascript: void(0);">Добавить ссылку на видео</a>
         <?}?>
         <form method="POST" action="/?r=match/videoupdate" class="fafr-hidden match-videoForm">
             <input type="hidden" name="match" value="<?=$_GET['match']?>"/>

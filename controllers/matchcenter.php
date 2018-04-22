@@ -9,6 +9,9 @@
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/match.php');
         $result['answer']['maininfo'] = match_mainInfo($dbConnect, $CONSTPath);
 
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/action.php');
+        $result['answer']['action'] = action_listInMatch($dbConnect, $CONSTPath, $_GET['match']);
+
         return $result;
     }
 

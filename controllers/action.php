@@ -6,7 +6,7 @@
         }
         $res = common_getlist($dbConnect, '
             SELECT
-              A.id, P.surname, P.name, P.patronymic, PG.name AS pgname, PG.point, A.team
+              A.id, P.surname, P.name, P.patronymic, PG.name AS pgname, PG.point, A.team, A.period
             FROM
               action AS A LEFT JOIN person AS P ON P.id = A.person
               LEFT JOIN pointsget PG ON PG.id = A.pointsget
@@ -16,24 +16,56 @@
         ));
         return $res;
     }
+
+    function action_edit ($dbConnect, $CONSTPath) {
+        $result = array ();
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/admin.php');
+        $result['navigation'] = admin_navig();
+
+
+
+        $result['answer'] = array();
+
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/match.php');
+        $result['answer']['maininfo'] = match_mainInfo($dbConnect, $CONSTPath);
+
+        $result['answer']['action'] = action_listInMatch($dbConnect, $CONSTPath, $_GET['match']);
+
+        $query = '
+            SELECT
+              id, name
+            FROM
+              pointsget
+            WHERE sport = 1
+        ';
+        $result['answer']['pointsget'] = common_getlist($dbConnect, $query, array());
+
+        return $result;
+    }
+
     function action_insert($dbConnect, $CONSTPath) {
         if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 2) || ($_SESSION['userType'] == 4) || ($_SESSION['userComp'][$_POST['comp']] == 1)) {
             if ($_POST['person'] == '0') {
                 $_POST['person'] = NULL;
             }
             $queryresult = $dbConnect->prepare('
-                INSERT INTO action (pointsget, team, person, `match`, competition)
-                VALUES (:pointsget, :team, :person, :match, :comp)
+                INSERT INTO action (pointsget, team, person, `match`, competition, period)
+                VALUES (:pointsget, :team, :person, :match, :comp, :period)
             ');
             $queryresult->execute(array(
                 'pointsget' => $_POST['pointsget'],
                 'team' => $_POST['team'],
                 'person' => $_POST['person'],
                 'match' => $_POST['match'],
-                'comp' => $_POST['comp']
+                'comp' => $_POST['comp'],
+                'period' => $_POST['period']
             ));
+            $ret = 'match/view';
+            if ($_POST['ret']) {
+                $ret = 'action/edit';
+            }
             return array(
-                'page' => '/?r=match/view&match='.$_POST['match'].'&comp='.$_POST['comp']
+                'page' => '/?r=' . $ret . '&match='.$_POST['match'].'&comp='.$_POST['comp']
             );
         }
         else {
@@ -49,8 +81,12 @@
             $queryresult->execute(array(
                 'id' => $_GET['action']
             ));
+            $ret = 'match/view';
+            if ($_GET['ret']) {
+                $ret = 'action/edit';
+            }
             return array(
-                'page' => '/?r=match/view&match='.$_GET['match'].'&comp='.$_GET['comp']
+                'page' => '/?r=' . $ret . '&match='.$_GET['match'].'&comp='.$_GET['comp']
             );
         }
         else {
