@@ -158,6 +158,6 @@
 <?} else {?>
     Протокол не заполнен
     <? if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 4)) {?>
-        <a href="/?r=protocol/edit&match=<?=$_GET['match']?>">заполнить</a>
+        <a href="/?r=protocol/edit&match=<?=$_GET['match']?>&ret=match/view">заполнить</a>
     <?}?>
 <?}?>

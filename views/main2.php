@@ -1,6 +1,7 @@
 <html>
 <head>
     <title><?if ($title) { echo $title; }?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <?if ($description){?>
         <meta name="description" content="<?=$description?>">
     <?}?>

@@ -10,6 +10,7 @@
     }
 ?>
 <form method="POST" action="/?r=protocol/update">
+    <input type="hidden" name="ret" value="<?=$_GET['ret']?>"/>
     <div class="main-fieldWrapper">
         <label class="main-label_top"><?=$answer['match']['t1']?> - цвет формы</label>
         <input type="text" name="color1" value="<?=$protocol['color1']?>" class="protocol-txtField"/>

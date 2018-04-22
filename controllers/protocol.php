@@ -35,15 +35,22 @@
         /*comp*/
 
         $comp = $match[0]['competition'];
-        require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/competition.php');
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/competition.php');
         $result['navigation'] = competition_NAVIG($dbConnect, $comp);
 
         return $result;
     }
 
+    function protocol_own ($dbConnect, $id) {
+        return common_getrecord($dbConnect, 'SELECT * FROM protocol WHERE id = :match', array('match' => $id));
+    }
+
     function protocol_edit($dbConnect, $CONSTPath) {
         if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 4)) {
-            return protocol_view($dbConnect, $CONSTPath);
+            $view = protocol_view($dbConnect, $CONSTPath);
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/admin.php');
+            $view['navigation'] = admin_navig();
+            return $view;
         }
         else {
             return 'ERROR-403';
@@ -171,9 +178,13 @@
 	            ));
             }
 
+            $ret = 'protocol/view';
+            if ($_POST['ret'] == 'matchcenter') {
+                $ret = 'matchcenter/protocol';
+            }
 
             return array(
-                'page' => '/?r=protocol/view&match='.$_POST['match']
+                'page' => '/?r=' . $ret . '&match='.$_POST['match']
             );
         }
         else {
