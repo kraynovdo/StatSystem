@@ -184,7 +184,7 @@
             }
 
             return array(
-                'page' => '/?r=' . $ret . '&match='.$_POST['match']
+                'page' => '/?r=' . $ret . '&match='.$_POST['match'] .'&comp='.$_POST['comp']
             );
         }
         else {

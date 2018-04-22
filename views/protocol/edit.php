@@ -1,4 +1,8 @@
-<h2>Протокол матча</h2>
+<?if ($_GET['ret']) {?>
+<div>
+    <a href="/?r=<?=$_GET['ret']?>&comp=<?=$_GET['comp']?>&match=<?=$_GET['match']?>">Вернуться к матчу</a>
+</div><br/>
+<?}?>
 <?
     $protocol = array();
     if (count($answer['protocol'])) {
@@ -11,6 +15,7 @@
 ?>
 <form method="POST" action="/?r=protocol/update">
     <input type="hidden" name="ret" value="<?=$_GET['ret']?>"/>
+    <input type="hidden" name="comp" value="<?=$_GET['comp']?>"/>
     <div class="main-fieldWrapper">
         <label class="main-label_top"><?=$answer['match']['t1']?> - цвет формы</label>
         <input type="text" name="color1" value="<?=$protocol['color1']?>" class="protocol-txtField"/>
