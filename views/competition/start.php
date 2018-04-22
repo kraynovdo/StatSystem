@@ -40,6 +40,41 @@
         </div>
     <?}?>
 
+    <?$video = $answer['livevideo']?>
+    <div class="comp-live">
+        <?for ($i = 0; $i < count($video); $i++) {?>
+        <?
+        $link = $video[$i]['content'];
+        if (strpos($link, 'youtu.be')) {
+            $pos = strripos($link, '/');
+            $code = mb_substr($link, $pos+1);
+            $editor = '<iframe width="100%" height="280px" src="https://www.youtube.com/embed/'.$code.'" frameborder="0" allowfullscreen></iframe>';
+        }
+        else {
+            $editor = '';
+        }
+        ?>
+        <div class="comp-live_item">
+            <div class="comp-live_itemContent">
+                <?=$editor?>
+                <div class="news-date live-date_list fafr-bg_accent">LIVE</div>
+                <div class="fafr-h2 comp-live_title"><?=$video[$i]['title']?></div>
+                <?if ($_SESSION['userType'] == 3) {?>
+                <div class="comp-live_edit">
+                    <?if (($video[$i]['id'] != -1)) {?>
+                        <a class="fafr-link" href="/?r=video/edit&video=<?=$video[$i]['id']?>&comp=<?=$_GET['comp']?>">[ред]</a>
+                        <a class="fafr-link main-dellink" href="/?r=video/delete&video=<?=$video[$i]['id']?>&comp=<?=$_GET['comp']?>">[x]</a>
+                    <?} else {?>
+                        <a class="fafr-link" href="/?r=matchcenter&match=<?=$video[$i]['mid']?>&comp=<?=$_GET['comp']?>">[ред]</a>
+                    <?}?>
+                </div>
+                <?}?>
+            </div>
+
+        </div>
+        <?}?>
+    </div>
+
     <?$news = $answer['news']?>
     <div class="feed-container">
         <? if (count($news)) {?>

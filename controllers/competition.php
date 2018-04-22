@@ -306,6 +306,9 @@
         $newsPage = news_index($dbConnect, $CONSTPath, 4, true);
         $result['answer']['news'] = $newsPage['answer'];
 
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/video.php');
+        $result['answer']['livevideo'] = video_livetoday($dbConnect, $CONSTPath);
+
         $result['navigation'] = competition_lafNavig();
         return $result;
     }

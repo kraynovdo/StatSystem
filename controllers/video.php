@@ -62,6 +62,29 @@
         }
         return $videolist;
     }
+
+    function video_livetoday($dbConnect, $CONSTPath) {
+        $videolist = common_getlist($dbConnect, '
+                SELECT
+                   -1 AS id,
+                   CONCAT(T1.rus_name, \' - \', T2.rus_name, \' \', M.timeh, \':\', M.timem, \' (мск.)\') AS title,
+                   M.video AS content,
+                   M.date,
+                   M.id AS mid
+                FROM
+                    `match` M
+                    LEFT JOIN team T1 ON T1.id = M.team1
+                    LEFT JOIN team T2 ON T2.id = M.team2
+                WHERE
+                    M.video <> \'\' AND
+                    M.competition = :comp AND
+                    M.date = :date
+                ORDER BY M.date DESC
+
+            ', array('comp' => $_GET['comp'], 'date' => date('Y-m-d')));
+        return $videolist;
+    }
+
     function video_edit ($dbConnect, $CONSTPath) {
         if ($_SESSION['userType'] == 3) {
             $result = array(

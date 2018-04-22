@@ -495,3 +495,27 @@
     white-space: nowrap;
     padding-right: 10px;
 }
+
+.comp-live {
+    overflow: hidden;
+}
+.comp-live_item {
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+}
+.comp-live_itemContent {
+    width: 450px;
+    margin: 0 auto;
+    position: relative;
+}
+.live-date_list {
+    top: 40px;
+}
+.comp-live_title {
+    padding-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    height: 44px;
+}

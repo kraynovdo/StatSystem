@@ -33,7 +33,7 @@
                                 <a class="fafr-link" href="/?r=video/edit&video=<?=$video[$i]['id']?>&comp=<?=$_GET['comp']?>">[ред]</a>
                                 <a class="fafr-link main-dellink" href="/?r=video/delete&video=<?=$video[$i]['id']?>&comp=<?=$_GET['comp']?>">[x]</a>
                             <?} else {?>
-                                <a class="fafr-link" href="/?r=match/view&match=<?=$video[$i]['mid']?>&comp=<?=$_GET['comp']?>">[ред]</a>
+                                <a class="fafr-link" href="/?r=matchcenter&match=<?=$video[$i]['mid']?>&comp=<?=$_GET['comp']?>">[ред]</a>
                             <?}?>
                         </div>
                     <?}?>
