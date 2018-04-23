@@ -19,13 +19,13 @@
         <?if ($FULLACCESS) {?>
             <a class="fafr-link match-admin_link" href="/?r=protocol/edit&comp=<?=$_GET['comp']?>&match=<?=$_GET['match']?>&ret=matchcenter">Заполнить протокол</a>
             <a class="fafr-link match-admin_link" href="/?r=action/edit&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&ret=matchcenter">Заполнить очки</a>
-            <a class="fafr-link match-admin_link" href="/?r=matchroster/refcheck&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&ret=matchcenter&team=<?=$answer['maininfo']['team1']?>">Управление составами</a>
+            <a class="fafr-link match-admin_link" href="/?r=matchroster/refcheck&ret=matchcenter&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&ret=matchcenter&team=<?=$answer['maininfo']['team1']?>">Управление составами</a>
         <?}?>
         <?if ($T1ACCESS) {?>
-            <a class="fafr-link match-admin_link" href="/?r=matchroster/refcheck&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&ret=matchcenter&team=<?=$answer['maininfo']['team1']?>">Управление составами</a>
+            <a class="fafr-link match-admin_link" href="/?r=matchroster/refcheck&ret=matchcenter&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&ret=matchcenter&team=<?=$answer['maininfo']['team1']?>">Управление составами</a>
         <?}?>
         <?if ($T2ACCESS) {?>
-            <a class="fafr-link match-admin_link" href="/?r=matchroster/refcheck&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&ret=matchcenter&team=<?=$answer['maininfo']['team2']?>">Управление составами</a>
+            <a class="fafr-link match-admin_link" href="/?r=matchroster/refcheck&ret=matchcenter&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&ret=matchcenter&team=<?=$answer['maininfo']['team2']?>">Управление составами</a>
         <?}?>
     </div>
     <?}?>

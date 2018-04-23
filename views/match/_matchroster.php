@@ -10,7 +10,7 @@
     <?}?>
 <?} else {?>
     <?if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 4) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>
-        <h3 class="match-rostercheck"><a href="/?r=matchroster/refcheck&match=<?=$_GET['match']?>&team=<?=$teamID?>&comp=<?=$_GET['comp']?>">Проверка состава</a></h3>
+        <h3 class="match-rostercheck"><a href="/?r=matchroster/refcheck&match=<?=$_GET['match']?>&team=<?=$teamID?>&comp=<?=$_GET['comp']?>">Управление составом</a></h3>
     <?}?>
     <h3>
         Игроки
