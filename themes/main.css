@@ -765,6 +765,9 @@ textarea {
 .roster-view_number {
     font-size: 18px;
 }
+.refcheck-list {
+    min-height: 300px;
+}
 .refcheck_ctrlBlock {
     margin-bottom: 5px;
 }

@@ -60,8 +60,13 @@
             ));
 
 
+            $ret = 'match/view';
+            if ($_GET['ret'] == 'matchcenter') {
+                $ret = $_GET['ret'];;
+            }
+
             return (array(
-                'page' => '/?r=match/view&comp='.$comp['answer'].'&match='.$_GET['match']
+                'page' => '/?r=matchroster/refcheck&team=' . $team . '&ret=' . $ret . '&comp='.$comp['answer'].'&match='.$_GET['match']
             ));
         }
         else {
@@ -200,19 +205,32 @@
         }
 
     function matchroster_refcheck($dbConnect, $CONSTPath) {
-        $team = $_GET['team'];
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/team.php');
-        $teamData = team_info($dbConnect, $CONSTPath);
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/match.php');
-        $matchData = match_mainInfo($dbConnect, $CONSTPath);
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/admin.php');
-        return array(
-            'answer' => array(
+        if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 4)) {
+            $FULLACCESS = true;
+        }
+        else {
+            if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$_GET['team']]) || ($_SESSION['userComp'][$_GET['comp']] == 1) ) {
+                $TACCESS = true;
+            }
+        }
+        if ($FULLACCESS || $TACCESS) {
+            $team = $_GET['team'];
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/team.php');
+            $teamData = team_info($dbConnect, $CONSTPath);
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/match.php');
+            $matchData = match_mainInfo($dbConnect, $CONSTPath);
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/admin.php');
+            return array(
+                'answer' => array(
 
-                'roster' => matchroster_index($dbConnect, $CONSTPath, $team),
-                'team' => $teamData['answer']['team'],
-                'match' => $matchData
-            ),
-            'navigation' => admin_navig()
-        );
+                    'roster' => matchroster_index($dbConnect, $CONSTPath, $team),
+                    'team' => $teamData['answer']['team'],
+                    'match' => $matchData
+                ),
+                'navigation' => admin_navig()
+            );
+        }
+        else {
+            return 'ERROR-403';
+        }
     }
