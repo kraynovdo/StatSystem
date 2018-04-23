@@ -6,11 +6,12 @@
         }
         $res = common_getlist($dbConnect, '
             SELECT
-              A.id, P.surname, P.name, P.patronymic, PG.name AS pgname, PG.point, A.team, A.period
+              A.id, P.surname, P.name, P.patronymic, PG.name AS pgname, PG.point, A.team, A.period, PG.rus_code AS abbr
             FROM
               action AS A LEFT JOIN person AS P ON P.id = A.person
               LEFT JOIN pointsget PG ON PG.id = A.pointsget
             WHERE `match` = :match
+            ORDER BY period, id
         ', array(
             'match' => $match
         ));

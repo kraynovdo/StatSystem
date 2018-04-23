@@ -46,6 +46,9 @@ html {
 .fafr-middleValign {
     vertical-align: middle;
 }
+.fafr-topValign {
+    vertical-align: top;
+}
 .fafr-body {
     overflow-y: scroll;
     height: 100%;
