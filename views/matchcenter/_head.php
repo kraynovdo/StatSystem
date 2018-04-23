@@ -1,8 +1,32 @@
+<?
+
+    if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 4)) {
+        $FULLACCESS = true;
+    }
+    else {
+        if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$answer['maininfo']['team1']]) || ($_SESSION['userComp'][$_GET['comp']] == 1) ) {
+            $T1ACCESS = true;
+        }
+        if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$answer['maininfo']['team2']]) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {
+            $T2ACCESS = true;
+        }
+    }
+
+?>
 <div class="match-header">
-    <? if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 4)) {?>
+    <? if ($T1ACCESS || $T2ACCESS || $FULLACCESS) {?>
     <div class="fafr-minWidth fafr-maxWidth fafr-centerAl match-refAdmin">
-        <a class="fafr-link" href="/?r=protocol/edit&comp=<?=$_GET['comp']?>&match=<?=$_GET['match']?>&ret=matchcenter">Заполнить протокол</a>
-        <a class="fafr-link" href="/?r=action/edit&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&ret=matchcenter">Заполнить очки</a>
+        <?if ($FULLACCESS) {?>
+            <a class="fafr-link match-admin_link" href="/?r=protocol/edit&comp=<?=$_GET['comp']?>&match=<?=$_GET['match']?>&ret=matchcenter">Заполнить протокол</a>
+            <a class="fafr-link match-admin_link" href="/?r=action/edit&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&ret=matchcenter">Заполнить очки</a>
+            <a class="fafr-link match-admin_link" href="/?r=matchroster/refcheck&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&ret=matchcenter&team=<?=$answer['maininfo']['team1']?>">Управление составами</a>
+        <?}?>
+        <?if ($T1ACCESS) {?>
+            <a class="fafr-link match-admin_link" href="/?r=matchroster/refcheck&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&ret=matchcenter&team=<?=$answer['maininfo']['team1']?>">Управление составами</a>
+        <?}?>
+        <?if ($T2ACCESS) {?>
+            <a class="fafr-link match-admin_link" href="/?r=matchroster/refcheck&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&ret=matchcenter&team=<?=$answer['maininfo']['team2']?>">Управление составами</a>
+        <?}?>
     </div>
     <?}?>
     <div class="fafr-minWidth fafr-bg_dark match-bg">

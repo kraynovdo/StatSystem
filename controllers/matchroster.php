@@ -205,6 +205,7 @@
         $teamData = team_info($dbConnect, $CONSTPath);
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/match.php');
         $matchData = match_mainInfo($dbConnect, $CONSTPath);
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/admin.php');
         return array(
             'answer' => array(
 
@@ -212,9 +213,6 @@
                 'team' => $teamData['answer']['team'],
                 'match' => $matchData
             ),
-            'navigation' => array(
-                'header' => $teamData['answer']['team']['rus_name'],
-                'menu' => array()
-            )
+            'navigation' => admin_navig()
         );
     }

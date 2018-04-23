@@ -458,6 +458,9 @@
     height: 30px;
     line-height: 30px;
 }
+.match-admin_link {
+    padding-right: 10px;
+}
 .match-navig {
     margin: 60px 0 40px 0;
     border-bottom: 1px solid #eaeaea;

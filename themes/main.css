@@ -1764,3 +1764,28 @@ input.stats-screenCharValue {
 .video-field {
     width: 700px;
 }
+
+.main-tabs {
+    height: 40px;
+    border-bottom: 1px solid #ccc;
+    font-size: 0;
+    background: #eeeeee;
+    margin-bottom: 15px;
+}
+.main-tabs_item {
+    font-size: 13px;
+    display: inline-block;
+    height: 40px;
+    box-sizing: border-box;
+    line-height: 40px;
+    text-decoration: none;
+    background: #eeeeee;
+    padding: 0 20px;
+}
+.main-tabs_item:hover{
+    text-decoration: none;
+}
+.main-tabs_item_active {
+    background: #fff;
+    border-bottom: 3px solid #2d5588;
+}
