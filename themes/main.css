@@ -765,8 +765,19 @@ textarea {
 .roster-view_number {
     font-size: 18px;
 }
+.refcheck-add {
+    padding: 10px;
+    background: #eee;
+}
+.refcheck_addLink {
+    margin-bottom: 10px;
+}
 .refcheck-list {
     min-height: 300px;
+}
+.refcheck-delete {
+    display: inline-block;
+    margin-left: 50px;
 }
 .refcheck_ctrlBlock {
     margin-bottom: 5px;

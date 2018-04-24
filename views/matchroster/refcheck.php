@@ -27,13 +27,35 @@
         <a class="main-tabs_item<?if ($_GET['team'] == $answer['match']['team1']) {?> main-tabs_item_active<?}?>" href="/?r=matchroster/refcheck&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&team=<?=$answer['match']['team1']?>&ret=<?=$_GET['ret']?>"><?=$answer['match']['t1name']?></a>
         <a class="main-tabs_item<?if ($_GET['team'] == $answer['match']['team2']) {?> main-tabs_item_active<?}?>" href="/?r=matchroster/refcheck&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&team=<?=$answer['match']['team2']?>&ret=<?=$_GET['ret']?>"><?=$answer['match']['t2name']?></a>
     </div>
+<?} else {?>
+    <?if ($answer['match']['confirm']) {?>
+        <div class="refcheck-bigfont">Состав проверен и закрыт от изменений</div>
+    <?}?>
 <?}?>
-
+<div class="main-fieldWrapper">
+    <a target="_blank" href="/?r=matchroster/print&team=<?=$_GET['team']?>&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">Печать</a>
+</div>
 <?$roster = $answer['roster']['answer'];?>
 <div class="refcheck-list">
     <?if (!count($roster)) {?>
-        <a href="/?r=matchroster/autofill&match=<?=$_GET['match']?>&team=<?=$_GET['team']?>&ret=<?=$ret?>">Заполнить автоматически</a>
+        <a class="refcheck-auto<?if ($answer['match']['confirm']) {?> main-hidden<?}?>" href="/?r=matchroster/autofill&match=<?=$_GET['match']?>&team=<?=$_GET['team']?>&ret=<?=$ret?>">Заполнить автоматически</a>
     <?}?>
+    <button class="main-btn refcheck_addLink<?if ($answer['match']['confirm']) {?> main-hidden<?}?>" data-match="<?=$_GET['match']?>" data-team="<?=$_GET['team']?>">+ Добавить игрока из заявки</button>
+    <div class="refcheck-add main-hidden">
+        <input class="refcheck-hMatch" type="hidden" name="match" value="<?=$_GET['match']?>"/>
+        <input class="refcheck-hTeam" type="hidden" name="team" value="<?=$_GET['team']?>"/>
+        <div class="match-matchroster_fio">
+            <select class="refcheck-add_player">
+
+            </select>
+        </div>
+        <div>
+            <input type="text" class="refcheck-numberAdd" data-validate="req" placeholder="№"/>
+        <span class="match-matchroster_ctrl">
+            <a class="refcheck_okAdd" href="javascript:void(0);">[ok]</a>
+        </span>
+        </div>
+    </div>
     <?for ($i = 0; $i < count($roster); $i++) {?>
         <div class="listview-item refcheck-item" data-mr="<?=$roster[$i]['id']?>">
             <div class="refcheck-photo">
@@ -51,7 +73,10 @@
                 </div>
                 <a href="javascript: void(0)"
                    class="refcheck-change refcheck-bigfont<?if ($answer['match']['confirm']) {?> main-hidden<?}?>">Изменить номер</a>
+
                 <a href="javascript: void(0)" class="main-hidden refcheck-ok refcheck-bigfont">Сохранить</a>
+                    <a href="javascript: void(0)" data-mr="<?=$roster[$i]['id']?>"
+                       class="refcheck-delete refcheck-bigfont<?if ($answer['match']['confirm']) {?> main-hidden<?}?>">Удалить из состава</a>
             </div>
         </div>
     <?}?>

@@ -39,7 +39,7 @@
     function matchroster_autofill($dbConnect, $CONSTPATH) {
         $team = $_GET['team'];
         $comp = matchroster_comp($dbConnect, $_GET['match']);
-        if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$team]) || ($_SESSION['userComp'][$comp['answer']] == 1)) {
+        if (($_SESSION['userType'] == 4) || ($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$team]) || ($_SESSION['userComp'][$comp['answer']] == 1)) {
 
 
 
@@ -101,7 +101,7 @@
     function matchroster_delete($dbConnect, $CONSTPATH) {
         $team = matchroster_team($dbConnect, $_POST['matchroster']);
         $comp = matchroster_comp($dbConnect, $_POST['match']);
-        if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$team['answer']]) || ($_SESSION['userComp'][$_GET['comp']] == 1) || ($_SESSION['userComp'][$comp['answer']])) {
+        if (($_SESSION['userType'] == 4) || ($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$team['answer']]) || ($_SESSION['userComp'][$_GET['comp']] == 1) || ($_SESSION['userComp'][$comp['answer']])) {
             $query = '
                 DELETE FROM matchroster WHERE id = :match
             ';
@@ -143,7 +143,7 @@
         $team = $_GET['team'];
         $comp = matchroster_comp($dbConnect, $_GET['match']);
         $comp = $comp['answer'];
-        if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$team]) || ($_SESSION['userComp'][$comp])) {
+        if (($_SESSION['userType'] == 4) || ($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$team]) || ($_SESSION['userComp'][$comp])) {
 
             require($_SERVER['DOCUMENT_ROOT'] . $CONSTPATH  . '/controllers/roster.php');
             $answer = roster_list($dbConnect, $CONSTPATH, ' ORDER BY surname, name ', $team, $comp, TRUE);
@@ -158,7 +158,7 @@
         $team = $_POST['team'];
         $comp = matchroster_comp($dbConnect, $_POST['match']);
         $comp = $comp['answer'];
-        if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$team]) || ($_SESSION['userComp'][$comp])) {
+        if (($_SESSION['userType'] == 4) || ($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$team]) || ($_SESSION['userComp'][$comp])) {
             $query = '
             INSERT INTO matchroster
               (`match`, team, roster, number)
