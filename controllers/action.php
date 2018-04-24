@@ -63,7 +63,7 @@
             ));
             $ret = 'match/view';
             if ($_POST['ret']) {
-                $ret = 'action/edit';
+                $ret = 'action/edit&ret=matchcenter';
             }
             return array(
                 'page' => '/?r=' . $ret . '&match='.$_POST['match'].'&comp='.$_POST['comp']
@@ -84,7 +84,7 @@
             ));
             $ret = 'match/view';
             if ($_GET['ret']) {
-                $ret = 'action/edit';
+                $ret = 'action/edit&ret=matchcenter';
             }
             return array(
                 'page' => '/?r=' . $ret . '&match='.$_GET['match'].'&comp='.$_GET['comp']
