@@ -84,7 +84,7 @@
         </div>
 
     </div>
-    <div class="match-bg_image<? if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 4)) {?> match-bg_image_pad<?}?>"></div>
+    <div class="match-bg_image<? if ($FULLACCESS || $T1ACCESS || $T2ACCESS) {?> match-bg_image_pad<?}?>"></div>
 </div>
 
 <div class="fafr-minWidth fafr-maxWidth">
