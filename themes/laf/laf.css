@@ -558,3 +558,58 @@
 .comp-point_action_right {
     border-left: 3px solid #4D68AE;
 }
+/*составы на матч*/
+.match-roster_table {
+    width: 100%;
+}
+.match-roster_item {
+    padding: 10px;
+    position: relative;
+    z-index:2;
+}
+.match-roster_item_zebra {
+    background-color: rgba(37, 47, 78, 0.1);
+}
+.match-roster_tableLeft {
+    padding-right: 20px;
+}
+
+.match-roster_tableRight {
+    padding-left: 20px;
+}
+.match-roster_pos {
+    font-weight: bold;
+}
+.match-roster_playerInfo_face {
+    font-size: 12px;
+}
+.match-roster_photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    float: left;
+    overflow: hidden;
+}
+.match-roster_text {
+    margin-left: 50px;
+}
+.match-roster_photo .fafr-noPhoto {
+    line-height: 40px;
+    font-size: 40px;
+}
+.match-roster_playerInfo {
+    line-height: 20px;
+}
+.match-roster_table {
+    position: relative;
+}
+.match-roster_logo {
+    position: absolute;
+    top: 63px;
+    width: 320px;
+    height: 320px;
+    opacity: 0.1;
+    z-index: 1;
+    left: 50%;
+    margin-left: -160px;
+}

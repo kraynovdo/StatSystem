@@ -5,7 +5,7 @@
 html {
     height: 100%;
 }
-.fafr-text {
+table, .fafr-text {
     font-weight: normal;
     color: #15222b;
     font-size: 14px;
