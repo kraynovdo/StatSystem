@@ -272,6 +272,9 @@
 }
 
 /*stats*/
+.stats-item_zebra {
+    background-color: rgba(37, 47, 78, 0.1)
+}
 .stats_maintable, .stats-table {
     width: 100%;
     border-collapse: collapse;
@@ -291,11 +294,14 @@
 .stats-personTeamLogoDesk {
     display: inline-block;
 }
-.stats-table .datagrid_tbody td {
+.stats-table .datagrid_tbody td, .stats-table th {
     padding: 5px 5px;
 }
 .stats-personTeamLogo {
     display: none;
+}
+.stats-item_total {
+    font-weight: bold;
 }
 /*about*/
 .comp-about_info {
@@ -559,8 +565,11 @@
     border-left: 3px solid #4D68AE;
 }
 /*составы на матч*/
-.match-roster_table {
+.match-table {
     width: 100%;
+}
+.match-roster_logoWrapper {
+    position: relative;
 }
 .match-roster_item {
     padding: 10px;
@@ -570,11 +579,11 @@
 .match-roster_item_zebra {
     background-color: rgba(37, 47, 78, 0.1);
 }
-.match-roster_tableLeft {
+.match-tableLeft {
     padding-right: 20px;
 }
 
-.match-roster_tableRight {
+.match-tableRight {
     padding-left: 20px;
 }
 .match-roster_pos {
@@ -599,9 +608,6 @@
 }
 .match-roster_playerInfo {
     line-height: 20px;
-}
-.match-roster_table {
-    position: relative;
 }
 .match-roster_logo {
     position: absolute;

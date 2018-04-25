@@ -6,7 +6,7 @@
 
     <h2 class="fafr-h2">Игроки</h2>
 
-    <div class="match-roster_table">
+    <div class="match-roster_logoWrapper">
         <?if ($rlogo) {?>
             <div class="match-roster_logo">
                 <img style="width:100%" src="//<?=$HOST?>/upload/<?=$rlogo?>"/>

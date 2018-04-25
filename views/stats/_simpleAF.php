@@ -9,19 +9,19 @@
     <tr>
         <th>&nbsp;</th>
         <?for ($i = 0; $i < count($columns); $i++ ){?>
-            <th class="main-rightAlign"><?=$columns[$i]['title']?></th>
+            <th class="main-rightAlign fafr-textAdd fafr-rightAl"><?=$columns[$i]['title']?></th>
         <?}?>
     </tr>
     </thead>
     <tbody class="datagrid_tbody">
     <?$sumArr = array()?>
     <?for ($i = 0; $i < count($arr); $i++) {?>
-        <tr class="stats-item">
+        <tr class="stats-item <?if($i % 2 == 0){?> stats-item_zebra<?}?>">
             <td>
-                <a class="stats-personLink" href="/?r=person/view&person=<?=$arr[$i]['id']?>&comp=<?=$_GET['comp']?>"><?=$arr[$i]['name']. ' '.$arr[$i]['surname']?></a>
+                <a class="stats-personLink fafr-textColor" href="/?r=person/view&person=<?=$arr[$i]['id']?>&comp=<?=$_GET['comp']?>"><?=$arr[$i]['name']. ' '.$arr[$i]['surname']?></a>
             </td>
             <?for ($j = 0; $j < count($columns); $j++ ){?>
-                <td class="stats-counter main-rightAlign">
+                <td class="stats-counter main-rightAlign fafr-rightAl">
                     <?=$arr[$i][$columns[$j]['field']]?>
                 </td>
                 <?if ($sum && (in_array($columns[$j]['field'], $sum))) {?>
@@ -38,7 +38,7 @@
         <td>ВСЕГО</td>
         <?for ($j = 0; $j < count($columns); $j++ ){?>
             <?if ($sum && (in_array($columns[$j]['field'], $sum))) {?>
-                <td class="stats-counter main-rightAlign">
+                <td class="stats-counter main-rightAlign fafr-rightAl">
                     <?=$sumArr[$columns[$j]['field']]?>
                 </td>
             <?} else {?>

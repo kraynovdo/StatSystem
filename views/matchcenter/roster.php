@@ -5,13 +5,13 @@
     }
 ?>
 <div class="fafr-minWidth fafr-maxWidth">
-    <table class="match-roster_table">
+    <table class="match-table">
         <colgroup>
             <col width="50%"/>
             <col width="50%"/>
         </colgroup>
         <tr>
-        <td class="fafr-topValign match-roster_tableLeft">
+        <td class="fafr-topValign match-tableLeft">
 
             <?
                 $roster = $answer['team1roster'];
@@ -22,7 +22,7 @@
             ?>
 
         </td>
-        <td class="fafr-topValign match-roster_tableRight">
+        <td class="fafr-topValign match-tableRight">
             <?
                 $roster = $answer['team2roster'];
                 $rosterFace = $answer['face2'];

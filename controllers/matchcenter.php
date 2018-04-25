@@ -57,3 +57,26 @@
 
         return $result;
     }
+
+    function matchcenter_stats ($dbConnect, $CONSTPath) {
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/stats.php');
+        $stats_old = stats_matchAF($dbConnect, $CONSTPath);
+
+
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
+        $navigation = competition_lafNavig();
+        $stats_old['navigation'] = $navigation;
+
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/match.php');
+        $maininfo = match_mainInfo($dbConnect, $CONSTPath);
+        $stats_old['answer']['maininfo'] = $maininfo;
+
+
+
+
+        $navigation = competition_lafNavig();
+        $navigation['pageId'] = 45;
+        $result['navigation'] = $navigation;
+
+        return $stats_old;
+    }

@@ -128,5 +128,6 @@
         <a href="/?r=matchcenter&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>#nav" class="match-navig_link <?if ($_GET['r'] == 'matchcenter'){?> match-navig_link_selected<?}?>">Набранные очки</a>
         <a href="/?r=matchcenter/protocol&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>#nav" class="match-navig_link <?if ($_GET['r'] == 'matchcenter/protocol'){?> match-navig_link_selected<?}?>">Протокол матча</a>
         <a href="/?r=matchcenter/roster&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>#nav" class="match-navig_link <?if ($_GET['r'] == 'matchcenter/roster'){?> match-navig_link_selected<?}?>">Составы команд</a>
+        <a href="/?r=matchcenter/stats&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>#nav" class="match-navig_link <?if ($_GET['r'] == 'matchcenter/stats'){?> match-navig_link_selected<?}?>">Статистика</a>
     </div>
 </div>
