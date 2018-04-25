@@ -274,10 +274,10 @@
             require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statconfig.php');
             $answer['statconfig'] = statconfig_list($dbConnect, $CONSTPath);
 
-            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/admin.php');
             $result = array(
                 'answer' => $answer,
-                'navigation' => competition_NAVIG($dbConnect, $_GET['comp'])
+                'navigation' => admin_NAVIG($dbConnect, $_GET['comp'])
             );
             return $result;
         }

@@ -1,5 +1,6 @@
+<a class="main-navig2_link" href="/?r=match/playbyplayAF&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">Ход игры</a>
+<a class="main-navig2_link" style="font-size: 18px;" href="/?r=stats/screenAF&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">Экран статиста</a>
 <?
-include $_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/views/match/_navig.php';
 $team1 = $answer['matchInfo']['team1'];
 $team2 = $answer['matchInfo']['team2'];
 $teamID = $answer['teamID'];

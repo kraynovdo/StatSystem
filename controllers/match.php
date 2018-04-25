@@ -583,10 +583,10 @@
 
         $answer['event'] = $eventResult;
         $answer['share'] = $share;
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/admin.php');
         return array(
             'answer' => $answer,
-            'navigation' => competition_NAVIG($dbConnect, $_GET['comp'])
+            'navigation' => admin_NAVIG($dbConnect, $_GET['comp'])
         );
     }
 

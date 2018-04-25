@@ -2,24 +2,33 @@
 
     if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 4)) {
         $FULLACCESS = true;
+        $STATACCESS = true;
     }
     else {
-        if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$answer['maininfo']['team1']]) || ($_SESSION['userComp'][$_GET['comp']] == 1) ) {
-            $T1ACCESS = true;
+        if ($_SESSION['userType'] == 5) {
+            $STATACCESS = true;
         }
-        if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$answer['maininfo']['team2']]) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {
-            $T2ACCESS = true;
+        else {
+            if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$answer['maininfo']['team1']]) || ($_SESSION['userComp'][$_GET['comp']] == 1) ) {
+                $T1ACCESS = true;
+            }
+            if (($_SESSION['userType'] == 3) || ($_SESSION['userTeams'][$answer['maininfo']['team2']]) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {
+                $T2ACCESS = true;
+            }
         }
     }
 
 ?>
 <div class="match-header">
-    <? if ($T1ACCESS || $T2ACCESS || $FULLACCESS) {?>
+    <? if ($T1ACCESS || $T2ACCESS || $FULLACCESS || $STATACCESS) {?>
     <div class="fafr-minWidth fafr-maxWidth fafr-centerAl match-refAdmin">
         <?if ($FULLACCESS) {?>
             <a class="fafr-link match-admin_link" href="/?r=protocol/edit&comp=<?=$_GET['comp']?>&match=<?=$_GET['match']?>&ret=matchcenter">Заполнить протокол</a>
             <a class="fafr-link match-admin_link" href="/?r=action/edit&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&ret=matchcenter">Заполнить очки</a>
             <a class="fafr-link match-admin_link" href="/?r=matchroster/refcheck&ret=matchcenter&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&ret=matchcenter&team=<?=$answer['maininfo']['team1']?>">Управление составами</a>
+        <?}?>
+        <?if ($STATACCESS) {?>
+            <a class="fafr-link match-admin_link" href="/?r=stats/screenAF&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">Экран статиста</a>
         <?}?>
         <?if ($T1ACCESS) {?>
             <a class="fafr-link match-admin_link" href="/?r=matchroster/refcheck&ret=matchcenter&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&ret=matchcenter&team=<?=$answer['maininfo']['team1']?>">Управление составами</a>
@@ -84,7 +93,7 @@
         </div>
 
     </div>
-    <div class="match-bg_image<? if ($FULLACCESS || $T1ACCESS || $T2ACCESS) {?> match-bg_image_pad<?}?>"></div>
+    <div class="match-bg_image<? if ($FULLACCESS || $T1ACCESS || $T2ACCESS || $STATACCESS) {?> match-bg_image_pad<?}?>"></div>
 </div>
 
 <div class="fafr-minWidth fafr-maxWidth">

@@ -1,9 +1,9 @@
+<a class="main-navig2_link" style="font-size: 18px;" href="/?r=match/playbyplayAF&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">Ход игры</a>
+<a class="main-navig2_link" href="/?r=stats/screenAF&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>">Экран статиста</a>
 <?
-    include '_head.php';
     $event = $answer['event'];
     $admin = ($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 5);
 ?>
-<h2>Ход игры</h2>
 
 <?$pt = $answer['pointsTable'];?>
 <table class="match-pointsTable">
