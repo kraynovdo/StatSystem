@@ -8,7 +8,7 @@
     </div>
 
     <div class="main-fieldWrapper">
-        <label class="main-label_top">Ссылка на youtu.be или контент плеера</label>
+        <label class="main-label_top">Ссылка на youtu.be</label>
         <input name="content" class="video-field" type="text" value="<?=$answer['content']?>"/>
     </div>
 

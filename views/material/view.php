@@ -12,7 +12,7 @@
         $filter .= '&federation='.$_GET['federation'];
     }
 ?>
-    <a class="fafr-backLink fafr-textColor" href="/?r=<?=$_GET['ret']?><?=$filter?>">Назад</a>
+    <a class="fafr-backLink fafr-textColor" href="javascript: history.back()">Назад</a>
 </div>
 
 <div class="news-last fafr-bg_dark fafr-minWidth">

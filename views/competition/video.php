@@ -16,15 +16,19 @@
             if (strpos($link, 'youtu.be')) {
                 $pos = strripos($link, '/');
                 $code = mb_substr($link, $pos+1);
-                $editor = '<iframe width="100%" height="200px" src="https://www.youtube.com/embed/'.$code.'" frameborder="0" allowfullscreen></iframe>';
-            }
-            else {
-                $editor = '';
+                //$editor = '<iframe width="100%" height="200px" src="https://www.youtube.com/embed/'.$code.'" frameborder="0" allowfullscreen></iframe>';
+                $link = '/?r=video/view&code=' . $code . '&comp=' . $_GET['comp'] . '&video=' . $video[$i]['id'] . '&match=' . $video[$i]['mid'];
             }
         ?>
             <div class="video-list_item">
                 <div class="video-list_itemContent">
-                    <?=$editor?>
+                    <a href="<?=$link?>" class="video-list_imgWrapper">
+                        <?if ($code) {?>
+                            <img class="video-list_img" src="https://img.youtube.com/vi/<?=$code?>/mqdefault.jpg"/>
+                        <?} else {?>
+                            <img class="video-list_img" src="//<?=$HOST?>/themes/img/empty-video.png"/>
+                        <?}?>
+                    </a>
                     <div class="news-date video-date_list fafr-bg_accent"><?=common_dateFromSQL($video[$i]['date'])?></div>
                     <div class="fafr-h2 video-list_title"><?=$video[$i]['title']?></div>
                     <?if ($_SESSION['userType'] == 3) {?>

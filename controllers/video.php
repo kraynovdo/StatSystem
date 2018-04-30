@@ -191,3 +191,50 @@
             return 'ERROR-403';
         }
     }
+
+    function video_view ($dbConnect, $CONSTPath) {
+        $result = array(
+            'answer' => array()
+        );
+        if ($_GET['comp']) {
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/competition.php');
+            $navigation = competition_lafNavig();
+            $navigation['pageId'] = 52;
+            $result['navigation'] = $navigation;
+
+            if ($_GET['video'] == -1) {
+                $rec = common_getrecord($dbConnect, '
+                    SELECT
+                       -1 AS id,
+                       CONCAT(T1.rus_name, \' - \', T2.rus_name, \' \', M.timeh, \':\', M.timem, \' (мск.)\') AS title,
+                       M.video AS content,
+                       M.date,
+                       M.id AS mid
+                    FROM
+                        `match` M
+                        LEFT JOIN team T1 ON T1.id = M.team1
+                        LEFT JOIN team T2 ON T2.id = M.team2
+                    WHERE
+                        M.id = :match
+                ', array(
+                    'match' => $_GET['match']
+                ));
+            }
+            else {
+                $rec = common_getrecord($dbConnect, '
+                    SELECT
+                       V.id, V.title, V.content, V.date, -1 as mid
+                    FROM
+                        video V
+                    WHERE
+                        V.id = :video
+                ', array(
+                    'video' => $_GET['video']
+                ));
+            }
+
+            $result['answer'] = $rec;
+        }
+
+        return $result;
+    }

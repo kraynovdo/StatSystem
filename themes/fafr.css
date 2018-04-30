@@ -538,6 +538,12 @@ table, .fafr-text {
     box-sizing: border-box;
     margin-bottom: 40px;
 }
+.video-list_imgWrapper {
+    display: block;
+}
+.video-list_img {
+    width: 100%;
+}
 .video-list_itemContent {
     width: 320px;
     margin: 0 auto;
@@ -567,4 +573,12 @@ table, .fafr-text {
     flex-direction: row;
     justify-content: flex-end;
     margin-bottom: 40px;
+}
+
+.video-view_img {
+    float: left;
+    width: 640px;
+}
+.video-view_text {
+    margin-left: 660px;
 }
