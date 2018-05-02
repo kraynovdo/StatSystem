@@ -97,22 +97,26 @@
         <?}?>
         <? if (count($news)) {?>
             <div class="feed-main <? if (count($news)) {?> feed-main_withCol<?}?>">
-                <div class="feed-main_img">
-                    <?if ($news[0]['image']) {?>
-                        <img style="width:100%" src="//<?=$HOST?>/upload/<?=$news[0]['image']?>">
-                    <?} else {?>
-                        <img style="width:100%" src="//<?=$HOST?>/themes/img/empty-new.png">
-                    <?}?>
-                </div>
-                <div class="feed-main_text">
-                    <div class="news-date feed-date_main fafr-bg_accent"><?=common_dateFromSQL($news[0]['date'])?></div>
-                    <div class="feed-main_title">
-                        <a class="fafr-lightColor" href="/?r=material/view&mater=<?=$news[0]['material']?><?=$filter?>&ret=competition/news"><?=$news[0]['title']?></a>
+                <?php for ($i = 0; $i < 3 && $i < count($news); $i++) {?>
+                <div class="feed-main_item feed-main_item_<?=$i?>">
+                    <div class="feed-main_img">
+                        <?if ($news[$i]['image']) {?>
+                            <img style="width:100%" src="//<?=$HOST?>/upload/<?=$news[$i]['image']?>">
+                        <?} else {?>
+                            <img style="width:100%" src="//<?=$HOST?>/themes/img/empty-new.png">
+                        <?}?>
                     </div>
-                    <div class="feed-main_desc">
-                        <?=nl2br($news[0]['preview']);?>
+                    <div class="feed-main_text">
+                        <div class="news-date feed-date_main fafr-bg_accent"><?=common_dateFromSQL($news[$i]['date'])?></div>
+                        <div class="feed-main_title">
+                            <a class="fafr-lightColor" href="/?r=material/view&mater=<?=$news[$i]['material']?><?=$filter?>&ret=competition/news"><?=$news[$i]['title']?></a>
+                        </div>
+                        <div class="feed-main_desc">
+                            <?=nl2br($news[$i]['preview']);?>
+                        </div>
                     </div>
                 </div>
+                <?}?>
             </div>
         <?}?>
 

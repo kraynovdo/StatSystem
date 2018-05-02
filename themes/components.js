@@ -702,4 +702,15 @@ $(function () {
             item.outerHTML = '<h2>Функционал ограничен для мобильных устройств</h1>';
         })
     }
+
+    $('.feed-main').each(function(i, item){
+        var $feed = $(item);
+        var counter = 1;
+        setInterval(function(){
+            $('.feed-main_item').addClass('fafr-hidden');
+            $('.feed-main_item_' + counter).removeClass('fafr-hidden');
+            counter++;
+            counter = counter % 3;
+        }, 7000)
+    });
 });

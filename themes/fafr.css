@@ -426,6 +426,10 @@ table, .fafr-text {
     height: 452px;
 }
 .feed-main {
+
+    overflow: hidden;
+}
+.feed-main_item {
     position: relative;
 }
 .feed-date_main {
