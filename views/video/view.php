@@ -7,6 +7,19 @@
         $pos = strripos($link, '/');
         $code = mb_substr($link, $pos+1);
     }
+    else if (strpos($link, 'youtube.com')) {
+        $pos = strripos($link, '?v=');
+        $code = mb_substr($link, $pos+3);
+        $pos = strripos($code, '&');
+        if ($pos && $pos > 0) {
+            $code = mb_substr($code, 0, $pos);
+        }
+
+        $link = '/?r=video/view&code=' . $code . '&comp=' . $_GET['comp'] . '&video=' . $video[$i]['id'] . '&match=' . $video[$i]['mid'];
+    }
+    else {
+        $code = '';
+    }
 ?>
 
 <div class="news-last fafr-bg_dark fafr-minWidth">

@@ -16,8 +16,19 @@
             if (strpos($link, 'youtu.be')) {
                 $pos = strripos($link, '/');
                 $code = mb_substr($link, $pos+1);
-                //$editor = '<iframe width="100%" height="200px" src="https://www.youtube.com/embed/'.$code.'" frameborder="0" allowfullscreen></iframe>';
                 $link = '/?r=video/view&code=' . $code . '&comp=' . $_GET['comp'] . '&video=' . $video[$i]['id'] . '&match=' . $video[$i]['mid'];
+            } else if (strpos($link, 'youtube.com')) {
+                $pos = strripos($link, '?v=');
+                $code = mb_substr($link, $pos+3);
+                $pos = strripos($code, '&');
+                if ($pos && $pos > 0) {
+                    $code = mb_substr($code, 0, $pos);
+                }
+
+                $link = '/?r=video/view&code=' . $code . '&comp=' . $_GET['comp'] . '&video=' . $video[$i]['id'] . '&match=' . $video[$i]['mid'];
+            }
+            else {
+                $code = '';
             }
         ?>
             <div class="video-list_item">
