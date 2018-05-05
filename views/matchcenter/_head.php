@@ -99,18 +99,13 @@
 <div class="fafr-minWidth fafr-maxWidth">
     <?if ($answer['maininfo']['video']) { $video = str_replace("\"", "\\\"", $answer['maininfo']['video']);?>
         <div class="match-video fafr-centerAl">
-            <?if (strpos($video, 'youtu.be')) {
-            $pos = strripos($video, '/');
-            $code = mb_substr($video, $pos+1);
-            $editor = '<iframe width="680px" height="375px" src="https://www.youtube.com/embed/'.$code.'" frameborder="0" allowfullscreen></iframe>';
-            } else {
-                $editor = '';
-            }?>
-
+            <?
+                $editor = common_getPlayer($video, 680, 375);
+            ?>
             <?if ($editor) {?>
-            <?=$editor?>
+                <?=$editor?>
             <?} else {?>
-            <a class="fafr-link" target="_blank" href="<?=$video?>">Видео</a>
+                <a class="fafr-link" target="_blank" href="<?=$video?>">Видео</a>
             <?}?>
 
         </div>
