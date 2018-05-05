@@ -53,11 +53,7 @@
     </div>
     <br/>
     <div>
-        <?if ($_SESSION['userType'] == 3) {?>
-            <div class="main-centerAlign">
-                <a href="/?r=translation/edit&comp=<?=$_GET['comp']?>">Добавить трансляцию</a>
-            </div>
-        <?}?>
+
 <?
     $trans = $answer['trans'];
     if (count($trans)) {?>
@@ -66,16 +62,11 @@
             <?
                 for ($i = 0; $i < count($trans); $i++) {?>
                 <h2><?=$trans[$i]['title']?></h2>
-                    <?if ($_SESSION['userType'] == 3){?>
-                        <div style="text-align: right">
-                            <a href="/?r=translation/edit&trans=<?=$trans[$i]['id']?>&comp=<?=$_GET['comp']?>">Ред</a>
-                            <a class="main-delLink" href="/?r=translation/delete&trans=<?=$trans[$i]['id']?>&comp=<?=$_GET['comp']?>">[x]</a>
-                        </div>
-                    <?}?>
+
                     <?
-                        $link = $trans[$i]['link'];
-                        $link = str_replace("\\\"", "\"", $link);
-                        echo $link;
+                        $link = $trans[$i]['content'];
+                        $editor = common_getPlayer($link, 450, 280);
+                        echo $editor;
 
                     ?><br/><br/>
             <?  }?>

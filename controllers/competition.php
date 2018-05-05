@@ -132,8 +132,8 @@
 
 
 
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/translation.php');
-        $result['answer']['trans'] = translation_mainpage($dbConnect, $CONSTPath);
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/video.php');
+        $result['answer']['trans'] = video_livetoday($dbConnect, $CONSTPath);
 
         $result['navigation'] = competition_NAVIG($dbConnect, $_GET['comp']);
         return $result;

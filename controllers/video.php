@@ -79,7 +79,7 @@
                     M.video <> \'\' AND
                     M.competition = :comp AND
                     M.date = :date
-                ORDER BY M.date DESC
+                ORDER BY M.date DESC, M.timeh, M.timeM
 
             ', array('comp' => $_GET['comp'], 'date' => date('Y-m-d')));
         return $videolist;
