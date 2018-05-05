@@ -12,28 +12,13 @@
     <div class="video-list">
         <?for ($i = 0; $i < count($video); $i++) {?>
         <?
-            $link = $video[$i]['content'];
-            if (strpos($link, 'youtu.be')) {
-                $pos = strripos($link, '/');
-                $code = mb_substr($link, $pos+1);
-                $link = '/?r=video/view&code=' . $code . '&comp=' . $_GET['comp'] . '&video=' . $video[$i]['id'] . '&match=' . $video[$i]['mid'];
-            } else if (strpos($link, 'youtube.com')) {
-                $pos = strripos($link, '?v=');
-                $code = mb_substr($link, $pos+3);
-                $pos = strripos($code, '&');
-                if ($pos && $pos > 0) {
-                    $code = mb_substr($code, 0, $pos);
-                }
+            $link = $link = '/?r=video/view&comp=' . $_GET['comp'] . '&video=' . $video[$i]['id'] . '&match=' . $video[$i]['mid'];;
+            $code = common_youtubeCode($video[$i]['content']);
 
-                $link = '/?r=video/view&code=' . $code . '&comp=' . $_GET['comp'] . '&video=' . $video[$i]['id'] . '&match=' . $video[$i]['mid'];
-            }
-            else {
-                $code = '';
-            }
         ?>
             <div class="video-list_item">
                 <div class="video-list_itemContent">
-                    <a href="<?=$link?>" class="video-list_imgWrapper">
+                    <a href="<?=$link?>" class="video-list_imgWrapper" target="_blank">
                         <?if ($code) {?>
                             <img class="video-list_img" src="https://img.youtube.com/vi/<?=$code?>/mqdefault.jpg"/>
                         <?} else {?>

@@ -234,7 +234,9 @@
             }
 
             $result['answer'] = $rec;
+            $result['answer']['player'] = common_getPlayer($rec['content'], 640, 360);
         }
 
         return $result;
     }
+

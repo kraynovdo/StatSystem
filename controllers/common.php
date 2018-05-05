@@ -226,3 +226,40 @@
         return preg_replace($re, $subst, $str);
     }
 
+    function common_youtubeCode($link) {
+        $code = '';
+        if (strpos($link, 'youtu.be')) {
+            $pos = strripos($link, '/');
+            $code = mb_substr($link, $pos+1);
+
+        } else if (strpos($link, 'youtube.com')) {
+            $pos = strripos($link, '?v=');
+            $code = mb_substr($link, $pos+3);
+            $pos = strripos($code, '&');
+            if ($pos && $pos > 0) {
+                $code = mb_substr($code, 0, $pos);
+            }
+        }
+        return $code;
+    }
+
+    function common_getPlayer($link, $w, $h) {
+        if (strpos($link, 'youtu.be')) {
+            $pos = strripos($link, '/');
+            $code = mb_substr($link, $pos+1);
+            $player = '<iframe width="' . $w . '" height="' . $h . '" src="https://www.youtube.com/embed/' . $code . '?>" frameborder="0" allowfullscreen></iframe>';
+
+        } else if (strpos($link, 'youtube.com')) {
+            $pos = strripos($link, '?v=');
+            $code = mb_substr($link, $pos+3);
+            $pos = strripos($code, '&');
+            if ($pos && $pos > 0) {
+                $code = mb_substr($code, 0, $pos);
+            }
+            $player = '<iframe width="' . $w . '" height="' . $h . '" src="https://www.youtube.com/embed/' . $code . '?>" frameborder="0" allowfullscreen></iframe>';
+        }
+        else {
+            $player = '';
+        }
+        return $player;
+    }

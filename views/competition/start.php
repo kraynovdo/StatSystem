@@ -44,15 +44,8 @@
     <div class="comp-live">
         <?for ($i = 0; $i < count($video); $i++) {?>
         <?
-        $link = $video[$i]['content'];
-        if (strpos($link, 'youtu.be')) {
-            $pos = strripos($link, '/');
-            $code = mb_substr($link, $pos+1);
-            $editor = '<iframe width="100%" height="280px" src="https://www.youtube.com/embed/'.$code.'" frameborder="0" allowfullscreen></iframe>';
-        }
-        else {
-            $editor = '';
-        }
+            $link = $video[$i]['content'];
+            $editor = common_getPlayer($link, 450, 280);
         ?>
         <div class="comp-live_item">
             <div class="comp-live_itemContent">
