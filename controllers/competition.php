@@ -308,6 +308,7 @@
 
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/video.php');
         $result['answer']['livevideo'] = video_livetoday($dbConnect, $CONSTPath);
+        $result['answer']['videofeed'] = video_main($dbConnect, $CONSTPath);
 
         $result['navigation'] = competition_lafNavig();
         return $result;

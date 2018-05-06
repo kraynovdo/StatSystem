@@ -240,3 +240,18 @@
         return $result;
     }
 
+    function video_main($dbConnect) {
+        $videolist = common_getlist($dbConnect, '
+                SELECT
+                   V.id, V.title, V.content, V.date, -1 as mid
+                FROM
+                    video V
+                WHERE
+                    V.competition = :comp AND ismain
+                ORDER BY V.date DESC
+                LIMIT 0, 3
+
+            ', array('comp' => $_GET['comp']));
+
+        return $videolist;
+    }

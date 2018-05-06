@@ -115,3 +115,31 @@
 
     </div>
 </div>
+<div class="fafr-minWidth fafr-bg_dark">
+    <div class="fafr-minWidth fafr-maxWidth">
+        <h1 class="fafr-h1">Видео</h1>
+        <div class="news-tiles fafr-3columns">
+            <div class="fafr-3columnsWrapper">
+                <?for ($i = 0, $video = $answer['videofeed']; $i < count($video); $i++) {?>
+                <?
+                    $link = $link = '/?r=video/view&comp=' . $_GET['comp'] . '&video=' . $video[$i]['id'] . '&match=' . $video[$i]['mid'];;
+                    $code = common_youtubeCode($video[$i]['content']);
+                ?>
+                <div class="video-list_item fafr-3columns_item">
+                    <div class="video-list_itemContent">
+                        <a href="<?=$link?>" class="video-list_imgWrapper" target="_blank">
+                            <?if ($code) {?>
+                                <img class="video-list_img" src="https://img.youtube.com/vi/<?=$code?>/mqdefault.jpg"/>
+                            <?} else {?>
+                                <img class="video-list_img" src="//<?=$HOST?>/themes/img/empty-video.png"/>
+                            <?}?>
+                        </a>
+                        <div class="news-date video-date_list fafr-bg_accent"><?=common_dateFromSQL($video[$i]['date'])?></div>
+                    </div>
+
+                </div>
+                <?}?>
+            </div>
+        </div>
+    </div>
+</div>

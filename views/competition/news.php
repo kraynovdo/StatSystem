@@ -45,10 +45,10 @@ if ($_GET['federation']) {
     </div>
 <?}?>
 <div class="fafr-minWidth fafr-maxWidth">
-    <div class="news-tiles">
-        <?php for ($i = 1; $i < 4 && $i < count($news); $i++) {?>
-            <div class="news-tile <?if ($i == 2){?> news-tile_center<?}?>">
-                <div class="news-tile_content">
+    <div class="news-tiles fafr-3columns">
+        <div class="fafr-3columnsWrapper">
+            <?php for ($i = 1; $i < 4 && $i < count($news); $i++) {?>
+                <div class="news-tile fafr-3columns_item">
                     <div class="news-tile_img">
                         <?if ($news[$i]['image']) {?>
                             <img style="width:100%" src="//<?=$HOST?>/upload/<?=$news[$i]['image']?>">
@@ -66,8 +66,8 @@ if ($_GET['federation']) {
                         </div>
                     </div>
                 </div>
-            </div>
-        <?}?>
+            <?}?>
+        </div>
     </div>
 
     <div class="news-list">

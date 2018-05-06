@@ -129,7 +129,7 @@ table, .fafr-text {
 }
 
 .fafr-footerplace {
-    height: 240px;
+    height: 160px;
 }
 .fafr-footer_wrapper {
     position: relative;
@@ -327,7 +327,20 @@ table, .fafr-text {
     padding-bottom: 15px;
 }
 
+.fafr-3columns {
+    overflow-x: hidden;
+}
+.fafr-3columnsWrapper {
+    margin: 0 -15px;
+    overflow: hidden;
+}
 
+.fafr-3columns_item {
+    padding: 0 15px;
+    box-sizing: border-box;
+    width: 33.3%;
+    float: left;
+}
 /*news*/
 .news-last {
     padding: 60px 0 60px 0;
@@ -371,14 +384,10 @@ table, .fafr-text {
     bottom: 40px;
 }
 .news-tiles {
-    overflow: hidden;
     margin-bottom: 60px;
 }
 .news-tile {
-    padding: 0 15px;
-    box-sizing: border-box;
-    width: 33%;
-    float: left;
+
 }
 .news-date_tile {
     bottom: 20px;
@@ -424,6 +433,7 @@ table, .fafr-text {
 .feed-container {
     overflow: hidden;
     height: 452px;
+    margin-bottom: 70px;
 }
 .feed-main {
 
@@ -533,13 +543,7 @@ table, .fafr-text {
 }
 
 /*video*/
-.video-list {
-    overflow: hidden;
-}
 .video-list_item {
-    float: left;
-    width: 33%;
-    box-sizing: border-box;
     margin-bottom: 40px;
 }
 .video-list_imgWrapper {
@@ -549,8 +553,6 @@ table, .fafr-text {
     width: 100%;
 }
 .video-list_itemContent {
-    width: 320px;
-    margin: 0 auto;
     position: relative;
 }
 .video-date_list {
