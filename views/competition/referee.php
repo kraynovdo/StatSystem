@@ -28,13 +28,13 @@
         <?php for ($i = 0; $i < count($answer['referee']); $i++) {?>
             <div class="referee-item">
                 <div class="referee-item_content">
-                    <a class="comp-columnContentLink" target="_blank" href="/?r=person/view&person=<?=$answer['referee'][$i]['id']?>"></a>
+                    <a class="comp-columnContentLink" target="_blank" href1="/?r=person/view&person=<?=$answer['referee'][$i]['id']?>"></a>
                     <?if ($answer['referee'][$i]['avatar']) {?>
-                        <span class="referee-clAvatar" target="_blank" href="/?r=person/view&person=<?=$answer['referee'][$i]['id']?><?=$filter?>">
+                        <span class="referee-clAvatar" target="_blank" href1="/?r=person/view&person=<?=$answer['referee'][$i]['id']?><?=$filter?>">
                             <img style="width:140px" src="//<?=$HOST?>/upload/<?=$answer['referee'][$i]['avatar']?>">
                         </span>
                     <?} else {?>
-                        <span class="referee-clAvatar" target="_blank" href="/?r=person/view&person=<?=$answer['referee'][$i]['id']?><?=$filter?>">
+                        <span class="referee-clAvatar" target="_blank" href1="/?r=person/view&person=<?=$answer['referee'][$i]['id']?><?=$filter?>">
                             <div class="fafr-noPhoto">?</div>
                         </span>
                     <?}?>

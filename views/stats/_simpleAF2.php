@@ -63,7 +63,7 @@ if ($p_page) {
                     <?}?>
                 </div>
 
-                <a class="stats-personLink fafr-textColor fafr-middleValign main-middleValign" href="/?r=person/view&person=<?=$arr[$i]['id']?>&comp=<?=$_GET['comp']?>">
+                <a class="stats-personLink fafr-textColor fafr-middleValign main-middleValign" href1="/?r=person/view&person=<?=$arr[$i]['id']?>&comp=<?=$_GET['comp']?>">
                     <?=$arr[$i]['name']. ' '.$arr[$i]['surname'] . ' (' . ($i+1) . ')'?>
                 </a>
             </td>

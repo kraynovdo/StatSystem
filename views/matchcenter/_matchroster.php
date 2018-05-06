@@ -25,7 +25,7 @@
                 </div>
                 <div class="match-roster_text">
                     <div class="match-roster_fio match-roster_playerInfo">
-                        <a class="match-roster_fioLink fafr-textColor" target="_blank" href="/?r=person/view&person=<?=$roster[$i]['personID']?>"><?=initials($roster[$i])?></a>
+                        <a class="match-roster_fioLink fafr-textColor" target="_blank" href1="/?r=person/view&person=<?=$roster[$i]['personID']?>"><?=initials($roster[$i])?></a>
                         <span class="match-roster_pos"><?=$roster[$i]['abbr']?></span>
                     </div>
                     <div class="match-roster_playerInfo">
