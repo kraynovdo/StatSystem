@@ -432,11 +432,10 @@ table, .fafr-text {
 }
 .feed-container {
     overflow: hidden;
-    height: 452px;
     margin-bottom: 70px;
+    position: relative;
 }
 .feed-main {
-
     overflow: hidden;
 }
 .feed-main_item {
@@ -450,9 +449,11 @@ table, .fafr-text {
     margin-right: 33%;
 }
 .feed-column {
-    float: right;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
     width: 33%;
-    height: 100%;
     display: flex;
     justify-content: space-around;
     flex-direction: column;

@@ -91,7 +91,7 @@
         <? if (count($news)) {?>
             <div class="feed-main <? if (count($news)) {?> feed-main_withCol<?}?>">
                 <?php for ($i = 0; $i < 3 && $i < count($news); $i++) {?>
-                <div class="feed-main_item feed-main_item_<?=$i?>">
+                <div class="feed-main_item feed-main_item_<?=$i?><?if ($i > 0) {?> fafr-hidden<?}?>">
                     <div class="feed-main_img">
                         <?if ($news[$i]['image']) {?>
                             <img style="width:100%" src="//<?=$HOST?>/upload/<?=$news[$i]['image']?>">
