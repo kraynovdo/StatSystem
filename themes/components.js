@@ -713,4 +713,8 @@ $(function () {
             counter = counter % 3;
         }, 7000)
     });
+
+    $('.fafr-toTopLink').click(function(){
+        document.body.scrollTop = 0
+    })
 });

@@ -41,7 +41,7 @@
 
     <div class="material-content"><?=$answer['content']?></div>
     <div>
-        <a class="fafr-toTopLink fafr-textColor" href="#top">Наверх</a>
+        <a class="fafr-toTopLink fafr-textColor" href="javascript: void(0)">Наверх</a>
     </div>
     <?if (($_SESSION['userID'] == $answer['user']) || ($_SESSION['userType'] == 3)) {?>
         <a class="fafr-link" href="/?r=material/edit&mater=<?=$answer['id']?><?=$filter?>&ret=<?=$_GET['ret']?>">Редактировать</a>
