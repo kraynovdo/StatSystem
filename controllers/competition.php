@@ -302,6 +302,11 @@
 
         $result['answer']['results'] = competition_actualMatches($dbConnect);
 
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/stats.php');
+        $statsComp = stats_compAF($dbConnect, $CONSTPath, 1);
+        $result['answer']['stats'] = $statsComp['answer'];
+
+
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/news.php');
         $newsPage = news_index($dbConnect, $CONSTPath, 4, true);
         $result['answer']['news'] = $newsPage['answer'];

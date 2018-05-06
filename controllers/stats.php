@@ -92,13 +92,11 @@
 
     function stats_compAF($dbConnect, $CONSTPath) {
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/match.php');
         $result = array(
             'answer' => array(),
             'navigation' => competition_NAVIG($dbConnect, $_GET['comp'])
         );
 
-        $result['answer']['match'] = match_mainInfo($dbConnect, $CONSTPath);
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/statsAF.php');
         switch ($_GET['type']) {
             case 'rush' : $result['answer']['rush'] = statsAF_rushTop($dbConnect, 'comp', $_GET['comp'], null); break;

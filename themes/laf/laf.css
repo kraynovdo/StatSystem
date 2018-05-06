@@ -20,7 +20,7 @@
 
 
 .comp-teamList {
-    margin: -40px 0 60px 165px;
+    margin: -40px 0 20px 165px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -40,7 +40,7 @@
     overflow: hidden;
     flex-flow: row wrap;
     justify-content: space-between;
-    margin-bottom: 70px;
+    margin-bottom: 20px;
 }
 .comp-resultsTable_match {
     width: 19%;
@@ -97,7 +97,37 @@
 .comp-resultsTable_team_big {
     text-transform: uppercase;
 }
-
+.comp-leaders {
+    margin-bottom: 40px;
+    position: relative;
+}
+.comp-leaders_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.comp-leaders_link {
+    top: 27px;
+}
+.comp-leaders_item {
+    width: 70px;
+}
+.comp-leaders_content {
+    height: 70px;
+    overflow: hidden;
+    border-top: 2px solid #fff;
+}
+.comp-leaders_item .fafr-noPhoto {
+    line-height: 70px;
+    font-size: 70px;
+}
+.comp-leaders_sign {
+    white-space: nowrap;
+    font-size: 12px;
+    min-height: 20px;
+    line-height: 20px;
+    text-align: center;
+}
 
 /*team list*/
 .comp-columnsHeader {

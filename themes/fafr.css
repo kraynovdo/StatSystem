@@ -432,7 +432,7 @@ table, .fafr-text {
 }
 .feed-container {
     overflow: hidden;
-    margin-bottom: 70px;
+    margin-bottom: 20px;
     position: relative;
 }
 .feed-main {
