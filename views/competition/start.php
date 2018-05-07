@@ -40,104 +40,6 @@
         </div>
     <?}?>
 
-    <div class="comp-leaders">
-        <h1 class="fafr-h1">Лидеры</h1>
-        <a class="fafr-link feed-link comp-leaders_link" href="/?r=competition/stats&comp=<?=$_GET['comp']?>">Вся статистика</a>
-        <div class="comp-leaders_list">
-            <?
-                $arrRush1 = $answer['stats']['rush'];
-                $arrPass1 =$answer['stats']['pass'];
-                $arrQb1 = $answer['stats']['qb'];
-                $arrRet1 = $answer['stats']['ret'];
-                $arrTac1 = $answer['stats']['tac'];
-                $arrSack1 = $answer['stats']['sack'];
-                $arrInt1 = $answer['stats']['int'];
-                $arrFg1 = $answer['stats']['fg'];
-            ?>
-
-            <div class="comp-leaders_item">
-                <div class="comp-leaders_sign fafr-bg_dark">Пас</div>
-                <div class="comp-leaders_content">
-                    <?if ($arrQb1[0]['avatar']) {?>
-                        <img style="width: 70px;" src="//<?=$HOST?>/upload/<?=$arrQb1[0]['avatar']?>">
-                    <?} else {?>
-                        <div class="fafr-noPhoto">?</div>
-                    <?}?>
-                </div>
-            </div>
-            <div class="comp-leaders_item">
-                <div class="comp-leaders_sign fafr-bg_dark">Вынос</div>
-                <div class="comp-leaders_content">
-                    <?if ($arrRush1[0]['avatar']) {?>
-                        <img style="width: 70px;" src="//<?=$HOST?>/upload/<?=$arrRush1[0]['avatar']?>">
-                    <?} else {?>
-                        <div class="fafr-noPhoto">?</div>
-                    <?}?>
-                </div>
-            </div>
-            <div class="comp-leaders_item">
-                <div class="comp-leaders_sign fafr-bg_dark">Прием</div>
-                <div class="comp-leaders_content">
-                    <?if ($arrPass1[0]['avatar']) {?>
-                        <img style="width: 70px;" src="//<?=$HOST?>/upload/<?=$arrPass1[0]['avatar']?>">
-                    <?} else {?>
-                        <div class="fafr-noPhoto">?</div>
-                    <?}?>
-                </div>
-            </div>
-            <div class="comp-leaders_item">
-                <div class="comp-leaders_sign fafr-bg_dark">Перехваты</div>
-                <div class="comp-leaders_content">
-                    <?if ($arrInt1[0]['avatar']) {?>
-                        <img style="width: 70px;" src="//<?=$HOST?>/upload/<?=$arrInt1[0]['avatar']?>">
-                    <?} else {?>
-                        <div class="fafr-noPhoto">?</div>
-                    <?}?>
-                </div>
-            </div>
-            <div class="comp-leaders_item">
-                <div class="comp-leaders_sign fafr-bg_dark">Сэки</div>
-                <div class="comp-leaders_content">
-                    <?if ($arrSack1[0]['avatar']) {?>
-                        <img style="width: 70px;" src="//<?=$HOST?>/upload/<?=$arrSack1[0]['avatar']?>">
-                    <?} else {?>
-                        <div class="fafr-noPhoto">?</div>
-                    <?}?>
-                </div>
-            </div>
-            <div class="comp-leaders_item">
-                <div class="comp-leaders_sign fafr-bg_dark">Захваты</div>
-                <div class="comp-leaders_content">
-                    <?if ($arrTac1[0]['avatar']) {?>
-                        <img style="width: 70px;" src="//<?=$HOST?>/upload/<?=$arrTac1[0]['avatar']?>">
-                    <?} else {?>
-                        <div class="fafr-noPhoto">?</div>
-                    <?}?>
-                </div>
-            </div>
-            <div class="comp-leaders_item">
-                <div class="comp-leaders_sign fafr-bg_dark">Возврат</div>
-                <div class="comp-leaders_content">
-                    <?if ($arrRet1[0]['avatar']) {?>
-                        <img style="width: 70px;" src="//<?=$HOST?>/upload/<?=$arrRet1[0]['avatar']?>">
-                    <?} else {?>
-                        <div class="fafr-noPhoto">?</div>
-                    <?}?>
-                </div>
-            </div>
-            <div class="comp-leaders_item">
-                <div class="comp-leaders_sign fafr-bg_dark">По воротам</div>
-                <div class="comp-leaders_content">
-                    <?if ($arrFg1[0]['avatar']) {?>
-                        <img style="width: 70px;" src="//<?=$HOST?>/upload/<?=$arrFg1[0]['avatar']?>">
-                    <?} else {?>
-                        <div class="fafr-noPhoto">?</div>
-                    <?}?>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <?$video = $answer['livevideo']?>
     <div class="comp-live">
         <?for ($i = 0; $i < count($video); $i++) {?>
@@ -201,6 +103,104 @@
             </div>
         <?}?>
 
+    </div>
+
+    <div class="comp-leaders">
+        <h1 class="fafr-h1">Лидеры</h1>
+        <a class="fafr-link feed-link comp-leaders_link" href="/?r=competition/stats&comp=<?=$_GET['comp']?>">Вся статистика</a>
+        <div class="comp-leaders_list">
+            <?
+            $arrRush1 = $answer['stats']['rush'];
+            $arrPass1 =$answer['stats']['pass'];
+            $arrQb1 = $answer['stats']['qb'];
+            $arrRet1 = $answer['stats']['ret'];
+            $arrTac1 = $answer['stats']['tac'];
+            $arrSack1 = $answer['stats']['sack'];
+            $arrInt1 = $answer['stats']['int'];
+            $arrFg1 = $answer['stats']['fg'];
+            ?>
+
+            <div class="comp-leaders_item">
+                <div class="comp-leaders_sign fafr-bg_dark">Пас</div>
+                <div class="comp-leaders_content">
+                    <?if ($arrQb1[0]['avatar']) {?>
+                    <img style="width: 70px;" src="//<?=$HOST?>/upload/<?=$arrQb1[0]['avatar']?>">
+                    <?} else {?>
+                    <div class="fafr-noPhoto">?</div>
+                    <?}?>
+                </div>
+            </div>
+            <div class="comp-leaders_item">
+                <div class="comp-leaders_sign fafr-bg_dark">Вынос</div>
+                <div class="comp-leaders_content">
+                    <?if ($arrRush1[0]['avatar']) {?>
+                    <img style="width: 70px;" src="//<?=$HOST?>/upload/<?=$arrRush1[0]['avatar']?>">
+                    <?} else {?>
+                    <div class="fafr-noPhoto">?</div>
+                    <?}?>
+                </div>
+            </div>
+            <div class="comp-leaders_item">
+                <div class="comp-leaders_sign fafr-bg_dark">Прием</div>
+                <div class="comp-leaders_content">
+                    <?if ($arrPass1[0]['avatar']) {?>
+                    <img style="width: 70px;" src="//<?=$HOST?>/upload/<?=$arrPass1[0]['avatar']?>">
+                    <?} else {?>
+                    <div class="fafr-noPhoto">?</div>
+                    <?}?>
+                </div>
+            </div>
+            <div class="comp-leaders_item">
+                <div class="comp-leaders_sign fafr-bg_dark">Перехваты</div>
+                <div class="comp-leaders_content">
+                    <?if ($arrInt1[0]['avatar']) {?>
+                    <img style="width: 70px;" src="//<?=$HOST?>/upload/<?=$arrInt1[0]['avatar']?>">
+                    <?} else {?>
+                    <div class="fafr-noPhoto">?</div>
+                    <?}?>
+                </div>
+            </div>
+            <div class="comp-leaders_item">
+                <div class="comp-leaders_sign fafr-bg_dark">Сэки</div>
+                <div class="comp-leaders_content">
+                    <?if ($arrSack1[0]['avatar']) {?>
+                    <img style="width: 70px;" src="//<?=$HOST?>/upload/<?=$arrSack1[0]['avatar']?>">
+                    <?} else {?>
+                    <div class="fafr-noPhoto">?</div>
+                    <?}?>
+                </div>
+            </div>
+            <div class="comp-leaders_item">
+                <div class="comp-leaders_sign fafr-bg_dark">Захваты</div>
+                <div class="comp-leaders_content">
+                    <?if ($arrTac1[0]['avatar']) {?>
+                    <img style="width: 70px;" src="//<?=$HOST?>/upload/<?=$arrTac1[0]['avatar']?>">
+                    <?} else {?>
+                    <div class="fafr-noPhoto">?</div>
+                    <?}?>
+                </div>
+            </div>
+            <div class="comp-leaders_item">
+                <div class="comp-leaders_sign fafr-bg_dark">Возврат</div>
+                <div class="comp-leaders_content">
+                    <?if ($arrRet1[0]['avatar']) {?>
+                    <img style="width: 70px;" src="//<?=$HOST?>/upload/<?=$arrRet1[0]['avatar']?>">
+                    <?} else {?>
+                    <div class="fafr-noPhoto">?</div>
+                    <?}?>
+                </div>
+            </div>
+            <div class="comp-leaders_item">
+                <div class="comp-leaders_sign fafr-bg_dark">По воротам</div>
+                <div class="comp-leaders_content">
+                    <?if ($arrFg1[0]['avatar']) {?>
+                    <img style="width: 70px;" src="//<?=$HOST?>/upload/<?=$arrFg1[0]['avatar']?>">
+                    <?} else {?>
+                    <div class="fafr-noPhoto">?</div>
+                    <?}?>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="fafr-minWidth fafr-bg_dark">
