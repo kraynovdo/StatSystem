@@ -244,7 +244,8 @@
     }
 
     function competition_actualMatches ($dbConnect) {
-        $today = strftime('%Y-%m-%d');
+        //точка перехода не текущий день, а за 5 дней до матча
+        $today = $today = date("Y-m-d", time()+60*60*24*5);
 
         $query = '
             SELECT
