@@ -1,7 +1,7 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title><?if ($title) { echo $title; }?></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <?if ($description){?>
         <meta name="description" content="<?=$description?>">
     <?}?>
@@ -12,6 +12,7 @@
         <script type="text/javascript">window.mobile = true;</script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <?}?>
+    <meta name="viewport" id="viewport" content="width=1000">
     <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/fafr.css?27"/>
     <?if ($theme) {?>
         <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?28"/>
