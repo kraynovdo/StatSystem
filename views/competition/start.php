@@ -9,7 +9,7 @@
     <?$res = $answer['results']; if (count($res)){?>
         <div class="comp-resultsTable">
             <?for ($i = count($res) - 1; $i >= 0 ; $i--) {?>
-                <a target="_blank" class="comp-resultsTable_match" href="/?r=matchcenter&match=<?=$res[$i]['id']?>&comp=<?=$_GET['comp']?>">
+                <a class="comp-resultsTable_match" href="/?r=matchcenter&match=<?=$res[$i]['id']?>&comp=<?=$_GET['comp']?>">
                     <div class="comp-resultsTable_header fafr-bg_dark">
                         <span class="comp-resultsTable_dateTime">
                             <?=common_dateFromSQL($res[$i]['date'], true)?>
@@ -215,7 +215,7 @@
                 ?>
                 <div class="video-list_item fafr-3columns_item">
                     <div class="video-list_itemContent">
-                        <a href="<?=$link?>" class="video-list_imgWrapper" target="_blank">
+                        <a href="<?=$link?>" class="video-list_imgWrapper">
                             <?if ($code) {?>
                                 <img class="video-list_img" src="https://img.youtube.com/vi/<?=$code?>/mqdefault.jpg"/>
                             <?} else {?>

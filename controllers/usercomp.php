@@ -26,7 +26,7 @@
                 LEFT JOIN competition C ON C.id = UR.competition
                 LEFT JOIN season S ON S.id = C.season
                 LEFT JOIN person P ON P.id = UR.person'.
-                $where. ' ORDER BY S.yearB DESC', $params);
+                $where. ' ORDER BY P.surname, S.yearB DESC', $params);
 
         return $dataset;
     }
