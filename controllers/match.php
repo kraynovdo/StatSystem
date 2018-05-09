@@ -222,7 +222,7 @@
               T2.rus_name AS t2name,
               T1.city_adj AS t1city_adj,
               T2.city_adj AS t2city_adj,
-              M.group,
+              M.group AS gid,
               T1.logo AS t1logo,
               T2.logo AS t2logo,
               M.curperiod,

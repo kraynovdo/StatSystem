@@ -63,7 +63,7 @@
             $group = $answer['group'];
             for ($i = 0; $i < count($group); $i++) {
                 $selected = '';
-                if ($answer['match']['group'] == $group[$i]['id']) {
+                if ($answer['match']['gid'] == $group[$i]['id']) {
                     $selected = ' selected="selected"';
                 }
                 ?>
