@@ -21,8 +21,12 @@
 
 .comp-teamList {
     margin: -40px 0 20px 165px;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
+    -webkit-flex-direction: row;
     flex-direction: row;
+    -webkit-justify-content: space-between;
     justify-content: space-between;
 }
 .comp-teamList_item {
@@ -36,9 +40,16 @@
 }
 
 .comp-resultsTable {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     overflow: hidden;
-    flex-flow: row wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    -webkit-justify-content: space-between;
     justify-content: space-between;
     margin-bottom: 20px;
 }
@@ -71,9 +82,14 @@
 }
 .comp-resultsTable_row {
     overflow: hidden;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
+    -webkit-flex-direction: row;
     flex-direction: row;
+    -webkit-justify-content: flex-end;
     justify-content: space-between;
+    -webkit-align-items: baseline;
     align-items: baseline;
     margin-bottom: 10px;
 }
@@ -102,8 +118,12 @@
     position: relative;
 }
 .comp-leaders_list {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
+    -webkit-flex-direction: row;
     flex-direction: row;
+    -webkit-justify-content: flex-end;
     justify-content: space-between;
 }
 .comp-leaders_link {
@@ -196,8 +216,12 @@
 }
 /*calendar*/
 .comp_groupSelector {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
+    -webkit-flex-direction: row;
     flex-direction: row;
+    -webkit-align-items: baseline;
     align-items: baseline;
     padding-bottom: 18px;
 }
@@ -216,8 +240,12 @@
     border-bottom: 1px solid #15222B;
 }
 .calendar-item_content {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
+    -webkit-flex-direction: row;
     flex-direction: row;
+    -webkit-justify-content: space-between;
     justify-content: space-between;
 }
 .calendar-item_logo {
@@ -249,8 +277,12 @@
 }
 .calendar-item_count {
     padding-top: 20px;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
+    -webkit-flex-direction: row;
     flex-direction: row;
+    -webkit-justify-content: space-between;
     justify-content: space-between;
 }
 .calendar-item_digit {
@@ -393,8 +425,12 @@
 }
 .comp-persons_info {
     height: 140px;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
+    -webkit-flex-direction: column;
     flex-direction: column;
+    -webkit-justify-content: center;
     justify-content: center;
 }
 .comp-persons_fio {

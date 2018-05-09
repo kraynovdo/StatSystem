@@ -454,8 +454,12 @@ table, .fafr-text {
     top: 0;
     bottom: 0;
     width: 33%;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
+    -webkit-justify-content: space-around;
     justify-content: space-around;
+    -webkit-flex-direction: column;
     flex-direction: column;
 }
 .feed-column_item {
@@ -576,8 +580,12 @@ table, .fafr-text {
     border-radius: 8px;
 }
 .video-list_navig {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
+    -webkit-flex-direction: row;
     flex-direction: row;
+    -webkit-justify-content: flex-end;
     justify-content: flex-end;
     margin-bottom: 40px;
 }
