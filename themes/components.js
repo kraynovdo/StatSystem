@@ -715,6 +715,6 @@ $(function () {
     });
 
     $('.fafr-toTopLink').click(function(){
-        document.body.scrollTop = 0
+        $(window).scrollTop(0);
     })
 });
