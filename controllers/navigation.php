@@ -4,10 +4,12 @@
         $queryFilter = ' code = :code';
         $result = common_getlist($dbConnect, '
             SELECT
-              id, title, href, alias, parent
+              id, title, href, parent
             FROM
               navigation
-            WHERE visible AND'. $queryFilter
+            WHERE visible AND'. $queryFilter . '
+            ORDER BY ord, id
+            '
             , $queryArgs);
 
         return $result;

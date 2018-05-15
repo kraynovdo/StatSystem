@@ -337,15 +337,33 @@
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/organization.php');
         $result['org'] = organization_info($dbConnect, $org_id);
 
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/usercomp.php');
-        $result['usercomp'] = usercomp_list($dbConnect, $CONSTPath, $_GET['comp']);
-
         $navigation = competition_lafNavig();
         $navigation['pageId'] = 46;
         return array (
             'navigation' => $navigation,
             'answer' => $result
         );
+    }
+
+
+    function competition_staff ($dbConnect, $CONSTPath) {
+        $result = array();
+
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/usercomp.php');
+        $result['usercomp'] = usercomp_list($dbConnect, $CONSTPath, $_GET['comp']);
+
+        $navigation = competition_lafNavig();
+        $navigation['pageId'] = 55;
+        return array (
+            'navigation' => $navigation,
+            'answer' => $result
+        );
+    }
+
+    function competition_contacts ($dbConnect, $CONSTPath) {
+        $about = competition_about($dbConnect, $CONSTPath);
+        $about['navigation']['pageId'] = 56;
+        return $about;
     }
 
     function competition_teamList($dbConnect, $confirm=1) {
