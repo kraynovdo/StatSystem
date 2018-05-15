@@ -1,4 +1,18 @@
 <?php
+    function prepare_href($href) {
+        preg_match_all(
+            '/%([a-zA-Z]*)%/',
+            $href,
+            $matches);
+        $patterns = $matches[0];
+        $gArgs = $matches[1];
+
+        $newHref = $href;
+        for ($i = 0; $i < count($patterns); $i++) {
+            $newHref = str_replace($patterns[$i], '&'.$gArgs[$i]. '=' . $_GET[$gArgs[$i]], $newHref);
+        }
+        return $newHref;
+    }
     /*View*/
     if (isset($result['navigation'])) {
         $theme = '';
@@ -28,7 +42,7 @@
                     array_push($NAVIGATION, array(
                         'id' => $navList[$i]['id'],
                         'title' => $navList[$i]['title'],
-                        'href' => $navList[$i]['href'],
+                        'href' => prepare_href($navList[$i]['href']),
                     ));
                     if ($pageId == $navList[$i]['id']) {
                         $NAVCURRENT = $pageId;
@@ -48,7 +62,7 @@
                         array_push($NAVIGATION2, array(
                             'id' => $navList[$i]['id'],
                             'title' => $navList[$i]['title'],
-                            'href' => $navList[$i]['href'],
+                            'href' => prepare_href($navList[$i]['href']),
                         ));
                     }
                 }
@@ -69,7 +83,7 @@
                     array_push($FOOTER_NAV[$curColumn], array(
                         'id' => $navList[$i]['id'],
                         'title' => $navList[$i]['title'],
-                        'href' => $navList[$i]['href'],
+                        'href' => prepare_href($navList[$i]['href']),
                         'main' => true
                     ));
 
