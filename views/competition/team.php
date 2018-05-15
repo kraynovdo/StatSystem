@@ -16,7 +16,7 @@
             <?}?>
         <div class="comp-columnItem <?if ($odd) {?>comp-columnItem_odd<?}?>">
             <div class="comp-teamTile comp-columnItem_content">
-                <a  target="_blank" class="fafr-link comp-columnContentLink" href1="/?r=team/view&team=<?=$answer[$i]['id']?><?=$filter?>""></a>
+                <a  target="_blank" class="fafr-link comp-columnContentLink" href="/?r=roster/index&from=new&team=<?=$answer[$i]['id']?><?=$filter?>""></a>
                 <div class="comp-teamTile_logo">
                     <?if ($answer[$i]['logo']) {?>
                         <span class="comp-teamTile_logoLink">

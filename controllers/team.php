@@ -20,8 +20,7 @@
             'header' => $data[0]['rus_name'],
             'theme' => $data[0]['theme'],
             'menu' => array(
-                'О команде' => '/?r=team/view&team='.$id.$compFilter,
-                'Новости' => '/?r=news&team='.$id.$compFilter
+                'О команде' => '/?r=team/view&team='.$id.$compFilter
             ),
             'title' => $data[0]['rus_name'] . ' ' . $data[0]['city'] . ' клуб американского футбола',
             'description' => 'Сайт ' . $data[0]['rus_name'] . ' клуб американского футбола. Здесь вы можете найти свежие новости, информацию о матчах, статистику',
