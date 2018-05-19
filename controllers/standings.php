@@ -44,5 +44,83 @@ function standings_index($dbConnect, $CONSTPath)
     return $result;
 }
 
+function calc_similar($dbConnect, $similar) {
+
+}
+
+function standings_table($dbConnect, $CONSTPath) {
+    $result = array();
+    $main_table = common_getlist($dbConnect, '
+        SELECT
+          T.id, T.rus_name, T.logo, CT.`group`,
+          (SELECT count(id) FROM `match` M WHERE team1 = T.id AND M.competition = :comp AND M.group AND M.score1) AS cHome,
+          (SELECT count(id) FROM `match` M WHERE team2 = T.id AND M.competition = :comp AND M.group AND M.score1) AS cAway,
+          (SELECT count(id) FROM `match` M WHERE team1 = T.id AND score1 > score2 AND M.competition = :comp AND M.group AND M.score1) AS vHome,
+          (SELECT count(id) FROM `match` M WHERE team2 = T.id AND score2 > score1 AND M.competition = :comp AND M.group AND M.score1) AS vAway,
+          (SELECT (vHome + vAway) / (cHome + cAway) * 100) AS percSource,
+          (SELECT COALESCE(percSource, 0)) AS perc,
+          (SELECT sum(score1) FROM `match` M WHERE team1 = T.id AND M.competition = :comp AND M.group AND M.score1) AS sHome,
+          (SELECT sum(score2) FROM `match` M WHERE team2 = T.id AND M.competition = :comp AND M.group AND M.score1) AS sAway,
+          (SELECT sum(score2) FROM `match` M WHERE team1 = T.id AND M.competition = :comp AND M.group AND M.score1) AS slHome,
+          (SELECT sum(score1) FROM `match` M WHERE team2 = T.id AND M.competition = :comp AND M.group AND M.score1) AS slAway
+        FROM
+          compTeam CT LEFT JOIN team T ON T.id = CT.team
+        WHERE
+          CT.competition = :comp
+        ORDER BY `group`, perc DESC
+    ', array(
+        'comp' => $_GET['comp']
+    ));
+
+
+    $similars = array();
+    $divisions = array();
+    if (count($main_table)) {
+
+
+        $prev_perc = $main_table[0]['perc'];
+        $prev_group = $main_table[0]['group'];
+
+        $cur_similar = array();
+        array_push($cur_similar, $main_table[0]['id']);
+
+        for ($i = 1; $i < count ($main_table); $i++) {
+            if ($prev_group != $main_table[$i]['group']) {
+                $prev_group = $main_table[$i]['group'];
+                if (count ($cur_similar) > 1) {
+                    array_push($similars, $cur_similar);
+                }
+                $cur_similar = array();
+                array_push($cur_similar, $main_table[$i]['id']);
+            }
+            if ($prev_perc != $main_table[$i]['perc']) {
+                $prev_perc = $main_table[$i]['perc'];
+                if (count ($cur_similar) > 1) {
+                    array_push($similars, $cur_similar);
+                }
+                $cur_similar = array();
+                array_push($cur_similar, $main_table[$i]['id']);
+            }
+            else {
+                array_push($cur_similar, $main_table[$i]['id']);
+            }
+
+        }
+        if (count ($cur_similar) > 1) {
+            array_push($similars, $cur_similar);
+        }
+    }
+    print_r($similars);
+
+
+    $result['answer']['matches'] = $main_table;
+
+    require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
+    $navigation = competition_lafNavig();
+    $navigation['pageId'] = 43;
+    $result['navigation'] = $navigation;
+    return $result;
+}
+
 ?>
 	

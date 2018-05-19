@@ -1,7 +1,7 @@
 <?php
     if ($_SERVER['HTTP_HOST'] == 'localhost') {
         $global_config = array(
-            'dbString' => 'mysql:host=localhost;dbname=StatSystem',
+            'dbString' => 'mysql:host=localhost;dbname=StatSystem2018',
             'dbUser' => 'root',
             'dbPassword' => ''
         );
