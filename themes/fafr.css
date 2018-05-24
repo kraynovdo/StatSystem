@@ -597,3 +597,7 @@ table, .fafr-text {
 .video-view_text {
     margin-left: 660px;
 }
+.fafr-nav {
+    position: absolute;
+    visibility: hidden;
+}
