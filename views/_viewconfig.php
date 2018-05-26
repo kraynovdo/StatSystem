@@ -93,7 +93,7 @@
                             array_push($FOOTER_NAV[$curColumn], array(
                                 'id' => $navList[$j]['id'],
                                 'title' => $navList[$j]['title'],
-                                'href' => $navList[$j]['href'],
+                                'href' => prepare_href($navList[$j]['href']),
                                 'main' => false
                             ));
                             $childCount++;

@@ -92,7 +92,7 @@
             'team' => $team,
             'match' => $_GET['match']
         ));
-        $dataset = $queryresult->fetchAll();
+        $dataset = $queryresult->fetchAll(PDO::FETCH_ASSOC);
         return array(
             'answer' => $dataset
         );

@@ -10,7 +10,7 @@
         <div class="comp-resultsTable">
             <?for ($i = count($res) - 1; $i >= 0 ; $i--) {?>
                 <a class="comp-resultsTable_match" href="/?r=matchcenter&match=<?=$res[$i]['id']?>&comp=<?=$_GET['comp']?>">
-                    <div class="comp-resultsTable_header fafr-bg_dark">
+                    <div class="comp-resultsTable_header fafr-bg_dark fafr-ellipsis">
                         <span class="comp-resultsTable_dateTime">
                             <?=common_dateFromSQL($res[$i]['date'], true)?>
                             <?if (strlen($res[$i]['timeh']) && strlen($res[$i]['timeh'])) {?>
