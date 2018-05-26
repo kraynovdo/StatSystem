@@ -49,7 +49,13 @@
         ?>
         <div class="comp-live_item">
             <div class="comp-live_itemContent">
-                <?=$editor?>
+                <?if ($editor) {?>
+                    <?=$editor?>
+                <?} else {?>
+                    <a href="<?=$link?>" target="_blank" class="video-list_imgWrapper">
+                        <img class="video-list_img" src="//<?=$HOST?>/themes/img/empty-video_editor.png"/>
+                    </a>
+                <?}?>
                 <div class="news-date live-date_list fafr-bg_accent">LIVE</div>
                 <div class="fafr-h2 comp-live_title"><?=$video[$i]['title']?></div>
             </div>
