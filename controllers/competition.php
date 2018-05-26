@@ -382,13 +382,17 @@
                 G.name AS groupname,
                 C.id AS ctid,
                 C.confirm,
-                P.surname AS csname, P.name AS cname
+                (
+                    SELECT CONCAT(P.surname, \' \', P.name)
+                    FROM rosterface RF
+                    LEFT JOIN person P ON P.id = RF.person
+                    WHERE RF.team = T.id AND RF.competition = :competition AND facetype = 5
+                    LIMIT 1
+                ) AS cfio
             FROM
                 compteam C
                 LEFT JOIN team T ON T.id = C.team
                 LEFT JOIN `group` G ON G.id = C.group
-                LEFT JOIN rosterface RF ON RF.team = T.id AND RF.competition = :competition AND facetype = 5
-                LEFT JOIN person P ON P.id = RF.person
             WHERE
                 C.competition = :competition'. $confQuery .'
             ORDER BY
