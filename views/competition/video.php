@@ -19,13 +19,15 @@
             ?>
                 <div class="video-list_item fafr-3columns_item">
                     <div class="video-list_itemContent">
-                        <a href="<?=$link?>" class="video-list_imgWrapper">
-                            <?if ($code) {?>
+                        <?if ($code) {?>
+                            <a href="<?=$link?>" class="video-list_imgWrapper">
                                 <img class="video-list_img" src="https://img.youtube.com/vi/<?=$code?>/mqdefault.jpg"/>
-                            <?} else {?>
+                            </a>
+                        <?} else {?>
+                            <a href="<?=$video[$i]['content']?>" target="_blank" class="video-list_imgWrapper">
                                 <img class="video-list_img" src="//<?=$HOST?>/themes/img/empty-video.png"/>
-                            <?}?>
-                        </a>
+                            </a>
+                        <?}?>
                         <div class="news-date video-date_list fafr-bg_accent"><?=common_dateFromSQL($video[$i]['date'])?></div>
                         <div class="fafr-h2 video-list_title"><?=$video[$i]['title']?></div>
                         <?if ($_SESSION['userType'] == 3) {?>

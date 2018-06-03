@@ -74,6 +74,8 @@ table, .fafr-text {
 }
 .fafr-header {
     height: 80px;
+    /*TODO чтоб старая форма логина не ломала меню*/
+    overflow-y: hidden;
 }
 .fafr-header_title {
     padding: 23px 0 0 140px;
@@ -230,6 +232,12 @@ table, .fafr-text {
 .fafr-h2 {
     font-size: 18px;
     font-weight: bold;
+}
+
+.fafr-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .fafr-input {
@@ -596,4 +604,8 @@ table, .fafr-text {
 }
 .video-view_text {
     margin-left: 660px;
+}
+.fafr-nav {
+    position: absolute;
+    visibility: hidden;
 }

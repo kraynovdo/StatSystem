@@ -10,7 +10,7 @@
         <div class="comp-resultsTable">
             <?for ($i = count($res) - 1; $i >= 0 ; $i--) {?>
                 <a class="comp-resultsTable_match" href="/?r=matchcenter&match=<?=$res[$i]['id']?>&comp=<?=$_GET['comp']?>">
-                    <div class="comp-resultsTable_header fafr-bg_dark">
+                    <div class="comp-resultsTable_header fafr-bg_dark fafr-ellipsis">
                         <span class="comp-resultsTable_dateTime">
                             <?=common_dateFromSQL($res[$i]['date'], true)?>
                             <?if (strlen($res[$i]['timeh']) && strlen($res[$i]['timeh'])) {?>
@@ -49,7 +49,13 @@
         ?>
         <div class="comp-live_item">
             <div class="comp-live_itemContent">
-                <?=$editor?>
+                <?if ($editor) {?>
+                    <?=$editor?>
+                <?} else {?>
+                    <a href="<?=$link?>" target="_blank" class="video-list_imgWrapper">
+                        <img class="video-list_img" src="//<?=$HOST?>/themes/img/empty-video_editor.png"/>
+                    </a>
+                <?}?>
                 <div class="news-date live-date_list fafr-bg_accent">LIVE</div>
                 <div class="fafr-h2 comp-live_title"><?=$video[$i]['title']?></div>
             </div>

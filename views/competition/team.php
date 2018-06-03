@@ -35,12 +35,14 @@
                     <span class="comp-teamTile_name">
                         <?=$answer[$i]['rus_name']?>
                     </span>
-                    <div class="comp-teamTile_label fafr-textAdd">
-                        Главный тренер
-                    </div>
-                    <div class="comp-teamTile_coach">
-                        <?=$answer[$i]['csname'] . ' ' .  $answer[$i]['cname']?>
-                    </div>
+                    <?if ($answer[$i]['cfio']) {?>
+                        <div class="comp-teamTile_label fafr-textAdd">
+                            Главный тренер
+                        </div>
+                        <div class="comp-teamTile_coach">
+                            <?=$answer[$i]['cfio']?>
+                        </div>
+                    <?}?>
                 </div>
             </div>
             <?if (($_SESSION['userType'] == 3) || ($_SESSION['userComp'][$_GET['comp']] == 1)) {?>

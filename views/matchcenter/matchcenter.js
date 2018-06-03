@@ -8,3 +8,10 @@
 $('.match-videoEdit').click(function(){
     $('.match-videoForm').toggleClass('fafr-hidden');
 });
+
+$('.match-navig_link').click(function(){
+    var scrollTop = $(window).scrollTop();
+    var href = $(this).attr('href');
+    href += '&sc=' + scrollTop + '#nav';
+    $(this).attr('href', href);
+});

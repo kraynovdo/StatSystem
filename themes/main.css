@@ -1803,3 +1803,6 @@ input.stats-screenCharValue {
     background: #fff;
     border-bottom: 3px solid #2d5588;
 }
+.main-auth_container {
+    display: inline-block;
+}
