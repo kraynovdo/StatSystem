@@ -122,5 +122,67 @@ function standings_table($dbConnect, $CONSTPath) {
     return $result;
 }
 
+function standings_edit ($dbConnect, $CONSTPath) {
+    if ($_SESSION['userType'] == 3) {
+        $result = array ();
+        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/admin.php');
+        $result['navigation'] = admin_navig();
+
+
+
+        return $result;
+    }
+    else {
+        return 'ERROR-403';
+    }
+}
+
+function standings_updateImage ($dbConnect, $CONSTPath) {
+    if ($_SESSION['userType'] == 3) {
+
+        $img = common_loadFile('st_img', $CONSTPath);
+
+        $rec = common_getrecord($dbConnect, '
+            SELECT id, href
+            FROM
+              standings
+            WHERE
+              competition = :comp
+            LIMIT 1
+        ', array(
+            'comp' => $_POST['comp']
+        ));
+
+        if (count($rec)) {
+            $id = $rec['id'];
+            unlink($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/upload/' . $rec['href']);
+            common_query($dbConnect, '
+                UPDATE standings
+                SET href = :href
+                WHERE id = :id
+            ', array(
+                'href' => $img,
+                'id' => $id
+            ));
+        }
+        else {
+            common_query($dbConnect, '
+                INSERT INTO standings
+                (competition, href)
+                VALUES
+                (:comp, :href)
+            ', array(
+                'href' => $img,
+                'comp' => $_POST['comp']
+            ));
+        }
+
+        return array(
+            'page' => '/?r=competition/standings&comp=' . $_POST['comp']
+        );
+    }
+    else {
+        return 'ERROR-403';
+    }
+}
 ?>
-	

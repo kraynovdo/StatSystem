@@ -475,3 +475,28 @@
 
         return $result;
     }
+
+    function competition_standings ($dbConnect, $CONSTPath) {
+        $result = array(
+            'answer' => array()
+        );
+
+        $rec = common_getrecord($dbConnect, '
+            SELECT href
+            FROM
+              standings
+            WHERE
+              competition = :comp
+            LIMIT 1
+        ', array(
+            'comp' => $_GET['comp']
+        ));
+
+        $result['answer']['href'] = $rec['href'];
+
+        $navigation = competition_lafNavig();
+        $navigation['pageId'] = 57;
+        $result['navigation'] = $navigation;
+
+        return $result;
+    }
