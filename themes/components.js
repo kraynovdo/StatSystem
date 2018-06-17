@@ -692,16 +692,9 @@ $(function () {
         $(this).closest('.main-auth').toggleClass('main-auth_expanded')
     });
 
-    if (!window.mobile) {
-    	$('.main-textEditor').ckeditor({
-            language: 'zh-cn'
-        });
-    }
-    else {
-        $('.main-textEditor').each(function(i, item){
-            item.outerHTML = '<h2>Функционал ограничен для мобильных устройств</h1>';
-        })
-    }
+    $('.main-textEditor').ckeditor({
+        language: 'zh-cn'
+    });
 
     $('.feed-main').each(function(i, item){
         var $feed = $(item);
