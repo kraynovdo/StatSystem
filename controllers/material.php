@@ -29,8 +29,10 @@
                 'id' => $_GET['mater']
             ));
             $data = $queryresult->fetchAll();
+            $title = '';
             if (count($data)) {
                 $result['answer'] = $data[0];
+                $title = $data[0]['title'];
             } else {
                 $result['answer'] = array();
             }
@@ -54,6 +56,9 @@
                 $navigation = competition_lafNavig();
                 $navigation['pageId'] = 51;
                 $result['navigation'] = $navigation;
+            }
+            if ($title) {
+                $result['navigation']['title'] = $title . ' - ' . $result['navigation']['title'];
             }
             return $result;
         /*}
