@@ -692,9 +692,12 @@ $(function () {
         $(this).closest('.main-auth').toggleClass('main-auth_expanded')
     });
 
-    $('.main-textEditor').ckeditor({
-        language: 'zh-cn'
-    });
+    var $textEditor = $('.main-textEditor');
+    if ($textEditor.length) {
+        $textEditor.ckeditor({
+            language: 'zh-cn'
+        });
+    }
 
     $('.feed-main').each(function(i, item){
         var $feed = $(item);

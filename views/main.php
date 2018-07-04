@@ -21,6 +21,7 @@
     <link rel="shortcut icon" href="//<?=$HOST?>/themes/img/fafr_logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery-ui.css">
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery.Jcrop.min.css?1">
+    <script src="//<?=$HOST?>/jquery/jquery-1.10.2.js"></script>
 </head>
 <body>
 <? if ($_SESSION['error']){?>
@@ -43,16 +44,15 @@
 else {
     require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/views/_mainMobile.php');
 }?>
-<script src="//<?=$HOST?>/jquery/jquery-1.10.2.js"></script>
+<?
+    require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/views/YaMetrics.php');
+?>
 <script src="//<?=$HOST?>/jquery/jquery.cookie.js"></script>
 <script src="//<?=$HOST?>/jquery/jquery-ui.js"></script>
 
-<script type="text/javascript" src="//<?=$HOST?>/jquery/ckeditor/ckeditor.js?2"></script>
-<script type="text/javascript" src="//<?=$HOST?>/jquery/ckeditor/adapters/jquery.js?2"></script>
-
 <script src="//<?=$HOST?>/jquery/jquery.Jcrop.min.js?1"></script>
 
-<script type="text/javascript" src="//<?=$HOST?>/themes/components.js?36"></script>
+<script type="text/javascript" src="//<?=$HOST?>/themes/components.js?39"></script>
 <?if (file_exists($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/' . $controller . '/' . $controller . '.js')) {?>
     <script type="text/javascript" src="//<?=$HOST?>/views/<?=$controller?>/<?=$controller?>.js?49"></script>
 <?}?>

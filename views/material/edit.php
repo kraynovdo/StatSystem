@@ -39,6 +39,8 @@
         </div>
         <input class="main-btn main-submit" type="button" value="Сохранить"/>
     </form>
+    <script type="text/javascript" src="//<?=$HOST?>/jquery/ckeditor/ckeditor.js?2"></script>
+    <script type="text/javascript" src="//<?=$HOST?>/jquery/ckeditor/adapters/jquery.js?2"></script>
 <?} else {?>
     Материал не найден
 <?}?>
