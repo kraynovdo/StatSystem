@@ -738,66 +738,71 @@
     }
 
     function match_editEvent($dbConnect, $CONSTPath) {
-        $answer['match'] = match_mainInfo($dbConnect, $CONSTPath);
+        if (($_SESSION['userType'] == 3) || ($_SESSION['userType'] == 5)) {
+            $answer['match'] = match_mainInfo($dbConnect, $CONSTPath);
 
 
 
 
-        $event = common_getrecord($dbConnect, '
-            SELECT
-                S.id AS action, S.actiontype AS atype, ST.name AS aname, pointsget, team, team2, comment, period
-            FROM
-                matchevent E LEFT JOIN stataction S ON S.matchevent = E.id
-                LEFT JOIN statactiontype ST ON ST.id = S.actiontype
-            WHERE
-                E.id = :id
-        ', array('id' => $_GET['event']));
-        $answer['event'] = $event;
+            $event = common_getrecord($dbConnect, '
+                SELECT
+                    S.id AS action, S.actiontype AS atype, ST.name AS aname, pointsget, team, team2, comment, period
+                FROM
+                    matchevent E LEFT JOIN stataction S ON S.matchevent = E.id
+                    LEFT JOIN statactiontype ST ON ST.id = S.actiontype
+                WHERE
+                    E.id = :id
+            ', array('id' => $_GET['event']));
+            $answer['event'] = $event;
 
-        $atype = $event['atype'];
-        $action = $event['action'];
-        $statperson = common_getlist($dbConnect, '
-            SELECT
-                SPT.id AS ptid, SP.person, SPT.name, SPT.offdef
-            FROM
-                statpersontype SPT LEFT JOIN statperson SP ON SP.persontype = SPT.id AND SP.action = :action
-            WHERE
-                SPT.actiontype = :actiontype
-        ', array('actiontype' => $atype, 'action' => $action));
-        $statchar = common_getlist($dbConnect, '
-            SELECT
-                SCT.id AS ctid, SC.value, SCT.name
-            FROM
-                statchartype SCT LEFT JOIN statchar SC ON SC.chartype = SCT.id AND SC.action = :action
-            WHERE
-                SCT.actiontype = :actiontype
-        ', array('actiontype' => $atype, 'action' => $action));
-        $point = common_getlist($dbConnect,
-            'SELECT
-                    P.id, S.pointsget, P.name
-                 FROM
-                    statpoint S LEFT JOIN pointsget P ON P.id = S.pointsget
-                 WHERE actiontype = :actiontype ORDER BY id', array('actiontype' => $atype));
+            $atype = $event['atype'];
+            $action = $event['action'];
+            $statperson = common_getlist($dbConnect, '
+                SELECT
+                    SPT.id AS ptid, SP.person, SPT.name, SPT.offdef
+                FROM
+                    statpersontype SPT LEFT JOIN statperson SP ON SP.persontype = SPT.id AND SP.action = :action
+                WHERE
+                    SPT.actiontype = :actiontype
+            ', array('actiontype' => $atype, 'action' => $action));
+            $statchar = common_getlist($dbConnect, '
+                SELECT
+                    SCT.id AS ctid, SC.value, SCT.name
+                FROM
+                    statchartype SCT LEFT JOIN statchar SC ON SC.chartype = SCT.id AND SC.action = :action
+                WHERE
+                    SCT.actiontype = :actiontype
+            ', array('actiontype' => $atype, 'action' => $action));
+            $point = common_getlist($dbConnect,
+                'SELECT
+                        P.id, S.pointsget, P.name
+                     FROM
+                        statpoint S LEFT JOIN pointsget P ON P.id = S.pointsget
+                     WHERE actiontype = :actiontype ORDER BY id', array('actiontype' => $atype));
 
-        $answer['statperson'] = $statperson;
-        $answer['statchar'] = $statchar;
-        $answer['point'] = $point;
+            $answer['statperson'] = $statperson;
+            $answer['statchar'] = $statchar;
+            $answer['point'] = $point;
 
 
-        $team1 = $event['team'];
-        $team2 = $event['team2'];
-        require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/matchroster.php');
-        $team1roster = matchroster_index($dbConnect, $CONSTPath, $team1);
-        $team2roster = matchroster_index($dbConnect, $CONSTPath, $team2);
-        $answer['team1roster'] = $team1roster['answer'];
-        $answer['team2roster'] = $team2roster['answer'];
+            $team1 = $event['team'];
+            $team2 = $event['team2'];
+            require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/matchroster.php');
+            $team1roster = matchroster_index($dbConnect, $CONSTPath, $team1);
+            $team2roster = matchroster_index($dbConnect, $CONSTPath, $team2);
+            $answer['team1roster'] = $team1roster['answer'];
+            $answer['team2roster'] = $team2roster['answer'];
 
-        require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
-        $result = array(
-            'answer' => $answer,
-            'navigation' => competition_NAVIG($dbConnect, $_GET['comp'])
-        );
-        return $result;
+            require($_SERVER['DOCUMENT_ROOT'] . $CONSTPath . '/controllers/competition.php');
+            $result = array(
+                'answer' => $answer,
+                'navigation' => competition_NAVIG($dbConnect, $_GET['comp'])
+            );
+            return $result;
+        }
+        else {
+            return 'ERROR-403';
+        }
     }
 
     function match_updateEvent($dbConnect, $CONSTPath) {

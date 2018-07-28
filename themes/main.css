@@ -1806,3 +1806,8 @@ input.stats-screenCharValue {
 .main-auth_container {
     display: inline-block;
 }
+.fafr-yaInformer {
+    position: fixed;
+    bottom: 0;
+    right: 4px;
+}

@@ -3,10 +3,8 @@
         <?if ($admin) {?>
         <a class="main-delLink match-eventDelLink"
            href="/?r=match/deleteEvent&event=<?=$event[$i]['id']?>&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&ret=AF">[X]</a>
-        <?if ($_SESSION['userType'] == 3) {?>
             <a class="match-eventDelLink"
                href="/?r=match/editEvent&event=<?=$event[$i]['id']?>&match=<?=$_GET['match']?>&comp=<?=$_GET['comp']?>&ret=AF">[Ред]</a>
-        <?}?>
         <?}?>
         <div class="match-eventComment"><?if ($event[$i]['period'] < 5){?>Q<?=$event[$i]['period']?><?} else {?>OT<?}?>   (#<?=$event[$i]['aid']?>)</div>
         <?if ($event[$i]['firstStr']) {?>

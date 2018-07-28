@@ -166,6 +166,11 @@ table, .fafr-text {
 .fafr-footer_column {
     float: left;
 }
+.fafr-yaInformer {
+    position: fixed;
+    bottom: 0;
+    right: 4px;
+}
 .fafr-login {
     position: absolute;
     top: 25px;
