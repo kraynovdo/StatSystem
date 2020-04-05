@@ -15,6 +15,13 @@
     if (strstr($_SERVER['HTTP_HOST'], 'amfoot.net')) {
         ini_set("session.cookie_domain",".amfoot.net");
     }
+    if (strstr($_SERVER['HTTP_HOST'], 'lafpro.ru')) {
+        ini_set("session.cookie_domain",".lafpro.ru");
+        if (!$_GET['r']) {
+            $_GET['r'] = 'competition/start';
+        }
+        $_GET['comp'] = 101;
+    }
     session_start();
 
 
