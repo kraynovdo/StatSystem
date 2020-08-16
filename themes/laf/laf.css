@@ -686,3 +686,9 @@
     left: 50%;
     margin-left: -160px;
 }
+
+.listview-item {
+    padding: 5px 0;
+    border-top: 1px solid #cccccc;
+    margin-bottom: 2px;
+}

@@ -150,12 +150,12 @@
 
     if (strstr($_SERVER['HTTP_HOST'], 'amfoot.ru')) {
         $HOST='amfoot.ru';
+    } else if (strstr($_SERVER['HTTP_HOST'], 'amfoot.net')) {
+        $HOST = 'amfoot.net';
+    } else if (strstr($_SERVER['HTTP_HOST'], 'lafpro.ru')){
+        $HOST = 'lafpro.ru';
+    } else {
+        $HOST = $_SERVER['HTTP_HOST'];
     }
-    else {
-        if (strstr($_SERVER['HTTP_HOST'], 'amfoot.net')) {
-            $HOST = 'amfoot.net';
-        } else {
-            $HOST = $_SERVER['HTTP_HOST'];
-        }
 
-    }
+

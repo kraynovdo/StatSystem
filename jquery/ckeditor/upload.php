@@ -25,9 +25,10 @@ if($_FILES['upload'])
     else{
         if (strstr($_SERVER['HTTP_HOST'], 'amfoot.net')) {
             $HOST='amfoot.net';
-        }
-        else if (strstr($_SERVER['HTTP_HOST'], 'amfoot.ru')) {
+        } else if (strstr($_SERVER['HTTP_HOST'], 'amfoot.ru')) {
             $HOST='amfoot.ru';
+        } else if (strstr($_SERVER['HTTP_HOST'], 'lafpro.ru')) {
+            $HOST='lafpro.ru';
         }
         $name =rand(1, 1000).'-'.md5($_FILES['upload']['name']).'.'.getex($_FILES['upload']['name']);
         move_uploaded_file($_FILES['upload']['tmp_name'], "../../upload/editor/".$name);

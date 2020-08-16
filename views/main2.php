@@ -13,9 +13,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <?}?>
     <meta name="viewport" id="viewport" content="width=1000">
-    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/fafr.css?31"/>
+    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/fafr.css?40"/>
     <?if ($theme) {?>
-        <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?30"/>
+        <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?50"/>
     <?}?>
     <link rel="shortcut icon" href="//<?=$HOST?>/themes/img/fafr_logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery-ui.css">
@@ -111,9 +111,9 @@
 
 <script src="//<?=$HOST?>/jquery/jquery.Jcrop.min.js?1"></script>
 
-<script type="text/javascript" src="//<?=$HOST?>/themes/components.js?39"></script>
+<script type="text/javascript" src="//<?=$HOST?>/themes/components.js?40"></script>
 <?if (file_exists($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/' . $controller . '/' . $controller . '.js')) {?>
-    <script type="text/javascript" src="//<?=$HOST?>/views/<?=$controller?>/<?=$controller?>.js?36"></script>
+    <script type="text/javascript" src="//<?=$HOST?>/views/<?=$controller?>/<?=$controller?>.js?50"></script>
 <?}?>
 
 <a name="nav" class="fafr-nav" <?if ($_GET['sc']) {?> style="top:<?=$_GET['sc']?>px;"<?}?>></a>

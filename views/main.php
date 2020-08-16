@@ -11,12 +11,12 @@
         <script type="text/javascript">window.mobile = true;</script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <?}?>
-    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main.css?146"/>
+    <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main.css?150"/>
     <?if ($theme) {?>
-        <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?9"/>
+        <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/<?=$theme?>/<?=$theme?>.css?50"/>
     <?}?>
     <?if ($IS_MOBILE) {?>
-        <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main_mobile_s.css?47"/>
+        <link rel="stylesheet" type="text/css" href="//<?=$HOST?>/themes/main_mobile_s.css?50"/>
     <?}?>
     <link rel="shortcut icon" href="//<?=$HOST?>/themes/img/fafr_logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="//<?=$HOST?>/jquery/jquery-ui.css">
@@ -52,9 +52,9 @@ else {
 
 <script src="//<?=$HOST?>/jquery/jquery.Jcrop.min.js?1"></script>
 
-<script type="text/javascript" src="//<?=$HOST?>/themes/components.js?39"></script>
+<script type="text/javascript" src="//<?=$HOST?>/themes/components.js?40"></script>
 <?if (file_exists($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/views/' . $controller . '/' . $controller . '.js')) {?>
-    <script type="text/javascript" src="//<?=$HOST?>/views/<?=$controller?>/<?=$controller?>.js?49"></script>
+    <script type="text/javascript" src="//<?=$HOST?>/views/<?=$controller?>/<?=$controller?>.js?50"></script>
 <?}?>
 
 </body>

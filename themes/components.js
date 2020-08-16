@@ -250,12 +250,13 @@ $(function () {
         newComp = 'comp=' + id;
         host = document.location.host;
         newHost = host;
-        if (host.indexOf('amfoot.ru') >= 0) {
-            newHost = 'amfoot.ru';
-        }
 
         if (host.indexOf('amfoot.net') >= 0) {
             newHost = 'amfoot.net';
+        } else if (host.indexOf('amfoot.ru') >= 0) {
+            newHost = 'amfoot.ru';
+        } else if (host.indexOf('lafpro.ru') >= 0) {
+            newHost = 'lafpro.ru';
         }
 
         search = document.location.search;

@@ -135,7 +135,10 @@
         require_once($_SERVER['DOCUMENT_ROOT'] . $CONSTPath  . '/controllers/video.php');
         $result['answer']['trans'] = video_livetoday($dbConnect, $CONSTPath);
 
-        $result['navigation'] = competition_NAVIG($dbConnect, $_GET['comp']);
+        //TODO заглушка всех турниров для Сайта ВЕС
+        $result['navigation'] = competition_lafNavig();
+        $result['navigation']['pageId'] = 58;
+
         return $result;
 
     }
@@ -234,11 +237,11 @@
         $navig_arr = array(
             'code' => 'laf',
             'theme' => 'laf',
-            'header' => 'Лига Американского Футбола',
-            'subheader' => 'Открытый чемпионат России',
-            'title' => 'Лига Американского Футбола',
-            'description' => 'Лига Американского Футбола: Официальный сайт. Здесь вы можете найти свежие новости, информацию о командах и статистику',
-            'keywords' => array('Лига Американского Футбола', 'ЛАФ', 'Чемпионат России по американскому футболу', 'Россия', 'Американский футбол')
+            'header' => 'Первый дивизион',
+            'subheader' => 'Восточно-Европейская Суперлига',
+            'title' => 'Первый дивизион ВЕС',
+            'description' => 'Восточно-Европейская Суперлига. Здесь вы можете найти свежие новости, информацию о командах и статистику',
+            'keywords' => array('Восточно-Европейская Суперлига', 'EESL', 'Чемпионат России по американскому футболу', 'Россия', 'Американский футбол')
         );
         return $navig_arr;
     }

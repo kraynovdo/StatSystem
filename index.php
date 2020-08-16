@@ -20,7 +20,9 @@
         if (!$_GET['r']) {
             $_GET['r'] = 'competition/start';
         }
-        $_GET['comp'] = 101;
+        if (!$_GET['comp']) {
+            $_GET['comp'] = 103;
+        }
     }
     session_start();
 

@@ -1,3 +1,4 @@
+<div class="fafr-minWidth fafr-maxWidth">
 <div class="listview">
     <?$year = NULL; $fed = NULL;?>
     <?php for ($i = 0; $i < count($answer); $i++) {?>
@@ -25,8 +26,9 @@
         $href = '/?r=competition/view&comp=' . $answer[$i]['id'];
     }
 ?>
-            <a target="_blank" href="<?=$href?>"><?=$answer[$i]['name'] . ' '.$year?> </a>
+            <a target="_blank" class="fafr-link" href="<?=$href?>"><?=$answer[$i]['name'] . ' '.$year?> </a>
         </div>
     <?}?>
     <?}?>
+</div>
 </div>

@@ -4,9 +4,10 @@
 
         if (host.indexOf('amfoot.net') >= 0) {
             host = 'amfoot.net';
-        }
-        else if (host.indexOf('amfoot.ru') >= 0) {
+        } else if (host.indexOf('amfoot.ru') >= 0) {
             host = 'amfoot.ru';
+        } else if (host.indexOf('lafpro.ru') >= 0) {
+            host = 'lafpro.ru';
         }
         return host;
     };
